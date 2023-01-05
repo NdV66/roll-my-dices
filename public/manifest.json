@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Roll Me Dices",
+  "name": "Create Roll Me Dices Sample",
   "icons": [
     {
       "src": "favicon.ico",
