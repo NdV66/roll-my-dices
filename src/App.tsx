@@ -1,5 +1,10 @@
-export const App = () => {
-    return <div>Todo</div>;
-};
+import { AppContextWrapper } from './context';
+import { Page } from './view/page';
+
+export const App = () => (
+    <AppContextWrapper>
+        <Page />
+    </AppContextWrapper>
+);
 
 export default App;
