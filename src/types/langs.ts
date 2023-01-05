@@ -3,10 +3,15 @@ export const enum AppLangs {
     PL = 'pl-PL',
 }
 
+export type TTranslationsLang = {
+    label: string;
+    value: AppLangs;
+};
+
 export type TTranslations = {
     CURRENT_LANG: string;
-    EN: string;
-    PL: string;
+
+    LANGS: TTranslationsLang[];
 
     D_20: string;
 };

@@ -9,6 +9,7 @@ export const useThemeButtonElementViewModel = () => {
 
     return {
         onChangeTheme,
+        theme: appContext.theme,
         appTheme: appContext.appTheme,
     };
 };

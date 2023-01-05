@@ -5,16 +5,19 @@ import { AppLangModel } from '../models/AppLangModel';
 import { AppThemeModel } from '../models/AppThemeModel';
 import { getNewAppTheme } from '../services';
 import { useStateWithObservableWithInit } from '../tools';
-import { AppTheme, Models, TAppContext, TTranslations } from '../types';
+import { AppLangs, AppTheme, Models, TAppContext, TTheme, TTranslations } from '../types';
 import { AppContext } from './AppContext';
 
 type Props = React.PropsWithChildren<unknown>;
 
-const appThemeModel = ModelsManager.getSingleton<AppThemeModel>(Models.APP_THEME);
-const appLangModel = ModelsManager.getSingleton<AppLangModel>(Models.APP_LANG);
+export const appThemeModel = ModelsManager.getSingleton<AppThemeModel>(Models.APP_THEME);
+export const appLangModel = ModelsManager.getSingleton<AppLangModel>(Models.APP_LANG);
 
 export const AppContextWrapper: React.FC<Props> = ({ children }) => {
-    const appTheme = useStateWithObservableWithInit<AppTheme>(appThemeModel.appTheme, DEFAULTS.THEME);
+    const theme = useStateWithObservableWithInit<TTheme>(appThemeModel.theme, DEFAULTS.THEME);
+    const appTheme = useStateWithObservableWithInit<AppTheme>(appThemeModel.appTheme, DEFAULTS.APP_THEME);
+
+    const appLang = useStateWithObservableWithInit<AppLangs>(appLangModel.appLang, DEFAULTS.LANG);
     const appTranslations = useStateWithObservableWithInit<TTranslations>(
         appLangModel.translations,
         {} as TTranslations,
@@ -27,11 +30,17 @@ export const AppContextWrapper: React.FC<Props> = ({ children }) => {
 
     const value: TAppContext = {
         appTheme,
+        theme,
         toggleAppTheme,
 
+        appLang,
         translations: appTranslations,
         changeAppLang: appLangModel.changeAppLang,
     };
 
-    return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
+    return (
+        <AppContext.Provider value={value}>
+            <>{children}</>
+        </AppContext.Provider>
+    );
 };

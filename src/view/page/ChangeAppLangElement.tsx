@@ -1,13 +1,12 @@
-import { Button } from 'antd';
-import { AppLangs } from '../../types';
+import { Menu } from 'antd';
 import { useChangeLangElementViewModel } from '../../viewModels/useChangeLangElementViewModel';
 
 export const ChangeAppLangElement = () => {
-    const { translations, changeAppLang } = useChangeLangElementViewModel();
+    const { onClickItem, appLang, items } = useChangeLangElementViewModel();
 
     return (
-        <div>
-            <Button onClick={() => changeAppLang(AppLangs.PL)}>{translations.CURRENT_LANG}</Button>
-        </div>
+        <>
+            <Menu mode="horizontal" items={items} selectedKeys={[appLang]} onClick={onClickItem} />
+        </>
     );
 };

@@ -1,12 +1,15 @@
 import { AppTheme } from '../types';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, map } from 'rxjs';
 import { DEFAULTS } from '../defaults';
+import { DARK_THEME, LIGHT_THEME } from '../styles';
+
+const selectTheme = (theme: AppTheme) => (theme === AppTheme.DARK ? DARK_THEME : LIGHT_THEME);
 
 export class AppThemeModel {
-    private theme = new BehaviorSubject<AppTheme>(DEFAULTS.THEME);
-    public appTheme = this.theme;
+    public appTheme = new BehaviorSubject<AppTheme>(DEFAULTS.APP_THEME);
+    public theme = this.appTheme.pipe(map(selectTheme));
 
     public changeAppTheme = (newTheme: AppTheme) => {
-        this.theme.next(newTheme);
+        this.appTheme.next(newTheme);
     };
 }

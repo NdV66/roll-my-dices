@@ -4,3 +4,10 @@ export type TColors = {
     accent: string;
     background: string;
 };
+
+export type TCommonStyles = {
+    fontSize: number;
+    baseSpace: number;
+};
+
+export type TTheme = TColors & TCommonStyles;
