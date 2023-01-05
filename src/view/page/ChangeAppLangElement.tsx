@@ -1,3 +1,4 @@
+import { Button } from 'antd';
 import { AppLangs } from '../../types';
 import { useChangeLangElementViewModel } from '../../viewModels/useChangeLangElementViewModel';
 
@@ -6,7 +7,7 @@ export const ChangeAppLangElement = () => {
 
     return (
         <div>
-            <button onClick={() => changeAppLang(AppLangs.PL)}>{translations.CURRENT_LANG}</button>
+            <Button onClick={() => changeAppLang(AppLangs.PL)}>{translations.CURRENT_LANG}</Button>
         </div>
     );
 };

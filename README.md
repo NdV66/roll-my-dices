@@ -12,6 +12,10 @@ Files with translations.
 
 ### `models`
 
+### `services`
+
+### `styles`
+
 ### `tools`
 All helpers, tools etc.
 
