@@ -1,1 +1,2 @@
-export * from './ThemeButtonElementViewModel';
+export * from './useThemeButtonElementViewModel';
+export * from './useChangeLangElementViewModel';

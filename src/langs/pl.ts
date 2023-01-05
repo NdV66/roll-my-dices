@@ -1,6 +1,6 @@
 import { TTranslations } from '../types';
 
-export const TEXTS_EN: TTranslations = {
+export const TEXTS_PL: TTranslations = {
     EN: 'English',
     PL: 'Polski',
 
