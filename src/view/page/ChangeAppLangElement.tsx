@@ -6,7 +6,7 @@ export const ChangeAppLangElement = () => {
 
     return (
         <div>
-            <button onClick={() => changeAppLang(AppLangs.PL)}>{translations.EN}</button>
+            <button onClick={() => changeAppLang(AppLangs.PL)}>{translations.CURRENT_LANG}</button>
         </div>
     );
 };

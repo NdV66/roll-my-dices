@@ -1,11 +1,12 @@
 import { AppTheme } from '../types';
-import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
+import { DEFAULTS } from '../defaults';
 
 export class AppThemeModel {
-    private theme = new Subject<AppTheme>();
+    private theme = new BehaviorSubject<AppTheme>(DEFAULTS.THEME);
     public appTheme = this.theme;
 
-    public changeAppTheme(newTheme: AppTheme) {
+    public changeAppTheme = (newTheme: AppTheme) => {
         this.theme.next(newTheme);
-    }
+    };
 }

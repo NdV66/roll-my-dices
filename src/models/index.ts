@@ -1,4 +1,4 @@
-import { GenericSingletonManager } from '../tools/GenericSingletonManager';
+import { GenericSingletonManager } from '../tools';
 import { Models } from '../types';
 import { AppLangModel } from './AppLangModel';
 import { AppThemeModel } from './AppThemeModel';

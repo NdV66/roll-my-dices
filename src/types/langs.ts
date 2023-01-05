@@ -4,6 +4,7 @@ export const enum AppLangs {
 }
 
 export type TTranslations = {
+    CURRENT_LANG: string;
     EN: string;
     PL: string;
 

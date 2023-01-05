@@ -1,12 +1,15 @@
-import { AppLangs } from '../types';
-import { Subject } from 'rxjs';
+import { AppLangs, TTranslations } from '../types';
+import { BehaviorSubject, map } from 'rxjs';
 import { LangManager } from '../langs/LangManager';
+import { DEFAULTS } from '../defaults';
+
+const getLangFromManager = (lang: AppLangs) => LangManager.getSingleton<TTranslations>(lang);
 
 export class AppLangModel {
-    private lang = new Subject<AppLangs>();
-    public appLang = this.lang;
+    public appLang = new BehaviorSubject<AppLangs>(DEFAULTS.LANG);
+    public translations = this.appLang.pipe(map(getLangFromManager));
 
-    public changeAppLang(newLang: AppLangs) {
-        this.lang.next(newLang);
-    }
+    public changeAppLang = (newLang: AppLangs) => {
+        this.appLang.next(newLang);
+    };
 }
