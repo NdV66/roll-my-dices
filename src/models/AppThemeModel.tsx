@@ -1,8 +1,9 @@
 import { AppTheme } from '../types';
-import { Subject } from 'rxjs';
+import { multicast, Subject } from 'rxjs';
 
 export class AppThemeModel {
-    public theme = new Subject<AppTheme>();
+    private theme = new Subject<AppTheme>();
+    public appTheme = this.theme.pipe(multicast(this.theme));
 
     public changeAppTheme(newTheme: AppTheme) {
         this.theme.next(newTheme);
