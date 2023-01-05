@@ -10,12 +10,11 @@ import { AppContext } from './AppContext';
 
 type Props = React.PropsWithChildren<unknown>;
 
+const appThemeModel = ModelsManager.getSingleton<AppThemeModel>(Models.APP_THEME);
+const appLangModel = ModelsManager.getSingleton<AppLangModel>(Models.APP_LANG);
+
 export const AppContextWrapper: React.FC<Props> = ({ children }) => {
-    const appThemeModel = ModelsManager.getSingleton<AppThemeModel>(Models.APP_THEME);
-    const appLangModel = ModelsManager.getSingleton<AppLangModel>(Models.APP_LANG);
-
     const appTheme = useStateWithObservableWithInit<AppTheme>(appThemeModel.appTheme, DEFAULTS.THEME);
-
     const appTranslations = useStateWithObservableWithInit<TTranslations>(
         appLangModel.translations,
         {} as TTranslations,
