@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { DEFAULTS } from '../defaults';
 import { ModelsManager } from '../models';
 import { AppLangModel } from '../models/AppLangModel';
@@ -29,6 +29,11 @@ export const AppContextWrapper: React.FC<Props> = ({ children }) => {
         const newTheme = getNewAppTheme(appTheme);
         appThemeModel.changeAppTheme(newTheme);
     };
+
+    useEffect(() => {
+        console.log('DUPA!!!!!');
+        appThemeModel.setFromCookie();
+    }, []);
 
     const value: TAppContext = {
         appTheme,
