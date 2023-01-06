@@ -3,6 +3,7 @@ import { map, connect, Subject } from 'rxjs';
 
 import { DARK_THEME, LIGHT_THEME } from '../styles';
 import Cookies from 'js-cookie';
+import { DEFAULTS } from '../defaults';
 
 const COOKIE_THEME_KEY = 'themeKey';
 
@@ -18,16 +19,16 @@ export class AppThemeModel {
     }
 
     private saveAppThemeInCookieOnChange() {
-        this.appTheme.subscribe((theme) => Cookies.set(COOKIE_THEME_KEY, theme));
+        this.appTheme.subscribe((theme) => Cookies.set(COOKIE_THEME_KEY, theme, { sameSite: 'strict' }));
     }
 
     private readFromCookie = () => {
         return Cookies.get(COOKIE_THEME_KEY) as AppTheme;
     };
 
-    public setFromCookie = () => {
+    public setDefaultValue = () => {
         const savedTheme = this.readFromCookie();
-        savedTheme && this.changeAppTheme(savedTheme);
+        savedTheme && this.changeAppTheme(savedTheme || DEFAULTS.THEME);
     };
 
     public changeAppTheme = (newTheme: AppTheme) => {

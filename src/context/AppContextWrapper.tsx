@@ -31,11 +31,11 @@ export const AppContextWrapper: React.FC<Props> = ({ children }) => {
     };
 
     useEffect(() => {
-        appThemeModel.setFromCookie();
+        appThemeModel.setDefaultValue();
     }, []);
 
     useEffect(() => {
-        appLangModel.setFromCookie();
+        appLangModel.setDefaultValue();
     }, []);
 
     const value: TAppContext = {
