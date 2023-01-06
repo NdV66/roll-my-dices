@@ -32,14 +32,16 @@ export const Page = () => {
                     </section>
                 </Content>
 
-                <Footer>footer</Footer>
+                <Footer css={themedStyles.footer}>
+                    {translations.AUTHOR} {new Date().getFullYear()}
+                </Footer>
             </Layout>
         </ConfigProvider>
     );
 };
 
 const headerHeight = 64;
-const footerHeight = 66;
+const footerHeight = 63;
 
 const styles = (theme: TTheme) => ({
     wrapper: css`
@@ -48,7 +50,16 @@ const styles = (theme: TTheme) => ({
             min-height: calc(100vh - ${headerHeight}px - ${footerHeight}px);
         }
     `,
-    logo: css``,
+    logo: css`
+        font-weight: 700;
+    `,
+    footer: css`
+        &.ant-layout-footer {
+            font-size: ${0.8 * theme.fontSize}px;
+            height: ${footerHeight}px;
+            padding-left: ${2 * theme.baseSpace}px;
+        }
+    `,
     theme: css`
         display: flex;
         justify-content: flex-end;
