@@ -1,0 +1,66 @@
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react';
+
+import { Layout, ConfigProvider } from 'antd';
+import { TTheme } from '../../types';
+import { usePageViewModel } from '../../viewModels';
+import { ChangeAppLangElement } from './ChangeAppLangElement';
+import { RollsElement } from './RollsElement';
+import { ThemeButtonElement } from './ThemeButtonElement';
+
+const { Header, Content, Footer } = Layout;
+
+export const Page = () => {
+    const { theme, translations, antdTheme } = usePageViewModel();
+    const themedStyles = styles(theme);
+
+    return (
+        <ConfigProvider theme={antdTheme}>
+            <Layout>
+                <Header css={themedStyles.header}>
+                    <div css={themedStyles.logo}>{translations.APP_NAME}</div>
+                    <ChangeAppLangElement />
+                </Header>
+
+                <Content css={themedStyles.wrapper}>
+                    <section>
+                        <div css={themedStyles.theme}>
+                            <ThemeButtonElement />
+                        </div>
+
+                        <RollsElement />
+                    </section>
+                </Content>
+
+                <Footer>footer</Footer>
+            </Layout>
+        </ConfigProvider>
+    );
+};
+
+const headerHeight = 64;
+const footerHeight = 66;
+
+const styles = (theme: TTheme) => ({
+    wrapper: css`
+        &.ant-layout-content {
+            padding: ${4 * theme.baseSpace}px ${2 * theme.baseSpace}px;
+            min-height: calc(100vh - ${headerHeight}px - ${footerHeight}px);
+        }
+    `,
+    logo: css``,
+    theme: css`
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: ${5 * theme.baseSpace}px;
+    `,
+    header: css`
+        &.ant-layout-header {
+            display: flex;
+            justify-content: space-between;
+            padding-inline: 0;
+            padding: 0 ${2 * theme.baseSpace}px;
+            background: ${theme.secondary};
+        }
+    `,
+});
