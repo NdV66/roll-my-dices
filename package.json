@@ -2,6 +2,7 @@
   "name": "roll-my-dices",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://NdV66.github.io/roll-my-dices",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
@@ -26,7 +27,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -50,6 +53,7 @@
     "@types/antd": "^1.0.0",
     "eslint": "^8.31.0",
     "eslint-config-prettier": "^8.6.0",
+    "gh-pages": "^4.0.0",
     "prettier": "^2.8.1"
   }
 }
