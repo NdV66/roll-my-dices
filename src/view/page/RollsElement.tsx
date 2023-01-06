@@ -50,7 +50,7 @@ const styles = (theme: TTheme) => ({
         justify-content: center;
         align-items: center;
 
-        margin: 0 ${2 * theme.baseSpace}px;
+        margin: ${theme.baseSpace}px ${2 * theme.baseSpace}px;
 
         &:hover {
             background: ${theme.accent};
