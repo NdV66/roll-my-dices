@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/roll-my-dices/static/css/main.dd1ea7b7.css",
+    "main.js": "/roll-my-dices/static/js/main.5a1b96d2.js",
+    "static/js/787.7f70a23f.chunk.js": "/roll-my-dices/static/js/787.7f70a23f.chunk.js",
+    "index.html": "/roll-my-dices/index.html",
+    "main.dd1ea7b7.css.map": "/roll-my-dices/static/css/main.dd1ea7b7.css.map",
+    "main.5a1b96d2.js.map": "/roll-my-dices/static/js/main.5a1b96d2.js.map",
+    "787.7f70a23f.chunk.js.map": "/roll-my-dices/static/js/787.7f70a23f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dd1ea7b7.css",
+    "static/js/main.5a1b96d2.js"
+  ]
+}
