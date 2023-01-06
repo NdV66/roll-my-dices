@@ -2,6 +2,7 @@ import { AppLangs, TTranslations } from '../types';
 import { map, connect, Subject } from 'rxjs';
 import { LangManager } from '../langs/LangManager';
 import Cookies from 'js-cookie';
+import { DEFAULTS } from '../defaults';
 
 const COOKIE_LANG_KEY = 'langKey';
 const getLangFromManager = (lang: AppLangs) => LangManager.getSingleton<TTranslations>(lang);
@@ -16,16 +17,16 @@ export class AppLangModel {
     }
 
     private saveLangCookieOnChange() {
-        this.appLang.subscribe((lang) => Cookies.set(COOKIE_LANG_KEY, lang));
+        this.appLang.subscribe((lang) => Cookies.set(COOKIE_LANG_KEY, lang, { sameSite: 'strict' }));
     }
 
     private readFromCookie = () => {
         return Cookies.get(COOKIE_LANG_KEY) as AppLangs;
     };
 
-    public setFromCookie = () => {
+    public setDefaultValue = () => {
         const savedLang = this.readFromCookie();
-        savedLang && this.changeAppLang(savedLang);
+        this.changeAppLang(savedLang || DEFAULTS.LANG);
     };
 
     public changeAppLang = (newLang: AppLangs) => {

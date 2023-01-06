@@ -2,12 +2,11 @@
 import { css } from '@emotion/react';
 
 import { Menu } from 'antd';
-import { TTheme } from '../../types';
 import { useChangeLangElementViewModel } from '../../viewModels/useChangeLangElementViewModel';
 
 export const ChangeAppLangElement = () => {
-    const { onClickItem, appLang, items, theme } = useChangeLangElementViewModel();
-    const themedStyles = styles(theme);
+    const { onClickItem, appLang, items } = useChangeLangElementViewModel();
+    const themedStyles = styles();
 
     return (
         <>
@@ -22,7 +21,7 @@ export const ChangeAppLangElement = () => {
     );
 };
 
-const styles = (theme: TTheme) => ({
+const styles = () => ({
     menu: css`
         background: none;
         width: 160px;
