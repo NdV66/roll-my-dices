@@ -9,6 +9,7 @@ export const usePageViewModel = () => {
             colorBgBase: theme.background,
             fontSize: theme.fontSize,
             colorTextBase: theme.primary,
+            colorInfo: theme.secondary,
         },
     };
 

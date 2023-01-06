@@ -11,6 +11,7 @@ export type TTranslationsLang = {
 export type TTranslations = {
     APP_NAME: string;
     AUTHOR: string;
+    DEV_INFO: string;
 
     CURRENT_LANG: string;
     LANGS: TTranslationsLang[];

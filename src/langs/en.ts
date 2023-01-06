@@ -4,6 +4,7 @@ import { LANGS } from './langs';
 export const TEXTS_EN: TTranslations = {
     APP_NAME: 'Roll My Dices',
     AUTHOR: 'Marta Zażlak',
+    DEV_INFO: 'Warning, page still in progress :)',
 
     CURRENT_LANG: 'English',
     ...LANGS,

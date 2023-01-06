@@ -1,7 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 
-import { Layout, ConfigProvider } from 'antd';
+import { Layout, ConfigProvider, Alert } from 'antd';
+import { DEFAULTS } from '../../defaults';
 import { TTheme } from '../../types';
 import { usePageViewModel } from '../../viewModels';
 import { ChangeAppLangElement } from './ChangeAppLangElement';
@@ -21,6 +22,10 @@ export const Page = () => {
                     <div css={themedStyles.logo}>{translations.APP_NAME}</div>
                     <ChangeAppLangElement />
                 </Header>
+
+                {DEFAULTS.STILL_IN_DEVELOPMENT && (
+                    <Alert type="info" closable description={translations.DEV_INFO} css={themedStyles.alert} />
+                )}
 
                 <Content css={themedStyles.wrapper}>
                     <section>
@@ -52,6 +57,9 @@ const styles = (theme: TTheme) => ({
     `,
     logo: css`
         font-weight: 700;
+    `,
+    alert: css`
+        margin: ${2 * theme.baseSpace}px;
     `,
     footer: css`
         &.ant-layout-footer {
