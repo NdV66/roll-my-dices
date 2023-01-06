@@ -31,7 +31,6 @@ export const AppContextWrapper: React.FC<Props> = ({ children }) => {
     };
 
     useEffect(() => {
-        console.log('DUPA!!!!!');
         appThemeModel.setFromCookie();
     }, []);
 
