@@ -9,8 +9,13 @@ export type TTranslationsLang = {
 };
 
 export type TTranslations = {
+    APP_NAME: string;
+
     CURRENT_LANG: string;
     LANGS: TTranslationsLang[];
+
+    LIGHT: string;
+    DARK: string;
 
     D_4: string;
     D_6: string;
@@ -18,4 +23,6 @@ export type TTranslations = {
     D_10: string;
     D_12: string;
     D_20: string;
+
+    [key: string]: string | TTranslationsLang[];
 };

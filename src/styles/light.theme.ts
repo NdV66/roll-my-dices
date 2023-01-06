@@ -6,10 +6,11 @@ import { COMMONS } from './commons';
 //https://coolors.co/dabfff-907ad6-4f518c-2c2a4a-7fdeff <---
 
 const COLORS: TColors = {
-    primary: '2C2A4A',
-    secondary: '907AD6',
-    accent: '907AD6',
-    background: 'DABFFF',
+    primary: '#2C2A4A',
+    secondary: '#907AD6',
+    accent: '#4F518C',
+    // background: '#DABFFF',
+    background: '#f7f2ff',
 };
 
 export const LIGHT_THEME: TTheme = {

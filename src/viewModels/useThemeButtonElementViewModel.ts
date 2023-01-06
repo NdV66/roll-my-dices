@@ -11,5 +11,6 @@ export const useThemeButtonElementViewModel = () => {
         onChangeTheme,
         theme: appContext.theme,
         appTheme: appContext.appTheme,
+        translations: appContext.translations,
     };
 };

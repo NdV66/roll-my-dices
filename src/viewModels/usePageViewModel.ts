@@ -1,7 +1,7 @@
 import { useAppContext } from '../context';
 
 export const usePageViewModel = () => {
-    const { theme } = useAppContext();
+    const { theme, translations } = useAppContext();
 
     const preparedTheme = {
         token: {
@@ -13,6 +13,8 @@ export const usePageViewModel = () => {
     };
 
     return {
-        theme: preparedTheme,
+        antdTheme: preparedTheme,
+        translations,
+        theme,
     };
 };

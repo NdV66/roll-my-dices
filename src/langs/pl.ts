@@ -2,8 +2,12 @@ import { TTranslations } from '../types';
 import { LANGS } from './langs';
 
 export const TEXTS_PL: TTranslations = {
+    APP_NAME: 'Roll My Dices',
     CURRENT_LANG: 'Polski',
     ...LANGS,
+
+    LIGHT: 'jasny',
+    DARK: 'ciemny',
 
     D_4: 'k4',
     D_6: 'k6',
