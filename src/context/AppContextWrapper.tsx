@@ -34,6 +34,10 @@ export const AppContextWrapper: React.FC<Props> = ({ children }) => {
         appThemeModel.setFromCookie();
     }, []);
 
+    useEffect(() => {
+        appLangModel.setFromCookie();
+    }, []);
+
     const value: TAppContext = {
         appTheme,
         theme,

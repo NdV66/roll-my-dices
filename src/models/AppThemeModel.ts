@@ -9,17 +9,17 @@ const COOKIE_THEME_KEY = 'themeKey';
 const selectTheme = (theme: AppTheme) => (theme === AppTheme.DARK ? DARK_THEME : LIGHT_THEME);
 
 export class AppThemeModel {
-    private _appTheme = new Subject<AppTheme>();
-    public appTheme = this._appTheme.pipe(connect(() => this._appTheme));
+    private _appThemeSubject = new Subject<AppTheme>();
+    public appTheme = this._appThemeSubject.pipe(connect(() => this._appThemeSubject));
     public theme = this.appTheme.pipe(map(selectTheme));
 
     constructor() {
-        this.saveInCookieOnChange();
+        this.saveAppThemeInCookieOnChange();
     }
 
-    private saveInCookieOnChange = () => {
+    private saveAppThemeInCookieOnChange() {
         this.appTheme.subscribe((theme) => Cookies.set(COOKIE_THEME_KEY, theme));
-    };
+    }
 
     private readFromCookie = () => {
         return Cookies.get(COOKIE_THEME_KEY) as AppTheme;
@@ -31,6 +31,6 @@ export class AppThemeModel {
     };
 
     public changeAppTheme = (newTheme: AppTheme) => {
-        this._appTheme.next(newTheme);
+        this._appThemeSubject.next(newTheme);
     };
 }
