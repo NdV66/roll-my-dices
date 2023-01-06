@@ -5,5 +5,10 @@ export const TEXTS_EN: TTranslations = {
     CURRENT_LANG: 'English',
     ...LANGS,
 
+    D_4: 'd4',
+    D_6: 'd6',
+    D_8: 'd8',
+    D_10: 'd10',
+    D_12: 'd12',
     D_20: 'd20',
 };

@@ -8,6 +8,7 @@ export const useStateWithObservableWithInit = <T>(observable: Observable<T>, ini
         const subscription = observable.subscribe(setState);
 
         return () => {
+            console.log('WYCHODZE');
             subscription.unsubscribe();
         };
     }, []);

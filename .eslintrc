@@ -19,6 +19,8 @@
       "react/display-name": 0,
       "@typescript-eslint/no-empty-function": 0,
       "@typescript-eslint/ban-ts-ignore": "off",
-      "@typescript-eslint/no-explicit-any": "off"
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-non-null-assertion": 0,
+      "react/no-unknown-property": 0
     }
   }

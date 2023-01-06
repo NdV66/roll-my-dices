@@ -15,15 +15,15 @@ const mapToItem = (lang: TTranslationsLang) => ({
     label: lang.label,
 });
 
+const itemsSource = appLangModel.translations.pipe(
+    map((translations) => translations.LANGS),
+    concatMap((el) => el),
+    map(mapToItem),
+    bufferCount(DEFAULTS.LANGS_AMOUNT),
+);
+
 export const useChangeLangElementViewModel = () => {
     const appContext = useAppContext();
-    const itemsSource = appLangModel.translations.pipe(
-        map((translations) => translations.LANGS),
-        concatMap((el) => el),
-        map(mapToItem),
-        bufferCount(DEFAULTS.LANGS_AMOUNT),
-    );
-
     const items = useStateWithObservableWithInit<ItemType[]>(itemsSource, []);
 
     const onClickItem: MenuProps['onClick'] = (e) => {
