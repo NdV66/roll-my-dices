@@ -24,7 +24,7 @@ export const Page = () => {
                 </Header>
 
                 {DEFAULTS.STILL_IN_DEVELOPMENT && (
-                    <Alert type="info" closable description={translations.DEV_INFO} css={themedStyles.alert} />
+                    <Alert type="info" description={translations.DEV_INFO} css={themedStyles.alert} />
                 )}
 
                 <Content css={themedStyles.wrapper}>
@@ -47,12 +47,18 @@ export const Page = () => {
 
 const headerHeight = 64;
 const footerHeight = 63;
+const alertHeight = 66;
+
+const summaryHeight = headerHeight + footerHeight;
 
 const styles = (theme: TTheme) => ({
     wrapper: css`
         &.ant-layout-content {
             padding: ${4 * theme.baseSpace}px ${2 * theme.baseSpace}px;
-            min-height: calc(100vh - ${headerHeight}px - ${footerHeight}px);
+            min-height: calc(
+                100vh - ${summaryHeight}px -
+                    ${DEFAULTS.STILL_IN_DEVELOPMENT ? alertHeight + 2 * 2 * theme.baseSpace : 0}px
+            );
         }
     `,
     logo: css`
