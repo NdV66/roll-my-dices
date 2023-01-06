@@ -1,7 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 
-import { Layout, ConfigProvider } from 'antd';
+import { Layout, ConfigProvider, Alert } from 'antd';
+import { DEFAULTS } from '../../defaults';
 import { TTheme } from '../../types';
 import { usePageViewModel } from '../../viewModels';
 import { ChangeAppLangElement } from './ChangeAppLangElement';
@@ -21,6 +22,10 @@ export const Page = () => {
                     <div css={themedStyles.logo}>{translations.APP_NAME}</div>
                     <ChangeAppLangElement />
                 </Header>
+
+                {DEFAULTS.STILL_IN_DEVELOPMENT && (
+                    <Alert type="info" description={translations.DEV_INFO} css={themedStyles.alert} />
+                )}
 
                 <Content css={themedStyles.wrapper}>
                     <section>
@@ -42,16 +47,25 @@ export const Page = () => {
 
 const headerHeight = 64;
 const footerHeight = 63;
+const alertHeight = 66;
+
+const summaryHeight = headerHeight + footerHeight;
 
 const styles = (theme: TTheme) => ({
     wrapper: css`
         &.ant-layout-content {
             padding: ${4 * theme.baseSpace}px ${2 * theme.baseSpace}px;
-            min-height: calc(100vh - ${headerHeight}px - ${footerHeight}px);
+            min-height: calc(
+                100vh - ${summaryHeight}px -
+                    ${DEFAULTS.STILL_IN_DEVELOPMENT ? alertHeight + 2 * 2 * theme.baseSpace : 0}px
+            );
         }
     `,
     logo: css`
         font-weight: 700;
+    `,
+    alert: css`
+        margin: ${2 * theme.baseSpace}px;
     `,
     footer: css`
         &.ant-layout-footer {

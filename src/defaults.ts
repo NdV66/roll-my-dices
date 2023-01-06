@@ -9,4 +9,6 @@ export const DEFAULTS = {
     EMPTY_ROLL_RESULT: 0,
     DICE_MIN: 1,
     DICE_NUMBER: 1,
+
+    STILL_IN_DEVELOPMENT: true,
 };

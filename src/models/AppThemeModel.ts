@@ -1,5 +1,5 @@
 import { AppTheme } from '../types';
-import { map, connect, Subject } from 'rxjs';
+import { map, connect, Subject, tap } from 'rxjs';
 
 import { DARK_THEME, LIGHT_THEME } from '../styles';
 import Cookies from 'js-cookie';
@@ -28,7 +28,8 @@ export class AppThemeModel {
 
     public setDefaultValue = () => {
         const savedTheme = this.readFromCookie();
-        savedTheme && this.changeAppTheme(savedTheme || DEFAULTS.THEME);
+
+        this.changeAppTheme(savedTheme || DEFAULTS.APP_THEME);
     };
 
     public changeAppTheme = (newTheme: AppTheme) => {
