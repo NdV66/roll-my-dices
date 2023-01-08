@@ -7,6 +7,7 @@ export const DEFAULTS = {
     LANG: AppLangs.EN,
     LANGS_AMOUNT: 2,
     EMPTY_ROLL_RESULT: null,
+
     DICE_MIN: 1,
     DICE_NUMBER: 1,
 

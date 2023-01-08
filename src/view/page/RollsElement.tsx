@@ -1,12 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { DEFAULTS } from '../../defaults';
 
+import { ROLL_FONT_NAME } from '../../styles/rollFont.style';
 import { TTheme } from '../../types';
 import { useRollsElementViewModel } from '../../viewModels';
 
 export const RollsElement: React.FC = () => {
-    const { roll, rollsElementData, theme } = useRollsElementViewModel();
+    const { rollsElementData, theme, rawRollDice } = useRollsElementViewModel();
     const themedStyles = styles(theme);
 
     return (
@@ -14,12 +14,12 @@ export const RollsElement: React.FC = () => {
             <div css={themedStyles.rollsWrapper}>
                 {rollsElementData.map((el) => (
                     <div key={el.key} onClick={el.roll} css={themedStyles.rollButton} role="button">
-                        {el.title}
+                        {el.displayValue}
                     </div>
                 ))}
             </div>
 
-            {roll !== DEFAULTS.EMPTY_ROLL_RESULT && <div css={themedStyles.rollResult}>{roll}</div>}
+            {rawRollDice && <div css={themedStyles.rawRollResult}>{rawRollDice}</div>}
         </>
     );
 };
@@ -32,15 +32,16 @@ const styles = (theme: TTheme) => ({
         flex-wrap: wrap;
         justify-content: center;
 
-        margin-bottom: ${4 * theme.baseSpace}px;
+        margin-bottom: ${5 * theme.baseSpace}px;
     `,
     rollButton: css`
         display: inline-block;
         cursor: pointer;
 
-        background: ${theme.primary};
-        color: ${theme.background};
-        font-weight: 700;
+        color: ${theme.accent};
+
+        font-family: ${ROLL_FONT_NAME};
+        font-size: ${4 * theme.fontSize}px;
 
         width: ${size}px;
         height: ${size}px;
@@ -53,15 +54,16 @@ const styles = (theme: TTheme) => ({
         margin: ${theme.baseSpace}px ${2 * theme.baseSpace}px;
 
         &:hover {
-            background: ${theme.accent};
+            // background: ${theme.accent};
         }
     `,
-    rollResult: css`
+    rawRollResult: css`
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: ${6 * theme.fontSize}px;
 
+        font-family: ${ROLL_FONT_NAME};
+        font-size: ${8 * theme.fontSize}px;
         color: ${theme.primary};
     `,
 });
