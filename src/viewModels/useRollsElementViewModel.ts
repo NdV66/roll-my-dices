@@ -8,7 +8,7 @@ const DICES_ORDER = [DiceTypes.D_4, DiceTypes.D_6, DiceTypes.D_8, DiceTypes.D_10
 export const useRollsElementViewModel = () => {
     const { translations, theme } = useAppContext();
 
-    const roll = useStateWithObservableWithInit<number>(appRollModel.rollSource, DEFAULTS.EMPTY_ROLL_RESULT);
+    const roll = useStateWithObservableWithInit<number | null>(appRollModel.rollSource, DEFAULTS.EMPTY_ROLL_RESULT);
 
     const onClickDice = (diceType: DiceTypes) => {
         appRollModel.rollDice(diceType);

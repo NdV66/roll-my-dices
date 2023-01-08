@@ -6,7 +6,7 @@ export const DEFAULTS = {
     THEME: LIGHT_THEME,
     LANG: AppLangs.EN,
     LANGS_AMOUNT: 2,
-    EMPTY_ROLL_RESULT: 0,
+    EMPTY_ROLL_RESULT: null,
     DICE_MIN: 1,
     DICE_NUMBER: 1,
 

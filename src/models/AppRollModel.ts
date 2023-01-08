@@ -14,7 +14,7 @@ const DICE_TYPES_MAX = new Map([
 ]);
 
 export class AppRollModel {
-    public rollSource = new BehaviorSubject<number>(DEFAULTS.EMPTY_ROLL_RESULT);
+    public rollSource = new BehaviorSubject<number | null>(DEFAULTS.EMPTY_ROLL_RESULT);
 
     public rollDice = (diceType: DiceTypes) => {
         const max = DICE_TYPES_MAX.get(diceType)!;
