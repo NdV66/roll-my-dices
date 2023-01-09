@@ -9,13 +9,13 @@ import { useFooterViewModel } from '../../viewModels';
 const { Footer } = Layout;
 
 export const FooterElement = () => {
-    const { theme, translations } = useFooterViewModel();
+    const { theme, translations, version } = useFooterViewModel();
     const themedStyles = styles(theme);
 
     return (
         <Footer css={themedStyles.footer}>
             <span>
-                {translations.AUTHOR} {new Date().getFullYear()}
+                v{version}, {translations.AUTHOR} {new Date().getFullYear()}
             </span>
             <a href={DEFAULTS.REPO_URL} css={themedStyles.link} target="_blank" rel="noopener noreferrer">
                 {translations.REPO}
