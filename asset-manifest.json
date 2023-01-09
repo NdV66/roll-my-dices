@@ -1,15 +1,21 @@
 {
   "files": {
-    "main.css": "/roll-my-dices/static/css/main.dd1ea7b7.css",
-    "main.js": "/roll-my-dices/static/js/main.77ad9391.js",
+    "main.css": "/roll-my-dices/static/css/main.be785f7a.css",
+    "main.js": "/roll-my-dices/static/js/main.c2a20c45.js",
     "static/js/787.7f70a23f.chunk.js": "/roll-my-dices/static/js/787.7f70a23f.chunk.js",
+    "static/media/DpolyTwelveSider-5KWZ.ttf": "/roll-my-dices/static/media/DpolyTwelveSider-5KWZ.1a478ef4ea7624fb96b9.ttf",
+    "static/media/DpolyTwentySider-62jq.ttf": "/roll-my-dices/static/media/DpolyTwentySider-62jq.dd5351d3c7aa767ebdfa.ttf",
+    "static/media/DpolyTenSider-z1Jw.ttf": "/roll-my-dices/static/media/DpolyTenSider-z1Jw.a0140b33d7ec94ee7888.ttf",
+    "static/media/DpolyFourSider-GM6P.ttf": "/roll-my-dices/static/media/DpolyFourSider-GM6P.dadce7c341699e75da1d.ttf",
+    "static/media/DpolyEightSider-JvWo.ttf": "/roll-my-dices/static/media/DpolyEightSider-JvWo.c729eaa59946acde8ba2.ttf",
+    "static/media/DpolySixSider-jqRO.ttf": "/roll-my-dices/static/media/DpolySixSider-jqRO.0e7acc821ca50f400844.ttf",
     "index.html": "/roll-my-dices/index.html",
-    "main.dd1ea7b7.css.map": "/roll-my-dices/static/css/main.dd1ea7b7.css.map",
-    "main.77ad9391.js.map": "/roll-my-dices/static/js/main.77ad9391.js.map",
+    "main.be785f7a.css.map": "/roll-my-dices/static/css/main.be785f7a.css.map",
+    "main.c2a20c45.js.map": "/roll-my-dices/static/js/main.c2a20c45.js.map",
     "787.7f70a23f.chunk.js.map": "/roll-my-dices/static/js/787.7f70a23f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.dd1ea7b7.css",
-    "static/js/main.77ad9391.js"
+    "static/css/main.be785f7a.css",
+    "static/js/main.c2a20c45.js"
   ]
 }
