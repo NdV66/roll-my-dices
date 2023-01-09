@@ -30,6 +30,7 @@ const styles = (theme: TTheme) => ({
         text-align: right;
         margin: ${theme.baseSpace}px 0;
         color: ${theme.accent};
+        font-size: ${0.8 * theme.fontSize}px;
     `,
     rollsWrapper: css`
         display: flex;

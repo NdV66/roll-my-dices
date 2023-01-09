@@ -33,17 +33,19 @@ const styles = (theme: TTheme) => ({
         justify-content: center;
         align-items: center;
 
-        margin: ${theme.baseSpace}px ${3 * theme.baseSpace}px;
-        color: ${theme.accent};
-
-        &:hover {
-            background: ${theme.accent};
-            color: ${theme.background};
-        }
+        margin: ${theme.baseSpace}px ${2 * theme.baseSpace}px;
     `,
     dice: css`
         font-family: ${ROLL_FONT_NAME};
-        font-size: ${4 * theme.fontSize}px;
+        font-size: ${3 * theme.fontSize}px;
+        color: ${theme.accent};
+
         margin-right: -6px;
+
+        &:hover {
+            font-size: ${5 * theme.fontSize}px;
+            transition: font-size 0.35s;
+            color: ${theme.primary};
+        }
     `,
 });
