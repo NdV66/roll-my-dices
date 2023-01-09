@@ -3,7 +3,7 @@ This simple app enables User to roll a selected dice. User can change also inter
 The last stable version of the app is available here: https://ndv66.github.io/roll-my-dices/
 
 #### Why?
-Because I want to have a simple example with RxJS where I'm able to learn new subjects :)
+Because I want to have a simple example with RxJS where I'm able to learn new topics :)
 
 ## How to: run locally
 - Node.js (>= 16) is installed
@@ -42,29 +42,29 @@ All hard app logic (calculations etc.)
 #### `/styles`
 All app themes (light, dark) variables and basic plain CSS (like @font-face).
 
-### `tools`
+#### `/tools`
 All helpers, tools etc.
 
-### `types`
+#### `/types`
 All more important types in the application.
 
-### `view`
+#### `/view`
 All views of the applications. It contains `elements` and `page` folders, where:
 
-#### `view/elements`
+- `/view/elements`
 All basic elements with ots styles, like buttons, inputs etc.
 
-#### `view/page`
+- `/view/page`
 All main elements of the main page.
 
-### `viewModels`
+### `/viewModels`
 Dedicated model () for every view (if needed).
 
 # Code pattern
-- `View` is a bigger visual component, a part of the page (for example: rolls element). \
- - `ViewModel` is a dedicated data source for the view. \
-- `Context (from React)` is a place for all global settings (for example: default language). Any changes in these variables makes changes in the full app, see https://reactjs.org/docs/context.html for more details. \
-- `Model` is a place for storing data. Every model should be a logic part of the feature. \
+- `View` is a bigger visual component, a part of the page (for example: rolls element).
+ - `ViewModel` is a dedicated data source for the view.
+- `Context (from React)` is a place for all global settings (for example: default language). Any changes in these variables makes changes in the full app, see https://reactjs.org/docs/context.html for more details.
+- `Model` is a place for storing data. Every model should be a logic part of the feature.
 - `Service` is a place for making all app business logic (for example: calculations).
 
 Connections between described above elements are showed here:
