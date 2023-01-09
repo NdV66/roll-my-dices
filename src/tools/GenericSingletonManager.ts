@@ -1,14 +1,14 @@
 type TSingletons = { [key: string]: any };
 
 export class GenericSingletonManager {
-    private singletons: TSingletons = {};
+    private _singletons: TSingletons = {};
 
     constructor(singletons: TSingletons) {
-        this.singletons = singletons;
+        this._singletons = singletons;
     }
 
     getSingleton<T>(name: string) {
-        const singleton = this.singletons[name];
+        const singleton = this._singletons[name];
         return singleton as T;
     }
 }

@@ -1,5 +1,5 @@
 import { DiceTypes, TRoll } from '../types';
-import { BehaviorSubject, distinctUntilChanged, map } from 'rxjs';
+import { BehaviorSubject, map } from 'rxjs';
 import { DEFAULTS } from '../defaults';
 
 import { mapRollToDice, rollDices } from '../services';
@@ -13,12 +13,11 @@ const DICE_TYPES_MAX = new Map([
     [DiceTypes.D_20, 20],
 ]);
 
+const mapRollToDiceResult = (roll: TRoll | null) => (roll ? mapRollToDice(roll.dice, roll.roll) : null);
+
 export class AppRollModel {
-    public rollSource = new BehaviorSubject<TRoll | null>(DEFAULTS.EMPTY_ROLL_RESULT);
-    public rawRollDiceSource = this.rollSource.pipe(
-        distinctUntilChanged(),
-        map((el) => (el ? mapRollToDice(el.dice, el.roll) : null)),
-    );
+    private _rollSource = new BehaviorSubject<TRoll | null>(DEFAULTS.EMPTY_ROLL_RESULT);
+    public rawRollDiceSource = this._rollSource.pipe(map(mapRollToDiceResult));
 
     public rollDice = (diceType: DiceTypes) => {
         const max = DICE_TYPES_MAX.get(diceType)!;
@@ -28,7 +27,7 @@ export class AppRollModel {
             dice: diceType,
             roll: rolls[0],
         };
-        this.rollSource.next(result);
+        this._rollSource.next(result);
     };
 
     static getMaxByDiceType(diceType: DiceTypes) {

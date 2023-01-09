@@ -13,19 +13,19 @@ export class AppLangModel {
     public translations = this._appLangSubject.pipe(map(getLangFromManager));
 
     constructor() {
-        this.saveLangCookieOnChange();
+        this._saveLangCookieOnChange();
     }
 
-    private saveLangCookieOnChange() {
+    private _saveLangCookieOnChange() {
         this.appLang.subscribe((lang) => Cookies.set(COOKIE_LANG_KEY, lang, { sameSite: 'strict' }));
     }
 
-    private readFromCookie = () => {
+    private _readFromCookie = () => {
         return Cookies.get(COOKIE_LANG_KEY) as AppLangs;
     };
 
     public setDefaultValue = () => {
-        const savedLang = this.readFromCookie();
+        const savedLang = this._readFromCookie();
         this.changeAppLang(savedLang || DEFAULTS.LANG);
     };
 
