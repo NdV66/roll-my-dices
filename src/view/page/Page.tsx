@@ -6,10 +6,11 @@ import { DEFAULTS } from '../../defaults';
 import { TTheme } from '../../types';
 import { usePageViewModel } from '../../viewModels';
 import { ChangeAppLangElement } from './ChangeAppLangElement';
+import { FooterElement, footerHeight } from './FooterElement';
 import { RollsElement } from './RollsElement';
 import { ThemeButtonElement } from './ThemeButtonElement';
 
-const { Header, Content, Footer } = Layout;
+const { Header, Content } = Layout;
 
 export const Page = () => {
     const { theme, translations, antdTheme } = usePageViewModel();
@@ -37,16 +38,13 @@ export const Page = () => {
                     </section>
                 </Content>
 
-                <Footer css={themedStyles.footer}>
-                    {translations.AUTHOR} {new Date().getFullYear()}
-                </Footer>
+                <FooterElement />
             </Layout>
         </ConfigProvider>
     );
 };
 
 const headerHeight = 64;
-const footerHeight = 63;
 const alertHeight = 66;
 
 const summaryHeight = headerHeight + footerHeight;
@@ -67,17 +65,9 @@ const styles = (theme: TTheme) => ({
     alert: css`
         margin: ${2 * theme.baseSpace}px;
     `,
-    footer: css`
-        &.ant-layout-footer {
-            font-size: ${0.8 * theme.fontSize}px;
-            height: ${footerHeight}px;
-            padding-left: ${2 * theme.baseSpace}px;
-        }
-    `,
     theme: css`
         display: flex;
         justify-content: flex-end;
-        margin-bottom: ${5 * theme.baseSpace}px;
     `,
     header: css`
         &.ant-layout-header {
@@ -85,7 +75,8 @@ const styles = (theme: TTheme) => ({
             justify-content: space-between;
             padding-inline: 0;
             padding: 0 ${2 * theme.baseSpace}px;
-            background: ${theme.secondary};
+            background: ${theme.accent};
+            color: ${theme.background};
         }
     `,
 });

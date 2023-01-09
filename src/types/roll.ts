@@ -6,3 +6,8 @@ export enum DiceTypes {
     D_12 = 'D_12',
     D_20 = 'D_20',
 }
+
+export type TRoll = {
+    dice: DiceTypes;
+    roll: number;
+};
