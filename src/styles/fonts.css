@@ -1,15 +1,4 @@
 @font-face {
-    font-family: GamingDice;
-    src: url('../assets/GamingDice.ttf');
-}
-
-@font-face {
-    font-family: GamingDiceStandard;
-    src: url('../assets/GamingDiceStandard.ttf');
-}
-
-
-@font-face {
     font-family: DiceD4;
     src: url('../assets/DpolyFourSider-GM6P.ttf');
 }
