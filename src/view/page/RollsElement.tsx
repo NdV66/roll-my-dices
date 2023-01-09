@@ -10,8 +10,6 @@ export const RollsElement: React.FC = () => {
     const { rollsElementData, theme, rollInfo, translations } = useRollsElementViewModel();
     const themedStyles = styles(theme);
 
-    console.log(rollInfo);
-
     return (
         <>
             <div css={themedStyles.info}>{translations.INFO}</div>
