@@ -1,15 +1,16 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 
-import { Layout, ConfigProvider, Alert, Row, Col } from 'antd';
+import { Layout, ConfigProvider, Alert } from 'antd';
 import { DEFAULTS } from '../../defaults';
 import { TTheme } from '../../types';
 import { usePageViewModel } from '../../viewModels';
 import { ChangeAppLangElement } from './ChangeAppLangElement';
+import { FooterElement, footerHeight } from './FooterElement';
 import { RollsElement } from './RollsElement';
 import { ThemeButtonElement } from './ThemeButtonElement';
 
-const { Header, Content, Footer } = Layout;
+const { Header, Content } = Layout;
 
 export const Page = () => {
     const { theme, translations, antdTheme } = usePageViewModel();
@@ -23,34 +24,27 @@ export const Page = () => {
                     <ChangeAppLangElement />
                 </Header>
 
-                <Row>
-                    <Col span={20} offset={2}>
-                        {DEFAULTS.STILL_IN_DEVELOPMENT && (
-                            <Alert type="info" description={translations.DEV_INFO} css={themedStyles.alert} />
-                        )}
+                {DEFAULTS.STILL_IN_DEVELOPMENT && (
+                    <Alert type="info" description={translations.DEV_INFO} css={themedStyles.alert} />
+                )}
 
-                        <Content css={themedStyles.wrapper}>
-                            <section>
-                                <div css={themedStyles.theme}>
-                                    <ThemeButtonElement />
-                                </div>
+                <Content css={themedStyles.wrapper}>
+                    <section>
+                        <div css={themedStyles.theme}>
+                            <ThemeButtonElement />
+                        </div>
 
-                                <RollsElement />
-                            </section>
-                        </Content>
-                    </Col>
-                </Row>
+                        <RollsElement />
+                    </section>
+                </Content>
 
-                <Footer css={themedStyles.footer}>
-                    {translations.AUTHOR} {new Date().getFullYear()}
-                </Footer>
+                <FooterElement />
             </Layout>
         </ConfigProvider>
     );
 };
 
 const headerHeight = 64;
-const footerHeight = 63;
 const alertHeight = 66;
 
 const summaryHeight = headerHeight + footerHeight;
@@ -70,13 +64,6 @@ const styles = (theme: TTheme) => ({
     `,
     alert: css`
         margin: ${2 * theme.baseSpace}px;
-    `,
-    footer: css`
-        &.ant-layout-footer {
-            font-size: ${0.8 * theme.fontSize}px;
-            height: ${footerHeight}px;
-            padding-left: ${2 * theme.baseSpace}px;
-        }
     `,
     theme: css`
         display: flex;

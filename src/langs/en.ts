@@ -6,6 +6,7 @@ export const TEXTS_EN: TTranslations = {
     AUTHOR: 'Marta Zażlak',
     DEV_INFO: 'Warning, page still in progress :)',
     INFO: 'Click any dice to get the result. Good luck!',
+    REPO: 'See repo here',
 
     CURRENT_LANG: 'English',
     ...LANGS,

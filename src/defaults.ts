@@ -12,4 +12,5 @@ export const DEFAULTS = {
     DICE_NUMBER: 1,
 
     STILL_IN_DEVELOPMENT: false,
+    REPO_URL: 'https://github.com/NdV66/roll-my-dices',
 };

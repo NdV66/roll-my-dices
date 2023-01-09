@@ -13,6 +13,7 @@ export type TTranslations = {
     AUTHOR: string;
     DEV_INFO: string;
     INFO: string;
+    REPO: string;
 
     CURRENT_LANG: string;
     LANGS: TTranslationsLang[];
