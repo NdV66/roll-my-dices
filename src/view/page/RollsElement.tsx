@@ -1,67 +1,59 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { DEFAULTS } from '../../defaults';
+import { FONT_FAMILY_BY_DICE_TYPE } from '../../defaults';
 
-import { TTheme } from '../../types';
+import { DiceTypes, TTheme } from '../../types';
 import { useRollsElementViewModel } from '../../viewModels';
+import { DiceButton } from '../elements';
 
 export const RollsElement: React.FC = () => {
-    const { roll, rollsElementData, theme } = useRollsElementViewModel();
+    const { rollsElementData, theme, rollInfo, translations } = useRollsElementViewModel();
     const themedStyles = styles(theme);
 
     return (
         <>
+            <div css={themedStyles.info}>{translations.INFO}</div>
+
             <div css={themedStyles.rollsWrapper}>
                 {rollsElementData.map((el) => (
-                    <div key={el.key} onClick={el.roll} css={themedStyles.rollButton} role="button">
-                        {el.title}
-                    </div>
+                    <DiceButton
+                        key={el.diceType}
+                        onClick={el.roll}
+                        theme={theme}
+                        diceType={el.diceType}
+                        displayValue={el.displayValue}
+                    />
                 ))}
             </div>
 
-            {roll !== DEFAULTS.EMPTY_ROLL_RESULT && <div css={themedStyles.rollResult}>{roll}</div>}
+            {rollInfo && <div css={themedStyles.rawRollResult(rollInfo.dice)}>{rollInfo.displayValue}</div>}
         </>
     );
 };
 
-const size = 80;
-
 const styles = (theme: TTheme) => ({
+    info: css`
+        text-align: right;
+        margin: ${theme.baseSpace}px 0;
+        color: ${theme.accent};
+        font-size: ${0.8 * theme.fontSize}px;
+    `,
     rollsWrapper: css`
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
 
-        margin-bottom: ${4 * theme.baseSpace}px;
+        margin: ${5 * theme.baseSpace}px 0;
     `,
-    rollButton: css`
-        display: inline-block;
-        cursor: pointer;
-
-        background: ${theme.primary};
-        color: ${theme.background};
-        font-weight: 700;
-
-        width: ${size}px;
-        height: ${size}px;
-        border-radius: 50%;
-
+    rawRollResult: (diceType: DiceTypes) => css`
         display: flex;
         justify-content: center;
         align-items: center;
 
-        margin: ${theme.baseSpace}px ${2 * theme.baseSpace}px;
+        user-select: none;
 
-        &:hover {
-            background: ${theme.accent};
-        }
-    `,
-    rollResult: css`
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: ${6 * theme.fontSize}px;
-
+        font-family: ${FONT_FAMILY_BY_DICE_TYPE[diceType]};
+        font-size: ${9 * theme.fontSize}px;
         color: ${theme.primary};
     `,
 });
