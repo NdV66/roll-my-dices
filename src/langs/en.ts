@@ -11,6 +11,11 @@ export const TEXTS_EN: TTranslations = {
     CURRENT_LANG: 'English',
     ...LANGS,
 
+    MOD_ERROR: 'Enter correct a value, for example:. -6, 9, +12',
+    MOD_PLACEHOLDER: '-6, +20, 7 etc.',
+    MOD_TIP: 'Click ENTER to save changes.',
+    MOD_INFO: 'Add roll mod',
+
     LIGHT: 'light',
     DARK: 'dark',
 

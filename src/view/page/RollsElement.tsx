@@ -26,7 +26,14 @@ export const RollsElement: React.FC = () => {
                 ))}
             </div>
 
-            {rollInfo && <div css={themedStyles.rawRollResult(rollInfo.dice)}>{rollInfo.displayValue}</div>}
+            {rollInfo && (
+                <div css={themedStyles.result}>
+                    <div css={themedStyles.rawRollResult(rollInfo.dice)}>{rollInfo.displayValue}</div>
+                    <div>
+                        + {rollInfo.mod} = {rollInfo.calculationResult}
+                    </div>
+                </div>
+            )}
         </>
     );
 };
@@ -45,11 +52,12 @@ const styles = (theme: TTheme) => ({
 
         margin: ${5 * theme.baseSpace}px 0;
     `,
-    rawRollResult: (diceType: DiceTypes) => css`
+    result: css`
         display: flex;
         justify-content: center;
         align-items: center;
-
+    `,
+    rawRollResult: (diceType: DiceTypes) => css`
         user-select: none;
 
         font-family: ${FONT_FAMILY_BY_DICE_TYPE[diceType]};

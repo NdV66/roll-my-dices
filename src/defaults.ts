@@ -10,6 +10,9 @@ export const DEFAULTS = {
 
     DICE_MIN: 1,
     DICE_NUMBER: 1,
+    MOD: 0,
+
+    SHOW_INPUT_MOD_ON_ENTER: false,
 
     STILL_IN_DEVELOPMENT: false,
     REPO_URL: 'https://github.com/NdV66/roll-my-dices',

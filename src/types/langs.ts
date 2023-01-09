@@ -12,11 +12,17 @@ export type TTranslations = {
     APP_NAME: string;
     AUTHOR: string;
     DEV_INFO: string;
+
     INFO: string;
     REPO: string;
 
     CURRENT_LANG: string;
     LANGS: TTranslationsLang[];
+
+    MOD_ERROR: string;
+    MOD_PLACEHOLDER: string;
+    MOD_TIP: string;
+    MOD_INFO: string;
 
     LIGHT: string;
     DARK: string;
