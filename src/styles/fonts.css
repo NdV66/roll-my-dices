@@ -2,3 +2,8 @@
     font-family: GamingDice;
     src: url('../assets/GamingDice.ttf');
 }
+
+@font-face {
+    font-family: GamingDiceStandard;
+    src: url('../assets/GamingDiceStandard.ttf');
+}

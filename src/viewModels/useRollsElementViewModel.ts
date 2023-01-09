@@ -30,5 +30,6 @@ export const useRollsElementViewModel = () => {
         rollsElementData,
         rawRollDice,
         theme,
+        translations,
     };
 };

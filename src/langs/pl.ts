@@ -5,6 +5,7 @@ export const TEXTS_PL: TTranslations = {
     APP_NAME: 'Roll My Dices',
     AUTHOR: 'Marta Zażlak',
     DEV_INFO: 'Uwaga, strona jeszcze się robi :)',
+    INFO: 'Kliknij kostkę i zobacz, co się wylosowało. Powodzenia!',
 
     CURRENT_LANG: 'Polski',
     ...LANGS,

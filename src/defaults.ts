@@ -11,5 +11,5 @@ export const DEFAULTS = {
     DICE_MIN: 1,
     DICE_NUMBER: 1,
 
-    STILL_IN_DEVELOPMENT: true,
+    STILL_IN_DEVELOPMENT: false,
 };

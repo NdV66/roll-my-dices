@@ -35,5 +35,6 @@ export const useChangeLangElementViewModel = () => {
         onClickItem,
         appLang: appContext.appLang,
         items,
+        theme: appContext.theme,
     };
 };

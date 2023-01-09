@@ -81,7 +81,6 @@ const styles = (theme: TTheme) => ({
     theme: css`
         display: flex;
         justify-content: flex-end;
-        margin-bottom: ${5 * theme.baseSpace}px;
     `,
     header: css`
         &.ant-layout-header {
@@ -89,7 +88,8 @@ const styles = (theme: TTheme) => ({
             justify-content: space-between;
             padding-inline: 0;
             padding: 0 ${2 * theme.baseSpace}px;
-            background: ${theme.secondary};
+            background: ${theme.accent};
+            color: ${theme.background};
         }
     `,
 });
