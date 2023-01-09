@@ -13,11 +13,8 @@ const DICE_TYPES_MAX = new Map([
     [DiceTypes.D_20, 20],
 ]);
 
-const mapRollToDiceResult = (roll: TRoll | null) => (roll ? mapRollToDice(roll.dice, roll.roll) : null);
-
 export class AppRollModel {
-    private _rollSource = new BehaviorSubject<TRoll | null>(DEFAULTS.EMPTY_ROLL_RESULT);
-    public rawRollDiceSource = this._rollSource.pipe(map(mapRollToDiceResult));
+    public rollSource = new BehaviorSubject<TRoll | null>(DEFAULTS.EMPTY_ROLL_RESULT);
 
     public rollDice = (diceType: DiceTypes) => {
         const max = DICE_TYPES_MAX.get(diceType)!;
@@ -27,7 +24,7 @@ export class AppRollModel {
             dice: diceType,
             roll: rolls[0],
         };
-        this._rollSource.next(result);
+        this.rollSource.next(result);
     };
 
     static getMaxByDiceType(diceType: DiceTypes) {

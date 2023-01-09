@@ -1,5 +1,5 @@
 import { LIGHT_THEME } from './styles/light.theme';
-import { AppLangs, AppTheme } from './types';
+import { AppLangs, AppTheme, DiceTypes } from './types';
 
 export const DEFAULTS = {
     APP_THEME: AppTheme.LIGHT,
@@ -13,4 +13,49 @@ export const DEFAULTS = {
 
     STILL_IN_DEVELOPMENT: false,
     REPO_URL: 'https://github.com/NdV66/roll-my-dices',
+};
+
+export const FONT_FAMILY_BY_DICE_TYPE = {
+    [DiceTypes.D_4]: 'DiceD4',
+    [DiceTypes.D_6]: 'DiceD6',
+    [DiceTypes.D_8]: 'DiceD8',
+    [DiceTypes.D_10]: 'DiceD10',
+    [DiceTypes.D_12]: 'DiceD12',
+    [DiceTypes.D_20]: 'DiceD20',
+};
+
+export const ROLLS_RESULTS_FONTS = {
+    [DiceTypes.D_4]: ['!', '@', '#', '$'],
+    [DiceTypes.D_6]: ['A', 'B', 'C', 'D', 'E', 'F'],
+    [DiceTypes.D_8]: ['A', 'B ', 'C', 'D', 'E', 'F', 'G', 'H'],
+    [DiceTypes.D_10]: ['A', 'B ', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'],
+    [DiceTypes.D_12]: ['A', 'B ', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'],
+    [DiceTypes.D_20]: [
+        'A',
+        'B ',
+        'C',
+        'D',
+        'E',
+        'F',
+        'G',
+        'H',
+        'I',
+        'J',
+        'K',
+        'L',
+        'M',
+        'N',
+        'O',
+        'P',
+        'Q',
+        'R',
+        'S',
+        'T',
+        'U',
+        'V',
+        'W',
+        'X',
+        'Y',
+        'Z',
+    ],
 };
