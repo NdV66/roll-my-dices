@@ -4,6 +4,7 @@ import { AppLangs, TTranslationsLang } from '../types';
 import { useStateWithObservableWithInit } from '../tools';
 import { DEFAULTS } from '../defaults';
 import { MenuProps } from 'antd';
+import { useMemo } from 'react';
 
 type ItemType = {
     key: string;
@@ -15,15 +16,20 @@ const mapToItem = (lang: TTranslationsLang) => ({
     label: lang.label,
 });
 
-const itemsSource = appLangModel.translations.pipe(
-    map((translations) => translations.LANGS),
-    concatMap((el) => el),
-    map(mapToItem),
-    bufferCount(DEFAULTS.LANGS_AMOUNT),
-);
-
 export const useChangeLangElementViewModel = () => {
     const appContext = useAppContext();
+
+    const itemsSource = useMemo(
+        () =>
+            appLangModel.translations.pipe(
+                map((translations) => translations.LANGS),
+                concatMap((el) => el),
+                map(mapToItem),
+                bufferCount(DEFAULTS.LANGS_AMOUNT),
+            ),
+        [],
+    );
+
     const items = useStateWithObservableWithInit<ItemType[]>(itemsSource, []);
 
     const onClickItem: MenuProps['onClick'] = (e) => {

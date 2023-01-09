@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { filter, map } from 'rxjs';
 import { appRollModel, useAppContext } from '../context';
 import { DEFAULTS } from '../defaults';
@@ -12,26 +13,26 @@ type TRollInfo = TRoll & {
     displayValue: string;
 };
 
-const rollInfoSource = appRollModel.rollSource.pipe(
-    filter((el): el is TRoll => !!el),
-    map((el) => ({
-        ...el,
-        displayValue: mapRollToDice(el!.dice, el!.roll),
-    })),
-);
-
 export const useRollsElementViewModel = () => {
     const { translations, theme } = useAppContext();
 
-    const rollInfo = useStateWithObservableWithInit<TRollInfo | null>(rollInfoSource, DEFAULTS.EMPTY_ROLL_RESULT);
+    const rollInfoSource = useMemo(
+        () =>
+            appRollModel.rollSource.pipe(
+                filter((el): el is TRoll => !!el),
+                map((el) => ({
+                    ...el,
+                    displayValue: mapRollToDice(el!.dice, el!.roll),
+                })),
+            ),
+        [],
+    );
 
-    const onClickDice = (diceType: DiceTypes) => {
-        appRollModel.rollDice(diceType);
-    };
+    const rollInfo = useStateWithObservableWithInit<TRollInfo | null>(rollInfoSource, DEFAULTS.EMPTY_ROLL_RESULT);
 
     const rollsElementData = DICES_ORDER.map((dice) => ({
         diceType: dice,
-        roll: () => onClickDice(dice),
+        roll: () => appRollModel.rollDice(dice),
         title: translations[dice],
         displayValue: mapRollToDice(dice, AppRollModel.getMaxByDiceType(dice)),
     }));

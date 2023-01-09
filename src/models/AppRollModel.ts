@@ -2,7 +2,7 @@ import { DiceTypes, TRoll } from '../types';
 import { BehaviorSubject, map } from 'rxjs';
 import { DEFAULTS } from '../defaults';
 
-import { mapRollToDice, rollDices } from '../services';
+import { rollDices } from '../services';
 
 const DICE_TYPES_MAX = new Map([
     [DiceTypes.D_4, 4],
