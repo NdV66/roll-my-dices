@@ -62,6 +62,7 @@ const styles = (theme: TTheme) => ({
     input: css`
         width: 180px;
         text-align: center;
+        border-color: ${theme.accent};
 
         &:hover,
         &:focus {
