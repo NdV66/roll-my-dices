@@ -1,4 +1,5 @@
 import { useAppContext } from '../context';
+import packageInfo from '../../package.json';
 
 export const useFooterViewModel = () => {
     const { theme, translations } = useAppContext();
@@ -6,5 +7,6 @@ export const useFooterViewModel = () => {
     return {
         translations,
         theme,
+        version: packageInfo.version,
     };
 };

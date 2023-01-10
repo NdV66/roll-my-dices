@@ -1,6 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+
 import { FONT_FAMILY_BY_DICE_TYPE } from '../../defaults';
+import { screenMd } from '../../styles';
 import { DiceTypes, TTheme } from '../../types';
 
 type Props = {
@@ -20,22 +22,23 @@ export const DiceButton: React.FC<Props> = ({ onClick, displayValue, theme, dice
     );
 };
 
-const size = 80;
-
 const styles = (theme: TTheme) => ({
     rollButton: css`
         user-select: none;
         cursor: pointer;
 
-        width: ${size}px;
-        height: ${size}px;
-        border-radius: 50%;
-
         display: flex;
         justify-content: center;
         align-items: center;
 
-        margin: ${theme.baseSpace}px ${2 * theme.baseSpace}px;
+        margin: ${4 * theme.baseSpace}px;
+
+        width: 60px;
+        height: 60px;
+
+        ${screenMd(css`
+            margin: ${2 * theme.baseSpace}px;
+        `)}
     `,
     dice: (diceType: DiceTypes) => css`
         font-family: ${FONT_FAMILY_BY_DICE_TYPE[diceType]};
@@ -50,5 +53,13 @@ const styles = (theme: TTheme) => ({
             transition: font-size 0.3s;
             color: ${theme.primary};
         }
+
+        ${screenMd(css`
+            font-size: ${4 * theme.fontSize}px;
+
+            &:hover {
+                font-size: ${5 * theme.fontSize}px;
+            }
+        `)}
     `,
 });
