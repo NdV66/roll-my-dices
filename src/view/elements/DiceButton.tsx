@@ -33,6 +33,9 @@ const styles = (theme: TTheme) => ({
 
         margin: ${4 * theme.baseSpace}px;
 
+        width: 60px;
+        height: 60px;
+
         ${screenMd(css`
             margin: ${2 * theme.baseSpace}px;
         `)}
