@@ -17,13 +17,15 @@ export const ModalFooter: React.FC<Props> = ({ translations, onConfirm, onCancel
 
     return (
         <div css={themedStyles.wrapper}>
-            <TextButton onClick={onCancel} theme={theme}>
+            <TextButton onClick={onCancel} theme={theme} small>
                 {translations.CANCEL}
             </TextButton>
 
-            <Button type="primary" onClick={onConfirm} css={themedStyles.okButton}>
-                {translations.OK}
-            </Button>
+            <div css={themedStyles.okButton}>
+                <TextButton onClick={onConfirm} theme={theme}>
+                    {translations.OK}
+                </TextButton>
+            </div>
         </div>
     );
 };
@@ -36,6 +38,7 @@ const styles = (theme: TTheme) => ({
     `,
     okButton: css`
         margin-left: ${2 * theme.baseSpace}px;
+        font-weight: 700;
 
         .ant-btn-primary {
             box-shadow: none !important;
