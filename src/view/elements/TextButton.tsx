@@ -2,7 +2,6 @@
 import { css } from '@emotion/react';
 
 import { PropsWithChildren } from 'react';
-
 import { TTheme } from '../../types';
 
 type Props = PropsWithChildren<{

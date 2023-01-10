@@ -2,17 +2,15 @@
 import { css } from '@emotion/react';
 
 import { Modal, InputNumber } from 'antd';
-import { DeleteOutlined } from '@ant-design/icons';
-
 import { TTheme } from '../../../types';
 import { useModInputViewModel } from '../../../viewModels';
 import Paragraph from 'antd/es/typography/Paragraph';
-import { ModalFooter, TextButton } from '../../elements';
+import { ModalFooter } from '../../elements';
+import { Buttons } from './Buttons';
 
 export const ModInputElement = () => {
     const { theme, toggleShowInput, translations, showInput, currentValue, updateCurrentValue, onConfirm, onRemove } =
         useModInputViewModel();
-
     const themedStyles = styles(theme);
 
     const onChange = (value: number | null) => {
@@ -21,15 +19,13 @@ export const ModInputElement = () => {
 
     return (
         <>
-            <div css={themedStyles.wrapper}>
-                <TextButton onClick={toggleShowInput} theme={theme} small>
-                    {translations.MOD_INFO} ({currentValue})
-                </TextButton>
-
-                <div onClick={onRemove} css={themedStyles.remove} role="button">
-                    <DeleteOutlined />
-                </div>
-            </div>
+            <Buttons
+                theme={theme}
+                onOpen={toggleShowInput}
+                onRemove={onRemove}
+                translations={translations}
+                currentValue={currentValue}
+            />
 
             <Modal
                 onCancel={() => toggleShowInput()}
@@ -56,19 +52,6 @@ export const ModInputElement = () => {
 };
 
 const styles = (theme: TTheme) => ({
-    remove: css`
-        color: ${theme.accent};
-        cursor: pointer;
-        font-size: ${theme.fontSize}px;
-        margin-left: ${theme.baseSpace}px;
-    `,
-    wrapper: css`
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-
-        margin-top: ${theme.baseSpace}px;
-    `,
     warning: css`
         font-size: ${0.8 * theme.fontSize}px;
         font-style: italic;
