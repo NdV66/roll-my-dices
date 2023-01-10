@@ -1,7 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 
-import { Button } from 'antd';
 import { TTheme, TTranslations } from '../../types';
 import { TextButton } from './TextButton';
 
@@ -10,9 +9,10 @@ type Props = {
     onCancel: () => void;
     onConfirm: () => void;
     theme: TTheme;
+    disableOk?: boolean;
 };
 
-export const ModalFooter: React.FC<Props> = ({ translations, onConfirm, onCancel, theme }) => {
+export const ModalFooter: React.FC<Props> = ({ translations, onConfirm, onCancel, theme, disableOk }) => {
     const themedStyles = styles(theme);
 
     return (
@@ -22,7 +22,7 @@ export const ModalFooter: React.FC<Props> = ({ translations, onConfirm, onCancel
             </TextButton>
 
             <div css={themedStyles.okButton}>
-                <TextButton onClick={onConfirm} theme={theme}>
+                <TextButton onClick={onConfirm} theme={theme} disabled={disableOk}>
                     {translations.OK}
                 </TextButton>
             </div>

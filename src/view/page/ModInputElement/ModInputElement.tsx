@@ -2,15 +2,21 @@ import { Modal } from 'antd';
 import { useModInputViewModel } from '../../../viewModels';
 import { ModalFooter } from '../../elements';
 import { Buttons } from './Buttons';
-import { ModalBody } from './ModelBody';
+import { ModalBody } from './ModalBody';
 
 export const ModInputElement = () => {
-    const { theme, toggleShowInput, translations, showInput, currentValue, updateCurrentValue, onConfirm, onRemove } =
-        useModInputViewModel();
-
-    const onChange = (value: number | null) => {
-        value && updateCurrentValue(value);
-    };
+    const {
+        theme,
+        toggleShowInput,
+        translations,
+        showInput,
+        currentValue,
+        updateCurrentValue,
+        onConfirm,
+        onRemove,
+        currentConfirmedMod,
+        isCurrentValueOk,
+    } = useModInputViewModel();
 
     return (
         <>
@@ -19,7 +25,7 @@ export const ModInputElement = () => {
                 onOpen={toggleShowInput}
                 onRemove={onRemove}
                 translations={translations}
-                currentValue={currentValue}
+                currentValue={currentConfirmedMod}
             />
 
             <Modal
@@ -32,10 +38,17 @@ export const ModInputElement = () => {
                         onConfirm={onConfirm}
                         translations={translations}
                         theme={theme}
+                        disableOk={!isCurrentValueOk}
                     />
                 }
             >
-                <ModalBody theme={theme} translations={translations} currentValue={currentValue} onChange={onChange} />
+                <ModalBody
+                    theme={theme}
+                    translations={translations}
+                    currentValue={currentValue}
+                    onChange={updateCurrentValue}
+                    isCurrentValueOk={isCurrentValueOk}
+                />
             </Modal>
         </>
     );

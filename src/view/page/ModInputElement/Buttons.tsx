@@ -25,12 +25,10 @@ export const Buttons: React.FC<Props> = ({ theme, onRemove, onOpen, currentValue
                 {translations.MOD_INFO} ({currentValue})
             </TextButton>
 
-            <div
-                onClick={onRemove}
-                css={[themedStyles.remove, isRemoveDisabled && themedStyles.disabled]}
-                role="button"
-            >
-                <DeleteOutlined />
+            <div css={themedStyles.remove}>
+                <TextButton onClick={onRemove} theme={theme} disabled={isRemoveDisabled}>
+                    <DeleteOutlined />
+                </TextButton>
             </div>
         </div>
     );
@@ -38,9 +36,6 @@ export const Buttons: React.FC<Props> = ({ theme, onRemove, onOpen, currentValue
 
 const styles = (theme: TTheme) => ({
     remove: css`
-        color: ${theme.accent};
-        cursor: pointer;
-        font-size: ${theme.fontSize}px;
         margin-left: ${theme.baseSpace}px;
     `,
     wrapper: css`
@@ -49,10 +44,5 @@ const styles = (theme: TTheme) => ({
         align-items: center;
 
         margin-top: ${theme.baseSpace}px;
-    `,
-    disabled: css`
-        cursor: default;
-        pointer-events: all !important;
-        color: ${theme.secondary};
     `,
 });

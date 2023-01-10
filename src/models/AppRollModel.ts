@@ -22,8 +22,8 @@ const prepareExtendedRoll = ([roll, mod]: [TRoll | null, number | null]) =>
 
 export class AppRollModel {
     private _rollSource = new BehaviorSubject<TRoll | null>(DEFAULTS.EMPTY_ROLL_RESULT);
-    private _rollModSource = new BehaviorSubject<number | null>(DEFAULTS.MOD);
 
+    public rollModSource = new BehaviorSubject<number>(DEFAULTS.MOD);
     public extendedRollSource = new BehaviorSubject<TRollExtended | null>(DEFAULTS.EMPTY_ROLL_RESULT);
 
     constructor() {
@@ -31,14 +31,14 @@ export class AppRollModel {
     }
 
     private _calcExtendedRollSubscribe() {
-        combineLatest([this._rollSource, this._rollModSource])
+        combineLatest([this._rollSource, this.rollModSource])
             .pipe(map(prepareExtendedRoll))
             .subscribe((extendedRoll) => this.extendedRollSource.next(extendedRoll));
     }
 
     public cleanAll = () => {
         this._rollSource.next(DEFAULTS.EMPTY_ROLL_RESULT);
-        this._rollModSource.next(DEFAULTS.MOD);
+        this.rollModSource.next(DEFAULTS.MOD);
     };
 
     public rollDice = (diceType: DiceTypes) => {
@@ -53,7 +53,7 @@ export class AppRollModel {
     };
 
     public updateRollMod = (mod: number) => {
-        this._rollModSource.next(mod);
+        this.rollModSource.next(mod);
     };
 
     static getMaxByDiceType(diceType: DiceTypes) {
