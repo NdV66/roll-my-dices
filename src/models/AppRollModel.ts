@@ -36,7 +36,7 @@ export class AppRollModel {
             .subscribe((extendedRoll) => this.extendedRollSource.next(extendedRoll));
     }
 
-    private _cleanRoll = () => {
+    public cleanRoll = () => {
         this._rollSource.next(DEFAULTS.EMPTY_ROLL_RESULT);
     };
 
@@ -53,7 +53,6 @@ export class AppRollModel {
 
     public updateRollMod = (mod: number) => {
         this._rollModSource.next(mod);
-        this._cleanRoll();
     };
 
     static getMaxByDiceType(diceType: DiceTypes) {

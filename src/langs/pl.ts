@@ -14,7 +14,7 @@ export const TEXTS_PL: TTranslations = {
 
     MOD_ERROR: 'Wpisz wartość w poprawnym formacie, np. -6, 9, +12',
     MOD_PLACEHOLDER: '-6, +20, 7 itp.',
-    MOD_TIP: 'Uwaga! Po dodaniu modyfikatora, obecny rzut zostanie usunięty.',
+    MOD_TIP: 'Uwaga! Po dodaniu modyfikatora, obecny rzut zostanie przeliczony.',
     MOD_INFO: 'Modyfikator rzutu',
     MOD_REMOVE: 'Usuń',
 

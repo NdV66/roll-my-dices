@@ -13,7 +13,7 @@ export const TEXTS_EN: TTranslations = {
 
     MOD_ERROR: 'Enter correct a value, for example:. -6, 9, +12',
     MOD_PLACEHOLDER: '-6, +20, 7 etc.',
-    MOD_TIP: 'Warning! Adding a mod, the current result is reset.',
+    MOD_TIP: 'Warning! When the mod is added, the current roll is recalculated.',
     MOD_INFO: 'Roll mod',
     MOD_REMOVE: 'Remove',
 
