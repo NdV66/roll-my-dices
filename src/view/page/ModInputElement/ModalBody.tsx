@@ -19,10 +19,8 @@ export const ModalBody: React.FC<Props> = ({ theme, translations, currentValue, 
 
     const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event.currentTarget.value;
-        onChange(value || '');
+        onChange(value);
     };
-
-    const status = isCurrentValueOk ? '' : 'error';
 
     return (
         <>
@@ -31,10 +29,16 @@ export const ModalBody: React.FC<Props> = ({ theme, translations, currentValue, 
                     onChange={handleOnChange}
                     value={currentValue}
                     css={themedStyles.input}
-                    size={'large'}
-                    status={status}
+                    size="large"
+                    placeholder={translations.MOD_PLACEHOLDER}
                 />
             </div>
+
+            {!isCurrentValueOk && (
+                <Paragraph type="warning" css={themedStyles.warning}>
+                    {translations.MOD_ERROR}
+                </Paragraph>
+            )}
 
             <Paragraph type="warning" css={themedStyles.warning}>
                 {translations.MOD_TIP}
@@ -56,23 +60,13 @@ const styles = (theme: TTheme) => ({
         margin: ${3 * theme.baseSpace}px 0;
     `,
     input: css`
-        .ant-input-number-input {
-            text-align: center;
-            box-shadow: none !important;
-        }
+        width: 180px;
+        text-align: center;
 
-        .ant-input-number-focused:hover {
+        &:hover,
+        &:focus {
             box-shadow: none;
-            border: none;
-            background: red;
-            border-color: red;
-        }
-
-        .ant-input-number-focused {
-            box-shadow: none;
-            border: none;
-            background: red;
-            border-color: red;
+            border-color: ${theme.accent};
         }
     `,
 });

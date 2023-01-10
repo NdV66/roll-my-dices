@@ -7,7 +7,6 @@ import { ModalBody } from './ModalBody';
 export const ModInputElement = () => {
     const {
         theme,
-        toggleShowInput,
         translations,
         showInput,
         currentValue,
@@ -16,6 +15,8 @@ export const ModInputElement = () => {
         onRemove,
         currentConfirmedMod,
         isCurrentValueOk,
+        onCloseModal,
+        toggleShowInput,
     } = useModInputViewModel();
 
     return (
@@ -29,12 +30,12 @@ export const ModInputElement = () => {
             />
 
             <Modal
-                onCancel={() => toggleShowInput()}
+                onCancel={() => onCloseModal()}
                 open={showInput}
                 title={translations.MOD_INFO}
                 footer={
                     <ModalFooter
-                        onCancel={toggleShowInput}
+                        onCancel={onCloseModal}
                         onConfirm={onConfirm}
                         translations={translations}
                         theme={theme}

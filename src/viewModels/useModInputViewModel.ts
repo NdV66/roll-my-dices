@@ -4,8 +4,7 @@ import { useMemo } from 'react';
 import { BehaviorSubject, combineLatest, map } from 'rxjs';
 import { DEFAULTS } from '../defaults';
 
-const INITIAL_MOD = '' + DEFAULTS.MOD;
-
+const INITIAL_MOD = '';
 const REGEXP = /^(\+|-){0,1}\d+$/;
 
 const testIfModIsOk = (value: string) => REGEXP.test(value);
@@ -28,7 +27,7 @@ export const useModInputViewModel = () => {
         showInputSource.next(!showInput);
     };
 
-    const updateCurrentValue = (value: string) => {
+    const updateCurrentValue = (value: string = INITIAL_MOD) => {
         const trimmed = value.trim();
         currentValueSource.next(trimmed);
     };
@@ -43,6 +42,11 @@ export const useModInputViewModel = () => {
         appRollModel.updateRollMod(DEFAULTS.MOD);
     };
 
+    const onCloseModal = () => {
+        currentValueSource.next(INITIAL_MOD);
+        toggleShowInput();
+    };
+
     return {
         theme,
         translations,
@@ -54,5 +58,6 @@ export const useModInputViewModel = () => {
         onRemove,
         isCurrentValueOk,
         currentConfirmedMod,
+        onCloseModal,
     };
 };
