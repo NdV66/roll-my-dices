@@ -2,6 +2,7 @@
 import { css } from '@emotion/react';
 
 import { DEFAULTS, FONT_FAMILY_BY_DICE_TYPE } from '../../defaults';
+import { screenMd } from '../../styles';
 import { DiceTypes, TRollInfo, TTheme } from '../../types';
 import { RollModCalculation } from './RollModCalculation';
 
@@ -34,5 +35,9 @@ const styles = (theme: TTheme) => ({
         font-family: ${FONT_FAMILY_BY_DICE_TYPE[diceType]};
         font-size: ${9 * theme.fontSize}px;
         color: ${theme.primary};
+
+        ${screenMd(css`
+            font-size: ${7 * theme.fontSize}px;
+        `)}
     `,
 });

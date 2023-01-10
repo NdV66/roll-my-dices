@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 
+import { screenMd } from '../../styles';
 import { TRollInfo, TTheme } from '../../types';
 
 type Props = Pick<TRollInfo, 'calculationResult' | 'mod'> & {
@@ -28,10 +29,18 @@ const styles = (theme: TTheme) => ({
         display: flex;
         justify-content: center;
         align-items: center;
+
+        ${screenMd(css`
+            font-size: ${2 * theme.fontSize}px;
+        `)}
     `,
     result: css`
-        font-size: ${4 * theme.fontSize}px;
         font-weight: 700;
         margin: 0 ${theme.baseSpace}px;
+        font-size: ${4 * theme.fontSize}px;
+
+        ${screenMd(css`
+            font-size: ${2.5 * theme.fontSize}px;
+        `)}
     `,
 });
