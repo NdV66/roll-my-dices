@@ -5,7 +5,7 @@ export const TEXTS_EN: TTranslations = {
     APP_NAME: 'Roll My Dices',
     AUTHOR: 'Marta Zażlak',
     DEV_INFO: 'Warning, page still in progress :)',
-    INFO: 'Click any dice to see the result. Good luck!',
+    INFO: 'Click any dice above to see the result. Good luck!',
     REPO: 'See repo here',
 
     CURRENT_LANG: 'English',
@@ -13,7 +13,7 @@ export const TEXTS_EN: TTranslations = {
 
     MOD_ERROR: 'Enter correct a value, for example:. -6, 9, +12',
     MOD_PLACEHOLDER: '-6, +20, 7 etc.',
-    MOD_TIP: 'Click ENTER to save changes.',
+    MOD_TIP: 'Adding a mod, the current result is reset.',
     MOD_INFO: 'Add roll mod',
 
     LIGHT: 'light',

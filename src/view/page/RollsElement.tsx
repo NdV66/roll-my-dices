@@ -1,10 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { FONT_FAMILY_BY_DICE_TYPE } from '../../defaults';
 
-import { DiceTypes, TTheme } from '../../types';
+import { TTheme } from '../../types';
 import { useRollsElementViewModel } from '../../viewModels';
-import { DiceButton } from '../elements';
+import { DiceButton, RollResult } from '../elements';
 
 export const RollsElement: React.FC = () => {
     const { rollsElementData, theme, rollInfo, translations } = useRollsElementViewModel();
@@ -12,8 +11,6 @@ export const RollsElement: React.FC = () => {
 
     return (
         <>
-            <div css={themedStyles.info}>{translations.INFO}</div>
-
             <div css={themedStyles.rollsWrapper}>
                 {rollsElementData.map((el) => (
                     <DiceButton
@@ -26,21 +23,16 @@ export const RollsElement: React.FC = () => {
                 ))}
             </div>
 
-            {rollInfo && (
-                <div css={themedStyles.result}>
-                    <div css={themedStyles.rawRollResult(rollInfo.dice)}>{rollInfo.displayValue}</div>
-                    <div>
-                        + {rollInfo.mod} = {rollInfo.calculationResult}
-                    </div>
-                </div>
-            )}
+            <div css={themedStyles.info}>{translations.INFO}</div>
+
+            {rollInfo && <RollResult {...rollInfo} theme={theme} />}
         </>
     );
 };
 
 const styles = (theme: TTheme) => ({
     info: css`
-        text-align: right;
+        text-align: center;
         margin: ${theme.baseSpace}px 0;
         color: ${theme.accent};
         font-size: ${0.8 * theme.fontSize}px;
@@ -51,17 +43,5 @@ const styles = (theme: TTheme) => ({
         justify-content: center;
 
         margin: ${5 * theme.baseSpace}px 0;
-    `,
-    result: css`
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    `,
-    rawRollResult: (diceType: DiceTypes) => css`
-        user-select: none;
-
-        font-family: ${FONT_FAMILY_BY_DICE_TYPE[diceType]};
-        font-size: ${9 * theme.fontSize}px;
-        color: ${theme.primary};
     `,
 });

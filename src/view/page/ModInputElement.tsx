@@ -20,10 +20,12 @@ export const ModInputElement = () => {
     };
 
     return (
-        <div>
-            <Button type="text" onClick={onClick}>
-                {translations.MOD_INFO}
-            </Button>
+        <>
+            <div css={themedStyles.wrapper}>
+                <Button type="link" onClick={onClick} css={themedStyles.button}>
+                    {translations.MOD_INFO}
+                </Button>
+            </div>
 
             <Modal open={showInput} onCancel={onClick} onOk={onConfirm}>
                 <div>
@@ -31,11 +33,18 @@ export const ModInputElement = () => {
                     <InputNumber onChange={onChange} value={currentValue} />
                 </div>
             </Modal>
-        </div>
+        </>
     );
 };
 
 const styles = (theme: TTheme) => ({
-    wrapper: css``,
+    button: css`
+        color: ${theme.accent};
+        font-size: ${0.8 * theme.fontSize}px;
+    `,
+    wrapper: css`
+        display: flex;
+        justify-content: flex-end;
+    `,
     input: css``,
 });

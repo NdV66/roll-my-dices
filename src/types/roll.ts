@@ -16,3 +16,7 @@ export type TRollExtended = TRoll & {
     calculationResult: number;
     mod: number;
 };
+
+export type TRollInfo = TRollExtended & {
+    displayValue: string;
+};

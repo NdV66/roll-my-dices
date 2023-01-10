@@ -1,23 +1,19 @@
-import { useMemo, useEffect } from 'react';
+import { useMemo } from 'react';
 import { map } from 'rxjs';
 import { appRollModel, useAppContext } from '../context';
 import { DEFAULTS } from '../defaults';
 import { AppRollModel } from '../models/AppRollModel';
 import { mapRollToDice } from '../services';
 import { useStateWithObservableWithInit } from '../tools';
-import { DiceTypes, TRollExtended } from '../types';
+import { DiceTypes, TRollExtended, TRollInfo } from '../types';
 
 const DICES_ORDER = [DiceTypes.D_4, DiceTypes.D_6, DiceTypes.D_8, DiceTypes.D_10, DiceTypes.D_12, DiceTypes.D_20];
 
-type TRollInfo = TRollExtended & {
-    displayValue: string;
-};
-
-const prepareDisplayValue = (el: TRollExtended | null) =>
-    el
+const prepareDisplayValue = (roll: TRollExtended | null) =>
+    roll
         ? {
-              ...el,
-              displayValue: mapRollToDice(el!.dice, el!.roll),
+              ...roll,
+              displayValue: mapRollToDice(roll!.dice, roll!.roll),
           }
         : null;
 

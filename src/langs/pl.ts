@@ -6,7 +6,7 @@ export const TEXTS_PL: TTranslations = {
     AUTHOR: 'Marta Zażlak',
     DEV_INFO: 'Uwaga, strona jeszcze się robi :)',
 
-    INFO: 'Kliknij kostkę i zobacz, co się wylosowało. Powodzenia!',
+    INFO: 'Kliknij jedną z kostek powyżej i zobacz, co się wylosowało. Powodzenia!',
     REPO: 'Zerknij na repozytorium',
 
     CURRENT_LANG: 'Polski',
@@ -14,7 +14,7 @@ export const TEXTS_PL: TTranslations = {
 
     MOD_ERROR: 'Wpisz wartość w poprawnym formacie, np. -6, 9, +12',
     MOD_PLACEHOLDER: '-6, +20, 7 itp.',
-    MOD_TIP: 'Naciśnij ENTER, aby zmiany zostały zapisane.',
+    MOD_TIP: 'Po dodaniu modyfikatora, obecny rzut zostanie usunięty.',
     MOD_INFO: 'Dodaj modyfikator rzutu',
 
     LIGHT: 'jasny',
