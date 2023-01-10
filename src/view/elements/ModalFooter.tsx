@@ -36,5 +36,9 @@ const styles = (theme: TTheme) => ({
     `,
     okButton: css`
         margin-left: ${2 * theme.baseSpace}px;
+
+        .ant-btn-primary {
+            box-shadow: none !important;
+        }
     `,
 });

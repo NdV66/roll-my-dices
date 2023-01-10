@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 
-import { Modal, InputNumber } from 'antd';
+import { Modal, InputNumber, Button } from 'antd';
 import { TTheme } from '../../../types';
 import { useModInputViewModel } from '../../../viewModels';
 import Paragraph from 'antd/es/typography/Paragraph';
