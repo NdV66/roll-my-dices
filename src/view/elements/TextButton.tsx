@@ -11,10 +11,10 @@ type Props = PropsWithChildren<{
 }>;
 
 export const TextButton: React.FC<Props> = ({ onClick, theme, children, small }) => {
-    const styledTheme = styles(theme, small);
+    const themedStyles = styles(theme, small);
 
     return (
-        <div role="button" onClick={onClick} css={styledTheme.button}>
+        <div role="button" onClick={onClick} css={themedStyles.button}>
             {children}
         </div>
     );

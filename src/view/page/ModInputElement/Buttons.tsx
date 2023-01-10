@@ -5,6 +5,7 @@ import { DeleteOutlined } from '@ant-design/icons';
 
 import { TTheme, TTranslations } from '../../../types';
 import { TextButton } from '../../elements';
+import { DEFAULTS } from '../../../defaults';
 
 type Props = {
     theme: TTheme;
@@ -16,6 +17,7 @@ type Props = {
 
 export const Buttons: React.FC<Props> = ({ theme, onRemove, onOpen, currentValue, translations }) => {
     const themedStyles = styles(theme);
+    const isRemoveDisabled = currentValue === DEFAULTS.MOD;
 
     return (
         <div css={themedStyles.wrapper}>
@@ -23,7 +25,11 @@ export const Buttons: React.FC<Props> = ({ theme, onRemove, onOpen, currentValue
                 {translations.MOD_INFO} ({currentValue})
             </TextButton>
 
-            <div onClick={onRemove} css={themedStyles.remove} role="button">
+            <div
+                onClick={onRemove}
+                css={[themedStyles.remove, isRemoveDisabled && themedStyles.disabled]}
+                role="button"
+            >
                 <DeleteOutlined />
             </div>
         </div>
@@ -43,5 +49,10 @@ const styles = (theme: TTheme) => ({
         align-items: center;
 
         margin-top: ${theme.baseSpace}px;
+    `,
+    disabled: css`
+        cursor: default;
+        pointer-events: all !important;
+        color: ${theme.secondary};
     `,
 });

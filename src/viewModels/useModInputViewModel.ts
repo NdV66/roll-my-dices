@@ -27,6 +27,7 @@ export const useModInputViewModel = () => {
 
     const onRemove = () => {
         currentValueSource.next(DEFAULTS.MOD);
+        appRollModel.updateRollMod(DEFAULTS.MOD);
     };
 
     return {

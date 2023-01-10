@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+
 import { FONT_FAMILY_BY_DICE_TYPE } from '../../defaults';
 import { DiceTypes, TTheme } from '../../types';
 
