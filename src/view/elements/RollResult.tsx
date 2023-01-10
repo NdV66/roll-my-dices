@@ -14,7 +14,7 @@ export const RollResult: React.FC<Props> = ({ theme, dice, mod, calculationResul
     const themedStyles = styles(theme);
 
     return (
-        <div css={themedStyles.result}>
+        <div>
             <div css={themedStyles.rawRollResult(dice)}>{displayValue}</div>
             {mod !== DEFAULTS.MOD && (
                 <RollModCalculation mod={mod} calculationResult={calculationResult} theme={theme} />
@@ -24,11 +24,6 @@ export const RollResult: React.FC<Props> = ({ theme, dice, mod, calculationResul
 };
 
 const styles = (theme: TTheme) => ({
-    result: css`
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    `,
     rawRollResult: (diceType: DiceTypes) => css`
         user-select: none;
 

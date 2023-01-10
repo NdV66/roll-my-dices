@@ -19,9 +19,7 @@ const prepareDisplayValue = (roll: TRollExtended | null) =>
 
 export const useRollsElementViewModel = () => {
     const { translations, theme } = useAppContext();
-
     const rollInfoSource = useMemo(() => appRollModel.extendedRollSource.pipe(map(prepareDisplayValue)), []);
-
     const rollInfo = useStateWithObservableWithInit<TRollInfo | null>(rollInfoSource, DEFAULTS.EMPTY_ROLL_RESULT);
 
     const rollsElementData = DICES_ORDER.map((dice) => ({
@@ -31,10 +29,15 @@ export const useRollsElementViewModel = () => {
         displayValue: mapRollToDice(dice, AppRollModel.getMaxByDiceType(dice)),
     }));
 
+    const onCleanAll = () => {
+        appRollModel.cleanAll();
+    };
+
     return {
         rollsElementData,
         rollInfo,
         theme,
+        onCleanAll,
         translations,
     };
 };

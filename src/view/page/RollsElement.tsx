@@ -3,11 +3,11 @@ import { css } from '@emotion/react';
 
 import { TTheme } from '../../types';
 import { useRollsElementViewModel } from '../../viewModels';
-import { DiceButton, RollResult } from '../elements';
+import { DiceButton, RollResult, TextButton } from '../elements';
 import { NoRollResult } from '../elements/NoRollResult';
 
 export const RollsElement: React.FC = () => {
-    const { rollsElementData, theme, rollInfo, translations } = useRollsElementViewModel();
+    const { rollsElementData, theme, rollInfo, translations, onCleanAll } = useRollsElementViewModel();
     const themedStyles = styles(theme);
 
     return (
@@ -26,15 +26,29 @@ export const RollsElement: React.FC = () => {
 
             <div css={themedStyles.info}>{translations.INFO}</div>
 
-            {rollInfo ? <RollResult {...rollInfo} theme={theme} /> : <NoRollResult theme={theme} />}
+            <div css={themedStyles.result}>
+                {rollInfo ? <RollResult {...rollInfo} theme={theme} /> : <NoRollResult theme={theme} />}
+            </div>
+
+            <div css={themedStyles.cleanWrapper}>
+                <TextButton theme={theme} onClick={onCleanAll} small>
+                    Clean everything
+                </TextButton>
+            </div>
         </>
     );
 };
 
 const styles = (theme: TTheme) => ({
+    result: css`
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        margin: ${4 * theme.baseSpace}px 0;
+    `,
     info: css`
         text-align: center;
-        margin: ${theme.baseSpace}px 0;
         color: ${theme.accent};
         font-size: ${0.8 * theme.fontSize}px;
     `,
@@ -44,5 +58,9 @@ const styles = (theme: TTheme) => ({
         justify-content: center;
 
         margin: ${5 * theme.baseSpace}px 0;
+    `,
+    cleanWrapper: css`
+        display: flex;
+        justify-content: flex-end;
     `,
 });

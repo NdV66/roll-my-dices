@@ -22,7 +22,7 @@ const prepareExtendedRoll = ([roll, mod]: [TRoll | null, number | null]) =>
 
 export class AppRollModel {
     private _rollSource = new BehaviorSubject<TRoll | null>(DEFAULTS.EMPTY_ROLL_RESULT);
-    private _rollModSource = new BehaviorSubject<number | null>(DEFAULTS.EMPTY_ROLL_RESULT);
+    private _rollModSource = new BehaviorSubject<number | null>(DEFAULTS.MOD);
 
     public extendedRollSource = new BehaviorSubject<TRollExtended | null>(DEFAULTS.EMPTY_ROLL_RESULT);
 
@@ -36,8 +36,9 @@ export class AppRollModel {
             .subscribe((extendedRoll) => this.extendedRollSource.next(extendedRoll));
     }
 
-    public cleanRoll = () => {
+    public cleanAll = () => {
         this._rollSource.next(DEFAULTS.EMPTY_ROLL_RESULT);
+        this._rollModSource.next(DEFAULTS.MOD);
     };
 
     public rollDice = (diceType: DiceTypes) => {
