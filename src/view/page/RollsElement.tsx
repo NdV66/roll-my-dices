@@ -4,6 +4,7 @@ import { css } from '@emotion/react';
 import { TTheme } from '../../types';
 import { useRollsElementViewModel } from '../../viewModels';
 import { DiceButton, RollResult } from '../elements';
+import { NoRollResult } from '../elements/NoRollResult';
 
 export const RollsElement: React.FC = () => {
     const { rollsElementData, theme, rollInfo, translations } = useRollsElementViewModel();
@@ -25,7 +26,7 @@ export const RollsElement: React.FC = () => {
 
             <div css={themedStyles.info}>{translations.INFO}</div>
 
-            {rollInfo && <RollResult {...rollInfo} theme={theme} />}
+            {rollInfo ? <RollResult {...rollInfo} theme={theme} /> : <NoRollResult theme={theme} />}
         </>
     );
 };

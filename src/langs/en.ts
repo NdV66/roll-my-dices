@@ -13,11 +13,15 @@ export const TEXTS_EN: TTranslations = {
 
     MOD_ERROR: 'Enter correct a value, for example:. -6, 9, +12',
     MOD_PLACEHOLDER: '-6, +20, 7 etc.',
-    MOD_TIP: 'Adding a mod, the current result is reset.',
-    MOD_INFO: 'Add roll mod',
+    MOD_TIP: 'Warning! Adding a mod, the current result is reset.',
+    MOD_INFO: 'Roll mod',
+    MOD_REMOVE: 'Remove',
 
     LIGHT: 'light',
     DARK: 'dark',
+
+    OK: 'OK',
+    CANCEL: 'Cancel',
 
     D_4: 'd4',
     D_6: 'd6',

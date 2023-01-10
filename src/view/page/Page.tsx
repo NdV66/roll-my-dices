@@ -7,7 +7,7 @@ import { TTheme } from '../../types';
 import { usePageViewModel } from '../../viewModels';
 import { ChangeAppLangElement } from './ChangeAppLangElement';
 import { FooterElement, footerHeight } from './FooterElement';
-import { ModInputElement } from './ModInputElement';
+import { ModInputElement } from './ModInputElement/ModInputElement';
 import { RollsElement } from './RollsElement';
 import { ThemeButtonElement } from './ThemeButtonElement';
 

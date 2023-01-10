@@ -25,6 +25,10 @@ export const useModInputViewModel = () => {
         appRollModel.updateRollMod(currentValue);
     };
 
+    const onRemove = () => {
+        currentValueSource.next(DEFAULTS.MOD);
+    };
+
     return {
         theme,
         translations,
@@ -33,5 +37,6 @@ export const useModInputViewModel = () => {
         updateCurrentValue,
         currentValue,
         onConfirm,
+        onRemove,
     };
 };

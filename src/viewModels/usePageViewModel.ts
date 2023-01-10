@@ -10,6 +10,8 @@ export const usePageViewModel = () => {
             fontSize: theme.fontSize,
             colorTextBase: theme.primary,
             colorInfo: theme.secondary,
+            colorWarning: theme.accent,
+            themeError: theme.accent,
         },
     };
 
