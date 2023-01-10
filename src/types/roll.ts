@@ -11,3 +11,12 @@ export type TRoll = {
     dice: DiceTypes;
     roll: number;
 };
+
+export type TRollExtended = TRoll & {
+    calculationResult: number;
+    mod: number;
+};
+
+export type TRollInfo = TRollExtended & {
+    displayValue: string;
+};

@@ -5,14 +5,24 @@ export const TEXTS_PL: TTranslations = {
     APP_NAME: 'Roll My Dices',
     AUTHOR: 'Marta Zażlak',
     DEV_INFO: 'Uwaga, strona jeszcze się robi :)',
-    INFO: 'Kliknij kostkę i zobacz, co się wylosowało. Powodzenia!',
+
+    INFO: 'Kliknij jedną z kostek powyżej i zobacz, co się wylosowało. Powodzenia!',
     REPO: 'Zerknij na repozytorium',
 
     CURRENT_LANG: 'Polski',
     ...LANGS,
 
+    MOD_ERROR: 'Wpisz wartość w poprawnym formacie, np. -6, 9, +12',
+    MOD_PLACEHOLDER: '-6, +20, 7 itp.',
+    MOD_TIP: 'Uwaga! Po dodaniu modyfikatora, obecny rzut zostanie przeliczony.',
+    MOD_INFO: 'Modyfikator rzutu',
+    MOD_REMOVE: 'Usuń',
+
     LIGHT: 'jasny',
     DARK: 'ciemny',
+
+    OK: 'OK',
+    CANCEL: 'Zamknij',
 
     D_4: 'k4',
     D_6: 'k6',
