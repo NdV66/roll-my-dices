@@ -19,6 +19,15 @@ export const DEFAULTS = {
     REPO_URL: 'https://github.com/NdV66/roll-my-dices',
 };
 
+export const DICE_TYPES_MAX = new Map([
+    [DiceTypes.D_4, 4],
+    [DiceTypes.D_6, 6],
+    [DiceTypes.D_8, 8],
+    [DiceTypes.D_10, 10],
+    [DiceTypes.D_12, 12],
+    [DiceTypes.D_20, 20],
+]);
+
 export const FONT_FAMILY_BY_DICE_TYPE = {
     [DiceTypes.D_4]: 'DiceD4',
     [DiceTypes.D_6]: 'DiceD6',
@@ -63,3 +72,7 @@ export const ROLLS_RESULTS_FONTS = {
         'Z',
     ],
 };
+
+export enum ERROR_CODES {
+    'NO_DICE_FOUND' = 'No dice sign found',
+}

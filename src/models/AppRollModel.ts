@@ -1,17 +1,8 @@
 import { DiceTypes, TRoll, TRollExtended } from '../types';
 import { BehaviorSubject, map, combineLatest } from 'rxjs';
-import { DEFAULTS } from '../defaults';
+import { DEFAULTS, DICE_TYPES_MAX } from '../defaults';
 
 import { rollDices } from '../services';
-
-const DICE_TYPES_MAX = new Map([
-    [DiceTypes.D_4, 4],
-    [DiceTypes.D_6, 6],
-    [DiceTypes.D_8, 8],
-    [DiceTypes.D_10, 10],
-    [DiceTypes.D_12, 12],
-    [DiceTypes.D_20, 20],
-]);
 
 const prepareExtendedRoll = ([roll, mod]: [TRoll | null, number | null]) =>
     roll && {
