@@ -1,4 +1,4 @@
-import { DICE_TYPES_MAX, ERROR_CODES, ROLLS_RESULTS_FONTS } from '../../defaults';
+import { ERROR_CODES, ROLLS_RESULTS_FONTS } from '../../defaults';
 import { mapRollToDice } from '../../services';
 import { DiceTypes } from '../../types';
 

@@ -89,3 +89,7 @@ The app is ready to be deployed!
 
 - `yarn deploy`
 Deploy the app for production using gh-pages module.
+
+//https://dev.to/this-is-learning/rxjs-marble-testing-2gg9
+//https:jdkandersson.com/2019/06/10/testing-rxjs-service-with-a-subject-component-interaction/
+// https://generic-ui.com/blog/rxjs-testing-patterns

@@ -1,56 +1,64 @@
-import { concatMap, delay, map, of } from 'rxjs';
-import { TestScheduler } from 'rxjs/testing';
-
-// const getTestObservable = () =>
-//     of('Irmo', 'Namo').pipe(
-//         map((el) => of(el + ' <3').pipe(delay(1000))),
-//         concatMap((el) => el),
-//     );
-
-const getTestObservable = () => of('Irmo');
-
-// const expectedValues = { a: 'Irmo <3', b: 'Namo <3', c: 'Nienna <3' };
-// const expectedMarbles = '-a-b-(c|)';
-
-const expectedValues = { a: 'Irmo', b: 'Namo', c: 'Nienna' };
-const expectedMarbles = '-a|';
+import Cookies from 'js-cookie';
+import { DEFAULTS } from '../../defaults';
+import { AppThemeModel } from '../../models/AppThemeModel';
+import { DARK_THEME } from '../../styles';
+import { AppTheme } from '../../types';
 
 describe('AppThemeModel', () => {
-    let testScheduler: TestScheduler;
+    let model: AppThemeModel;
 
     beforeEach(() => {
-        testScheduler = new TestScheduler((actual, expected) => {
-            expect(actual).toEqual(expected);
+        model = new AppThemeModel();
+    });
+
+    const subscribeToAppTheme = (expectedTheme: AppTheme, done: jest.DoneCallback) => {
+        model.appTheme.subscribe((data) => {
+            expect(data).toEqual(expectedTheme);
+            done();
+        });
+    };
+
+    describe('changeAppTheme', () => {
+        test('Should change app theme (short name)', (done) => {
+            const expectedTheme = AppTheme.DARK;
+            subscribeToAppTheme(expectedTheme, done);
+
+            model.changeAppTheme(expectedTheme);
+        });
+
+        test('Should change app theme (full theme)', (done) => {
+            const expectedTheme = DARK_THEME;
+
+            model.theme.subscribe((data) => {
+                expect(data).toEqual(expectedTheme);
+                done();
+            });
+
+            model.changeAppTheme(AppTheme.DARK);
         });
     });
 
-    it('test', () => {
-        testScheduler.run((helpers) => {
-            const { cold, expectObservable } = helpers;
-            const source$ = cold('-a-b-c|', expectedValues);
-            const expected = '-a-b-c|';
+    describe('setDefaultValue', () => {
+        test('when there is no saved data', (done) => {
+            const expectedTheme = DEFAULTS.APP_THEME;
+            jest.spyOn(Cookies, 'get').mockReturnValue(undefined as any);
 
-            expectObservable(source$).toBe(expected, expectedValues);
+            subscribeToAppTheme(expectedTheme, done);
+            model.setDefaultValue();
+        });
+
+        test('when there is a saved data', (done) => {
+            const expectedTheme = AppTheme.DARK;
+            jest.spyOn(Cookies, 'get').mockReturnValue(expectedTheme as any);
+
+            model.appTheme.subscribe((data) => {
+                expect(data).toEqual(expectedTheme);
+                done();
+            });
+
+            model.setDefaultValue();
         });
     });
 });
 
 export {};
-
-// import { firstValueFrom, lastValueFrom } from 'rxjs';
-// import { AppThemeModel } from '../../models/AppThemeModel';
-// import { AppTheme } from '../../types';
-
-// describe('AppThemeModel', () => {
-//     test('Should change app theme', async () => {
-//         const model = new AppThemeModel();
-//         const expectedTheme = AppTheme.DARK;
-
-//         model.changeAppTheme(expectedTheme);
-
-//         const x = await firstValueFrom(model.theme);
-//         console.log('>>>', x);
-//     });
-// });
-
-// export {};

@@ -1,6 +1,8 @@
 import { LIGHT_THEME } from './styles/light.theme';
 import { AppLangs, AppTheme, DiceTypes } from './types';
 
+export const COOKIE_THEME_KEY = 'themeKey';
+
 export const DEFAULTS = {
     APP_THEME: AppTheme.LIGHT,
     THEME: LIGHT_THEME,

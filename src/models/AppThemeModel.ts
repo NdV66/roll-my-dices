@@ -3,9 +3,7 @@ import { map, connect, Subject } from 'rxjs';
 
 import { DARK_THEME, LIGHT_THEME } from '../styles';
 import Cookies from 'js-cookie';
-import { DEFAULTS } from '../defaults';
-
-const COOKIE_THEME_KEY = 'themeKey';
+import { DEFAULTS, COOKIE_THEME_KEY } from '../defaults';
 
 const selectTheme = (theme: AppTheme) => (theme === AppTheme.DARK ? DARK_THEME : LIGHT_THEME);
 
@@ -28,7 +26,6 @@ export class AppThemeModel {
 
     public setDefaultValue = () => {
         const savedTheme = this._readFromCookie();
-
         this.changeAppTheme(savedTheme || DEFAULTS.APP_THEME);
     };
 
