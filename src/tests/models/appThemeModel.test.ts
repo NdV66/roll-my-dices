@@ -21,8 +21,8 @@ describe('AppThemeModel', () => {
     describe('changeAppTheme', () => {
         test('Should change app theme (short name)', (done) => {
             const expectedTheme = AppTheme.DARK;
-            subscribeToAppTheme(expectedTheme, done);
 
+            subscribeToAppTheme(expectedTheme, done);
             model.changeAppTheme(expectedTheme);
         });
 
@@ -51,11 +51,7 @@ describe('AppThemeModel', () => {
             const expectedTheme = AppTheme.DARK;
             jest.spyOn(Cookies, 'get').mockReturnValue(expectedTheme as any);
 
-            model.appTheme.subscribe((data) => {
-                expect(data).toEqual(expectedTheme);
-                done();
-            });
-
+            subscribeToAppTheme(expectedTheme, done);
             model.setDefaultValue();
         });
     });
