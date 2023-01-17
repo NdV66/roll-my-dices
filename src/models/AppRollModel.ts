@@ -13,7 +13,6 @@ const prepareExtendedRoll = ([roll, mod]: [TRoll | null, number | null]) =>
 
 export class AppRollModel {
     private _rollSource = new BehaviorSubject<TRoll | null>(DEFAULTS.EMPTY_ROLL_RESULT);
-
     public rollModSource = new BehaviorSubject<number>(DEFAULTS.MOD);
     public extendedRollSource = new BehaviorSubject<TRollExtended | null>(DEFAULTS.EMPTY_ROLL_RESULT);
 
