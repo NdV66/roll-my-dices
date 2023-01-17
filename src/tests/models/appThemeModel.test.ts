@@ -1,4 +1,4 @@
-import Cookies from 'js-cookie';
+import * as cookiesService from '../../services/cookies.service';
 import { DEFAULTS } from '../../defaults';
 import { AppThemeModel } from '../../models/AppThemeModel';
 import { DARK_THEME } from '../../styles';
@@ -40,16 +40,15 @@ describe('AppThemeModel', () => {
 
     describe('setDefaultValue', () => {
         test('when there is no saved data', (done) => {
-            const expectedTheme = DEFAULTS.APP_THEME;
-            jest.spyOn(Cookies, 'get').mockReturnValue(undefined as any);
+            jest.spyOn(cookiesService, 'getFromCookies').mockReturnValue(undefined as any);
 
-            subscribeToAppTheme(expectedTheme, done);
+            subscribeToAppTheme(DEFAULTS.APP_THEME, done);
             model.setDefaultValue();
         });
 
         test('when there is a saved data', (done) => {
             const expectedTheme = AppTheme.DARK;
-            jest.spyOn(Cookies, 'get').mockReturnValue(expectedTheme as any);
+            jest.spyOn(cookiesService, 'getFromCookies').mockReturnValue(expectedTheme as any);
 
             subscribeToAppTheme(expectedTheme, done);
             model.setDefaultValue();

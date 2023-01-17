@@ -1,10 +1,8 @@
-import Cookies from 'js-cookie';
+import * as cookiesService from '../../services/cookies.service';
 import { DEFAULTS } from '../../defaults';
 import { LangManager } from '../../langs/LangManager';
 import { AppLangModel } from '../../models/AppLangModel';
-import { AppThemeModel } from '../../models/AppThemeModel';
-import { DARK_THEME } from '../../styles';
-import { AppLangs, AppTheme, TTranslations } from '../../types';
+import { AppLangs, TTranslations } from '../../types';
 
 describe('AppLangModel', () => {
     let model: AppLangModel;
@@ -43,14 +41,14 @@ describe('AppLangModel', () => {
     describe('setDefaultValue', () => {
         test('when there is no saved data', (done) => {
             const expectedLang = DEFAULTS.LANG;
-            jest.spyOn(Cookies, 'get').mockReturnValue(undefined as any);
+            jest.spyOn(cookiesService, 'getFromCookies').mockReturnValue(undefined as any);
             subscribeToAppLang(expectedLang, done);
             model.setDefaultValue();
         });
 
         test('when there is a saved data', (done) => {
             const expectedLang = AppLangs.PL;
-            jest.spyOn(Cookies, 'get').mockReturnValue(expectedLang as any);
+            jest.spyOn(cookiesService, 'getFromCookies').mockReturnValue(expectedLang as any);
             subscribeToAppLang(expectedLang, done);
             model.setDefaultValue();
         });

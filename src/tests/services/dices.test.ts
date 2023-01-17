@@ -3,7 +3,7 @@ import { mapRollToDice } from '../../services';
 import { DiceTypes } from '../../types';
 
 describe('mapRollToDice', () => {
-    it('Should select a right sign', () => {
+    test('Should select a right sign', () => {
         const diceType = DiceTypes.D_20;
         const roll = 6;
         const expectedResult = ROLLS_RESULTS_FONTS[diceType][roll - 1];
@@ -13,7 +13,7 @@ describe('mapRollToDice', () => {
         expect(result).toEqual(expectedResult);
     });
 
-    it('Should select a right sign (max value)', () => {
+    test('Should select a right sign (max value)', () => {
         const diceType = DiceTypes.D_20;
         const roll = 20;
         const expectedResult = ROLLS_RESULTS_FONTS[diceType][roll - 1];
@@ -23,7 +23,7 @@ describe('mapRollToDice', () => {
         expect(result).toEqual(expectedResult);
     });
 
-    it('Should return undefined, when the roll number is not supported', () => {
+    test('Should return undefined, when the roll number is not supported', () => {
         const diceType = DiceTypes.D_20;
         const callback = () => {
             mapRollToDice(diceType, 126);
