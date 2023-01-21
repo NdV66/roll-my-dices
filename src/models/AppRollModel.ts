@@ -1,15 +1,7 @@
 import { DiceTypes, TRoll, TRollExtended } from '../types';
 import { BehaviorSubject, map, combineLatest } from 'rxjs';
 import { DEFAULTS, DICE_TYPES_MAX } from '../defaults';
-
-import { rollDices } from '../services';
-
-const prepareExtendedRoll = ([roll, mod]: [TRoll | null, number | null]) =>
-    roll && {
-        ...roll,
-        calculationResult: roll.roll + (mod || DEFAULTS.MOD),
-        mod: mod || DEFAULTS.MOD,
-    };
+import { prepareExtendedRoll, rollDices } from '../services';
 
 export class AppRollModel {
     private _rollSource = new BehaviorSubject<TRoll | null>(DEFAULTS.EMPTY_ROLL_RESULT);

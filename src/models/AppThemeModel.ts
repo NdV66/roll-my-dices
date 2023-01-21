@@ -5,7 +5,7 @@ import { DARK_THEME, LIGHT_THEME } from '../styles';
 import { DEFAULTS, COOKIE_THEME_KEY } from '../defaults';
 import { getFromCookies, setCookie } from '../services';
 
-const selectTheme = (theme: AppTheme) => (theme === AppTheme.DARK ? DARK_THEME : LIGHT_THEME);
+export const selectTheme = (theme: AppTheme) => (theme === AppTheme.DARK ? DARK_THEME : LIGHT_THEME);
 
 export class AppThemeModel {
     private _appThemeSubject = new Subject<AppTheme>();

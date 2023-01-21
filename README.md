@@ -94,7 +94,9 @@ Deploy the app for production using gh-pages module.
 //https:jdkandersson.com/2019/06/10/testing-rxjs-service-with-a-subject-component-interaction/
 // https://generic-ui.com/blog/rxjs-testing-patterns
 
-#TODO
+#FEATURES
+[] basic app
+[] basic tests
 [] better styles
 [] Fate roll (with interpretation table)
 [] roll "wild" (custom) dice

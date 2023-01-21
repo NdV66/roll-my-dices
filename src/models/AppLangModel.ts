@@ -4,7 +4,7 @@ import { LangManager } from '../langs/LangManager';
 import { COOKIE_LANG_KEY, DEFAULTS } from '../defaults';
 import { getFromCookies, setCookie } from '../services';
 
-const getLangFromManager = (lang: AppLangs) => LangManager.getSingleton<TTranslations>(lang);
+export const getLangFromManager = (lang: AppLangs) => LangManager.getSingleton<TTranslations>(lang);
 
 export class AppLangModel {
     private _appLangSubject = new Subject<AppLangs>();

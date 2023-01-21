@@ -1,56 +1,62 @@
 import * as cookiesService from '../../services/cookies.service';
+
+import { AppLangs } from '../../types';
+import { AppLangModel, getLangFromManager } from '../../models/AppLangModel';
+import { TestScheduler } from 'rxjs/testing';
 import { DEFAULTS } from '../../defaults';
-import { LangManager } from '../../langs/LangManager';
-import { AppLangModel } from '../../models/AppLangModel';
-import { AppLangs, TTranslations } from '../../types';
+
+const EMIT_PATTERN = '-a';
 
 describe('AppLangModel', () => {
+    let testScheduler: TestScheduler;
     let model: AppLangModel;
 
     beforeEach(() => {
         model = new AppLangModel();
+        testScheduler = new TestScheduler((actual, expected) => {
+            expect(actual).toEqual(expected);
+        });
     });
 
-    const subscribeToAppLang = (expectedLang: AppLangs, done: jest.DoneCallback) => {
-        model.appLang.subscribe((data) => {
-            expect(data).toEqual(expectedLang);
-            done();
-        });
-    };
-
     describe('changeAppLang', () => {
-        test('Should change app lang (short name)', (done) => {
-            const expectedLang = AppLangs.PL;
-            subscribeToAppLang(expectedLang, done);
-            model.changeAppLang(expectedLang);
+        test('Should change app lang (short name)', () => {
+            testScheduler.run(({ cold, expectObservable }) => {
+                const expectedLang = AppLangs.PL;
+                cold(EMIT_PATTERN).subscribe(() => model.changeAppLang(expectedLang));
+                expectObservable(model.appLang).toBe(EMIT_PATTERN, { a: expectedLang });
+            });
         });
 
-        test('Should change app lang (full translations)', (done) => {
-            const lang = AppLangs.PL;
-            const expectedTranslations = LangManager.getSingleton<TTranslations>(lang);
+        test('Should change app lang (full translations)', () => {
+            testScheduler.run(({ cold, expectObservable }) => {
+                const lang = AppLangs.PL;
+                const expectedValue = getLangFromManager(lang);
+                cold(EMIT_PATTERN).subscribe(() => model.changeAppLang(lang));
 
-            model.translations.subscribe((data) => {
-                expect(data).toEqual(expectedTranslations);
-                done();
+                expectObservable(model.translations).toBe(EMIT_PATTERN, { a: expectedValue });
             });
-
-            model.changeAppLang(lang);
         });
     });
 
     describe('setDefaultValue', () => {
-        test('when there is no saved data', (done) => {
+        test('when there is no saved data', () => {
             const expectedLang = DEFAULTS.LANG;
             jest.spyOn(cookiesService, 'getFromCookies').mockReturnValue(undefined as any);
-            subscribeToAppLang(expectedLang, done);
-            model.setDefaultValue();
+
+            testScheduler.run(({ cold, expectObservable }) => {
+                cold(EMIT_PATTERN).subscribe(() => model.setDefaultValue());
+                expectObservable(model.appLang).toBe(EMIT_PATTERN, { a: expectedLang });
+            });
         });
 
-        test('when there is a saved data', (done) => {
+        test('when there is a saved data', () => {
             const expectedLang = AppLangs.PL;
             jest.spyOn(cookiesService, 'getFromCookies').mockReturnValue(expectedLang as any);
-            subscribeToAppLang(expectedLang, done);
-            model.setDefaultValue();
+
+            testScheduler.run(({ cold, expectObservable }) => {
+                cold(EMIT_PATTERN).subscribe(() => model.setDefaultValue());
+                expectObservable(model.appLang).toBe(EMIT_PATTERN, { a: expectedLang });
+            });
         });
     });
 });

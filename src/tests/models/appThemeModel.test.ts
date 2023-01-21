@@ -1,57 +1,61 @@
 import * as cookiesService from '../../services/cookies.service';
-import { DEFAULTS } from '../../defaults';
-import { AppThemeModel } from '../../models/AppThemeModel';
-import { DARK_THEME } from '../../styles';
 import { AppTheme } from '../../types';
+import { TestScheduler } from 'rxjs/testing';
+import { DEFAULTS } from '../../defaults';
+import { AppThemeModel, selectTheme } from '../../models/AppThemeModel';
+
+const EMIT_PATTERN = '-a';
 
 describe('AppThemeModel', () => {
+    let testScheduler: TestScheduler;
     let model: AppThemeModel;
 
     beforeEach(() => {
         model = new AppThemeModel();
+        testScheduler = new TestScheduler((actual, expected) => {
+            expect(actual).toEqual(expected);
+        });
     });
 
-    const subscribeToAppTheme = (expectedTheme: AppTheme, done: jest.DoneCallback) => {
-        model.appTheme.subscribe((data) => {
-            expect(data).toEqual(expectedTheme);
-            done();
-        });
-    };
-
     describe('changeAppTheme', () => {
-        test('Should change app theme (short name)', (done) => {
-            const expectedTheme = AppTheme.DARK;
-
-            subscribeToAppTheme(expectedTheme, done);
-            model.changeAppTheme(expectedTheme);
+        test('Should change app theme (short name)', () => {
+            testScheduler.run(({ cold, expectObservable }) => {
+                const expectedTheme = AppTheme.DARK;
+                cold(EMIT_PATTERN).subscribe(() => model.changeAppTheme(expectedTheme));
+                expectObservable(model.appTheme).toBe(EMIT_PATTERN, { a: expectedTheme });
+            });
         });
 
-        test('Should change app theme (full theme)', (done) => {
-            const expectedTheme = DARK_THEME;
+        test('Should change app theme (full translations)', () => {
+            testScheduler.run(({ cold, expectObservable }) => {
+                const theme = AppTheme.DARK;
+                const expectedValue = selectTheme(theme);
+                cold(EMIT_PATTERN).subscribe(() => model.changeAppTheme(theme));
 
-            model.theme.subscribe((data) => {
-                expect(data).toEqual(expectedTheme);
-                done();
+                expectObservable(model.theme).toBe(EMIT_PATTERN, { a: expectedValue });
             });
-
-            model.changeAppTheme(AppTheme.DARK);
         });
     });
 
     describe('setDefaultValue', () => {
-        test('when there is no saved data', (done) => {
+        test('when there is no saved data', () => {
+            const expectedTheme = DEFAULTS.APP_THEME;
             jest.spyOn(cookiesService, 'getFromCookies').mockReturnValue(undefined as any);
 
-            subscribeToAppTheme(DEFAULTS.APP_THEME, done);
-            model.setDefaultValue();
+            testScheduler.run(({ cold, expectObservable }) => {
+                cold(EMIT_PATTERN).subscribe(() => model.setDefaultValue());
+                expectObservable(model.appTheme).toBe(EMIT_PATTERN, { a: expectedTheme });
+            });
         });
 
-        test('when there is a saved data', (done) => {
+        test('when there is a saved data', () => {
             const expectedTheme = AppTheme.DARK;
             jest.spyOn(cookiesService, 'getFromCookies').mockReturnValue(expectedTheme as any);
 
-            subscribeToAppTheme(expectedTheme, done);
-            model.setDefaultValue();
+            testScheduler.run(({ cold, expectObservable }) => {
+                cold(EMIT_PATTERN).subscribe(() => model.setDefaultValue());
+                expectObservable(model.appTheme).toBe(EMIT_PATTERN, { a: expectedTheme });
+            });
         });
     });
 });

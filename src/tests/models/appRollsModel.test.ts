@@ -1,40 +1,42 @@
-import { DiceTypes, TRollExtended } from '../../types';
-import { AppRollModel } from '../../models/AppRollModel';
+import * as cookiesService from '../../services/cookies.service';
+
+import { AppLangs, AppTheme, DiceTypes } from '../../types';
+import { AppLangModel, getLangFromManager } from '../../models/AppLangModel';
+import { TestScheduler } from 'rxjs/testing';
 import { DEFAULTS } from '../../defaults';
+import { AppThemeModel, selectTheme } from '../../models/AppThemeModel';
+import { AppRollModel } from '../../models/AppRollModel';
 
-const ROLL_RESULT_MOCK: TRollExtended = {
-    calculationResult: 10,
-    mod: 2,
-    dice: DiceTypes.D_10,
-    roll: 8,
-};
+const EMIT_PATTERN = '-a';
 
-describe('AppRollsModel', () => {
+describe('AppRollModel', () => {
+    let testScheduler: TestScheduler;
     let model: AppRollModel;
 
     beforeEach(() => {
         model = new AppRollModel();
-    });
-
-    const subscribeRollModSource = (expectedValue: number, done?: jest.DoneCallback) =>
-        model.rollModSource.subscribe((data) => {
-            expect(data).toEqual(expectedValue);
-            done?.();
-        });
-
-    const subscribeExtendedRollSource = (expectedValue: TRollExtended | null, done?: jest.DoneCallback) =>
-        model.extendedRollSource.subscribe((data) => {
-            expect(data).toEqual(expectedValue);
-            done?.();
-        });
-
-    describe('Should clean all', () => {
-        test('extendedRollSource', (done) => {
-            model.extendedRollSource.next(ROLL_RESULT_MOCK);
-            model.cleanAll();
-            subscribeExtendedRollSource(DEFAULTS.EMPTY_ROLL_RESULT, done);
+        testScheduler = new TestScheduler((actual, expected) => {
+            console.log(actual, expected);
+            expect(actual).toEqual(expected);
         });
     });
+
+    test('Should get max by dice type', () => {
+        const dice = DiceTypes.D_20;
+        const max = 20;
+
+        const result = AppRollModel.getMaxByDiceType(dice);
+        expect(result).toEqual(max);
+    });
+
+    // test('Should update roll mod', () => {
+    //     testScheduler.run(({ expectObservable, cold }) => {
+    //         const mod = 6;
+    //         cold(EMIT_PATTERN).subscribe(() => model.updateRollMod(mod));
+
+    //         expectObservable(model.rollModSource).toBe(EMIT_PATTERN, { a: mod });
+    //     });
+    // });
 });
 
 export {};
