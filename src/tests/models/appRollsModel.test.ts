@@ -1,13 +1,22 @@
-import * as cookiesService from '../../services/cookies.service';
+import * as rollsService from '../../services/rolls.service';
 
-import { AppLangs, AppTheme, DiceTypes } from '../../types';
-import { AppLangModel, getLangFromManager } from '../../models/AppLangModel';
+import { DiceTypes, TRoll, TRollExtended } from '../../types';
 import { TestScheduler } from 'rxjs/testing';
 import { DEFAULTS } from '../../defaults';
-import { AppThemeModel, selectTheme } from '../../models/AppThemeModel';
 import { AppRollModel } from '../../models/AppRollModel';
 
 const EMIT_PATTERN = '-a';
+
+const ROLL_MOCK: TRoll = {
+    dice: DiceTypes.D_20,
+    roll: 6,
+};
+
+const ROLL_EXTENDED_NO_MOD_MOCK: TRollExtended = {
+    ...ROLL_MOCK,
+    calculationResult: ROLL_MOCK.roll,
+    mod: DEFAULTS.MOD,
+};
 
 describe('AppRollModel', () => {
     let testScheduler: TestScheduler;
@@ -16,7 +25,7 @@ describe('AppRollModel', () => {
     beforeEach(() => {
         model = new AppRollModel();
         testScheduler = new TestScheduler((actual, expected) => {
-            console.log(actual, expected);
+            console.log('>>', actual, expected);
             expect(actual).toEqual(expected);
         });
     });
@@ -29,14 +38,36 @@ describe('AppRollModel', () => {
         expect(result).toEqual(max);
     });
 
-    // test('Should update roll mod', () => {
-    //     testScheduler.run(({ expectObservable, cold }) => {
-    //         const mod = 6;
-    //         cold(EMIT_PATTERN).subscribe(() => model.updateRollMod(mod));
+    describe('updateRollMod', () => {
+        test.skip('Should be default value on enter', () => {
+            testScheduler.run(({ expectObservable }) => {
+                const mod = DEFAULTS.MOD;
+                expectObservable(model.rollModSource).toBe('a', { a: mod });
+            });
+        });
 
-    //         expectObservable(model.rollModSource).toBe(EMIT_PATTERN, { a: mod });
-    //     });
-    // });
+        test('Should update roll mod', () => {
+            testScheduler.run(({ expectObservable, cold }) => {
+                const mod = 6;
+                cold('-b').subscribe(() => model.updateRollMod(mod));
+                expectObservable(model.rollModSource).toBe('ab', { a: DEFAULTS.MOD, b: mod });
+            });
+        });
+
+        // describe('rollDice', () => {
+        //     test('Should roll a dice', () => {
+        //         jest.spyOn(rollsService, 'rollDices').mockReturnValue([ROLL_MOCK.roll]);
+
+        //         testScheduler.run(({ expectObservable, cold }) => {
+        //             cold('-b').subscribe(() => model.rollDice(ROLL_MOCK.dice));
+        //             const x = null;
+
+        //             model.rollDice(ROLL_MOCK.dice);
+        //             expectObservable(model.extendedRollSource).toBe('ab', { a: x, b: ROLL_EXTENDED_NO_MOD_MOCK });
+        //         });
+        //     });
+        // });
+    });
 });
 
 export {};
