@@ -5,8 +5,6 @@ import { TestScheduler } from 'rxjs/testing';
 import { DEFAULTS } from '../../defaults';
 import { AppRollModel } from '../../models/AppRollModel';
 
-const EMIT_PATTERN = '-a';
-
 const ROLL_MOCK: TRoll = {
     dice: DiceTypes.D_20,
     roll: 6,
