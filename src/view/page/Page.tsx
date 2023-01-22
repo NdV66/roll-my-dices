@@ -27,7 +27,9 @@ export const Page = () => {
                             <ThemeButtonElement />
                         </div>
 
-                        <MainContent />
+                        <div css={themedStyles.mainWrapper}>
+                            <MainContent />
+                        </div>
                     </section>
                 </Content>
 
@@ -52,9 +54,11 @@ const styles = (theme: TTheme) => ({
             );
         }
     `,
-
     theme: css`
         display: flex;
         justify-content: flex-end;
+    `,
+    mainWrapper: css`
+        padding: ${4 * theme.baseSpace}px 0 0 0;
     `,
 });
