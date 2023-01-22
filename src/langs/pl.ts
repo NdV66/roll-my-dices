@@ -23,6 +23,7 @@ export const TEXTS_PL: TTranslations = {
 
     OK: 'OK',
     CANCEL: 'Zamknij',
+    CLEAN: 'Wyczyść wszystko',
 
     D_4: 'k4',
     D_6: 'k6',

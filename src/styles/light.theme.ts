@@ -10,7 +10,8 @@ const COLORS: TColors = {
     secondary: '#907AD6',
     accent: '#4F518C',
     // background: '#DABFFF',
-    background: '#f7f2ff',
+    // background: '#f7f2ff',
+    background: '#efefef',
 };
 
 export const LIGHT_THEME: TTheme = {

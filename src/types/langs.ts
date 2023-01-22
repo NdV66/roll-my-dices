@@ -30,6 +30,7 @@ export type TTranslations = {
 
     OK: string;
     CANCEL: string;
+    CLEAN: string;
 
     D_4: string;
     D_6: string;

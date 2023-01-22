@@ -4,7 +4,7 @@ import { css } from '@emotion/react';
 import { DeleteOutlined } from '@ant-design/icons';
 
 import { TTheme, TTranslations } from '../../../types';
-import { TextButton } from '../../elements';
+import { TextButton } from '..';
 import { DEFAULTS } from '../../../defaults';
 
 type Props = {
@@ -15,7 +15,7 @@ type Props = {
     translations: TTranslations;
 };
 
-export const Buttons: React.FC<Props> = ({ theme, onRemove, onOpen, currentValue, translations }) => {
+export const ModInputModalButtons: React.FC<Props> = ({ theme, onRemove, onOpen, currentValue, translations }) => {
     const themedStyles = styles(theme);
     const isRemoveDisabled = currentValue === DEFAULTS.MOD;
 

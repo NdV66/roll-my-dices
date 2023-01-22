@@ -1,17 +1,16 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 
-import { Layout, ConfigProvider, Alert } from 'antd';
+import { Layout, ConfigProvider } from 'antd';
 import { DEFAULTS } from '../../defaults';
 import { TTheme } from '../../types';
 import { usePageViewModel } from '../../viewModels';
-import { ChangeAppLangElement } from './ChangeAppLangElement';
+import { AppHeader } from './AppHeader';
 import { FooterElement, footerHeight } from './FooterElement';
-import { ModInputElement } from './ModInputElement/ModInputElement';
-import { RollsElement } from './RollsElement';
+import { MainContent } from './MainContent';
 import { ThemeButtonElement } from './ThemeButtonElement';
 
-const { Header, Content } = Layout;
+const { Content } = Layout;
 
 export const Page = () => {
     const { theme, translations, antdTheme } = usePageViewModel();
@@ -20,14 +19,7 @@ export const Page = () => {
     return (
         <ConfigProvider theme={antdTheme}>
             <Layout>
-                <Header css={themedStyles.header}>
-                    <div css={themedStyles.logo}>{translations.APP_NAME}</div>
-                    <ChangeAppLangElement />
-                </Header>
-
-                {DEFAULTS.STILL_IN_DEVELOPMENT && (
-                    <Alert type="info" description={translations.DEV_INFO} css={themedStyles.alert} />
-                )}
+                <AppHeader theme={theme} translations={translations} />
 
                 <Content css={themedStyles.wrapper}>
                     <section>
@@ -35,8 +27,7 @@ export const Page = () => {
                             <ThemeButtonElement />
                         </div>
 
-                        <ModInputElement />
-                        <RollsElement />
+                        <MainContent />
                     </section>
                 </Content>
 
@@ -61,24 +52,9 @@ const styles = (theme: TTheme) => ({
             );
         }
     `,
-    logo: css`
-        font-weight: 700;
-    `,
-    alert: css`
-        margin: ${2 * theme.baseSpace}px;
-    `,
+
     theme: css`
         display: flex;
         justify-content: flex-end;
-    `,
-    header: css`
-        &.ant-layout-header {
-            display: flex;
-            justify-content: space-between;
-            padding-inline: 0;
-            padding: 0 ${2 * theme.baseSpace}px;
-            background: ${theme.accent};
-            color: ${theme.background};
-        }
     `,
 });
