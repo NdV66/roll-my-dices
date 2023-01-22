@@ -1,7 +1,8 @@
 import { useAppContext } from '../context';
+import { AppTheme } from '../types';
 
 export const usePageViewModel = () => {
-    const { theme, translations } = useAppContext();
+    const { theme, translations, appTheme } = useAppContext();
 
     const preparedTheme = {
         token: {
@@ -10,7 +11,7 @@ export const usePageViewModel = () => {
             fontSize: theme.fontSize,
             colorTextBase: theme.primary,
             colorInfo: theme.primary,
-            colorWarning: theme.accent,
+            colorWarning: appTheme === AppTheme.LIGHT ? theme.accent : theme.primary,
             themeError: theme.accent,
         },
     };

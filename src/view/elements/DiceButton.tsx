@@ -43,7 +43,7 @@ const styles = (theme: TTheme) => ({
     dice: (diceType: DiceTypes) => css`
         font-family: ${FONT_FAMILY_BY_DICE_TYPE[diceType]};
         font-size: ${4.5 * theme.fontSize}px;
-        color: ${theme.accent};
+        color: ${theme.primary};
 
         margin-right: -6px;
         user-select: none;
@@ -51,7 +51,6 @@ const styles = (theme: TTheme) => ({
         &:hover {
             font-size: ${6 * theme.fontSize}px;
             transition: font-size 0.3s;
-            color: ${theme.primary};
         }
 
         ${screenMd(css`

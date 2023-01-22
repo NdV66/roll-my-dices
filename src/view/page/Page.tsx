@@ -52,7 +52,6 @@ export const Page = () => {
 };
 
 const headerHeight = 64;
-
 const summaryHeight = headerHeight + footerHeight;
 
 const styles = (theme: TTheme) => ({

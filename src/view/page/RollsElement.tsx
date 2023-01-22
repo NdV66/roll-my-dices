@@ -35,8 +35,8 @@ const styles = (theme: TTheme) => ({
     `,
     info: css`
         text-align: center;
-        color: ${theme.accent};
-        font-size: ${0.8 * theme.fontSize}px;
+        color: ${theme.primary};
+        font-size: ${theme.smallFontSize}px;
     `,
     rollsWrapper: css`
         display: flex;
