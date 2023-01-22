@@ -7,10 +7,11 @@ import { COMMONS } from './commons';
 
 const COLORS: TColors = {
     primary: '#2C2A4A',
-    secondary: '#907AD6',
     accent: '#4F518C',
     // background: '#DABFFF',
-    background: '#f7f2ff',
+    // background: '#f7f2ff',
+    background: '#fff',
+    pageBackground: '#ebecf0',
 };
 
 export const LIGHT_THEME: TTheme = {
