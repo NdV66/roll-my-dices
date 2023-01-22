@@ -22,6 +22,7 @@ export const TEXTS_EN: TTranslations = {
 
     OK: 'OK',
     CANCEL: 'Cancel',
+    CLEAN: 'Clean everything',
 
     D_4: 'd4',
     D_6: 'd6',

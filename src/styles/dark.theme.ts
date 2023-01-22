@@ -1,13 +1,12 @@
 import { TColors, TTheme } from '../types';
 import { COMMONS } from './commons';
 
-//https://coolors.co/00072d-001c55-0a2472-0e6ba8-a6e1fa
-
 const COLORS: TColors = {
-    primary: '#A6E1FA',
-    secondary: '#001C55',
-    accent: '#0E6BA8',
-    background: '#00072D',
+    // accent: '#5727A3',
+    primary: '#9153F4',
+    accent: '#D6C5F0',
+    pageBackground: '#00091e',
+    background: '#001033',
 };
 
 export const DARK_THEME: TTheme = {

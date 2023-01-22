@@ -1,8 +1,7 @@
 import { Modal } from 'antd';
-import { useModInputViewModel } from '../../../viewModels';
-import { ModalFooter } from '../../elements';
-import { Buttons } from './Buttons';
-import { ModalBody } from './ModalBody';
+import { useModInputViewModel } from '../../viewModels';
+import { ModalFooter } from '../elements';
+import { ModInputModalButtons, ModalBody } from '../elements/ModInputElement';
 
 export const ModInputElement = () => {
     const {
@@ -21,7 +20,7 @@ export const ModInputElement = () => {
 
     return (
         <>
-            <Buttons
+            <ModInputModalButtons
                 theme={theme}
                 onOpen={toggleShowInput}
                 onRemove={onRemove}
