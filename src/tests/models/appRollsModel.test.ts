@@ -64,26 +64,66 @@ describe('AppRollModel', () => {
             });
         });
 
-        // test('- there are values (roll and mod)', () => {
-        //     testScheduler.run(({ expectObservable, cold }) => {
-        //         jest.spyOn(rollsService, 'rollDices').mockReturnValue([ROLL_MOCK.roll]);
-        //         model.rollDice(ROLL_MOCK.dice);
-        //         model.updateRollMod(ROLL_EXTENDED_MOCK.mod);
+        test('- there are values (roll and mod)', () => {
+            testScheduler.run(({ expectObservable, cold }) => {
+                jest.spyOn(rollsService, 'rollDices').mockReturnValue([ROLL_MOCK.roll]);
+                model.rollDice(ROLL_MOCK.dice);
+                model.updateRollMod(ROLL_EXTENDED_MOCK.mod);
 
-        //         cold('-b').subscribe(() => model.cleanAll());
+                cold('-b').subscribe(() => model.cleanAll());
 
-        //         expectObservable(model.extendedRollSource).toBe('a(bc)', {
-        //             a: DEFAULTS.EMPTY_ROLL_RESULT,
-        //             b: DEFAULTS.EMPTY_ROLL_RESULT,
-        //             c: DEFAULTS.EMPTY_ROLL_RESULT,
-        //         });
+                expectObservable(model.extendedRollSource).toBe('a(bc)', {
+                    a: ROLL_EXTENDED_MOCK,
+                    b: DEFAULTS.EMPTY_ROLL_RESULT,
+                    c: DEFAULTS.EMPTY_ROLL_RESULT,
+                });
 
-        //         expectObservable(model.rollModSource).toBe('ab', {
-        //             a: DEFAULTS.MOD,
-        //             b: DEFAULTS.MOD,
-        //         });
-        //     });
-        // });
+                expectObservable(model.rollModSource).toBe('ab', {
+                    a: ROLL_EXTENDED_MOCK.mod,
+                    b: DEFAULTS.MOD,
+                });
+            });
+        });
+
+        test('- there is only roll (mod is default)', () => {
+            testScheduler.run(({ expectObservable, cold }) => {
+                jest.spyOn(rollsService, 'rollDices').mockReturnValue([ROLL_MOCK.roll]);
+                model.rollDice(ROLL_MOCK.dice);
+
+                cold('-b').subscribe(() => model.cleanAll());
+
+                expectObservable(model.extendedRollSource).toBe('a(bc)', {
+                    a: ROLL_EXTENDED_NO_MOD_MOCK,
+                    b: DEFAULTS.EMPTY_ROLL_RESULT,
+                    c: DEFAULTS.EMPTY_ROLL_RESULT,
+                });
+
+                expectObservable(model.rollModSource).toBe('ab', {
+                    a: DEFAULTS.MOD,
+                    b: DEFAULTS.MOD,
+                });
+            });
+        });
+
+        test('- there is only mod (roll is default)', () => {
+            testScheduler.run(({ expectObservable, cold }) => {
+                jest.spyOn(rollsService, 'rollDices').mockReturnValue([ROLL_MOCK.roll]);
+                model.updateRollMod(ROLL_EXTENDED_MOCK.mod);
+
+                cold('-b').subscribe(() => model.cleanAll());
+
+                expectObservable(model.extendedRollSource).toBe('a(bc)', {
+                    a: DEFAULTS.EMPTY_ROLL_RESULT,
+                    b: DEFAULTS.EMPTY_ROLL_RESULT,
+                    c: DEFAULTS.EMPTY_ROLL_RESULT,
+                });
+
+                expectObservable(model.rollModSource).toBe('ab', {
+                    a: ROLL_EXTENDED_MOCK.mod,
+                    b: DEFAULTS.MOD,
+                });
+            });
+        });
     });
 
     describe('extendedRollSource', () => {
