@@ -1,4 +1,4 @@
-export const rollRandomBetween = (min: number, max: number) => Math.floor(Math.random() * max) + min;
+import { rollRandomBetween } from './rollRandomBetween.rolls.service';
 
 export const rollDices = (number: number, min: number, max: number) => {
     const array = [...Array(number)];

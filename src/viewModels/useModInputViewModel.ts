@@ -3,11 +3,9 @@ import { useStateWithObservableWithInit } from '../tools';
 import { useMemo } from 'react';
 import { BehaviorSubject, combineLatest, map } from 'rxjs';
 import { DEFAULTS } from '../defaults';
+import { testIfModIsOk } from '../services';
 
 const INITIAL_MOD = '';
-const REGEXP = /^(\+|-){0,1}\d+$/;
-
-const testIfModIsOk = (value: string) => REGEXP.test(value);
 
 export const useModInputViewModel = () => {
     const { theme, translations } = useAppContext();

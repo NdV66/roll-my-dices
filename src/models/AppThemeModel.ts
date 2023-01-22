@@ -2,12 +2,10 @@ import { AppTheme } from '../types';
 import { map, connect, Subject } from 'rxjs';
 
 import { DARK_THEME, LIGHT_THEME } from '../styles';
-import Cookies from 'js-cookie';
-import { DEFAULTS } from '../defaults';
+import { DEFAULTS, COOKIE_THEME_KEY } from '../defaults';
+import { getFromCookies, setCookie } from '../services';
 
-const COOKIE_THEME_KEY = 'themeKey';
-
-const selectTheme = (theme: AppTheme) => (theme === AppTheme.DARK ? DARK_THEME : LIGHT_THEME);
+export const selectTheme = (theme: AppTheme) => (theme === AppTheme.DARK ? DARK_THEME : LIGHT_THEME);
 
 export class AppThemeModel {
     private _appThemeSubject = new Subject<AppTheme>();
@@ -19,16 +17,11 @@ export class AppThemeModel {
     }
 
     private _saveAppThemeInCookieOnChange() {
-        this.appTheme.subscribe((theme) => Cookies.set(COOKIE_THEME_KEY, theme, { sameSite: 'strict' }));
+        this.appTheme.subscribe((value) => setCookie(COOKIE_THEME_KEY, value));
     }
 
-    private _readFromCookie = () => {
-        return Cookies.get(COOKIE_THEME_KEY) as AppTheme;
-    };
-
     public setDefaultValue = () => {
-        const savedTheme = this._readFromCookie();
-
+        const savedTheme = getFromCookies<AppTheme>(COOKIE_THEME_KEY);
         this.changeAppTheme(savedTheme || DEFAULTS.APP_THEME);
     };
 
