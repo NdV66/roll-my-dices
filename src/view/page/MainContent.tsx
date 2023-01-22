@@ -13,20 +13,32 @@ export const MainContent: React.FC = () => {
     const themedStyles = styles(theme);
 
     return (
-        <Card
-            actions={[<CleanEverythingButton key="cleanEverythingButton" />]}
-            title={<ModInputElement />}
-            css={themedStyles.actions}
-        >
+        <Card css={themedStyles.card}>
+            <div css={themedStyles.modButton}>
+                <ModInputElement />
+            </div>
+
             <RollsElement />
+
+            <div css={themedStyles.cleanEverythingButton}>
+                <CleanEverythingButton />
+            </div>
         </Card>
     );
 };
 
 const styles = (theme: TTheme) => ({
-    actions: css`
-        .ant-card-actions {
-            padding: ${theme.baseSpace}px 24px;
+    cleanEverythingButton: css`
+        padding-top: ${2 * theme.baseSpace}px;
+        border-top: 1px solid ${theme.pageBackground};
+    `,
+    modButton: css`
+        padding-bottom: ${2 * theme.baseSpace}px;
+        border-bottom: 1px solid ${theme.pageBackground};
+    `,
+    card: css`
+        .ant-card-head {
+            color: ${theme.accent};
         }
     `,
 });

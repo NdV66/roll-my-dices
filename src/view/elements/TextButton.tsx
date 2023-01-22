@@ -24,19 +24,17 @@ export const TextButton: React.FC<Props> = ({ onClick, theme, children, small, d
     );
 };
 
-const smallSizeMod = 0.8;
-const normalSizeMod = 1;
-
 const styles = (theme: TTheme, small?: boolean) => ({
     button: css`
         user-select: none;
         color: ${theme.accent};
-        font-size: ${(small ? smallSizeMod : normalSizeMod) * theme.fontSize}px;
+        font-size: ${small ? theme.smallFontSize : theme.fontSize}px;
         cursor: pointer;
+        font-weight: 400;
     `,
     disabled: css`
         cursor: default;
         pointer-events: all !important;
-        color: ${theme.secondary};
+        opacity: 0.3;
     `,
 });

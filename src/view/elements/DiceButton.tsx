@@ -42,7 +42,7 @@ const styles = (theme: TTheme) => ({
     `,
     dice: (diceType: DiceTypes) => css`
         font-family: ${FONT_FAMILY_BY_DICE_TYPE[diceType]};
-        font-size: ${5 * theme.fontSize}px;
+        font-size: ${4.5 * theme.fontSize}px;
         color: ${theme.accent};
 
         margin-right: -6px;

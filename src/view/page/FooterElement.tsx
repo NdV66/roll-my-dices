@@ -44,6 +44,7 @@ const styles = (theme: TTheme) => ({
             font-size: ${0.8 * theme.fontSize}px;
             height: ${footerHeight}px;
             padding-left: ${2 * theme.baseSpace}px;
+            background-color: ${theme.pageBackground};
         }
     `,
 });

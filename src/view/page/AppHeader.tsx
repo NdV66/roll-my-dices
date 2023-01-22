@@ -26,7 +26,8 @@ export const AppHeader: React.FC<Props> = ({ theme, translations }) => {
 
 const styles = (theme: TTheme) => ({
     logo: css`
-        font-weight: 700;
+        font-weight: 600;
+        font-size: ${theme.smallFontSize}px;
     `,
     header: css`
         &.ant-layout-header {
@@ -34,8 +35,12 @@ const styles = (theme: TTheme) => ({
             justify-content: space-between;
             padding-inline: 0;
             padding: 0 ${2 * theme.baseSpace}px;
-            background: ${theme.accent};
-            color: ${theme.background};
+            background-color: ${theme.background};
+            color: ${theme.primary};
+        }
+
+        .ant-menu-title-content {
+            font-size: ${theme.smallFontSize}px;
         }
     `,
 });

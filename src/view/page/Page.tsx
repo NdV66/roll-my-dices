@@ -1,8 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 
-import { Layout, ConfigProvider } from 'antd';
-import { DEFAULTS } from '../../defaults';
+import { Layout, ConfigProvider, Col, Row } from 'antd';
 import { TTheme } from '../../types';
 import { usePageViewModel } from '../../viewModels';
 import { AppHeader } from './AppHeader';
@@ -11,6 +10,15 @@ import { MainContent } from './MainContent';
 import { ThemeButtonElement } from './ThemeButtonElement';
 
 const { Content } = Layout;
+
+const columns = {
+    xs: 24,
+    sm: 24,
+    md: 24,
+    lg: 20,
+    xl: 18,
+    xxl: 12,
+};
 
 export const Page = () => {
     const { theme, translations, antdTheme } = usePageViewModel();
@@ -27,9 +35,13 @@ export const Page = () => {
                             <ThemeButtonElement />
                         </div>
 
-                        <div css={themedStyles.mainWrapper}>
-                            <MainContent />
-                        </div>
+                        <Row justify="center">
+                            <Col {...columns}>
+                                <div css={themedStyles.mainWrapper}>
+                                    <MainContent />
+                                </div>
+                            </Col>
+                        </Row>
                     </section>
                 </Content>
 
@@ -40,7 +52,6 @@ export const Page = () => {
 };
 
 const headerHeight = 64;
-const alertHeight = 66;
 
 const summaryHeight = headerHeight + footerHeight;
 
@@ -48,10 +59,8 @@ const styles = (theme: TTheme) => ({
     wrapper: css`
         &.ant-layout-content {
             padding: ${4 * theme.baseSpace}px ${2 * theme.baseSpace}px;
-            min-height: calc(
-                100vh - ${summaryHeight}px -
-                    ${DEFAULTS.STILL_IN_DEVELOPMENT ? alertHeight + 2 * 2 * theme.baseSpace : 0}px
-            );
+            min-height: calc(100vh - ${summaryHeight}px);
+            background: ${theme.pageBackground};
         }
     `,
     theme: css`
