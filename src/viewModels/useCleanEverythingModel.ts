@@ -1,17 +1,18 @@
+import { useMemo } from 'react';
 import { combineLatest, map } from 'rxjs';
-import { appRollModel, getModelByMainTabKey, useAppContext } from '../context';
+import { getModelByMainTabKey, useAppContext } from '../context';
 import { DEFAULTS } from '../defaults';
 import { useStateWithObservableWithInit } from '../tools';
 import { MainContentTab } from '../types';
 
 export const useCleanEverythingModel = (activeMainTab: MainContentTab) => {
-    const { translations, theme } = useAppContext();
+    const rollModel = useMemo(() => getModelByMainTabKey(activeMainTab)!, [activeMainTab]);
 
-    const disabledSource = combineLatest([appRollModel.rollModSource, appRollModel.extendedRollSource]).pipe(
+    const { translations, theme } = useAppContext();
+    const disabledSource = combineLatest([rollModel.rollModSource, rollModel.extendedRollSource]).pipe(
         map(([mod, extendedRoll]) => mod === DEFAULTS.MOD && extendedRoll === null),
     );
-
-    const disabled = useStateWithObservableWithInit<boolean>(disabledSource, true);
+    const disabled = useStateWithObservableWithInit<boolean>(disabledSource, true, [rollModel]);
 
     const onCleanAll = () => {
         const model = getModelByMainTabKey(activeMainTab);
