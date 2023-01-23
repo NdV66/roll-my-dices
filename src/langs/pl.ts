@@ -31,4 +31,7 @@ export const TEXTS_PL: TTranslations = {
     D_10: 'k10',
     D_12: 'k12',
     D_20: 'k20',
+
+    CLASSIC_D20_TAB: 'Kostki klasyczne (d20)',
+    FATE_TAB: 'Kostki Fate',
 };

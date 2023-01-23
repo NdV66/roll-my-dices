@@ -30,4 +30,7 @@ export const TEXTS_EN: TTranslations = {
     D_10: 'd10',
     D_12: 'd12',
     D_20: 'd20',
+
+    CLASSIC_D20_TAB: 'Classic die (d20)',
+    FATE_TAB: 'Fate die',
 };
