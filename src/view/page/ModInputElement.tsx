@@ -1,9 +1,14 @@
 import { Modal } from 'antd';
+import { MainContentTab } from '../../types';
 import { useModInputViewModel } from '../../viewModels';
 import { ModalFooter } from '../elements';
 import { ModInputModalButtons, ModalBody } from '../elements/ModInputElement';
 
-export const ModInputElement = () => {
+type Props = {
+    activeMainTab: MainContentTab;
+};
+
+export const ModInputElement: React.FC<Props> = ({ activeMainTab }) => {
     const {
         theme,
         translations,
@@ -16,7 +21,7 @@ export const ModInputElement = () => {
         isCurrentValueOk,
         onCloseModal,
         toggleShowInput,
-    } = useModInputViewModel();
+    } = useModInputViewModel(activeMainTab);
 
     return (
         <>

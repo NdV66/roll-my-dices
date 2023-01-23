@@ -40,7 +40,7 @@ describe('prepareExtendedRoll', () => {
     };
 
     test('Should return null if there is no roll', () => {
-        const result = prepareExtendedRoll([null, null]);
+        const result = prepareExtendedRoll(null, null);
         expect(result).toBeNull();
     });
 
@@ -51,7 +51,7 @@ describe('prepareExtendedRoll', () => {
             mod: DEFAULTS.MOD,
         };
 
-        const result = prepareExtendedRoll([rollModel, null]);
+        const result = prepareExtendedRoll(rollModel, null);
         expect(result).toEqual(expectedValue);
     });
 
@@ -63,7 +63,7 @@ describe('prepareExtendedRoll', () => {
             mod,
         };
 
-        const result = prepareExtendedRoll([rollModel, mod]);
+        const result = prepareExtendedRoll(rollModel, mod);
         expect(result).toEqual(expectedValue);
     });
 });

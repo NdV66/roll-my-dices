@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { BehaviorSubject } from 'rxjs';
-import { appRollModel, useAppContext } from '../context';
+import { appFateRollModel, appRollModel, useAppContext } from '../context';
 import { DEFAULTS } from '../defaults';
 import { useStateWithObservableWithInit } from '../tools';
 import { MainContentTab, TabList } from '../types';
@@ -14,7 +14,9 @@ export const useMainContentViewModel = () => {
 
     const setActiveTabKey = (tab: MainContentTab) => {
         activeTabKeySource.next(tab);
+
         appRollModel.cleanAll();
+        appFateRollModel.cleanAll();
     };
 
     return {

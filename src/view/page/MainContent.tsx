@@ -8,14 +8,14 @@ import { MainContentCardBodyTemplate } from '../elements';
 import { FateElement } from './FateElement';
 import { RollsElement } from './RollsElement';
 
-const getContentList = (theme: TTheme): Record<string, React.ReactNode> => ({
+const getContentList = (theme: TTheme, activeMainTab: MainContentTab): Record<string, React.ReactNode> => ({
     [MainContentTab.CLASSIC_D20]: (
-        <MainContentCardBodyTemplate theme={theme}>
+        <MainContentCardBodyTemplate theme={theme} activeMainTab={activeMainTab}>
             <RollsElement />
         </MainContentCardBodyTemplate>
     ),
     [MainContentTab.FATE]: (
-        <MainContentCardBodyTemplate theme={theme}>
+        <MainContentCardBodyTemplate theme={theme} activeMainTab={activeMainTab}>
             <FateElement />
         </MainContentCardBodyTemplate>
     ),
@@ -24,7 +24,8 @@ const getContentList = (theme: TTheme): Record<string, React.ReactNode> => ({
 export const MainContent: React.FC = () => {
     const { theme, activeTabKey, setActiveTabKey, translatedTabList } = useMainContentViewModel();
     const themedStyles = styles(theme);
-    const contentList = getContentList(theme);
+
+    const contentList = getContentList(theme, activeTabKey);
 
     return (
         <Card

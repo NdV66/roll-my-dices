@@ -5,14 +5,16 @@ import { Button } from 'antd';
 import { useFateElementViewModel } from '../../viewModels/useFateElementViewModel';
 
 export const FateElement: React.FC = () => {
-    const { translations, rollDie } = useFateElementViewModel();
+    const { translations, rollDie, roll } = useFateElementViewModel();
     // const themedStyles = styles(theme);
 
     return (
         <>
             <div>{translations.APP_NAME}</div>
-
-            <Button onClick={rollDie}>test</Button>
+            <div>{roll?.allRolls}</div>
+            <div>MOD: {roll?.mod}</div>
+            <div>RESULT: {roll?.calculationResult}</div>
+            <Button onClick={rollDie}>roll fate TEST</Button>
         </>
     );
 };

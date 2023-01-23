@@ -31,7 +31,6 @@ describe('AppRollModel', () => {
     beforeEach(() => {
         model = new AppRollModel();
         testScheduler = new TestScheduler((actual, expected) => {
-            console.log(actual, expected);
             expect(actual).toEqual(expected);
         });
     });

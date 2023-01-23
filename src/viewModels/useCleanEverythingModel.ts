@@ -1,9 +1,10 @@
 import { combineLatest, map } from 'rxjs';
-import { appRollModel, useAppContext } from '../context';
+import { appRollModel, getModelByMainTabKey, useAppContext } from '../context';
 import { DEFAULTS } from '../defaults';
 import { useStateWithObservableWithInit } from '../tools';
+import { MainContentTab } from '../types';
 
-export const useCleanEverythingModel = () => {
+export const useCleanEverythingModel = (activeMainTab: MainContentTab) => {
     const { translations, theme } = useAppContext();
 
     const disabledSource = combineLatest([appRollModel.rollModSource, appRollModel.extendedRollSource]).pipe(
@@ -13,7 +14,8 @@ export const useCleanEverythingModel = () => {
     const disabled = useStateWithObservableWithInit<boolean>(disabledSource, true);
 
     const onCleanAll = () => {
-        appRollModel.cleanAll();
+        const model = getModelByMainTabKey(activeMainTab);
+        model?.cleanAll();
     };
 
     return {
