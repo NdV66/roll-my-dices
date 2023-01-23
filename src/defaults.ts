@@ -17,7 +17,7 @@ export const DEFAULTS = {
     MOD: 0,
 
     SHOW_INPUT_MOD_ON_ENTER: false,
-    MAIN_CONTENT: MainContentTab.CLASSIC_D20, //TODO: for test only!
+    MAIN_CONTENT: MainContentTab.FATE, //TODO: for test only!
 
     REPO_URL: 'https://github.com/NdV66/roll-my-dices',
 };
@@ -43,7 +43,7 @@ export const FONT_FAMILY_BY_DICE_TYPE = {
 };
 
 export const ROLLS_RESULTS_FONTS = {
-    [DiceTypes.FATE]: [],
+    [DiceTypes.FATE]: ['_', '"', 'O'],
     [DiceTypes.D_4]: ['!', '@', '#', '$'],
     [DiceTypes.D_6]: ['A', 'B', 'C', 'D', 'E', 'F'],
     [DiceTypes.D_8]: ['A', 'B ', 'C', 'D', 'E', 'F', 'G', 'H'],

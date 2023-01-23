@@ -18,7 +18,7 @@ export const MainContentCardBodyTemplate: React.FC<PropsWithChildren<Props>> = (
         <>
             <ModInputElement activeMainTab={activeMainTab} />
 
-            {children}
+            <div css={themedStyles.content}>{children}</div>
 
             <div css={themedStyles.cleanEverythingButton}>
                 <CleanEverythingButton activeMainTab={activeMainTab} />
@@ -30,5 +30,8 @@ export const MainContentCardBodyTemplate: React.FC<PropsWithChildren<Props>> = (
 const styles = (theme: TTheme) => ({
     cleanEverythingButton: css`
         padding-top: ${2 * theme.baseSpace}px;
+    `,
+    content: css`
+        padding-top: ${6 * theme.baseSpace}px;
     `,
 });

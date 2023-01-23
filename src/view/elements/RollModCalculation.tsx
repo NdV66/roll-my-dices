@@ -15,12 +15,18 @@ export const RollModCalculation: React.FC<Props> = ({ mod, calculationResult, th
 
     return (
         <div css={themedStyles.wrapper}>
-            {detectSign(mod)} {Math.abs(mod)} = <span css={themedStyles.result}>{calculationResult}</span>
+            <span css={themedStyles.sign}>{detectSign(mod)} </span>
+            {Math.abs(mod)}
+            <span css={themedStyles.sign}>=</span>
+            <span css={themedStyles.result}>{calculationResult}</span>
         </div>
     );
 };
 
 const styles = (theme: TTheme) => ({
+    sign: css`
+        margin: 0 ${0.5 * theme.fontSize}px;
+    `,
     wrapper: css`
         user-select: none;
         color: ${theme.primary};

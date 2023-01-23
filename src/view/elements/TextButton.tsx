@@ -31,6 +31,11 @@ const styles = (theme: TTheme, small?: boolean) => ({
         font-size: ${small ? theme.smallFontSize : theme.fontSize}px;
         cursor: pointer;
         font-weight: 400;
+
+        &:hover,
+        &:active {
+            font-weight: 700;
+        }
     `,
     disabled: css`
         cursor: default;

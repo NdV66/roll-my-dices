@@ -18,16 +18,3 @@ export const rollFateDices = (): FateDicesType => {
     const numberRolls = rollDices(FATE.DICE_NUMBERS, FATE.MIN, FATE.MAX);
     return numberRolls.map(translateToFate);
 };
-
-//TODO: tests
-const translateToFateChar = (roll: number) => {
-    if (roll === FATE.MINUS) {
-        return FATE.SIGNS.MINUS;
-    } else if (roll === FATE.PLUS) {
-        return FATE.SIGNS.PLUS;
-    }
-    return FATE.SIGNS.NEUTRAL;
-};
-
-//TODO: tests
-export const translateFateRolls = (rolls: FateDicesType) => rolls.map(translateToFateChar);

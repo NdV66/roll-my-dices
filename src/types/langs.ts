@@ -35,5 +35,7 @@ export type TTranslations = {
     CLASSIC_D20_TAB: string;
     FATE_TAB: string;
 
+    FATE_ROLL: string;
+
     [key: string]: string | TTranslationsLang[];
 };

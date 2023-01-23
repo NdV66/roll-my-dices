@@ -27,7 +27,3 @@ export type TFateRoll = TRoll & {
 };
 
 export type TFateRollExtended = TRollExtended & TFateRoll;
-
-export type TFateRollInfo = TFateRollExtended & {
-    displayValue: string;
-};
