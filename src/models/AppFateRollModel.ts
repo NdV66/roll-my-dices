@@ -13,7 +13,7 @@ export class AppFateRollModel extends AbstractRollModel<TFateRoll, TFateRollExte
 
         const result: TFateRoll = {
             allRolls: rolls,
-            dice: DiceTypes.D_6,
+            dice: DiceTypes.FATE,
             roll: summaryRolls(rolls),
         };
 

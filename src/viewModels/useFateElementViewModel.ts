@@ -5,7 +5,7 @@ import { DEFAULTS } from '../defaults';
 import { useStateWithObservableWithInit } from '../tools';
 
 export const useFateElementViewModel = () => {
-    const { translations } = useAppContext();
+    const { translations, theme } = useAppContext();
     const roll = useStateWithObservableWithInit(appFateRollModel.extendedRollSource, DEFAULTS.EMPTY_ROLL_RESULT);
 
     const rollDie = () => {
@@ -16,5 +16,6 @@ export const useFateElementViewModel = () => {
         translations,
         rollDie,
         roll,
+        theme,
     };
 };

@@ -32,13 +32,6 @@ export type TTranslations = {
     CANCEL: string;
     CLEAN: string;
 
-    D_4: string;
-    D_6: string;
-    D_8: string;
-    D_10: string;
-    D_12: string;
-    D_20: string;
-
     CLASSIC_D20_TAB: string;
     FATE_TAB: string;
 

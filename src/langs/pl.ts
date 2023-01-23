@@ -25,13 +25,6 @@ export const TEXTS_PL: TTranslations = {
     CANCEL: 'Zamknij',
     CLEAN: 'Wyczyść wszystko',
 
-    D_4: 'k4',
-    D_6: 'k6',
-    D_8: 'k8',
-    D_10: 'k10',
-    D_12: 'k12',
-    D_20: 'k20',
-
     CLASSIC_D20_TAB: 'Kostki klasyczne (d20)',
     FATE_TAB: 'Kostki Fate',
 };

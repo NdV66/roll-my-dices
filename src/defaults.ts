@@ -23,6 +23,7 @@ export const DEFAULTS = {
 };
 
 export const DICE_TYPES_MAX = new Map([
+    [DiceTypes.FATE, 6],
     [DiceTypes.D_4, 4],
     [DiceTypes.D_6, 6],
     [DiceTypes.D_8, 8],
@@ -32,6 +33,7 @@ export const DICE_TYPES_MAX = new Map([
 ]);
 
 export const FONT_FAMILY_BY_DICE_TYPE = {
+    [DiceTypes.FATE]: 'DiceD6',
     [DiceTypes.D_4]: 'DiceD4',
     [DiceTypes.D_6]: 'DiceD6',
     [DiceTypes.D_8]: 'DiceD8',
@@ -41,6 +43,7 @@ export const FONT_FAMILY_BY_DICE_TYPE = {
 };
 
 export const ROLLS_RESULTS_FONTS = {
+    [DiceTypes.FATE]: [],
     [DiceTypes.D_4]: ['!', '@', '#', '$'],
     [DiceTypes.D_6]: ['A', 'B', 'C', 'D', 'E', 'F'],
     [DiceTypes.D_8]: ['A', 'B ', 'C', 'D', 'E', 'F', 'G', 'H'],
