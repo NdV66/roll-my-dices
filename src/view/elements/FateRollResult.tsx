@@ -70,5 +70,9 @@ const styles = (theme: TTheme) => ({
     rawResult: () => css`
         font-size: ${3.5 * theme.fontSize}px;
         color: ${theme.primary};
+
+        ${screenMd(css`
+            font-size: ${2 * theme.fontSize}px;
+        `)}
     `,
 });
