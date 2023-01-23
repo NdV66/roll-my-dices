@@ -31,6 +31,7 @@ const styles = (theme: TTheme) => ({
         align-items: center;
     `,
     button: css`
+        user-select: none;
         display: inline-block;
         margin-top: ${3 * theme.fontSize}px;
         cursor: pointer;
