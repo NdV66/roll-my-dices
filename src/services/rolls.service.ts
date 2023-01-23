@@ -9,4 +9,4 @@ export const rollDices = (number: number, min: number, max: number) => {
 export const summaryRolls = (rolls: number[]) => rolls.reduce((prev, current) => prev + current, 0);
 
 //TODO: tests
-export const calcSummaryRolls = (rolls: number[], mod?: string) => summaryRolls(rolls) + (mod ? parseInt(mod, 10) : 0);
+export const calcSummaryRolls = (rolls: number[], mod: number) => summaryRolls(rolls) + mod;

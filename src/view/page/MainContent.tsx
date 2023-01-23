@@ -5,6 +5,7 @@ import Card from 'antd/es/card/Card';
 import { MainContentTab, TTheme } from '../../types';
 import { useMainContentViewModel } from '../../viewModels/useMainContentViewModel';
 import { MainContentCardBodyTemplate } from '../elements';
+import { FateElement } from './FateElement';
 import { RollsElement } from './RollsElement';
 
 const getContentList = (theme: TTheme): Record<string, React.ReactNode> => ({
@@ -15,7 +16,7 @@ const getContentList = (theme: TTheme): Record<string, React.ReactNode> => ({
     ),
     [MainContentTab.FATE]: (
         <MainContentCardBodyTemplate theme={theme}>
-            <div>fate here</div>
+            <FateElement />
         </MainContentCardBodyTemplate>
     ),
 });

@@ -19,10 +19,15 @@ export const rollFateDices = (): FateDicesType => {
     return numberRolls.map(translateToFate);
 };
 
-// const rolls = rollFateDices();
+//TODO: tests
+const translateToFateChar = (roll: number) => {
+    if (roll === FATE.MINUS) {
+        return FATE.SIGNS.MINUS;
+    } else if (roll === FATE.PLUS) {
+        return FATE.SIGNS.PLUS;
+    }
+    return FATE.SIGNS.NEUTRAL;
+};
 
-// const summary = calcSummaryRolls(rolls, value);
-// const displayRolls = translateFateRolls(rolls);
-
-// setDisplayRolls(displayRolls);
-// setResult(summary);
+//TODO: tests
+export const translateFateRolls = (rolls: FateDicesType) => rolls.map(translateToFateChar);
