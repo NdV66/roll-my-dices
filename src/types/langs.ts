@@ -52,4 +52,6 @@ export type TTranslations = {
         { [FateLeader.TERRIBLE]: string },
         { [FateLeader.NOT_FOUND]: string },
     ];
+
+    [key: string]: string | any;
 };
