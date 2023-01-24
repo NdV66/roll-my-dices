@@ -1,3 +1,18 @@
 export type FateDiceType = -1 | 0 | 1;
 
 export type FateDicesType = FateDiceType[];
+
+export enum FateLeader {
+    LEGENDARY = 'LEGENDARY',
+    EPIC = 'EPIC',
+    FANTASTIC = 'FANTASTIC',
+    SUPERB = 'SUPERB',
+    GREAT = 'GREAT',
+    GOOD = 'GOOD',
+    FAIR = 'FAIR',
+    AVERAGE = 'AVERAGE',
+    MEDIOCRE = 'MEDIOCRE',
+    POOR = 'POOR',
+    TERRIBLE = 'TERRIBLE',
+    NOT_FOUND = 'NOT_FOUND',
+}

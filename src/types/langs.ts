@@ -1,3 +1,5 @@
+import { FateLeader } from './fate';
+
 export const enum AppLangs {
     EN = 'en-EN',
     PL = 'pl-PL',
@@ -36,6 +38,18 @@ export type TTranslations = {
     FATE_TAB: string;
 
     FATE_ROLL: string;
-
-    [key: string]: string | TTranslationsLang[];
+    FATE_LEADER: [
+        { [FateLeader.LEGENDARY]: string },
+        { [FateLeader.EPIC]: string },
+        { [FateLeader.FANTASTIC]: string },
+        { [FateLeader.SUPERB]: string },
+        { [FateLeader.GREAT]: string },
+        { [FateLeader.GOOD]: string },
+        { [FateLeader.FAIR]: string },
+        { [FateLeader.AVERAGE]: string },
+        { [FateLeader.MEDIOCRE]: string },
+        { [FateLeader.POOR]: string },
+        { [FateLeader.TERRIBLE]: string },
+        { [FateLeader.NOT_FOUND]: string },
+    ];
 };

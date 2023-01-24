@@ -1,4 +1,4 @@
-import { TTranslations } from '../types';
+import { FateLeader, TTranslations } from '../types';
 import { LANGS } from './langs';
 
 export const TEXTS_PL: TTranslations = {
@@ -29,4 +29,18 @@ export const TEXTS_PL: TTranslations = {
     FATE_TAB: 'Kostki Fate',
 
     FATE_ROLL: 'Rzucaj',
+    FATE_LEADER: [
+        { [FateLeader.LEGENDARY]: 'legendarny' },
+        { [FateLeader.EPIC]: 'heroiczny' },
+        { [FateLeader.FANTASTIC]: 'fantastyczny' },
+        { [FateLeader.SUPERB]: 'wybitny' },
+        { [FateLeader.GREAT]: 'świetny' },
+        { [FateLeader.GOOD]: 'dobry' },
+        { [FateLeader.FAIR]: 'niezły' },
+        { [FateLeader.AVERAGE]: 'przeciętny' },
+        { [FateLeader.MEDIOCRE]: 'słaby' },
+        { [FateLeader.POOR]: 'mierny' },
+        { [FateLeader.TERRIBLE]: 'fatalny' },
+        { [FateLeader.NOT_FOUND]: 'Poza skalą' },
+    ],
 };
