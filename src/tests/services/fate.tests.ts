@@ -1,6 +1,8 @@
 import { FATE } from '../../defaults';
-import { mapResultToLeader } from '../../services';
+import { mapResultToLeader, prepareExtendedFateRoll, rollFateDices, translateToFate } from '../../services';
 import { FateLeader } from '../../types';
+import { FATE_ROLL, FATE_ROLL_EXTENDED_NO_MOD_MOCK, FATE_ROLL_EXTENDED_WITH_MOD_MOCK } from '../models/mocks';
+import * as tools from '../../services/rolls.service';
 
 describe('mapResultToLeader', () => {
     test('Should map result to the Fate leader correctly', () => {
@@ -15,5 +17,45 @@ describe('mapResultToLeader', () => {
 });
 
 describe('prepareExtendedFateRoll', () => {
-    test('Should prepare extended fate roll', () => {});
+    test('Should prepare extended fate roll (no mod)', () => {
+        const result = prepareExtendedFateRoll(FATE_ROLL, FATE_ROLL_EXTENDED_NO_MOD_MOCK.mod);
+        expect(result).toEqual(FATE_ROLL_EXTENDED_NO_MOD_MOCK);
+    });
+
+    test('Should prepare extended fate roll (with mod)', () => {
+        const result = prepareExtendedFateRoll(FATE_ROLL, FATE_ROLL_EXTENDED_WITH_MOD_MOCK.mod);
+        expect(result).toEqual(FATE_ROLL_EXTENDED_WITH_MOD_MOCK);
+    });
+});
+
+describe('translateToFate', () => {
+    const testCase = (rolls: number[], expectedNumber: number) => {
+        for (const roll of rolls) {
+            const result = translateToFate(roll);
+            expect(result).toEqual(expectedNumber);
+        }
+    };
+
+    test('Should translate to -1', () => {
+        testCase(FATE.TRANSLATE_FOR_MINUS, FATE.MINUS);
+    });
+
+    test('Should translate to +1', () => {
+        testCase(FATE.TRANSLATE_FOR_PLUS, FATE.PLUS);
+    });
+
+    test('Should translate to 0', () => {
+        testCase(FATE.TRANSLATE_FOR_NEUTRAL, FATE.NEUTRAL);
+    });
+});
+
+describe('rollFateDices', () => {
+    test('Should roll Fate dice (only -1, 0 and 1 as result)', () => {
+        const rolls = [1, 4, 6, 3];
+        const expectedResult = [-1, 0, 1, 0];
+
+        jest.spyOn(tools, 'rollDices').mockReturnValue(rolls);
+        const result = rollFateDices();
+        expect(result).toEqual(expectedResult);
+    });
 });
