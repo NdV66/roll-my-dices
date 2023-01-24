@@ -24,8 +24,8 @@ export const TEXTS_EN: TTranslations = {
     CANCEL: 'Cancel',
     CLEAN: 'Clean everything',
 
-    CLASSIC_D20_TAB: 'Classic die (d20)',
-    FATE_TAB: 'Fate die',
+    CLASSIC_D20_TAB: 'Classic (d20)',
+    FATE_TAB: 'Fate',
 
     FATE_ROLL: 'Roll',
 };
