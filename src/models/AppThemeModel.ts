@@ -9,6 +9,7 @@ export const selectTheme = (theme: AppTheme) => (theme === AppTheme.DARK ? DARK_
 
 export class AppThemeModel {
     private _appThemeSubject = new Subject<AppTheme>();
+
     public appTheme = this._appThemeSubject.pipe(connect(() => this._appThemeSubject));
     public theme = this.appTheme.pipe(map(selectTheme));
 

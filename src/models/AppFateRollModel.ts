@@ -8,15 +8,17 @@ export class AppFateRollModel extends AbstractRollModel<TFateRoll, TFateRollExte
         return prepareExtendedFateRoll(roll, mod);
     }
 
-    public rollDice = () => {
+    protected prepareRollResult = () => {
         const rolls = rollFateDices();
 
-        const result: TFateRoll = {
+        return {
             allRolls: rolls,
             dice: DiceTypes.FATE,
             roll: summaryRolls(rolls),
         };
-
-        this._rollSource.next(result);
     };
+
+    public rollDice(): void {
+        super.rollDice(DiceTypes.FATE);
+    }
 }

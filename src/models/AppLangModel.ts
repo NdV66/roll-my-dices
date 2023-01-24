@@ -8,6 +8,7 @@ export const getLangFromManager = (lang: AppLangs) => LangManager.getSingleton<T
 
 export class AppLangModel {
     private _appLangSubject = new Subject<AppLangs>();
+
     public appLang = this._appLangSubject.pipe(connect(() => this._appLangSubject));
     public translations = this._appLangSubject.pipe(map(getLangFromManager));
 

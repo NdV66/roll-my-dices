@@ -4,29 +4,37 @@ import { DEFAULTS, DICE_TYPES_MAX } from '../defaults';
 
 export abstract class AbstractRollModel<R extends TRoll, E extends TRollExtended> {
     protected _rollSource = new BehaviorSubject<R | null>(DEFAULTS.EMPTY_ROLL_RESULT);
-    public rollModSource = new BehaviorSubject<number>(DEFAULTS.MOD);
-    public extendedRollSource = new BehaviorSubject<E | null>(DEFAULTS.EMPTY_ROLL_RESULT);
+    private _rollModSource = new BehaviorSubject<number>(DEFAULTS.MOD);
+    private _extendedRollSource = new BehaviorSubject<E | null>(DEFAULTS.EMPTY_ROLL_RESULT);
+
+    public rollModSource = this._rollModSource.asObservable();
+    public extendedRollSource = this._extendedRollSource.asObservable();
+
+    protected abstract prepareExtendedRoll([roll, mod]: [R | null, number | null]): E | null;
+    protected abstract prepareRollResult(diceType: DiceTypes): R;
 
     constructor() {
         this._calcExtendedRollSubscribe();
     }
 
-    abstract rollDice(diceType: DiceTypes): void;
-    protected abstract prepareExtendedRoll([roll, mod]: [R | null, number | null]): E | null;
-
     private _calcExtendedRollSubscribe() {
         combineLatest([this._rollSource, this.rollModSource])
             .pipe(map(this.prepareExtendedRoll))
-            .subscribe((extendedRoll) => this.extendedRollSource.next(extendedRoll));
+            .subscribe((extendedRoll) => this._extendedRollSource.next(extendedRoll));
+    }
+
+    public rollDice(diceType: DiceTypes) {
+        const result = this.prepareRollResult(diceType);
+        this._rollSource.next(result);
     }
 
     public cleanAll = () => {
         this._rollSource.next(DEFAULTS.EMPTY_ROLL_RESULT);
-        this.rollModSource.next(DEFAULTS.MOD);
+        this._rollModSource.next(DEFAULTS.MOD);
     };
 
     public updateRollMod = (mod: number) => {
-        this.rollModSource.next(mod);
+        this._rollModSource.next(mod);
     };
 
     static getMaxByDiceType(diceType: DiceTypes) {

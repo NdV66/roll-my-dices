@@ -8,15 +8,13 @@ export class AppRollModel extends AbstractRollModel<TRoll, TRollExtended> {
         return prepareExtendedRoll(roll, mod);
     }
 
-    public rollDice = (diceType: DiceTypes) => {
+    protected prepareRollResult = (diceType: DiceTypes) => {
         const max = DICE_TYPES_MAX.get(diceType)!;
         const rolls = rollDices(DEFAULTS.DICE_NUMBER, DEFAULTS.DICE_MIN, max);
 
-        const result: TRoll = {
+        return {
             dice: diceType,
             roll: rolls[0],
         };
-
-        this._rollSource.next(result);
     };
 }
