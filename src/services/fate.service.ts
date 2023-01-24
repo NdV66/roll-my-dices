@@ -1,5 +1,5 @@
-import { DEFAULTS, FATE } from '../defaults';
-import { FateDicesType, FateDiceType, FateLeader, TFateRoll } from '../types';
+import { DEFAULTS, FATE, NO_DICE_FOUND_ERROR, ROLLS_RESULTS_FONTS } from '../defaults';
+import { DiceTypes, FateDicesType, FateDiceType, FateLeader, TFateRoll } from '../types';
 import { calcSummaryRolls, rollDices } from './rolls.service';
 
 export const translateToFate = (roll: number): FateDiceType => {
@@ -29,4 +29,15 @@ export const prepareExtendedFateRoll = (roll: TFateRoll | null, mod: number | nu
             mod: modValue,
         }
     );
+};
+
+export const mapFateToDice = (rawResult: number) => {
+    const diceSet = ROLLS_RESULTS_FONTS[DiceTypes.FATE];
+    const index = rawResult + 1;
+
+    if (index >= diceSet.length) {
+        throw NO_DICE_FOUND_ERROR;
+    }
+
+    return diceSet[index];
 };

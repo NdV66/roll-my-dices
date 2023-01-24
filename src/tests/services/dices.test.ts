@@ -1,5 +1,5 @@
 import { DEFAULTS, ERROR_CODES, ROLLS_RESULTS_FONTS } from '../../defaults';
-import { mapRollToDice, prepareExtendedRoll } from '../../services';
+import { mapRollToDice, prepareExtendedRoll } from '../../services/dices.service';
 import { DiceTypes, TRoll, TRollExtended } from '../../types';
 
 describe('mapRollToDice', () => {
