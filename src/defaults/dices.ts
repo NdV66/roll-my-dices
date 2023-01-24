@@ -1,26 +1,4 @@
-import { LIGHT_THEME } from './styles/light.theme';
-import { AppLangs, AppTheme, DiceTypes, MainContentTab } from './types';
-
-export const COOKIE_THEME_KEY = 'themeKey';
-export const COOKIE_LANG_KEY = 'langKey';
-
-export const DEFAULTS = {
-    APP_THEME: AppTheme.LIGHT,
-    THEME: LIGHT_THEME,
-    LANG: AppLangs.EN,
-    LANGS_AMOUNT: 2,
-
-    EMPTY_ROLL_RESULT: null,
-
-    DICE_MIN: 1,
-    DICE_NUMBER: 1,
-    MOD: 0,
-
-    SHOW_INPUT_MOD_ON_ENTER: false,
-    MAIN_CONTENT: MainContentTab.FATE, //TODO: for test only!
-
-    REPO_URL: 'https://github.com/NdV66/roll-my-dices',
-};
+import { DiceTypes } from '../types';
 
 export const DICE_TYPES_MAX = new Map([
     [DiceTypes.FATE, 6],
@@ -77,29 +55,4 @@ export const ROLLS_RESULTS_FONTS = {
         'Y',
         'Z',
     ],
-};
-
-export enum ERROR_CODES {
-    'NO_DICE_FOUND' = 'No dice sign found',
-}
-
-export const FATE = {
-    PLUS: 1,
-    MINUS: -1,
-    NEUTRAL: 0,
-
-    DICE_NUMBERS: 4,
-
-    TRANSLATE_FOR_MINUS: [1, 2],
-    TRANSLATE_FOR_NEUTRAL: [3, 4],
-    TRANSLATE_FOR_PLUS: [5, 6],
-
-    MIN: 1,
-    MAX: 6,
-
-    SIGNS: {
-        PLUS: '+',
-        MINUS: '-',
-        NEUTRAL: '',
-    },
 };
