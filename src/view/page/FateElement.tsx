@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+import { screenMd } from '../../styles';
 
 import { DiceTypes, TTheme } from '../../types';
 
@@ -51,6 +52,10 @@ const styles = (theme: TTheme) => ({
             background-color: ${theme.accent};
             transition: background-color 0.3s;
         }
+
+        ${screenMd(css`
+            padding: ${theme.baseSpace}px ${3 * theme.baseSpace}px;
+        `)}
     `,
     fateLeaderButton: css`
         margin-top: ${2 * theme.baseSpace}px;
