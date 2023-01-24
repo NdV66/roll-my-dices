@@ -29,6 +29,11 @@ describe('AbstractRollModel', () => {
         expect(result).toEqual(max);
     });
 
+    test('Should call protected prepareRollResult(), when rollDice() is called', () => {
+        model.rollDice(DiceTypes.D_20);
+        expect(model['prepareRollResult']).toHaveBeenCalled();
+    });
+
     describe('updateRollMod', () => {
         test('Should be default value on enter', () => {
             testScheduler.run(({ expectObservable }) => {
