@@ -1,9 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+
 import { screenMd } from '../../styles';
-
 import { DiceTypes, TTheme } from '../../types';
-
 import { useFateElementViewModel } from '../../viewModels/useFateElementViewModel';
 import { NoRollResult } from '../elements';
 import { FateRollResult } from '../elements/FateRollResult';

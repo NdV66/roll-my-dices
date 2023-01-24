@@ -1,6 +1,6 @@
-import { FATE } from '../defaults';
-import { FateDicesType, FateDiceType, FateLeader } from '../types';
-import { rollDices } from './rolls.service';
+import { DEFAULTS, FATE } from '../defaults';
+import { FateDicesType, FateDiceType, FateLeader, TFateRoll } from '../types';
+import { calcSummaryRolls, rollDices } from './rolls.service';
 
 //TODO: tests
 export const translateToFate = (roll: number): FateDiceType => {
@@ -19,5 +19,17 @@ export const rollFateDices = (): FateDicesType => {
     return numberRolls.map(translateToFate);
 };
 
-//TODO: tests
 export const mapResultToLeader = (roll: number) => FATE.LEADER.get(roll) || FateLeader.NOT_FOUND;
+
+//TODO: add tests
+export const prepareExtendedFateRoll = (roll: TFateRoll | null, mod: number | null) => {
+    const modValue = mod || DEFAULTS.MOD;
+
+    return (
+        roll && {
+            ...roll,
+            calculationResult: calcSummaryRolls(roll.allRolls, modValue),
+            mod: modValue,
+        }
+    );
+};
