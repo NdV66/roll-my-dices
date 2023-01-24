@@ -1,5 +1,5 @@
 import { FATE } from '../defaults';
-import { FateDicesType, FateDiceType } from '../types';
+import { FateDicesType, FateDiceType, FateLeader } from '../types';
 import { rollDices } from './rolls.service';
 
 //TODO: tests
@@ -18,3 +18,6 @@ export const rollFateDices = (): FateDicesType => {
     const numberRolls = rollDices(FATE.DICE_NUMBERS, FATE.MIN, FATE.MAX);
     return numberRolls.map(translateToFate);
 };
+
+//TODO: tests
+export const mapResultToLeader = (roll: number) => FATE.LEADER.get(roll) || FateLeader.NOT_FOUND;

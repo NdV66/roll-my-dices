@@ -6,13 +6,14 @@ import { DiceTypes, TTheme } from '../../types';
 import { useFateElementViewModel } from '../../viewModels/useFateElementViewModel';
 import { NoRollResult } from '../elements';
 import { FateRollResult } from '../elements/FateRollResult';
+import { FateLeaderElement } from './FateLeaderElement';
 
 export const FateElement: React.FC = () => {
     const { translations, rollDie, roll, theme } = useFateElementViewModel();
     const themedStyles = styles(theme);
 
     return (
-        <div>
+        <>
             {roll ? <FateRollResult {...roll} theme={theme} dice={DiceTypes.FATE} /> : <NoRollResult theme={theme} />}
 
             <div css={themedStyles.buttonWrapper}>
@@ -20,7 +21,11 @@ export const FateElement: React.FC = () => {
                     {translations.FATE_ROLL}
                 </div>
             </div>
-        </div>
+
+            <div css={[themedStyles.buttonWrapper, themedStyles.fateLeaderButton]}>
+                <FateLeaderElement />
+            </div>
+        </>
     );
 };
 
@@ -46,5 +51,8 @@ const styles = (theme: TTheme) => ({
             background-color: ${theme.accent};
             transition: background-color 0.3s;
         }
+    `,
+    fateLeaderButton: css`
+        margin-top: ${2 * theme.baseSpace}px;
     `,
 });

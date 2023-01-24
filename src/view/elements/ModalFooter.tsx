@@ -7,12 +7,20 @@ import { TextButton } from './TextButton';
 type Props = {
     translations: TTranslations;
     onCancel: () => void;
-    onConfirm: () => void;
+    onConfirm?: () => void;
     theme: TTheme;
     disableOk?: boolean;
+    showOk?: boolean;
 };
 
-export const ModalFooter: React.FC<Props> = ({ translations, onConfirm, onCancel, theme, disableOk }) => {
+export const ModalFooter: React.FC<Props> = ({
+    translations,
+    onConfirm,
+    onCancel,
+    theme,
+    disableOk,
+    showOk = true,
+}) => {
     const themedStyles = styles(theme);
 
     return (
@@ -21,11 +29,13 @@ export const ModalFooter: React.FC<Props> = ({ translations, onConfirm, onCancel
                 {translations.CANCEL}
             </TextButton>
 
-            <div css={themedStyles.okButton}>
-                <TextButton onClick={onConfirm} theme={theme} disabled={disableOk}>
-                    {translations.OK}
-                </TextButton>
-            </div>
+            {showOk && (
+                <div css={themedStyles.okButton}>
+                    <TextButton onClick={() => onConfirm?.()} theme={theme} disabled={disableOk}>
+                        {translations.OK}
+                    </TextButton>
+                </div>
+            )}
         </div>
     );
 };

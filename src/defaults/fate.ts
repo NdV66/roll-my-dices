@@ -1,3 +1,5 @@
+import { FateLeader } from '../types';
+
 export const FATE = {
     PLUS: 1,
     MINUS: -1,
@@ -17,4 +19,18 @@ export const FATE = {
         MINUS: '-',
         NEUTRAL: '',
     },
+
+    LEADER: new Map([
+        [8, FateLeader.LEGENDARY],
+        [7, FateLeader.EPIC],
+        [6, FateLeader.FANTASTIC],
+        [5, FateLeader.SUPERB],
+        [4, FateLeader.GREAT],
+        [3, FateLeader.GOOD],
+        [2, FateLeader.FAIR],
+        [1, FateLeader.AVERAGE],
+        [0, FateLeader.MEDIOCRE],
+        [-1, FateLeader.POOR],
+        [-2, FateLeader.TERRIBLE],
+    ]),
 };

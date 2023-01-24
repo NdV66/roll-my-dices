@@ -38,20 +38,23 @@ export type TTranslations = {
     FATE_TAB: string;
 
     FATE_ROLL: string;
-    FATE_LEADER: [
-        { [FateLeader.LEGENDARY]: string },
-        { [FateLeader.EPIC]: string },
-        { [FateLeader.FANTASTIC]: string },
-        { [FateLeader.SUPERB]: string },
-        { [FateLeader.GREAT]: string },
-        { [FateLeader.GOOD]: string },
-        { [FateLeader.FAIR]: string },
-        { [FateLeader.AVERAGE]: string },
-        { [FateLeader.MEDIOCRE]: string },
-        { [FateLeader.POOR]: string },
-        { [FateLeader.TERRIBLE]: string },
-        { [FateLeader.NOT_FOUND]: string },
-    ];
+    FATE_LEADER_TITLE: string;
+    FATE_LEADER_HEADER_VALUE: string;
+    FATE_LEADER_HEADER_NAME: string;
+    FATE_LEADER: {
+        [FateLeader.LEGENDARY]: string;
+        [FateLeader.EPIC]: string;
+        [FateLeader.FANTASTIC]: string;
+        [FateLeader.SUPERB]: string;
+        [FateLeader.GREAT]: string;
+        [FateLeader.GOOD]: string;
+        [FateLeader.FAIR]: string;
+        [FateLeader.AVERAGE]: string;
+        [FateLeader.MEDIOCRE]: string;
+        [FateLeader.POOR]: string;
+        [FateLeader.TERRIBLE]: string;
+        [FateLeader.NOT_FOUND]: string;
+    };
 
     [key: string]: string | any;
 };
