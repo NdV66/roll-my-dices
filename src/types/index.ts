@@ -6,3 +6,4 @@ export * from './theme';
 export * from './roll';
 export * from './mainContent';
 export * from './fate';
+export * from './genericSingletonManager';
