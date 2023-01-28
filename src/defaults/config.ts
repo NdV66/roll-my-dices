@@ -15,7 +15,7 @@ export const DEFAULTS = {
 
     SHOW_INPUT_MOD_ON_ENTER: false,
     SHOW_FATE_LEADER_ON_ENTER: false,
-    MAIN_CONTENT: MainContentTab.FATE, //TODO: for test only!
+    MAIN_CONTENT: MainContentTab.CLASSIC_D20,
 
     REPO_URL: 'https://github.com/NdV66/roll-my-dices',
 };
