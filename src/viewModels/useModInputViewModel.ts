@@ -1,25 +1,31 @@
-import { appRollModel, useAppContext } from '../context';
+import { getModelByMainTabKey, useAppContext } from '../context';
 import { useStateWithObservableWithInit } from '../tools';
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { BehaviorSubject, combineLatest, map } from 'rxjs';
 import { DEFAULTS } from '../defaults';
 import { testIfModIsOk } from '../services';
+import { MainContentTab } from '../types';
 
 const INITIAL_MOD = '';
 
-export const useModInputViewModel = () => {
-    const { theme, translations } = useAppContext();
-    const showInputSource = useMemo(() => new BehaviorSubject<boolean>(DEFAULTS.SHOW_INPUT_MOD_ON_ENTER), []);
-    const currentValueSource = useMemo(() => new BehaviorSubject<string>(INITIAL_MOD), []);
-    const isCurrentValueOkSource = useMemo(
-        () => combineLatest([currentValueSource]).pipe(map(([value]) => testIfModIsOk(value))),
-        [],
-    );
+const showInputSource = new BehaviorSubject<boolean>(DEFAULTS.SHOW_INPUT_MOD_ON_ENTER);
+const currentValueSource = new BehaviorSubject<string>(INITIAL_MOD);
+const isCurrentValueOkSource = combineLatest([currentValueSource]).pipe(map(([value]) => testIfModIsOk(value)));
 
+export const useModInputViewModel = (activeMainTab: MainContentTab) => {
+    const rollModel = useMemo(() => getModelByMainTabKey(activeMainTab)!, [activeMainTab]);
+
+    const { theme, translations } = useAppContext();
     const showInput = useStateWithObservableWithInit(showInputSource, DEFAULTS.SHOW_INPUT_MOD_ON_ENTER);
     const currentValue = useStateWithObservableWithInit(currentValueSource, INITIAL_MOD);
     const isCurrentValueOk = useStateWithObservableWithInit(isCurrentValueOkSource, true);
-    const currentConfirmedMod = useStateWithObservableWithInit<number>(appRollModel.rollModSource, DEFAULTS.MOD);
+    const currentConfirmedMod = useStateWithObservableWithInit<number>(rollModel.rollModSource, DEFAULTS.MOD, [
+        activeMainTab,
+    ]);
+
+    useEffect(() => {
+        currentValueSource.next(INITIAL_MOD);
+    }, [activeMainTab]);
 
     const toggleShowInput = () => {
         showInputSource.next(!showInput);
@@ -32,16 +38,16 @@ export const useModInputViewModel = () => {
 
     const onConfirm = () => {
         toggleShowInput();
-        appRollModel.updateRollMod(parseInt(currentValue, 10) || DEFAULTS.MOD);
+        rollModel.updateRollMod(parseInt(currentValue, 10) || DEFAULTS.MOD);
     };
 
     const onRemove = () => {
         currentValueSource.next(INITIAL_MOD);
-        appRollModel.updateRollMod(DEFAULTS.MOD);
+        rollModel.updateRollMod(DEFAULTS.MOD);
     };
 
     const onCloseModal = () => {
-        currentValueSource.next(INITIAL_MOD);
+        !isCurrentValueOk && currentValueSource.next(INITIAL_MOD);
         toggleShowInput();
     };
 

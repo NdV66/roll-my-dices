@@ -6,3 +6,4 @@ export * from './TextButton';
 export * from '../page/AppHeader';
 export * from './RollsButtons';
 export * from './NoRollResult';
+export * from './MainContentCardBodyTemplate';

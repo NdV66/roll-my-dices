@@ -1,4 +1,4 @@
-import { bufferCount, concatMap, map } from 'rxjs';
+import { bufferCount, concatMap, map, identity } from 'rxjs';
 import { appLangModel, useAppContext } from '../context';
 import { AppLangs, TTranslationsLang } from '../types';
 import { useStateWithObservableWithInit } from '../tools';
@@ -23,7 +23,7 @@ export const useChangeLangElementViewModel = () => {
         () =>
             appLangModel.translations.pipe(
                 map((translations) => translations.LANGS),
-                concatMap((el) => el),
+                concatMap(identity),
                 map(mapToItem),
                 bufferCount(DEFAULTS.LANGS_AMOUNT),
             ),

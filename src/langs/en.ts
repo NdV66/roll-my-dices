@@ -1,4 +1,4 @@
-import { TTranslations } from '../types';
+import { FateLeader, TTranslations } from '../types';
 import { LANGS } from './langs';
 
 export const TEXTS_EN: TTranslations = {
@@ -24,10 +24,25 @@ export const TEXTS_EN: TTranslations = {
     CANCEL: 'Cancel',
     CLEAN: 'Clean everything',
 
-    D_4: 'd4',
-    D_6: 'd6',
-    D_8: 'd8',
-    D_10: 'd10',
-    D_12: 'd12',
-    D_20: 'd20',
+    CLASSIC_D20_TAB: 'Classic (d20)',
+    FATE_TAB: 'Fate',
+
+    FATE_ROLL: 'Roll',
+    FATE_LEADER_TITLE: 'Fate leader',
+    FATE_LEADER_HEADER_VALUE: 'Value',
+    FATE_LEADER_HEADER_NAME: 'Name',
+    FATE_LEADER: {
+        [FateLeader.LEGENDARY]: 'legendary',
+        [FateLeader.EPIC]: 'epic',
+        [FateLeader.FANTASTIC]: 'fantastic',
+        [FateLeader.SUPERB]: 'superb',
+        [FateLeader.GREAT]: 'great',
+        [FateLeader.GOOD]: 'good',
+        [FateLeader.FAIR]: 'fair',
+        [FateLeader.AVERAGE]: 'average',
+        [FateLeader.MEDIOCRE]: 'mediocre',
+        [FateLeader.POOR]: 'poor',
+        [FateLeader.TERRIBLE]: 'terrible',
+        [FateLeader.NOT_FOUND]: 'not found',
+    },
 };

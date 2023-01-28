@@ -33,7 +33,7 @@ const styles = (theme: TTheme) => ({
         user-select: none;
 
         font-family: ${FONT_FAMILY_BY_DICE_TYPE[diceType]};
-        font-size: ${9 * theme.fontSize}px;
+        font-size: ${8 * theme.fontSize}px;
         color: ${theme.primary};
 
         ${screenMd(css`

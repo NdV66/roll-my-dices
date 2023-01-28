@@ -1,4 +1,4 @@
-import { TTranslations } from '../types';
+import { FateLeader, TTranslations } from '../types';
 import { LANGS } from './langs';
 
 export const TEXTS_PL: TTranslations = {
@@ -25,10 +25,25 @@ export const TEXTS_PL: TTranslations = {
     CANCEL: 'Zamknij',
     CLEAN: 'Wyczyść wszystko',
 
-    D_4: 'k4',
-    D_6: 'k6',
-    D_8: 'k8',
-    D_10: 'k10',
-    D_12: 'k12',
-    D_20: 'k20',
+    CLASSIC_D20_TAB: 'Kostki klasyczne (d20)',
+    FATE_TAB: 'Kostki Fate',
+
+    FATE_ROLL: 'Rzucaj',
+    FATE_LEADER_TITLE: 'Drabinka Fate',
+    FATE_LEADER_HEADER_VALUE: 'Wartość',
+    FATE_LEADER_HEADER_NAME: 'Nazwa',
+    FATE_LEADER: {
+        [FateLeader.LEGENDARY]: 'legendarny',
+        [FateLeader.EPIC]: 'heroiczny',
+        [FateLeader.FANTASTIC]: 'fantastyczny',
+        [FateLeader.SUPERB]: 'wybitny',
+        [FateLeader.GREAT]: 'świetny',
+        [FateLeader.GOOD]: 'dobry',
+        [FateLeader.FAIR]: 'niezły',
+        [FateLeader.AVERAGE]: 'przeciętny',
+        [FateLeader.MEDIOCRE]: 'słaby',
+        [FateLeader.POOR]: 'mierny',
+        [FateLeader.TERRIBLE]: 'fatalny',
+        [FateLeader.NOT_FOUND]: 'Poza skalą',
+    },
 };

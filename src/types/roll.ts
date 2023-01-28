@@ -5,6 +5,7 @@ export enum DiceTypes {
     D_10 = 'D_10',
     D_12 = 'D_12',
     D_20 = 'D_20',
+    FATE = 'FATE_6',
 }
 
 export type TRoll = {
@@ -20,3 +21,9 @@ export type TRollExtended = TRoll & {
 export type TRollInfo = TRollExtended & {
     displayValue: string;
 };
+
+export type TFateRoll = TRoll & {
+    allRolls: number[];
+};
+
+export type TFateRollExtended = TRollExtended & TFateRoll;
