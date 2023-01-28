@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/roll-my-dices/static/css/main.be785f7a.css",
-    "main.js": "/roll-my-dices/static/js/main.e1cbfb05.js",
+    "main.js": "/roll-my-dices/static/js/main.aa5c84cd.js",
     "static/js/787.7f70a23f.chunk.js": "/roll-my-dices/static/js/787.7f70a23f.chunk.js",
     "static/media/DpolyTwelveSider-5KWZ.ttf": "/roll-my-dices/static/media/DpolyTwelveSider-5KWZ.1a478ef4ea7624fb96b9.ttf",
     "static/media/DpolyTwentySider-62jq.ttf": "/roll-my-dices/static/media/DpolyTwentySider-62jq.dd5351d3c7aa767ebdfa.ttf",
@@ -11,11 +11,11 @@
     "static/media/DpolySixSider-jqRO.ttf": "/roll-my-dices/static/media/DpolySixSider-jqRO.0e7acc821ca50f400844.ttf",
     "index.html": "/roll-my-dices/index.html",
     "main.be785f7a.css.map": "/roll-my-dices/static/css/main.be785f7a.css.map",
-    "main.e1cbfb05.js.map": "/roll-my-dices/static/js/main.e1cbfb05.js.map",
+    "main.aa5c84cd.js.map": "/roll-my-dices/static/js/main.aa5c84cd.js.map",
     "787.7f70a23f.chunk.js.map": "/roll-my-dices/static/js/787.7f70a23f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.be785f7a.css",
-    "static/js/main.e1cbfb05.js"
+    "static/js/main.aa5c84cd.js"
   ]
 }
