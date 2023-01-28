@@ -1,4 +1,5 @@
-type TSingletons = { [key: string]: any };
+import { NOT_FOUND_ERROR } from '../defaults';
+import { TSingletons } from '../types';
 
 export class GenericSingletonManager {
     private _singletons: TSingletons = {};
@@ -7,8 +8,13 @@ export class GenericSingletonManager {
         this._singletons = singletons;
     }
 
-    getSingleton<T>(name: string) {
+    public getSingleton<T>(name: string) {
         const singleton = this._singletons[name];
+
+        if (!singleton) {
+            throw NOT_FOUND_ERROR;
+        }
+
         return singleton as T;
     }
 }

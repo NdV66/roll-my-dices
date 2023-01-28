@@ -27,10 +27,15 @@ export const TextButton: React.FC<Props> = ({ onClick, theme, children, small, d
 const styles = (theme: TTheme, small?: boolean) => ({
     button: css`
         user-select: none;
-        color: ${theme.accent};
+        color: ${theme.primary};
         font-size: ${small ? theme.smallFontSize : theme.fontSize}px;
         cursor: pointer;
         font-weight: 400;
+
+        &:hover,
+        &:active {
+            font-weight: 700;
+        }
     `,
     disabled: css`
         cursor: default;

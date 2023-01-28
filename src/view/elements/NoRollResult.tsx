@@ -20,8 +20,11 @@ export const NoRollResult: React.FC<Props> = ({ theme }) => {
 
 const styles = (theme: TTheme) => ({
     wrapper: css`
-        text-align: center;
-        font-size: ${9 * theme.fontSize}px;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+
+        font-size: ${7 * theme.fontSize}px;
         color: ${theme.primary};
     `,
 });

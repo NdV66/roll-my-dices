@@ -20,7 +20,6 @@ const prepareDisplayValue = (roll: TRollExtended | null) =>
 export type TRollButtonData = {
     diceType: DiceTypes;
     roll: () => void;
-    title: string;
     displayValue: string;
 };
 
@@ -32,7 +31,6 @@ export const useRollsElementViewModel = () => {
     const rollsElementData: TRollButtonData[] = DICES_ORDER.map((dice) => ({
         diceType: dice,
         roll: () => appRollModel.rollDice(dice),
-        title: translations[dice],
         displayValue: mapRollToDice(dice, AppRollModel.getMaxByDiceType(dice)),
     }));
 
