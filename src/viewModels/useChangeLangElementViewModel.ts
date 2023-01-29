@@ -1,10 +1,11 @@
 import { bufferCount, concatMap, map, identity } from 'rxjs';
-import { appLangModel, useAppContext } from '../context';
-import { AppLangs, TTranslationsLang } from '../types';
+import { getModelByKey, useAppContext } from '../context';
+import { AppLangs, Models, TTranslationsLang } from '../types';
 import { useStateWithObservableWithInit } from '../tools';
 import { DEFAULTS } from '../defaults';
 import { MenuProps } from 'antd';
 import { useMemo } from 'react';
+import { AppLangModel } from '../models/AppLangModel';
 
 type ItemType = {
     key: string;
@@ -17,6 +18,7 @@ const mapToItem = (lang: TTranslationsLang) => ({
 });
 
 export const useChangeLangElementViewModel = () => {
+    const appLangModel = getModelByKey<AppLangModel>(Models.APP_LANG);
     const appContext = useAppContext();
 
     const itemsSource = useMemo(
@@ -30,16 +32,17 @@ export const useChangeLangElementViewModel = () => {
         [],
     );
 
+    const appLang = useStateWithObservableWithInit(appLangModel.appLang, DEFAULTS.LANG);
     const items = useStateWithObservableWithInit<ItemType[]>(itemsSource, []);
 
     const onClickItem: MenuProps['onClick'] = (e) => {
-        appContext.changeAppLang(e.key as AppLangs);
+        appLangModel.changeAppLang(e.key as AppLangs);
     };
 
     return {
         translations: appContext.translations,
         onClickItem,
-        appLang: appContext.appLang,
+        appLang,
         items,
         theme: appContext.theme,
     };

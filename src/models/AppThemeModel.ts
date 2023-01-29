@@ -3,7 +3,7 @@ import { map, connect, Subject } from 'rxjs';
 
 import { DARK_THEME, LIGHT_THEME } from '../styles';
 import { DEFAULTS, COOKIE_THEME_KEY } from '../defaults';
-import { getFromCookies, setCookie } from '../services';
+import { getFromCookies, getNewAppTheme, setCookie } from '../services';
 
 export const selectTheme = (theme: AppTheme) => (theme === AppTheme.DARK ? DARK_THEME : LIGHT_THEME);
 
