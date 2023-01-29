@@ -11,10 +11,7 @@ export const AppContextWrapper: React.FC<Props> = ({ children }) => {
     const theme = useStateWithObservableWithInit<TTheme>(appThemeModel.theme, DEFAULTS.THEME);
     const appTheme = useStateWithObservableWithInit<AppTheme>(appThemeModel.appTheme, DEFAULTS.APP_THEME);
 
-    const appTranslations = useStateWithObservableWithInit<TTranslations>(
-        appLangModel.translations,
-        {} as TTranslations,
-    );
+    const translations = useStateWithObservableWithInit<TTranslations>(appLangModel.translations, {} as TTranslations);
 
     useEffect(() => {
         appThemeModel.setDefaultValue();
@@ -27,7 +24,7 @@ export const AppContextWrapper: React.FC<Props> = ({ children }) => {
     const value: TAppContext = {
         appTheme,
         theme,
-        translations: appTranslations,
+        translations,
     };
 
     return (

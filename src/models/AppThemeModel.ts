@@ -3,12 +3,13 @@ import { map, connect, Subject } from 'rxjs';
 
 import { DARK_THEME, LIGHT_THEME } from '../styles';
 import { DEFAULTS, COOKIE_THEME_KEY } from '../defaults';
-import { getFromCookies, getNewAppTheme, setCookie } from '../services';
+import { getFromCookies, setCookie } from '../services';
 
 export const selectTheme = (theme: AppTheme) => (theme === AppTheme.DARK ? DARK_THEME : LIGHT_THEME);
 
 export class AppThemeModel {
     private _appThemeSubject = new Subject<AppTheme>();
+    // private _appThemeChange
 
     public appTheme = this._appThemeSubject.pipe(connect(() => this._appThemeSubject));
     public theme = this.appTheme.pipe(map(selectTheme));
