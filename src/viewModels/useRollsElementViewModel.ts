@@ -1,11 +1,11 @@
 import { useMemo } from 'react';
 import { map } from 'rxjs';
-import { appRollModel, useAppContext } from '../context';
+import { getModelByKey, useAppContext } from '../context';
 import { DEFAULTS } from '../defaults';
 import { AppRollModel } from '../models/AppRollModel';
 import { mapRollToDice } from '../services';
 import { useStateWithObservableWithInit } from '../tools';
-import { DiceTypes, TRollExtended, TRollInfo } from '../types';
+import { DiceTypes, Models, TRollExtended, TRollInfo } from '../types';
 
 const DICES_ORDER = [DiceTypes.D_4, DiceTypes.D_6, DiceTypes.D_8, DiceTypes.D_10, DiceTypes.D_12, DiceTypes.D_20];
 
@@ -24,6 +24,7 @@ export type TRollButtonData = {
 };
 
 export const useRollsElementViewModel = () => {
+    const appRollModel = getModelByKey<AppRollModel>(Models.APP_ROLL);
     const { translations, theme } = useAppContext();
     const rollInfoSource = useMemo(() => appRollModel.extendedRollSource.pipe(map(prepareDisplayValue)), []);
     const rollInfo = useStateWithObservableWithInit<TRollInfo | null>(rollInfoSource, DEFAULTS.EMPTY_ROLL_RESULT);

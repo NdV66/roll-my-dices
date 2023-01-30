@@ -4,8 +4,8 @@ import { useStateWithObservable } from '../tools/useStateWithObservable';
 import { AppTheme, Models } from '../types';
 
 export const usePageViewModel = () => {
-    const { theme, translations } = useAppContext();
     const appThemeModel = getModelByKey<AppThemeModel>(Models.APP_THEME);
+    const { theme, translations } = useAppContext();
     const appTheme = useStateWithObservable(appThemeModel.appTheme);
 
     const preparedTheme = {

@@ -4,9 +4,8 @@ import { useStateWithObservable } from '../tools/useStateWithObservable';
 import { Models } from '../types';
 
 export const useThemeButtonElementViewModel = () => {
-    const appContext = useAppContext();
     const appThemeModel = getModelByKey<AppThemeModel>(Models.APP_THEME);
-
+    const appContext = useAppContext();
     const appTheme = useStateWithObservable(appThemeModel.appTheme);
 
     return {
