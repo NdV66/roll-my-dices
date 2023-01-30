@@ -10,7 +10,7 @@ export const useThemeButtonElementViewModel = () => {
     const appTheme = useStateWithObservable(appThemeModel.appTheme);
 
     return {
-        onChangeTheme: appThemeModel.toggleTheme,
+        onChangeTheme: appThemeModel.toggleAppTheme,
         theme: appContext.theme,
         appTheme,
         translations: appContext.translations,

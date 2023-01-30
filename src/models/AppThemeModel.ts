@@ -23,14 +23,10 @@ export class AppThemeModel {
 
     public setDefaultValue = () => {
         const savedTheme = getFromCookies<AppTheme>(COOKIE_THEME_KEY);
-        this.changeAppTheme(savedTheme || DEFAULTS.APP_THEME);
+        this._appThemeSubject.next(savedTheme || DEFAULTS.APP_THEME);
     };
 
-    public changeAppTheme = (newTheme: AppTheme) => {
-        this._appThemeSubject.next(newTheme);
-    };
-
-    public toggleTheme = async () => {
+    public toggleAppTheme = async () => {
         const currentTheme = await firstValueFrom(this._appThemeSubject);
         const newTheme = getNewAppTheme(currentTheme);
         this._appThemeSubject.next(newTheme);
