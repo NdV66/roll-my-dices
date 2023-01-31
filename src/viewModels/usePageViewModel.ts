@@ -1,6 +1,6 @@
 import { getModelByKey, useAppContext } from '../context';
 import { AppThemeModel } from '../models/AppThemeModel';
-import { useStateWithObservable } from '../tools/useStateWithObservable';
+import { useStateWithObservable } from '../tools';
 import { AppTheme, Models } from '../types';
 
 export const usePageViewModel = () => {

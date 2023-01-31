@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import { Observable, Subject } from 'rxjs';
-import { useStateWithObservable } from '../../tools/useStateWithObservable';
+import { useStateWithObservable } from '../../tools';
 
 const nextValue = 66;
 
