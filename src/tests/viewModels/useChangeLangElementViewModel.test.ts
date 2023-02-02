@@ -6,39 +6,36 @@ import { useChangeLangElementViewModel } from '../../viewModels';
 import { appLangModelMock } from '../mocks/appLangModelMock';
 import { TEXTS_EN } from '../../langs/en';
 import { TEXTS_PL } from '../../langs/pl';
-import { LIGHT_THEME } from '../../styles';
 import { AppLangModel } from '../../models/AppLangModel';
-import { AppLangs } from '../../types';
+import { AppLangs, TAppContext } from '../../types';
 import { Observable } from 'rxjs';
-
-const CONTEXT_MOCK = {
-    translations: TEXTS_EN,
-    theme: LIGHT_THEME,
-};
+import { getAppContextMock } from '../mocks/appContext';
 
 describe('useChangeLangElementViewModel', () => {
     let modelMock: AppLangModel;
+    let contextMock: TAppContext;
 
     beforeEach(() => {
         jest.clearAllMocks();
     });
 
     beforeEach(() => {
+        contextMock = getAppContextMock() as any as TAppContext;
         modelMock = appLangModelMock() as any as AppLangModel;
 
         jest.spyOn(modelsTools, 'getModelByKey').mockReturnValue(modelMock);
-        jest.spyOn(contextTools, 'useAppContext').mockReturnValue(CONTEXT_MOCK);
+        jest.spyOn(contextTools, 'useAppContext').mockReturnValue(contextMock);
     });
 
     test('Should return all needed fields', () => {
         const { result } = renderHook(useChangeLangElementViewModel);
 
         const expectedValue = {
-            translations: CONTEXT_MOCK.translations,
+            translations: contextMock.translations,
             onClickItem: expect.any(Function),
             appLang: DEFAULTS.LANG,
             items: expect.any(Array),
-            theme: CONTEXT_MOCK.theme,
+            theme: contextMock.theme,
         };
 
         expect(result.current).toEqual(expectedValue);
