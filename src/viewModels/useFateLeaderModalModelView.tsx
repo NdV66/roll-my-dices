@@ -36,8 +36,6 @@ export const useFateLeaderModalViewModel = () => {
         },
     ];
 
-    console.log(mapResultToLeader(1));
-
     const onOpenModal = () => {
         showFateLeaderSource.next(true);
     };
