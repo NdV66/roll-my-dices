@@ -1,19 +1,11 @@
 import { BehaviorSubject } from 'rxjs';
 import { useAppContext } from '../context';
-import { DEFAULTS, FATE } from '../defaults';
-import { mapResultToLeader } from '../services';
+import { DEFAULTS } from '../defaults';
+import { translateLeaderData } from '../services';
 import { useStateWithObservableWithInit } from '../tools';
-import { TTranslations } from '../types';
 
+//TODO TESTS
 const showFateLeaderSource = new BehaviorSubject<boolean>(DEFAULTS.SHOW_FATE_LEADER_ON_ENTER);
-
-const translateLeaderData = (translations: TTranslations) =>
-    translations?.FATE_LEADER &&
-    Array.from(FATE.LEADER.keys()).map((key) => ({
-        value: key,
-        name: translations.FATE_LEADER[mapResultToLeader(key)],
-        key: mapResultToLeader(key),
-    }));
 
 export const useFateLeaderModalViewModel = () => {
     const { translations, theme } = useAppContext();
@@ -36,13 +28,9 @@ export const useFateLeaderModalViewModel = () => {
         },
     ];
 
-    const onOpenModal = () => {
-        showFateLeaderSource.next(true);
-    };
+    const onOpenModal = () => showFateLeaderSource.next(true);
 
-    const onCloseModal = () => {
-        showFateLeaderSource.next(false);
-    };
+    const onCloseModal = () => showFateLeaderSource.next(false);
 
     return {
         translations,

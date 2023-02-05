@@ -3,7 +3,7 @@ import * as contextTools from '../../context/AppContext';
 import { AppFateRollModel } from '../../models/AppFateRollModel';
 import { TAppContext } from '../../types';
 import { getAppContextMock } from '../mocks/appContext';
-import { appFateRollModelMock } from '../mocks/appFateRollModel';
+import { appFateRollModelMock } from '../mocks/appFateRollModelMock';
 import { renderHook } from '@testing-library/react';
 import { useFateElementViewModel } from '../../viewModels';
 import { Observable } from 'rxjs';

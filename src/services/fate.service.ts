@@ -1,5 +1,5 @@
 import { DEFAULTS, FATE, NO_DICE_FOUND_ERROR, ROLLS_RESULTS_FONTS } from '../defaults';
-import { DiceTypes, FateDicesType, FateDiceType, FateLeader, TFateRoll } from '../types';
+import { DiceTypes, FateDicesType, FateDiceType, FateLeader, TFateRoll, TTranslations } from '../types';
 import { calcSummaryRolls, rollDices } from './rolls.service';
 
 export const translateToFate = (roll: number): FateDiceType => {
@@ -41,3 +41,11 @@ export const mapFateToDice = (rawResult: number) => {
 
     return diceSet[index];
 };
+
+export const translateLeaderData = (translations: TTranslations) =>
+    translations?.FATE_LEADER &&
+    Array.from(FATE.LEADER.keys()).map((key) => ({
+        value: key,
+        name: translations.FATE_LEADER[mapResultToLeader(key)],
+        key: mapResultToLeader(key),
+    }));
