@@ -14,7 +14,7 @@ export const useFateLeaderModalViewModel = () => {
         DEFAULTS.SHOW_FATE_LEADER_ON_ENTER,
     );
 
-    const translatedColumns = [
+    const translatedColumns = translations && [
         {
             title: translations.FATE_LEADER_HEADER_VALUE,
             dataIndex: 'value',
@@ -39,6 +39,6 @@ export const useFateLeaderModalViewModel = () => {
         showFateLeader,
         theme,
         translatedColumns,
-        translatedLeaderData: translations && translateLeaderData(translations, FATE.LEADER),
+        translatedLeaderData: translations?.FATE_LEADER && translateLeaderData(translations, FATE.LEADER),
     };
 };

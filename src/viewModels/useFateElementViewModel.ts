@@ -10,13 +10,9 @@ export const useFateElementViewModel = () => {
     const { translations, theme } = useAppContext();
     const roll = useStateWithObservableWithInit(appFateRollModel.extendedRollSource, DEFAULTS.EMPTY_ROLL_RESULT);
 
-    const rollDie = () => {
-        appFateRollModel.rollDice();
-    };
-
     return {
         translations,
-        rollDie,
+        rollDie: appFateRollModel.rollDice,
         roll,
         theme,
     };

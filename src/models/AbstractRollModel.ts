@@ -1,5 +1,5 @@
 import { DiceTypes, TRoll, TRollExtended } from '../types';
-import { BehaviorSubject, map, combineLatest } from 'rxjs';
+import { BehaviorSubject, combineLatest, map } from 'rxjs';
 import { DEFAULTS, DICE_TYPES_MAX } from '../defaults';
 
 export abstract class AbstractRollModel<R extends TRoll, E extends TRollExtended> {
@@ -13,14 +13,10 @@ export abstract class AbstractRollModel<R extends TRoll, E extends TRollExtended
     protected abstract prepareExtendedRoll([roll, mod]: [R | null, number | null]): E | null;
     protected abstract prepareRollResult(diceType: DiceTypes): R;
 
-    constructor() {
-        this._calcExtendedRollSubscribe();
-    }
-
-    private _calcExtendedRollSubscribe() {
-        combineLatest([this._rollSource, this.rollModSource])
+    protected _calcExtendedRollSubscribe() {
+        combineLatest([this._rollSource, this._rollModSource])
             .pipe(map(this.prepareExtendedRoll))
-            .subscribe((extendedRoll) => this._extendedRollSource.next(extendedRoll));
+            .subscribe((extendedRoll) => extendedRoll && this._extendedRollSource.next(extendedRoll));
     }
 
     public rollDice(diceType: DiceTypes) {
