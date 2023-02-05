@@ -1,14 +1,14 @@
+import { useMemo } from 'react';
 import { BehaviorSubject } from 'rxjs';
 import { useAppContext } from '../context';
-import { DEFAULTS } from '../defaults';
+import { DEFAULTS, FATE } from '../defaults';
 import { translateLeaderData } from '../services';
 import { useStateWithObservableWithInit } from '../tools';
 
-//TODO TESTS
-const showFateLeaderSource = new BehaviorSubject<boolean>(DEFAULTS.SHOW_FATE_LEADER_ON_ENTER);
-
 export const useFateLeaderModalViewModel = () => {
     const { translations, theme } = useAppContext();
+    const showFateLeaderSource = useMemo(() => new BehaviorSubject<boolean>(DEFAULTS.SHOW_FATE_LEADER_ON_ENTER), []);
+
     const showFateLeader = useStateWithObservableWithInit<boolean>(
         showFateLeaderSource,
         DEFAULTS.SHOW_FATE_LEADER_ON_ENTER,
@@ -39,6 +39,6 @@ export const useFateLeaderModalViewModel = () => {
         showFateLeader,
         theme,
         translatedColumns,
-        translatedLeaderData: translations && translateLeaderData(translations),
+        translatedLeaderData: translations && translateLeaderData(translations, FATE.LEADER),
     };
 };

@@ -7,7 +7,7 @@ import { appFateRollModelMock } from '../mocks/appFateRollModelMock';
 import { renderHook } from '@testing-library/react';
 import { useFateElementViewModel } from '../../viewModels';
 import { Observable } from 'rxjs';
-import { ROLL_EXTENDED_NO_MOD_MOCK, FATE_ROLL_EXTENDED_WITH_MOD_MOCK } from '../models/mocks';
+import { FATE_ROLL_EXTENDED_WITH_MOD_MOCK } from '../models/mocks';
 
 describe('useFateElementViewModel', () => {
     let modelMock: AppFateRollModel;

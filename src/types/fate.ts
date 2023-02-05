@@ -16,3 +16,9 @@ export enum FateLeader {
     TERRIBLE = 'TERRIBLE',
     NOT_FOUND = 'NOT_FOUND',
 }
+
+export type TTranslateLeaderData = {
+    value: number;
+    name: string;
+    key: string;
+};
