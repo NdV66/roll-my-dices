@@ -4,11 +4,11 @@ import { prepareExtendedRoll, rollDices } from '../services';
 import { AbstractRollModel } from './AbstractRollModel';
 
 export class AppRollModel extends AbstractRollModel<TRoll, TRollExtended> {
-    protected prepareExtendedRoll([roll, mod]: [TRoll | null, number | null]): TRollExtended | null {
+    protected prepareExtendedRoll([roll, mod]: [TRoll | null, number | null]) {
         return prepareExtendedRoll(roll, mod);
     }
 
-    protected prepareRollResult = (diceType: DiceTypes) => {
+    protected prepareRollResult(diceType: DiceTypes) {
         const max = DICE_TYPES_MAX.get(diceType)!;
         const rolls = rollDices(DEFAULTS.DICE_NUMBER, DEFAULTS.DICE_MIN, max);
 
@@ -16,5 +16,5 @@ export class AppRollModel extends AbstractRollModel<TRoll, TRollExtended> {
             dice: diceType,
             roll: rolls[0],
         };
-    };
+    }
 }

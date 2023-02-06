@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+import { DICES_ORDER } from '../../defaults';
 
 import { TTheme } from '../../types';
 import { useRollsElementViewModel } from '../../viewModels';
@@ -7,7 +8,7 @@ import { RollResult } from '../elements';
 import { NoRollResult, RollsButtons } from '../elements';
 
 export const RollsElement: React.FC = () => {
-    const { rollsElementData, theme, rollInfo, translations } = useRollsElementViewModel();
+    const { rollsElementData, theme, rollInfo, translations } = useRollsElementViewModel(DICES_ORDER);
     const themedStyles = styles(theme);
 
     return (

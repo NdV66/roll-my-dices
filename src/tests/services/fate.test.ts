@@ -4,11 +4,13 @@ import {
     mapResultToLeader,
     prepareExtendedFateRoll,
     rollFateDices,
+    translateLeaderData,
     translateToFate,
 } from '../../services/fate.service';
-import { DiceTypes, FateLeader } from '../../types';
+import { DiceTypes, FateLeader, TTranslateLeaderData } from '../../types';
 import { FATE_ROLL, FATE_ROLL_EXTENDED_NO_MOD_MOCK, FATE_ROLL_EXTENDED_WITH_MOD_MOCK } from '../models/mocks';
 import * as tools from '../../services/rolls.service';
+import { TEXTS_EN } from '../../langs/en';
 
 describe('mapResultToLeader', () => {
     test('Should map result to the Fate leader correctly', () => {
@@ -83,6 +85,31 @@ describe('mapFateToDice', () => {
             mapFateToDice(roll);
         };
         expect(callback).toThrow(expectedError);
+    });
+});
+
+describe('translateLeaderData', () => {
+    test('Should prepare translated leader data', () => {
+        const translations = TEXTS_EN;
+        const fateLeader = new Map([
+            [8, FateLeader.LEGENDARY],
+            [7, FateLeader.EPIC],
+        ]);
+        const expectedResult: TTranslateLeaderData[] = [
+            {
+                value: 8,
+                name: translations.FATE_LEADER.LEGENDARY,
+                key: FateLeader.LEGENDARY,
+            },
+            {
+                value: 7,
+                name: translations.FATE_LEADER.EPIC,
+                key: FateLeader.EPIC,
+            },
+        ];
+
+        const result = translateLeaderData(translations, fateLeader);
+        expect(result).toEqual(expectedResult);
     });
 });
 

@@ -1,28 +1,20 @@
+import { useMemo } from 'react';
 import { BehaviorSubject } from 'rxjs';
 import { useAppContext } from '../context';
 import { DEFAULTS, FATE } from '../defaults';
-import { mapResultToLeader } from '../services';
+import { translateLeaderData } from '../services';
 import { useStateWithObservableWithInit } from '../tools';
-import { TTranslations } from '../types';
-
-const showFateLeaderSource = new BehaviorSubject<boolean>(DEFAULTS.SHOW_FATE_LEADER_ON_ENTER);
-
-const translateLeaderData = (translations: TTranslations) =>
-    translations?.FATE_LEADER &&
-    Array.from(FATE.LEADER.keys()).map((key) => ({
-        value: key,
-        name: translations.FATE_LEADER[mapResultToLeader(key)],
-        key: mapResultToLeader(key),
-    }));
 
 export const useFateLeaderModalViewModel = () => {
     const { translations, theme } = useAppContext();
+    const showFateLeaderSource = useMemo(() => new BehaviorSubject<boolean>(DEFAULTS.SHOW_FATE_LEADER_ON_ENTER), []);
+
     const showFateLeader = useStateWithObservableWithInit<boolean>(
         showFateLeaderSource,
         DEFAULTS.SHOW_FATE_LEADER_ON_ENTER,
     );
 
-    const translatedColumns = [
+    const translatedColumns = translations && [
         {
             title: translations.FATE_LEADER_HEADER_VALUE,
             dataIndex: 'value',
@@ -36,15 +28,9 @@ export const useFateLeaderModalViewModel = () => {
         },
     ];
 
-    console.log(mapResultToLeader(1));
+    const onOpenModal = () => showFateLeaderSource.next(true);
 
-    const onOpenModal = () => {
-        showFateLeaderSource.next(true);
-    };
-
-    const onCloseModal = () => {
-        showFateLeaderSource.next(false);
-    };
+    const onCloseModal = () => showFateLeaderSource.next(false);
 
     return {
         translations,
@@ -53,6 +39,6 @@ export const useFateLeaderModalViewModel = () => {
         showFateLeader,
         theme,
         translatedColumns,
-        translatedLeaderData: translations && translateLeaderData(translations),
+        translatedLeaderData: translations?.FATE_LEADER && translateLeaderData(translations, FATE.LEADER),
     };
 };

@@ -1,5 +1,13 @@
 import { DEFAULTS, FATE, NO_DICE_FOUND_ERROR, ROLLS_RESULTS_FONTS } from '../defaults';
-import { DiceTypes, FateDicesType, FateDiceType, FateLeader, TFateRoll } from '../types';
+import {
+    DiceTypes,
+    FateDicesType,
+    FateDiceType,
+    FateLeader,
+    TFateRoll,
+    TTranslateLeaderData,
+    TTranslations,
+} from '../types';
 import { calcSummaryRolls, rollDices } from './rolls.service';
 
 export const translateToFate = (roll: number): FateDiceType => {
@@ -40,4 +48,18 @@ export const mapFateToDice = (rawResult: number) => {
     }
 
     return diceSet[index];
+};
+
+export const translateLeaderData = (translations: TTranslations, leader: Map<number, FateLeader>) => {
+    const results: TTranslateLeaderData[] = [];
+
+    leader.forEach((value: FateLeader, key: number) =>
+        results.push({
+            value: key,
+            name: translations.FATE_LEADER[value || FateLeader.NOT_FOUND],
+            key: leader.get(key)!,
+        }),
+    );
+
+    return results;
 };

@@ -95,8 +95,8 @@ Deploy the app for production using gh-pages module.
 // https://generic-ui.com/blog/rxjs-testing-patterns
 
 #FEATURES
-[] basic app
-[] basic tests
-[] better styles
-[] Fate roll (with interpretation table)
-[] roll "wild" (custom) dice
+- roll "wild" (custom) dice
+- roll "explosion" dice
+- highlight in the fate leader what this roll means
+- screen tests
+- unit tests for components

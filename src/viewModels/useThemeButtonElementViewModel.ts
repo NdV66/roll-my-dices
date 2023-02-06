@@ -1,16 +1,17 @@
-import { useAppContext } from '../context';
+import { getModelByKey, useAppContext } from '../context';
+import { AppThemeModel } from '../models/AppThemeModel';
+import { useStateWithObservable } from '../tools/useStateWithObservable';
+import { Models } from '../types';
 
 export const useThemeButtonElementViewModel = () => {
+    const appThemeModel = getModelByKey<AppThemeModel>(Models.APP_THEME);
     const appContext = useAppContext();
-
-    const onChangeTheme = () => {
-        appContext.toggleAppTheme();
-    };
+    const appTheme = useStateWithObservable(appThemeModel.appTheme);
 
     return {
-        onChangeTheme,
+        onChangeTheme: appThemeModel.toggleAppTheme,
         theme: appContext.theme,
-        appTheme: appContext.appTheme,
+        appTheme,
         translations: appContext.translations,
     };
 };

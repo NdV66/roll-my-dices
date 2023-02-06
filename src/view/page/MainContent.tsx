@@ -2,6 +2,7 @@
 import { css } from '@emotion/react';
 
 import Card from 'antd/es/card/Card';
+import { TAB_LISTS } from '../../defaults';
 import { MainContentTab, TTheme } from '../../types';
 import { useMainContentViewModel } from '../../viewModels/useMainContentViewModel';
 import { MainContentCardBodyTemplate } from '../elements';
@@ -22,7 +23,7 @@ const getContentList = (theme: TTheme, activeMainTab: MainContentTab): Record<st
 });
 
 export const MainContent: React.FC = () => {
-    const { theme, activeTabKey, setActiveTabKey, translatedTabList } = useMainContentViewModel();
+    const { theme, activeTabKey, setActiveTabKey, translatedTabList } = useMainContentViewModel(TAB_LISTS);
     const themedStyles = styles(theme);
 
     const contentList = getContentList(theme, activeTabKey);

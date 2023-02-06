@@ -1,12 +1,11 @@
 import { renderHook } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import { Observable, Subject } from 'rxjs';
-import { useStateWithObservableWithInit } from '../../tools/useStateWithObservableWithInit';
+import { useStateWithObservable } from '../../tools';
 
 const nextValue = 66;
-const initialValue = 6;
 
-describe('useStateWithObservableWithInit', () => {
+describe('useStateWithObservable', () => {
     describe('Should work with subjects', () => {
         let observable: Subject<number>;
 
@@ -14,13 +13,13 @@ describe('useStateWithObservableWithInit', () => {
             observable = new Subject<number>();
         });
 
-        test('- keep initial value if no changes', () => {
-            const { result } = renderHook(() => useStateWithObservableWithInit(observable, initialValue));
-            expect(result.current).toBe(initialValue);
+        test('- undefined as initial value if no changes', () => {
+            const { result } = renderHook(() => useStateWithObservable(observable));
+            expect(result.current).toBeUndefined();
         });
 
         test('- keep last value', () => {
-            const { result } = renderHook(() => useStateWithObservableWithInit(observable, initialValue));
+            const { result } = renderHook(() => useStateWithObservable(observable));
 
             act(() => {
                 observable.next(nextValue);
@@ -33,7 +32,7 @@ describe('useStateWithObservableWithInit', () => {
     describe('Should work with observables', () => {
         test('- keep last value', () => {
             const observable = new Observable<number>((observer) => observer.next(nextValue));
-            const { result } = renderHook(() => useStateWithObservableWithInit(observable, initialValue));
+            const { result } = renderHook(() => useStateWithObservable(observable));
             expect(result.current).toBe(nextValue);
         });
     });

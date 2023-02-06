@@ -1,27 +1,19 @@
 import React, { useEffect } from 'react';
 import { DEFAULTS } from '../defaults';
-import { getNewAppTheme } from '../services';
+import { AppLangModel } from '../models/AppLangModel';
+import { AppThemeModel } from '../models/AppThemeModel';
 import { useStateWithObservableWithInit } from '../tools';
-import { AppLangs, AppTheme, TAppContext, TTheme, TTranslations } from '../types';
+import { Models, TAppContext, TTheme, TTranslations } from '../types';
 import { AppContext } from './AppContext';
-import { appLangModel, appThemeModel } from './models';
+import { getModelByKey } from './models';
 
 type Props = React.PropsWithChildren<unknown>;
 
 export const AppContextWrapper: React.FC<Props> = ({ children }) => {
+    const appLangModel = getModelByKey<AppLangModel>(Models.APP_LANG);
+    const appThemeModel = getModelByKey<AppThemeModel>(Models.APP_THEME);
     const theme = useStateWithObservableWithInit<TTheme>(appThemeModel.theme, DEFAULTS.THEME);
-    const appTheme = useStateWithObservableWithInit<AppTheme>(appThemeModel.appTheme, DEFAULTS.APP_THEME);
-
-    const appLang = useStateWithObservableWithInit<AppLangs>(appLangModel.appLang, DEFAULTS.LANG);
-    const appTranslations = useStateWithObservableWithInit<TTranslations>(
-        appLangModel.translations,
-        {} as TTranslations,
-    );
-
-    const toggleAppTheme = () => {
-        const newTheme = getNewAppTheme(appTheme);
-        appThemeModel.changeAppTheme(newTheme);
-    };
+    const translations = useStateWithObservableWithInit<TTranslations>(appLangModel.translations, {} as TTranslations);
 
     useEffect(() => {
         appThemeModel.setDefaultValue();
@@ -32,13 +24,8 @@ export const AppContextWrapper: React.FC<Props> = ({ children }) => {
     }, []);
 
     const value: TAppContext = {
-        appTheme,
         theme,
-        toggleAppTheme,
-
-        appLang,
-        translations: appTranslations,
-        changeAppLang: appLangModel.changeAppLang,
+        translations,
     };
 
     return (

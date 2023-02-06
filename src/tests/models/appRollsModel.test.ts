@@ -37,9 +37,8 @@ describe('AppRollModel', () => {
                 cold('-b').subscribe(() => model['_rollModSource'].next(ROLL_EXTENDED_MOCK.mod));
                 cold('-c').subscribe(() => model.rollDice(ROLL_MOCK.dice));
 
-                expectObservable(model.extendedRollSource).toBe('a(bc)', {
-                    a: DEFAULTS.EMPTY_ROLL_RESULT,
-                    b: null, //because roll is empty yet
+                expectObservable(model.extendedRollSource).toBe('bc', {
+                    b: DEFAULTS.EMPTY_ROLL_RESULT,
                     c: ROLL_EXTENDED_MOCK,
                 });
             });
