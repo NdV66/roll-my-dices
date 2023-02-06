@@ -5,7 +5,6 @@ import { DiceTypes, TAppContext } from '../../types';
 import { appRollModelMock, getAppContextMock } from '../mocks';
 import { renderHook } from '@testing-library/react';
 import { DEFAULTS, DICES_ORDER } from '../../defaults';
-import { act } from 'react-dom/test-utils';
 import { useRollsElementViewModel } from '../../viewModels';
 import { AppRollModel } from '../../models/AppRollModel';
 import { Observable } from 'rxjs';
