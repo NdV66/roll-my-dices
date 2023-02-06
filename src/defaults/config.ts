@@ -1,5 +1,5 @@
 import { LIGHT_THEME } from '../styles/light.theme';
-import { AppLangs, AppTheme, MainContentTab } from '../types';
+import { AppLangs, AppTheme, MainContentTab, TTabList } from '../types';
 
 export const DEFAULTS = {
     APP_THEME: AppTheme.LIGHT,
@@ -19,3 +19,14 @@ export const DEFAULTS = {
 
     REPO_URL: 'https://github.com/NdV66/roll-my-dices',
 };
+
+export const TAB_LISTS: TTabList[] = [
+    {
+        key: MainContentTab.CLASSIC_D20,
+        tab: 'CLASSIC_D20_TAB',
+    },
+    {
+        key: MainContentTab.FATE,
+        tab: 'FATE_TAB',
+    },
+];
