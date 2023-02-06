@@ -8,6 +8,7 @@ export const DEFAULTS = {
     LANGS_AMOUNT: 2,
 
     EMPTY_ROLL_RESULT: null,
+    EMPTY_MOD: '',
 
     DICE_MIN: 1,
     DICE_NUMBER: 1,

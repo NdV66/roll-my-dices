@@ -6,32 +6,30 @@ import { DEFAULTS } from '../defaults';
 import { testIfModIsOk } from '../services';
 import { MainContentTab } from '../types';
 
-const INITIAL_MOD = '';
-
 export const useModInputViewModel = (activeMainTab: MainContentTab) => {
     const { theme, translations } = useAppContext();
     const showInputSource = useMemo(() => new BehaviorSubject<boolean>(DEFAULTS.SHOW_INPUT_MOD_ON_ENTER), []);
-    const currentValueSource = useMemo(() => new BehaviorSubject<string>(INITIAL_MOD), []);
+    const currentValueSource = useMemo(() => new BehaviorSubject<string>(DEFAULTS.EMPTY_MOD), []);
 
     const isCurrentValueOkSource = combineLatest([currentValueSource]).pipe(map(([value]) => testIfModIsOk(value)));
     const rollModel = useMemo(() => getModelByMainTabKey(activeMainTab)!, [activeMainTab]);
 
     const showInput = useStateWithObservableWithInit(showInputSource, DEFAULTS.SHOW_INPUT_MOD_ON_ENTER);
-    const currentValue = useStateWithObservableWithInit(currentValueSource, INITIAL_MOD);
+    const currentValue = useStateWithObservableWithInit(currentValueSource, DEFAULTS.EMPTY_MOD);
     const isCurrentValueOk = useStateWithObservableWithInit(isCurrentValueOkSource, true);
     const currentConfirmedMod = useStateWithObservableWithInit<number>(rollModel.rollModSource, DEFAULTS.MOD, [
         activeMainTab,
     ]);
 
     useEffect(() => {
-        currentValueSource.next(INITIAL_MOD);
+        currentValueSource.next(DEFAULTS.EMPTY_MOD);
     }, [activeMainTab]);
 
     const toggleShowInput = () => {
         showInputSource.next(!showInput);
     };
 
-    const updateCurrentValue = (value: string = INITIAL_MOD) => {
+    const updateCurrentValue = (value: string = DEFAULTS.EMPTY_MOD) => {
         const trimmed = value.trim();
         currentValueSource.next(trimmed);
     };
@@ -42,12 +40,12 @@ export const useModInputViewModel = (activeMainTab: MainContentTab) => {
     };
 
     const onRemove = () => {
-        currentValueSource.next(INITIAL_MOD);
+        currentValueSource.next(DEFAULTS.EMPTY_MOD);
         rollModel.updateRollMod(DEFAULTS.MOD);
     };
 
     const onCloseModal = () => {
-        !isCurrentValueOk && currentValueSource.next(INITIAL_MOD);
+        !isCurrentValueOk && currentValueSource.next(DEFAULTS.EMPTY_MOD);
         toggleShowInput();
     };
 
