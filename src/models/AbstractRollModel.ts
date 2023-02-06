@@ -13,6 +13,10 @@ export abstract class AbstractRollModel<R extends TRoll, E extends TRollExtended
     protected abstract prepareExtendedRoll([roll, mod]: [R | null, number | null]): E | null;
     protected abstract prepareRollResult(diceType: DiceTypes): R;
 
+    constructor() {
+        this._calcExtendedRollSubscribe();
+    }
+
     protected _calcExtendedRollSubscribe() {
         combineLatest([this._rollSource, this._rollModSource])
             .pipe(map(this.prepareExtendedRoll))
