@@ -15,12 +15,11 @@ describe('AppThemeModel', () => {
     beforeEach(() => {
         model = new AppThemeModel();
         testScheduler = new TestScheduler((actual, expected) => {
-            console.log(actual, expected);
             expect(actual).toEqual(expected);
         });
     });
 
-    describe.only('toggleAppTheme', () => {
+    describe('toggleAppTheme', () => {
         beforeEach(() => {
             const startTheme = AppTheme.LIGHT;
             model['_appThemeSubject'].next(startTheme);

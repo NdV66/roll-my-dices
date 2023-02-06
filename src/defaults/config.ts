@@ -1,5 +1,5 @@
 import { LIGHT_THEME } from '../styles/light.theme';
-import { AppLangs, AppTheme, MainContentTab, TTabList } from '../types';
+import { AppLangs, AppTheme, DiceTypes, MainContentTab, TTabList } from '../types';
 
 export const DEFAULTS = {
     APP_THEME: AppTheme.LIGHT,
@@ -30,4 +30,13 @@ export const TAB_LISTS: TTabList[] = [
         key: MainContentTab.FATE,
         tab: 'FATE_TAB',
     },
+];
+
+export const DICES_ORDER = [
+    DiceTypes.D_4,
+    DiceTypes.D_6,
+    DiceTypes.D_8,
+    DiceTypes.D_10,
+    DiceTypes.D_12,
+    DiceTypes.D_20,
 ];
