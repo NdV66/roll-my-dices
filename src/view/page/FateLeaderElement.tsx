@@ -6,7 +6,7 @@ import { TTheme } from '../../types';
 import { useFateLeaderModalViewModel } from '../../viewModels';
 import { ModalFooter, TextButton } from '../elements';
 
-export const HIGHLIGHT_CLASS = 'testClass';
+export const HIGHLIGHT_CLASS = 'currentRoll';
 
 type Props = {
     rollValue?: number;
