@@ -25,7 +25,12 @@ export const rollFateDices = (): FateDicesType => {
     return numberRolls.map(translateToFate);
 };
 
-export const mapResultToLeader = (roll: number) => FATE.LEADER.get(roll) || FateLeader.NOT_FOUND;
+export const mapResultToLeader = (roll?: number) => {
+    if (roll !== undefined) {
+        return FATE.LEADER.get(roll) || FateLeader.NOT_FOUND;
+    }
+    return FateLeader.NOT_FOUND;
+};
 
 export const prepareExtendedFateRoll = (roll: TFateRoll | null, mod: number | null) => {
     const modValue = mod || DEFAULTS.MOD;
@@ -50,13 +55,17 @@ export const mapFateToDice = (rawResult: number) => {
     return diceSet[index];
 };
 
+//TODO tests
+export const translateToFateLeader = (translations: TTranslations, value?: FateLeader) =>
+    translations.FATE_LEADER[value || FateLeader.NOT_FOUND];
+
 export const translateLeaderData = (translations: TTranslations, leader: Map<number, FateLeader>) => {
     const results: TTranslateLeaderData[] = [];
 
     leader.forEach((value: FateLeader, key: number) =>
         results.push({
             value: key,
-            name: translations.FATE_LEADER[value || FateLeader.NOT_FOUND],
+            name: translateToFateLeader(translations, value),
             key: leader.get(key)!,
         }),
     );
