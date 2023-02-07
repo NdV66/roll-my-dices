@@ -55,17 +55,13 @@ export const mapFateToDice = (rawResult: number) => {
     return diceSet[index];
 };
 
-//TODO tests
-export const translateToFateLeader = (translations: TTranslations, value?: FateLeader) =>
-    translations.FATE_LEADER[value || FateLeader.NOT_FOUND];
-
 export const translateLeaderData = (translations: TTranslations, leader: Map<number, FateLeader>) => {
     const results: TTranslateLeaderData[] = [];
 
     leader.forEach((value: FateLeader, key: number) =>
         results.push({
             value: key,
-            name: translateToFateLeader(translations, value),
+            name: translations.FATE_LEADER[value || FateLeader.NOT_FOUND],
             key: leader.get(key)!,
         }),
     );

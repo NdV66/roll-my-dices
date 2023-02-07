@@ -62,6 +62,7 @@ const styles = (theme: TTheme) => ({
 
         .ant-table-cell {
             font-size: ${theme.smallFontSize}px;
+            font-weight: 700;
         }
 
         .ant-table-tbody > tr.ant-table-row:hover > td {

@@ -43,7 +43,6 @@ describe('useFateLeaderModalViewModel', () => {
                 title: translations.FATE_LEADER_HEADER_VALUE,
                 dataIndex: 'value',
                 key: 'value',
-                render: expect.any(Function),
             },
             {
                 title: translations.FATE_LEADER_HEADER_NAME,
