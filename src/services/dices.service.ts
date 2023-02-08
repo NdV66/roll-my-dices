@@ -13,8 +13,10 @@ export const mapRollToDice = (diceType: DiceTypes, rawResult: number) => {
 };
 
 export const prepareExtendedRoll = (roll: TRoll | null, mod: number | null) =>
-    roll && {
-        ...roll,
-        calculationResult: roll.roll + (mod || DEFAULTS.MOD),
-        mod: mod || DEFAULTS.MOD,
-    };
+    roll
+        ? {
+              ...roll,
+              calculationResult: roll.roll + (mod || DEFAULTS.MOD),
+              mod: mod || DEFAULTS.MOD,
+          }
+        : DEFAULTS.EMPTY_ROLL_RESULT;

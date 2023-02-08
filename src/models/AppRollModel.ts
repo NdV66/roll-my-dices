@@ -1,20 +1,9 @@
-import { DiceTypes, TRoll, TRollExtended } from '../types';
-import { DEFAULTS, DICE_TYPES_MAX } from '../defaults';
-import { prepareExtendedRoll, rollDices } from '../services';
+import { TRoll, TRollExtended } from '../types';
 import { AbstractRollModel } from './AbstractRollModel';
+import { DieRollFormatter } from './DieRollFormatter';
 
 export class AppRollModel extends AbstractRollModel<TRoll, TRollExtended> {
-    protected prepareExtendedRoll([roll, mod]: [TRoll | null, number | null]) {
-        return prepareExtendedRoll(roll, mod);
-    }
-
-    protected prepareRollResult(diceType: DiceTypes) {
-        const max = DICE_TYPES_MAX.get(diceType)!;
-        const rolls = rollDices(DEFAULTS.DICE_NUMBER, DEFAULTS.DICE_MIN, max);
-
-        return {
-            dice: diceType,
-            roll: rolls[0],
-        };
+    constructor() {
+        super(new DieRollFormatter());
     }
 }
