@@ -2,7 +2,7 @@ import { LIGHT_THEME } from '../styles/light.theme';
 import { AppLangs, AppTheme, DiceTypes, MainContentTab, TTabList } from '../types';
 
 export const DEFAULTS = {
-    APP_THEME: AppTheme.LIGHT,
+    APP_THEME: AppTheme.DARK,
     THEME: LIGHT_THEME,
     LANG: AppLangs.EN,
     LANGS_AMOUNT: 2,

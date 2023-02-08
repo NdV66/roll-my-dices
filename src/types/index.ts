@@ -8,3 +8,4 @@ export * from './mainContent';
 export * from './fate';
 export * from './genericSingletonManager';
 export * from './IDieRollFormatter';
+export * from './IRollModel';

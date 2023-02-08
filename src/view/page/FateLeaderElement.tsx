@@ -9,10 +9,10 @@ import { ModalFooter, TextButton } from '../elements';
 export const HIGHLIGHT_CLASS = 'currentRoll';
 
 type Props = {
-    rollValue?: number;
+    calculationResult?: number;
 };
 
-export const FateLeaderElement: React.FC<Props> = ({ rollValue }) => {
+export const FateLeaderElement: React.FC<Props> = ({ calculationResult }) => {
     const { translations, onOpenModal, onCloseModal, showFateLeader, theme, translatedColumns, translatedLeaderData } =
         useFateLeaderModalViewModel();
     const themedStyle = styles(theme);
@@ -39,7 +39,7 @@ export const FateLeaderElement: React.FC<Props> = ({ rollValue }) => {
                         columns={translatedColumns}
                         dataSource={translatedLeaderData}
                         loading={!translatedLeaderData}
-                        rowClassName={(record) => (record.value === rollValue ? HIGHLIGHT_CLASS : '')}
+                        rowClassName={(record) => (record.value === calculationResult ? HIGHLIGHT_CLASS : '')}
                         bordered={false}
                     />
                 </div>

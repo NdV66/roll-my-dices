@@ -1,6 +1,6 @@
-import { DiceTypes, IDieRollFormatter, TRoll, TRollExtended } from '../types';
-import { rollDices } from '../services';
-import { DEFAULTS, DICE_TYPES_MAX } from '../defaults';
+import { DiceTypes, IDieRollFormatter, TRoll, TRollExtended } from '../../types';
+import { rollDices } from '../../services';
+import { DEFAULTS, DICE_TYPES_MAX } from '../../defaults';
 
 export class DieRollFormatter implements IDieRollFormatter<TRoll, TRollExtended> {
     public prepareExtendedRoll(roll: TRoll | null, mod: number | null) {
