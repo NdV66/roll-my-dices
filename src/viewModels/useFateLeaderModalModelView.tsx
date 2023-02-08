@@ -19,7 +19,6 @@ export const useFateLeaderModalViewModel = () => {
             title: translations.FATE_LEADER_HEADER_VALUE,
             dataIndex: 'value',
             key: 'value',
-            render: (value: number) => <strong>{value}</strong>,
         },
         {
             title: translations.FATE_LEADER_HEADER_NAME,

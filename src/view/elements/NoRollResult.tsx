@@ -24,7 +24,7 @@ const styles = (theme: TTheme) => ({
         display: flex;
         align-items: center;
 
-        font-size: ${7 * theme.fontSize}px;
+        font-size: ${5 * theme.fontSize}px;
         color: ${theme.primary};
     `,
 });

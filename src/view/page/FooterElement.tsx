@@ -5,6 +5,7 @@ import { Layout } from 'antd';
 import { DEFAULTS } from '../../defaults';
 import { TTheme } from '../../types';
 import { useFooterViewModel } from '../../viewModels';
+import { ThemeButtonElement } from './ThemeButtonElement';
 
 const { Footer } = Layout;
 
@@ -20,6 +21,10 @@ export const FooterElement = () => {
             <a href={DEFAULTS.REPO_URL} css={themedStyles.link} target="_blank" rel="noopener noreferrer">
                 {translations.REPO}
             </a>
+
+            <div>
+                <ThemeButtonElement />
+            </div>
         </Footer>
     );
 };

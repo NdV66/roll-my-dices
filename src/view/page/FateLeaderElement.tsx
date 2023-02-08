@@ -6,7 +6,13 @@ import { TTheme } from '../../types';
 import { useFateLeaderModalViewModel } from '../../viewModels';
 import { ModalFooter, TextButton } from '../elements';
 
-export const FateLeaderElement: React.FC = () => {
+export const HIGHLIGHT_CLASS = 'currentRoll';
+
+type Props = {
+    rollValue?: number;
+};
+
+export const FateLeaderElement: React.FC<Props> = ({ rollValue }) => {
     const { translations, onOpenModal, onCloseModal, showFateLeader, theme, translatedColumns, translatedLeaderData } =
         useFateLeaderModalViewModel();
     const themedStyle = styles(theme);
@@ -33,6 +39,8 @@ export const FateLeaderElement: React.FC = () => {
                         columns={translatedColumns}
                         dataSource={translatedLeaderData}
                         loading={!translatedLeaderData}
+                        rowClassName={(record) => (record.value === rollValue ? HIGHLIGHT_CLASS : '')}
+                        bordered={false}
                     />
                 </div>
             </Modal>
@@ -42,8 +50,27 @@ export const FateLeaderElement: React.FC = () => {
 
 const styles = (theme: TTheme) => ({
     table: css`
+        .${HIGHLIGHT_CLASS} {
+            background-color: ${theme.primary};
+            color: ${theme.background};
+        }
+
+        .ant-table-tbody > tr.ant-table-row.${HIGHLIGHT_CLASS}:hover > td {
+            background-color: ${theme.primary};
+            color: ${theme.background};
+        }
+
         .ant-table-cell {
             font-size: ${theme.smallFontSize}px;
+            font-weight: 700;
+        }
+
+        .ant-table-tbody > tr.ant-table-row:hover > td {
+            color: ${theme.primary};
+        }
+
+        .ant-table-cell {
+            border-radius: 0 !important;
         }
     `,
 });
