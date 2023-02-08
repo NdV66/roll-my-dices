@@ -1,14 +1,6 @@
-import { DEFAULTS, FATE, NO_DICE_FOUND_ERROR, ROLLS_RESULTS_FONTS } from '../defaults';
-import {
-    DiceTypes,
-    FateDicesType,
-    FateDiceType,
-    FateLeader,
-    TFateRoll,
-    TTranslateLeaderData,
-    TTranslations,
-} from '../types';
-import { calcSummaryRolls, rollDices } from './rolls.service';
+import { FATE, NO_DICE_FOUND_ERROR, ROLLS_RESULTS_FONTS } from '../defaults';
+import { DiceTypes, FateDicesType, FateDiceType, FateLeader, TTranslateLeaderData, TTranslations } from '../types';
+import { rollDices } from './rolls.service';
 
 export const translateToFate = (roll: number): FateDiceType => {
     if (FATE.TRANSLATE_FOR_MINUS.includes(roll)) {
