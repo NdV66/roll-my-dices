@@ -33,8 +33,11 @@ React Context and its wrapper.
 Files with translations.
 
 #### `/models`
-All app models for store and manipulate any data. \
+All app MAIN models for store and manipulate any data. \
 Each of them should be use as singletons (always).
+
+#### `/models/rolls`
+All app models for rolling dice and manipulate these result.
 
 #### `/services`
 All hard app logic (calculations etc.)

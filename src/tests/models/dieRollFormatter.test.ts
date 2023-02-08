@@ -1,5 +1,5 @@
 import { DEFAULTS } from '../../defaults';
-import { DieRollFormatter } from '../../models/DieRollFormatter';
+import { DieRollFormatter } from '../../models/rolls/DieRollFormatter';
 import { DiceTypes, TRoll, TRollExtended } from '../../types';
 import * as rollsService from '../../services/rolls.service';
 import { ROLL_MOCK } from './mocks';

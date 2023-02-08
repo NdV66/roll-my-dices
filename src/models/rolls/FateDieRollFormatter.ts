@@ -1,6 +1,6 @@
-import { DiceTypes, IDieRollFormatter, TFateRoll, TRoll, TRollExtended } from '../types';
-import { calcSummaryRolls, rollFateDices, summaryRolls } from '../services';
-import { DEFAULTS } from '../defaults';
+import { DiceTypes, IDieRollFormatter, TFateRoll, TRoll, TRollExtended } from '../../types';
+import { calcSummaryRolls, rollFateDices, summaryRolls } from '../../services';
+import { DEFAULTS } from '../../defaults';
 
 export class FateDieRollFormatter implements IDieRollFormatter<TRoll, TRollExtended> {
     public prepareExtendedRoll(roll: TFateRoll | null, mod: number | null) {

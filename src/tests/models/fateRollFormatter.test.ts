@@ -1,4 +1,4 @@
-import { FateDieRollFormatter } from '../../models/FateDieRollFormatter';
+import { FateDieRollFormatter } from '../../models/rolls';
 import { FATE_ROLL, FATE_ROLL_EXTENDED_NO_MOD_MOCK, FATE_ROLL_EXTENDED_WITH_MOD_MOCK } from '../models/mocks';
 import * as rollsService from '../../services/rolls.service';
 
