@@ -1,5 +1,5 @@
-import { DiceTypes, TRoll, TRollExtended } from '../types';
-import { BehaviorSubject, map, combineLatest } from 'rxjs';
+import { DiceTypes, IDieRollFormatter, TRoll, TRollExtended } from '../types';
+import { BehaviorSubject, combineLatest, map } from 'rxjs';
 import { DEFAULTS, DICE_TYPES_MAX } from '../defaults';
 
 export abstract class AbstractRollModel<R extends TRoll, E extends TRollExtended> {
@@ -10,21 +10,22 @@ export abstract class AbstractRollModel<R extends TRoll, E extends TRollExtended
     public rollModSource = this._rollModSource.asObservable();
     public extendedRollSource = this._extendedRollSource.asObservable();
 
-    protected abstract prepareExtendedRoll([roll, mod]: [R | null, number | null]): E | null;
-    protected abstract prepareRollResult(diceType: DiceTypes): R;
-
-    constructor() {
+    constructor(private _dieRollFormatter: IDieRollFormatter<R, E>) {
         this._calcExtendedRollSubscribe();
     }
 
-    private _calcExtendedRollSubscribe() {
-        combineLatest([this._rollSource, this.rollModSource])
-            .pipe(map(this.prepareExtendedRoll))
+    protected _calcExtendedRollSubscribe() {
+        combineLatest([this._rollSource, this._rollModSource])
+            .pipe(
+                map((roll) =>
+                    roll ? this._dieRollFormatter.prepareExtendedRoll(roll[0], roll[1]) : DEFAULTS.EMPTY_ROLL_RESULT,
+                ),
+            )
             .subscribe((extendedRoll) => this._extendedRollSource.next(extendedRoll));
     }
 
     public rollDice(diceType: DiceTypes) {
-        const result = this.prepareRollResult(diceType);
+        const result = this._dieRollFormatter.prepareRollResult(diceType);
         this._rollSource.next(result);
     }
 

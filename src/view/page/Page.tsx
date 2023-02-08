@@ -7,7 +7,6 @@ import { usePageViewModel } from '../../viewModels';
 import { AppHeader } from './AppHeader';
 import { FooterElement, footerHeight } from './FooterElement';
 import { MainContent } from './MainContent';
-import { ThemeButtonElement } from './ThemeButtonElement';
 
 const { Content } = Layout;
 
@@ -31,10 +30,6 @@ export const Page = () => {
 
                 <Content css={themedStyles.wrapper}>
                     <section>
-                        <div css={themedStyles.theme}>
-                            <ThemeButtonElement />
-                        </div>
-
                         <Row justify="center">
                             <Col {...columns}>
                                 <div css={themedStyles.mainWrapper}>

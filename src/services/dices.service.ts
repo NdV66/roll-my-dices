@@ -1,5 +1,5 @@
-import { DEFAULTS, NO_DICE_FOUND_ERROR, ROLLS_RESULTS_FONTS } from '../defaults';
-import { DiceTypes, TRoll } from '../types';
+import { NO_DICE_FOUND_ERROR, ROLLS_RESULTS_FONTS } from '../defaults';
+import { DiceTypes } from '../types';
 
 export const mapRollToDice = (diceType: DiceTypes, rawResult: number) => {
     const diceSet = ROLLS_RESULTS_FONTS[diceType];
@@ -11,10 +11,3 @@ export const mapRollToDice = (diceType: DiceTypes, rawResult: number) => {
 
     return diceSet[index];
 };
-
-export const prepareExtendedRoll = (roll: TRoll | null, mod: number | null) =>
-    roll && {
-        ...roll,
-        calculationResult: roll.roll + (mod || DEFAULTS.MOD),
-        mod: mod || DEFAULTS.MOD,
-    };

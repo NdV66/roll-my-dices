@@ -1,8 +1,12 @@
-import { useAppContext } from '../context';
-import { AppTheme } from '../types';
+import { getModelByKey, useAppContext } from '../context';
+import { AppThemeModel } from '../models/AppThemeModel';
+import { useStateWithObservable } from '../tools';
+import { AppTheme, Models } from '../types';
 
 export const usePageViewModel = () => {
-    const { theme, translations, appTheme } = useAppContext();
+    const appThemeModel = getModelByKey<AppThemeModel>(Models.APP_THEME);
+    const { theme, translations } = useAppContext();
+    const appTheme = useStateWithObservable(appThemeModel.appTheme);
 
     const preparedTheme = {
         token: {
@@ -20,5 +24,6 @@ export const usePageViewModel = () => {
         antdTheme: preparedTheme,
         translations,
         theme,
+        appTheme,
     };
 };

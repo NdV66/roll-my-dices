@@ -7,3 +7,4 @@ export * from './roll';
 export * from './mainContent';
 export * from './fate';
 export * from './genericSingletonManager';
+export * from './IDieRollFormatter';

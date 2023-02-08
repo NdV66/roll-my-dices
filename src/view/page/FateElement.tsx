@@ -23,7 +23,7 @@ export const FateElement: React.FC = () => {
             </div>
 
             <div css={[themedStyles.buttonWrapper, themedStyles.fateLeaderButton]}>
-                <FateLeaderElement />
+                <FateLeaderElement rollValue={roll?.roll} />
             </div>
         </>
     );

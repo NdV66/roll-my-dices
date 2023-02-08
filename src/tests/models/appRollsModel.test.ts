@@ -38,8 +38,8 @@ describe('AppRollModel', () => {
                 cold('-c').subscribe(() => model.rollDice(ROLL_MOCK.dice));
 
                 expectObservable(model.extendedRollSource).toBe('a(bc)', {
-                    a: DEFAULTS.EMPTY_ROLL_RESULT,
-                    b: null, //because roll is empty yet
+                    a: null,
+                    b: null,
                     c: ROLL_EXTENDED_MOCK,
                 });
             });
