@@ -30,6 +30,7 @@ export const TEXTS_PL: TTranslations = {
 
     FATE_ROLL: 'Rzucaj',
     FATE_LEADER_TITLE: 'Drabinka Fate',
+    FATE_LEADER_TITLE_WARNING: 'Uwaga, wynik rzutu poza zakresem!',
     FATE_LEADER_HEADER_VALUE: 'Wartość',
     FATE_LEADER_HEADER_NAME: 'Nazwa',
     FATE_LEADER: {

@@ -29,6 +29,7 @@ export const TEXTS_EN: TTranslations = {
 
     FATE_ROLL: 'Roll',
     FATE_LEADER_TITLE: 'Fate leader',
+    FATE_LEADER_TITLE_WARNING: 'Warning, the roll result is out of scope!',
     FATE_LEADER_HEADER_VALUE: 'Value',
     FATE_LEADER_HEADER_NAME: 'Name',
     FATE_LEADER: {

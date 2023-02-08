@@ -39,6 +39,7 @@ export type TTranslations = {
 
     FATE_ROLL: string;
     FATE_LEADER_TITLE: string;
+    FATE_LEADER_TITLE_WARNING: string;
     FATE_LEADER_HEADER_VALUE: string;
     FATE_LEADER_HEADER_NAME: string;
     FATE_LEADER: {
