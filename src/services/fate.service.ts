@@ -32,18 +32,6 @@ export const mapResultToLeader = (roll?: number) => {
     return FateLeader.NOT_FOUND;
 };
 
-export const prepareExtendedFateRoll = (roll: TFateRoll | null, mod: number | null) => {
-    const modValue = mod || DEFAULTS.MOD;
-
-    return (
-        roll && {
-            ...roll,
-            calculationResult: calcSummaryRolls(roll.allRolls, modValue),
-            mod: modValue,
-        }
-    );
-};
-
 export const mapFateToDice = (rawResult: number) => {
     const diceSet = ROLLS_RESULTS_FONTS[DiceTypes.FATE];
     const index = rawResult + 1;

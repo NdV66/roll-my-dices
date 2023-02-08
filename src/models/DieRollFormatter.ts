@@ -1,10 +1,16 @@
 import { DiceTypes, IDieRollFormatter, TRoll, TRollExtended } from '../types';
-import { prepareExtendedRoll, rollDices } from '../services';
+import { rollDices } from '../services';
 import { DEFAULTS, DICE_TYPES_MAX } from '../defaults';
 
 export class DieRollFormatter implements IDieRollFormatter<TRoll, TRollExtended> {
-    public prepareExtendedRoll([roll, mod]: [TRoll | null, number | null]) {
-        return prepareExtendedRoll(roll, mod);
+    public prepareExtendedRoll(roll: TRoll | null, mod: number | null) {
+        return roll
+            ? {
+                  ...roll,
+                  calculationResult: roll.roll + (mod || DEFAULTS.MOD),
+                  mod: mod || DEFAULTS.MOD,
+              }
+            : DEFAULTS.EMPTY_ROLL_RESULT;
     }
 
     public prepareRollResult(diceType: DiceTypes) {
