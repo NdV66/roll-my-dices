@@ -20,7 +20,7 @@ export abstract class AbstractRollModel<R extends TRoll, E extends TRollExtended
     protected _calcExtendedRollSubscribe() {
         combineLatest([this._rollSource, this._rollModSource])
             .pipe(map(this.prepareExtendedRoll))
-            .subscribe((extendedRoll) => extendedRoll && this._extendedRollSource.next(extendedRoll));
+            .subscribe((extendedRoll) => this._extendedRollSource.next(extendedRoll));
     }
 
     public rollDice(diceType: DiceTypes) {
