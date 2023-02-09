@@ -48,7 +48,7 @@ describe('useRollsElementViewModel', () => {
         });
 
         test('Should changed, when extendedRollSource from model is changed', () => {
-            rollModelMock.extendedRollSource = new Observable((observer) => observer.next(ROLL_EXTENDED_MOCK));
+            (rollModelMock as any).extendedRollSource = new Observable((observer) => observer.next(ROLL_EXTENDED_MOCK));
             const { result } = renderHook(() => useRollsElementViewModel(DICES_ORDER));
 
             const expectedValue = {

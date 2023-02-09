@@ -7,17 +7,13 @@ export abstract class AbstractRollModel<R extends TRoll, E extends TRollExtended
     private _rollModSource = new BehaviorSubject<number>(DEFAULTS.MOD);
     private _extendedRollSource = new BehaviorSubject<E | null>(DEFAULTS.EMPTY_ROLL_RESULT);
 
-    public rollModSource = this._rollModSource.asObservable();
-    public extendedRollSource = this._extendedRollSource.asObservable();
+    get rollModSource() {
+        return this._rollModSource.asObservable();
+    }
 
-    //TODO
-    // get rollModSource() {
-    //     return this._rollModSource.asObservable();
-    // }
-
-    // get extendedRollSource() {
-    //     return this._extendedRollSource.asObservable();
-    // }
+    get extendedRollSource() {
+        return this._extendedRollSource.asObservable();
+    }
 
     constructor(private _dieRollFormatter: IDieRollFormatter<R, E>) {
         this._calcExtendedRollSubscribe();

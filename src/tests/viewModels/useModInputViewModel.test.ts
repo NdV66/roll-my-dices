@@ -93,7 +93,7 @@ describe('useModInputViewModel', () => {
         });
 
         test('Should change value, when source is changed', () => {
-            rollModelMock.rollModSource = new Observable((observer) => observer.next(OK_VALUE_NUMBER_MOCK));
+            (rollModelMock as any).rollModSource = new Observable((observer) => observer.next(OK_VALUE_NUMBER_MOCK));
             const { result } = renderHook(() => useModInputViewModel(MainContentTab.CLASSIC_D20));
 
             expect(result.current.currentConfirmedMod).toEqual(OK_VALUE_NUMBER_MOCK);
