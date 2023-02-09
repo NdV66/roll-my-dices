@@ -1,4 +1,4 @@
-import { FateLeader } from './fate';
+import { FateLadder } from './fate';
 
 export const enum AppLangs {
     EN = 'en-EN',
@@ -44,18 +44,18 @@ export type TTranslations = {
     FATE_LEADER_HEADER_VALUE: string;
     FATE_LEADER_HEADER_NAME: string;
     FATE_LEADER: {
-        [FateLeader.LEGENDARY]: string;
-        [FateLeader.EPIC]: string;
-        [FateLeader.FANTASTIC]: string;
-        [FateLeader.SUPERB]: string;
-        [FateLeader.GREAT]: string;
-        [FateLeader.GOOD]: string;
-        [FateLeader.FAIR]: string;
-        [FateLeader.AVERAGE]: string;
-        [FateLeader.MEDIOCRE]: string;
-        [FateLeader.POOR]: string;
-        [FateLeader.TERRIBLE]: string;
-        [FateLeader.NOT_FOUND]: string;
+        [FateLadder.LEGENDARY]: string;
+        [FateLadder.EPIC]: string;
+        [FateLadder.FANTASTIC]: string;
+        [FateLadder.SUPERB]: string;
+        [FateLadder.GREAT]: string;
+        [FateLadder.GOOD]: string;
+        [FateLadder.FAIR]: string;
+        [FateLadder.AVERAGE]: string;
+        [FateLadder.MEDIOCRE]: string;
+        [FateLadder.POOR]: string;
+        [FateLadder.TERRIBLE]: string;
+        [FateLadder.NOT_FOUND]: string;
     };
 
     EXPLODING_ON: string;

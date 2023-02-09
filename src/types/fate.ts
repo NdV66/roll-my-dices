@@ -2,7 +2,7 @@ export type FateDiceType = -1 | 0 | 1;
 
 export type FateDicesType = FateDiceType[];
 
-export enum FateLeader {
+export enum FateLadder {
     LEGENDARY = 'LEGENDARY',
     EPIC = 'EPIC',
     FANTASTIC = 'FANTASTIC',
@@ -17,7 +17,7 @@ export enum FateLeader {
     NOT_FOUND = 'NOT_FOUND',
 }
 
-export type TTranslateLeaderData = {
+export type TTranslateLadderData = {
     value: number;
     name: string;
     key: string;

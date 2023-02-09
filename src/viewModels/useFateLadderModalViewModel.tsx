@@ -2,15 +2,15 @@ import { useMemo } from 'react';
 import { BehaviorSubject } from 'rxjs';
 import { useAppContext } from '../context';
 import { DEFAULTS, FATE } from '../defaults';
-import { translateLeaderData } from '../services';
+import { translateLadderData } from '../services';
 import { useStateWithObservableWithInit } from '../tools';
 
-export const useFateLeaderModalViewModel = (calculationResult: number | null) => {
+export const useFateLadderModalViewModel = (calculationResult: number | null) => {
     const { translations, theme } = useAppContext();
-    const showFateLeaderSource = useMemo(() => new BehaviorSubject<boolean>(DEFAULTS.SHOW_FATE_LEADER_ON_ENTER), []);
+    const showFateLadderSource = useMemo(() => new BehaviorSubject<boolean>(DEFAULTS.SHOW_FATE_LEADER_ON_ENTER), []);
 
-    const showFateLeader = useStateWithObservableWithInit<boolean>(
-        showFateLeaderSource,
+    const showFateLadder = useStateWithObservableWithInit<boolean>(
+        showFateLadderSource,
         DEFAULTS.SHOW_FATE_LEADER_ON_ENTER,
     );
 
@@ -27,9 +27,9 @@ export const useFateLeaderModalViewModel = (calculationResult: number | null) =>
         },
     ];
 
-    const onOpenModal = () => showFateLeaderSource.next(true);
+    const onOpenModal = () => showFateLadderSource.next(true);
 
-    const onCloseModal = () => showFateLeaderSource.next(false);
+    const onCloseModal = () => showFateLadderSource.next(false);
 
     const isRollInScope =
         calculationResult !== null && calculationResult >= FATE.MIN_LEADER && calculationResult <= FATE.MAX_LEADER;
@@ -38,10 +38,10 @@ export const useFateLeaderModalViewModel = (calculationResult: number | null) =>
         translations,
         onOpenModal,
         onCloseModal,
-        showFateLeader,
+        showFateLadder,
         theme,
         translatedColumns,
-        translatedLeaderData: translations?.FATE_LEADER && translateLeaderData(translations, FATE.LEADER),
+        translatedLadderData: translations?.FATE_LEADER && translateLadderData(translations, FATE.LADDER),
         isRollOutOfScope: !isRollInScope,
     };
 };
