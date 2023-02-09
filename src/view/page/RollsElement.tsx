@@ -4,12 +4,11 @@ import { DICES_ORDER } from '../../defaults';
 
 import { TTheme } from '../../types';
 import { useRollsElementViewModel } from '../../viewModels';
-import { RollResult, SwitchButton } from '../elements';
+import { RollResult } from '../elements';
 import { NoRollResult, RollsButtons } from '../elements';
 
 export const RollsElement: React.FC = () => {
-    const { rollsElementData, theme, rollInfo, translations, isExploding, toggleIsExploding } =
-        useRollsElementViewModel(DICES_ORDER);
+    const { rollsElementData, theme, rollInfo, translations } = useRollsElementViewModel(DICES_ORDER);
     const themedStyles = styles(theme);
 
     return (
@@ -23,13 +22,6 @@ export const RollsElement: React.FC = () => {
             <div css={themedStyles.result}>
                 {rollInfo ? <RollResult {...rollInfo} theme={theme} /> : <NoRollResult theme={theme} />}
             </div>
-
-            <SwitchButton
-                onChange={toggleIsExploding}
-                checked={isExploding}
-                checkedChildren={translations.EXPLODING_ON}
-                unCheckedChildren={translations.EXPLODING_OFF}
-            />
         </>
     );
 };

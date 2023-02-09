@@ -36,6 +36,7 @@ export type TTranslations = {
 
     CLASSIC_D20_TAB: string;
     FATE_TAB: string;
+    EXPLODING_TAB: string;
 
     FATE_ROLL: string;
     FATE_LEADER_TITLE: string;

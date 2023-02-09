@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { BehaviorSubject, firstValueFrom, map } from 'rxjs';
+import { map } from 'rxjs';
 import { getModelByKey, useAppContext } from '../context';
 import { DEFAULTS } from '../defaults';
 import { AppRollModel } from '../models/AppRollModel';
@@ -16,12 +16,8 @@ const prepareDisplayValue = (roll: TRollExtended | null) =>
         : null;
 
 export const useRollsElementViewModel = (diceOrder: DiceTypes[]) => {
-    const { translations, theme } = useAppContext();
-
-    const _isExplodingSource = useMemo(() => new BehaviorSubject<boolean>(false), []);
-    const isExploding = useStateWithObservableWithInit(_isExplodingSource, false);
-
     const appRollModel = getModelByKey<AppRollModel>(Models.APP_ROLL);
+    const { translations, theme } = useAppContext();
     const rollInfoSource = useMemo(() => appRollModel.extendedRollSource.pipe(map(prepareDisplayValue)), []);
     const rollInfo = useStateWithObservableWithInit<TRollInfo | null>(rollInfoSource, DEFAULTS.EMPTY_ROLL_RESULT);
 
@@ -31,18 +27,10 @@ export const useRollsElementViewModel = (diceOrder: DiceTypes[]) => {
         displayValue: mapRollToDice(dice, AppRollModel.getMaxByDiceType(dice)),
     }));
 
-    const toggleIsExploding = async () => {
-        const lastValue = await firstValueFrom(_isExplodingSource);
-        _isExplodingSource.next(!lastValue);
-    };
-
     return {
         rollsElementData,
         rollInfo,
         theme,
         translations,
-
-        isExploding,
-        toggleIsExploding,
     };
 };

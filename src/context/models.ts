@@ -22,11 +22,14 @@ const allModels = {
 export const getModelByKey = <T>(key: Models) => allModels[key] as T;
 
 export const getModelByMainTabKey = (tab: MainContentTab) => {
-    if (tab === MainContentTab.CLASSIC_D20) {
-        return allModels[Models.APP_ROLL];
-    } else if (tab === MainContentTab.FATE) {
-        return allModels[Models.APP_FATE];
+    switch (tab) {
+        case MainContentTab.CLASSIC_D20:
+            return allModels[Models.APP_ROLL];
+        case MainContentTab.FATE:
+            return allModels[Models.APP_FATE];
+        case MainContentTab.EXPLODING:
+            return allModels[Models.APP_EXPLODING];
+        default:
+            return null;
     }
-
-    return null;
 };

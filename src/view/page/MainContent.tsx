@@ -15,6 +15,11 @@ const getContentList = (theme: TTheme, activeMainTab: MainContentTab): Record<st
             <RollsElement />
         </MainContentCardBodyTemplate>
     ),
+    [MainContentTab.EXPLODING]: (
+        <MainContentCardBodyTemplate theme={theme} activeMainTab={activeMainTab}>
+            <div>In progress</div>
+        </MainContentCardBodyTemplate>
+    ),
     [MainContentTab.FATE]: (
         <MainContentCardBodyTemplate theme={theme} activeMainTab={activeMainTab}>
             <FateElement />
