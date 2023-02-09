@@ -8,12 +8,10 @@ import { useStateWithObservableWithInit } from '../tools';
 import { DiceTypes, Models, TRollButtonData, TRollExtended, TRollInfo } from '../types';
 
 const prepareDisplayValue = (roll: TRollExtended | null) =>
-    roll
-        ? {
-              ...roll,
-              displayValue: mapRollToDice(roll!.dice, roll!.roll),
-          }
-        : null;
+    roll && {
+        ...roll,
+        displayValue: mapRollToDice(roll!.dice, roll!.roll),
+    };
 
 export const useRollsElementViewModel = (diceOrder: DiceTypes[]) => {
     const appRollModel = getModelByKey<AppRollModel>(Models.APP_ROLL);
