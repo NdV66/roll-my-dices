@@ -46,4 +46,7 @@ export const TEXTS_EN: TTranslations = {
         [FateLeader.TERRIBLE]: 'terrible',
         [FateLeader.NOT_FOUND]: 'not found',
     },
+
+    EXPLODING_ON: 'Explosion dice',
+    EXPLODING_OFF: 'Normal dice',
 };

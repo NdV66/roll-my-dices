@@ -47,4 +47,7 @@ export const TEXTS_PL: TTranslations = {
         [FateLeader.TERRIBLE]: 'fatalny',
         [FateLeader.NOT_FOUND]: 'Poza skalą',
     },
+
+    EXPLODING_ON: 'Wybuchające kostki',
+    EXPLODING_OFF: 'Normalne kostki',
 };

@@ -57,5 +57,8 @@ export type TTranslations = {
         [FateLeader.NOT_FOUND]: string;
     };
 
+    EXPLODING_ON: string;
+    EXPLODING_OFF: string;
+
     [key: string]: string | any;
 };
