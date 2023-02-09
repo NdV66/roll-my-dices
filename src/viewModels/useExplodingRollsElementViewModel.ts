@@ -5,13 +5,15 @@ import { DEFAULTS } from '../defaults';
 import { AppExplodingRollModel } from '../models/AppExplodingRollModel';
 import { mapRollToDice } from '../services';
 import { useStateWithObservableWithInit } from '../tools';
-import { DiceTypes, Models, TExplodingRollExtended, TRollButtonData, TExplodingRollInfo } from '../types';
+import { DiceTypes, Models, TExplodingRollExtended, TExplodingRollInfo } from '../types';
+import { mapToRollButtonData } from './mapToRollButtonData';
 
 const prepareDisplayValue = (roll: TExplodingRollExtended) => ({
     ...roll,
     displayValues: roll.allRolls.flat().map((el) => mapRollToDice(roll.dice, el)),
 });
 
+//TODO tests
 export const useExplodingRollsElementViewModel = (diceOrder: DiceTypes[]) => {
     const { translations, theme } = useAppContext();
     const _appRollExplodingModel = getModelByKey<AppExplodingRollModel>(Models.APP_EXPLODING);
@@ -25,11 +27,7 @@ export const useExplodingRollsElementViewModel = (diceOrder: DiceTypes[]) => {
         DEFAULTS.EMPTY_ROLL_RESULT,
     );
 
-    const rollsElementData: TRollButtonData[] = diceOrder.map((dice) => ({
-        diceType: dice,
-        roll: () => _appRollExplodingModel.rollDice(dice),
-        displayValue: mapRollToDice(dice, AppExplodingRollModel.getMaxByDiceType(dice)),
-    }));
+    const rollsElementData = mapToRollButtonData(diceOrder, _appRollExplodingModel);
 
     return {
         rollsElementData,
