@@ -6,11 +6,15 @@ import { AppThemeModel } from '../models/AppThemeModel';
 
 import { MainContentTab, Models } from '../types';
 
+const rollModels = {
+    [Models.APP_ROLL]: ModelsManager.getSingleton<AppRollModel>(Models.APP_ROLL),
+    [Models.APP_FATE]: ModelsManager.getSingleton<AppFateRollModel>(Models.APP_FATE),
+};
+
 const allModels = {
     [Models.APP_THEME]: ModelsManager.getSingleton<AppThemeModel>(Models.APP_THEME),
     [Models.APP_LANG]: ModelsManager.getSingleton<AppLangModel>(Models.APP_LANG),
-    [Models.APP_ROLL]: ModelsManager.getSingleton<AppRollModel>(Models.APP_ROLL),
-    [Models.APP_FATE]: ModelsManager.getSingleton<AppFateRollModel>(Models.APP_FATE),
+    ...rollModels,
 };
 
 export const getModelByKey = <T>(key: Models) => allModels[key] as T;

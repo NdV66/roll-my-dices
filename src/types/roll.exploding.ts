@@ -1,7 +1,7 @@
 import { TRoll, TRollExtended } from './roll';
 
 export type TExplodingRoll = TRoll & {
-    allRolls: number[];
+    allRolls: Array<number[]>;
     isExploding: boolean;
 };
 

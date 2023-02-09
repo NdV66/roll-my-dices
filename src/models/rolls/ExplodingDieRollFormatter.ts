@@ -1,29 +1,28 @@
-import { DiceTypes, IDieRollFormatter, TExplodingRoll, TRoll, TRollExtended } from '../../types';
-import { detectExploding, rollDices } from '../../services';
+import { DiceTypes, IDieRollFormatter, TExplodingRoll, TExplodingRollExtended } from '../../types';
+import { calcSummaryRolls, detectExploding, rollExplodingDice, summaryExplodingDie } from '../../services';
 import { DEFAULTS, DICE_TYPES_MAX } from '../../defaults';
 
-export class ExplodingDieRollFormatter implements IDieRollFormatter<TExplodingRoll, TRollExtended> {
-    //TODO
-    public prepareExtendedRoll(roll: TRoll | null, mod: number | null) {
+export class ExplodingDieRollFormatter implements IDieRollFormatter<TExplodingRoll, TExplodingRollExtended> {
+    public prepareExtendedRoll(roll: TExplodingRoll | null, mod: number | null) {
         return roll
             ? {
                   ...roll,
-                  calculationResult: roll.roll + (mod || DEFAULTS.MOD),
+                  calculationResult: calcSummaryRolls(roll?.allRolls.flat(), mod),
                   mod: mod || DEFAULTS.MOD,
               }
             : DEFAULTS.EMPTY_ROLL_RESULT;
     }
 
-    //TODO
     public prepareRollResult(diceType: DiceTypes) {
+        const diceNumber = 1;
         const max = DICE_TYPES_MAX.get(diceType)!;
-        const rolls = rollDices(1, DEFAULTS.DICE_MIN, max);
+        const rolls = rollExplodingDice(diceNumber, DEFAULTS.DICE_MIN, max);
 
         return {
             dice: diceType,
-            roll: 0,
-            isExploding: detectExploding(1, rolls),
-            allRolls: [],
+            roll: summaryExplodingDie(rolls),
+            isExploding: detectExploding(diceNumber, rolls.flat()),
+            allRolls: rolls,
         };
     }
 }
