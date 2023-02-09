@@ -15,11 +15,11 @@ export const resultStyles = (theme: TTheme) => ({
         user-select: none;
 
         font-family: ${FONT_FAMILY_BY_DICE_TYPE[diceType]};
-        font-size: ${8 * theme.fontSize}px;
+        font-size: ${6 * theme.fontSize}px;
         color: ${theme.primary};
 
         ${screenMd(css`
-            font-size: ${7 * theme.fontSize}px;
+            font-size: ${5 * theme.fontSize}px;
         `)}
     `,
 });

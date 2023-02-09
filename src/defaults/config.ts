@@ -27,6 +27,10 @@ export const TAB_LISTS: TTabList[] = [
         tab: 'CLASSIC_D20_TAB',
     },
     {
+        key: MainContentTab.EXPLODING,
+        tab: 'EXPLODING_TAB',
+    },
+    {
         key: MainContentTab.FATE,
         tab: 'FATE_TAB',
     },

@@ -32,6 +32,6 @@ const styles = (theme: TTheme) => ({
         padding-top: ${2 * theme.baseSpace}px;
     `,
     content: css`
-        padding-top: ${6 * theme.baseSpace}px;
+        padding-top: ${4 * theme.baseSpace}px;
     `,
 });

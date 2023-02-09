@@ -6,3 +6,7 @@ export type TExplodingRoll = TRoll & {
 };
 
 export type TExplodingRollExtended = TRollExtended & TExplodingRoll;
+
+export type TExplodingRollInfo = TExplodingRollExtended & {
+    displayValues: string[];
+};

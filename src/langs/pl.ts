@@ -27,6 +27,7 @@ export const TEXTS_PL: TTranslations = {
 
     CLASSIC_D20_TAB: 'Kostki klasyczne (d20)',
     FATE_TAB: 'Kostki Fate',
+    EXPLODING_TAB: 'Wybuchające kostki',
 
     FATE_ROLL: 'Rzucaj',
     FATE_LEADER_TITLE: 'Drabinka Fate',
@@ -47,4 +48,7 @@ export const TEXTS_PL: TTranslations = {
         [FateLeader.TERRIBLE]: 'fatalny',
         [FateLeader.NOT_FOUND]: 'Poza skalą',
     },
+
+    EXPLODING_ON: 'Wybuchające kostki',
+    EXPLODING_OFF: 'Normalne kostki',
 };

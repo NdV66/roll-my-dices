@@ -2,14 +2,16 @@ import { useMemo } from 'react';
 import { BehaviorSubject } from 'rxjs';
 import { getModelByKey, useAppContext } from '../context';
 import { DEFAULTS } from '../defaults';
+import { AppExplodingRollModel } from '../models/AppExplodingRollModel';
 import { AppFateRollModel } from '../models/AppFateRollModel';
 import { AppRollModel } from '../models/AppRollModel';
 import { useStateWithObservableWithInit } from '../tools';
 import { MainContentTab, Models, TTabList } from '../types';
 
 export const useMainContentViewModel = (tabList: TTabList[]) => {
-    const appFateRollModel = getModelByKey<AppFateRollModel>(Models.APP_FATE);
-    const appRollModel = getModelByKey<AppRollModel>(Models.APP_ROLL);
+    const _appFateRollModel = getModelByKey<AppFateRollModel>(Models.APP_FATE);
+    const _appRollModel = getModelByKey<AppRollModel>(Models.APP_ROLL);
+    const _appExplodingRollModel = getModelByKey<AppExplodingRollModel>(Models.APP_EXPLODING);
     const { theme, translations } = useAppContext();
 
     const translatedTabList = tabList.map((el) => ({ ...el, tab: translations[el.tab] }));
@@ -20,8 +22,9 @@ export const useMainContentViewModel = (tabList: TTabList[]) => {
     const setActiveTabKey = (tab: MainContentTab) => {
         activeTabKeySource.next(tab);
 
-        appRollModel.cleanAll();
-        appFateRollModel.cleanAll();
+        _appRollModel.cleanAll();
+        _appFateRollModel.cleanAll();
+        _appExplodingRollModel.cleanAll();
     };
 
     return {

@@ -1,5 +1,5 @@
-import { TTheme, TRollButtonData } from '../../types';
-import { DiceButton } from '.';
+import { TTheme, TRollButtonData } from '../../../types';
+import { DiceButton } from '..';
 
 type Props = {
     theme: TTheme;
