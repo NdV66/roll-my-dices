@@ -29,7 +29,7 @@ const styles = (theme: TTheme) => ({
         text-align: center;
         color: ${theme.primary};
         font-size: ${theme.smallFontSize}px;
-        margin: ${2 * theme.baseSpace}px 0;
+        margin: ${4 * theme.baseSpace}px 0;
     `,
     rollsWrapper: css`
         display: flex;

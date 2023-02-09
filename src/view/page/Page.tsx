@@ -33,8 +33,8 @@ export const Page = () => {
                 <Layout>
                     <AppHeader theme={theme} translations={translations} />
 
-                    <Content css={themedStyles.wrapper}>
-                        <section>
+                    <section>
+                        <Content css={themedStyles.wrapper}>
                             <Row justify="center">
                                 <Col {...columns}>
                                     <div css={themedStyles.mainWrapper}>
@@ -42,8 +42,8 @@ export const Page = () => {
                                     </div>
                                 </Col>
                             </Row>
-                        </section>
-                    </Content>
+                        </Content>
+                    </section>
 
                     <FooterElement />
                 </Layout>

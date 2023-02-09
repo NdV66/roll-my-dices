@@ -6,6 +6,7 @@ import { TAB_LISTS } from '../../defaults';
 import { MainContentTab, TTheme } from '../../types';
 import { useMainContentViewModel } from '../../viewModels/useMainContentViewModel';
 import { MainContentCardBodyTemplate } from '../elements';
+import { ExplodingRollsElement } from './ExplodingRollsElement';
 import { FateElement } from './FateElement';
 import { RollsElement } from './RollsElement';
 
@@ -17,7 +18,7 @@ const getContentList = (theme: TTheme, activeMainTab: MainContentTab): Record<st
     ),
     [MainContentTab.EXPLODING]: (
         <MainContentCardBodyTemplate theme={theme} activeMainTab={activeMainTab}>
-            <div>In progress</div>
+            <ExplodingRollsElement />
         </MainContentCardBodyTemplate>
     ),
     [MainContentTab.FATE]: (
