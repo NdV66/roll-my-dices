@@ -21,9 +21,3 @@ export type TRollExtended = TRoll & {
 export type TRollInfo = TRollExtended & {
     displayValue: string;
 };
-
-export type TFateRoll = TRoll & {
-    allRolls: number[];
-};
-
-export type TFateRollExtended = TRollExtended & TFateRoll;
