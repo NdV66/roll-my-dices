@@ -8,16 +8,16 @@ import { useStateWithObservableWithInit } from '../tools';
 import { DiceTypes, Models, TRollButtonData, TRollExtended, TRollInfo } from '../types';
 
 const prepareDisplayValue = (roll: TRollExtended | null) =>
-    roll
-        ? {
-              ...roll,
-              displayValue: mapRollToDice(roll!.dice, roll!.roll),
-          }
-        : null;
+    roll && {
+        ...roll,
+        displayValue: mapRollToDice(roll.dice, roll.roll),
+    };
 
-export const useRollsElementViewModel = (diceOrder: DiceTypes[]) => {
-    const appRollModel = getModelByKey<AppRollModel>(Models.APP_ROLL);
+//TODO tests
+export const useCommonRollsViewModel = (diceOrder: DiceTypes[]) => {
     const { translations, theme } = useAppContext();
+    const appRollModel = getModelByKey<AppRollModel>(Models.APP_ROLL);
+
     const rollInfoSource = useMemo(() => appRollModel.extendedRollSource.pipe(map(prepareDisplayValue)), []);
     const rollInfo = useStateWithObservableWithInit<TRollInfo | null>(rollInfoSource, DEFAULTS.EMPTY_ROLL_RESULT);
 

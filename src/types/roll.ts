@@ -21,3 +21,9 @@ export type TRollExtended = TRoll & {
 export type TRollInfo = TRollExtended & {
     displayValue: string;
 };
+
+export type TRollButtonData = {
+    diceType: DiceTypes;
+    roll: () => void;
+    displayValue: string;
+};
