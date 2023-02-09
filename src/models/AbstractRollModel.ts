@@ -19,13 +19,13 @@ export abstract class AbstractRollModel<R extends TRoll, E extends TRollExtended
         this._calcExtendedRollSubscribe();
     }
 
+    private _mapToExtended(roll?: [R | null, number]) {
+        return roll ? this._dieRollFormatter.prepareExtendedRoll(roll[0], roll[1]) : DEFAULTS.EMPTY_ROLL_RESULT;
+    }
+
     protected _calcExtendedRollSubscribe() {
         combineLatest([this._rollSource, this._rollModSource])
-            .pipe(
-                map((roll) =>
-                    roll ? this._dieRollFormatter.prepareExtendedRoll(roll[0], roll[1]) : DEFAULTS.EMPTY_ROLL_RESULT,
-                ),
-            )
+            .pipe(map((roll) => this._mapToExtended(roll)))
             .subscribe((extendedRoll) => this._extendedRollSource.next(extendedRoll));
     }
 
