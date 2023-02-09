@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 
 import { Modal, Table } from 'antd';
 import { TTheme } from '../../types';
-import { useFateLeaderModalViewModel } from '../../viewModels';
+import { useFateLadderModalViewModel } from '../../viewModels';
 import { ModalFooter, TextButton, WarningParagraph } from '../elements';
 
 export const HIGHLIGHT_CLASS = 'currentRoll';
@@ -12,17 +12,17 @@ type Props = {
     calculationResult: number | null;
 };
 
-export const FateLeaderElement: React.FC<Props> = ({ calculationResult }) => {
+export const FateLadderElement: React.FC<Props> = ({ calculationResult }) => {
     const {
         translations,
         onOpenModal,
         onCloseModal,
-        showFateLeader,
+        showFateLadder,
         theme,
         translatedColumns,
-        translatedLeaderData,
+        translatedLadderData,
         isRollOutOfScope,
-    } = useFateLeaderModalViewModel(calculationResult);
+    } = useFateLadderModalViewModel(calculationResult);
     const themedStyle = styles(theme);
 
     return (
@@ -33,7 +33,7 @@ export const FateLeaderElement: React.FC<Props> = ({ calculationResult }) => {
 
             <Modal
                 onCancel={() => onCloseModal()}
-                open={showFateLeader}
+                open={showFateLadder}
                 title={translations.FATE_LEADER_TITLE}
                 footer={
                     <ModalFooter onCancel={onCloseModal} translations={translations} theme={theme} showOk={false} />
@@ -51,8 +51,8 @@ export const FateLeaderElement: React.FC<Props> = ({ calculationResult }) => {
                         size="middle"
                         pagination={false}
                         columns={translatedColumns}
-                        dataSource={translatedLeaderData}
-                        loading={!translatedLeaderData}
+                        dataSource={translatedLadderData}
+                        loading={!translatedLadderData}
                         rowClassName={(record) => (record.value === calculationResult ? HIGHLIGHT_CLASS : '')}
                         bordered={false}
                     />

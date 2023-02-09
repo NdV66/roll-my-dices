@@ -1,4 +1,4 @@
-import { FateLeader, TTranslations } from '../types';
+import { FateLadder, TTranslations } from '../types';
 import { LANGS } from './langs';
 
 export const TEXTS_EN: TTranslations = {
@@ -29,23 +29,23 @@ export const TEXTS_EN: TTranslations = {
     EXPLODING_TAB: 'Exploding dice',
 
     FATE_ROLL: 'Roll',
-    FATE_LEADER_TITLE: 'Fate leader',
+    FATE_LEADER_TITLE: 'Fate ladder',
     FATE_LEADER_TITLE_WARNING: 'Warning, the roll result is out of scope!',
     FATE_LEADER_HEADER_VALUE: 'Value',
     FATE_LEADER_HEADER_NAME: 'Name',
     FATE_LEADER: {
-        [FateLeader.LEGENDARY]: 'legendary',
-        [FateLeader.EPIC]: 'epic',
-        [FateLeader.FANTASTIC]: 'fantastic',
-        [FateLeader.SUPERB]: 'superb',
-        [FateLeader.GREAT]: 'great',
-        [FateLeader.GOOD]: 'good',
-        [FateLeader.FAIR]: 'fair',
-        [FateLeader.AVERAGE]: 'average',
-        [FateLeader.MEDIOCRE]: 'mediocre',
-        [FateLeader.POOR]: 'poor',
-        [FateLeader.TERRIBLE]: 'terrible',
-        [FateLeader.NOT_FOUND]: 'not found',
+        [FateLadder.LEGENDARY]: 'legendary',
+        [FateLadder.EPIC]: 'epic',
+        [FateLadder.FANTASTIC]: 'fantastic',
+        [FateLadder.SUPERB]: 'superb',
+        [FateLadder.GREAT]: 'great',
+        [FateLadder.GOOD]: 'good',
+        [FateLadder.FAIR]: 'fair',
+        [FateLadder.AVERAGE]: 'average',
+        [FateLadder.MEDIOCRE]: 'mediocre',
+        [FateLadder.POOR]: 'poor',
+        [FateLadder.TERRIBLE]: 'terrible',
+        [FateLadder.NOT_FOUND]: 'not found',
     },
 
     EXPLODING_ON: 'Explosion dice',

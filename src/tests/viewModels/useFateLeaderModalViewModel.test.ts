@@ -2,13 +2,13 @@ import * as contextTools from '../../context/AppContext';
 import { TAppContext } from '../../types';
 import { getAppContextMock } from '../mocks';
 import { renderHook } from '@testing-library/react';
-import { useFateLeaderModalViewModel } from '../../viewModels';
+import { useFateLadderModalViewModel } from '../../viewModels';
 import { act } from 'react-dom/test-utils';
 import { TEXTS_EN } from '../../langs/en';
 import { DEFAULTS, FATE } from '../../defaults';
 import { FATE_ROLL_EXTENDED_WITH_MOD_MOCK } from '../models/mocks';
 
-describe('useFateLeaderModalViewModel', () => {
+describe('useFateLadderModalViewModel', () => {
     let contextMock: TAppContext;
 
     beforeEach(() => {
@@ -23,16 +23,16 @@ describe('useFateLeaderModalViewModel', () => {
 
     test('Should return expected data', () => {
         const { result } = renderHook(() =>
-            useFateLeaderModalViewModel(FATE_ROLL_EXTENDED_WITH_MOD_MOCK.calculationResult),
+            useFateLadderModalViewModel(FATE_ROLL_EXTENDED_WITH_MOD_MOCK.calculationResult),
         );
         const expectedValue = {
             theme: contextMock.theme,
             translations: contextMock.translations,
             onOpenModal: expect.any(Function),
             onCloseModal: expect.any(Function),
-            showFateLeader: expect.any(Boolean),
+            showFateLadder: expect.any(Boolean),
             translatedColumns: expect.any(Array),
-            translatedLeaderData: expect.any(Object),
+            translatedLadderData: expect.any(Object),
             isRollOutOfScope: expect.any(Boolean),
         };
 
@@ -55,63 +55,63 @@ describe('useFateLeaderModalViewModel', () => {
             },
         ];
         const { result } = renderHook(() =>
-            useFateLeaderModalViewModel(FATE_ROLL_EXTENDED_WITH_MOD_MOCK.calculationResult),
+            useFateLadderModalViewModel(FATE_ROLL_EXTENDED_WITH_MOD_MOCK.calculationResult),
         );
 
         expect(result.current.translatedColumns).toEqual(expectedValue);
     });
 
     describe('isRollOutOfScope', () => {
-        test('Should be false, when calculation result is between max and min fate leader (and is not null)', () => {
+        test('Should be false, when calculation result is between max and min fate ladder (and is not null)', () => {
             const calculationResult = FATE.MAX_LEADER - 2;
-            const { result } = renderHook(() => useFateLeaderModalViewModel(calculationResult));
+            const { result } = renderHook(() => useFateLadderModalViewModel(calculationResult));
 
             expect(result.current.isRollOutOfScope).toBe(false);
         });
 
         test('Should be true, when calculation result is null', () => {
-            const { result } = renderHook(() => useFateLeaderModalViewModel(null));
+            const { result } = renderHook(() => useFateLadderModalViewModel(null));
             expect(result.current.isRollOutOfScope).toBe(true);
         });
 
-        test('Should be true, when calculation result is more than max Fate leader', () => {
+        test('Should be true, when calculation result is more than max Fate ladder', () => {
             const calculationResult = FATE.MAX_LEADER + 1;
-            const { result } = renderHook(() => useFateLeaderModalViewModel(calculationResult));
+            const { result } = renderHook(() => useFateLadderModalViewModel(calculationResult));
             expect(result.current.isRollOutOfScope).toBe(true);
         });
 
-        test('Should be true, when calculation result is less than min Fate leader', () => {
+        test('Should be true, when calculation result is less than min Fate ladder', () => {
             const calculationResult = FATE.MIN_LEADER - 1;
-            const { result } = renderHook(() => useFateLeaderModalViewModel(calculationResult));
+            const { result } = renderHook(() => useFateLadderModalViewModel(calculationResult));
             expect(result.current.isRollOutOfScope).toBe(true);
         });
     });
 
-    describe('showFateLeaderSource', () => {
+    describe('showFateLadderSource', () => {
         test('Should be default on enter', () => {
             const { result } = renderHook(() =>
-                useFateLeaderModalViewModel(FATE_ROLL_EXTENDED_WITH_MOD_MOCK.calculationResult),
+                useFateLadderModalViewModel(FATE_ROLL_EXTENDED_WITH_MOD_MOCK.calculationResult),
             );
-            expect(result.current.showFateLeader).toBe(DEFAULTS.SHOW_FATE_LEADER_ON_ENTER);
+            expect(result.current.showFateLadder).toBe(DEFAULTS.SHOW_FATE_LEADER_ON_ENTER);
         });
 
         test('Show set to open', () => {
             const { result } = renderHook(() =>
-                useFateLeaderModalViewModel(FATE_ROLL_EXTENDED_WITH_MOD_MOCK.calculationResult),
+                useFateLadderModalViewModel(FATE_ROLL_EXTENDED_WITH_MOD_MOCK.calculationResult),
             );
 
             act(() => result.current.onOpenModal());
 
-            expect(result.current.showFateLeader).toBe(true);
+            expect(result.current.showFateLadder).toBe(true);
         });
 
         test('Show set to close', () => {
             const { result } = renderHook(() =>
-                useFateLeaderModalViewModel(FATE_ROLL_EXTENDED_WITH_MOD_MOCK.calculationResult),
+                useFateLadderModalViewModel(FATE_ROLL_EXTENDED_WITH_MOD_MOCK.calculationResult),
             );
             act(() => result.current.onCloseModal());
 
-            expect(result.current.showFateLeader).toBe(false);
+            expect(result.current.showFateLadder).toBe(false);
         });
     });
 });

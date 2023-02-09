@@ -1,4 +1,4 @@
-import { FateLeader, TTranslations } from '../types';
+import { FateLadder, TTranslations } from '../types';
 import { LANGS } from './langs';
 
 export const TEXTS_PL: TTranslations = {
@@ -35,18 +35,18 @@ export const TEXTS_PL: TTranslations = {
     FATE_LEADER_HEADER_VALUE: 'Wartość',
     FATE_LEADER_HEADER_NAME: 'Nazwa',
     FATE_LEADER: {
-        [FateLeader.LEGENDARY]: 'legendarny',
-        [FateLeader.EPIC]: 'heroiczny',
-        [FateLeader.FANTASTIC]: 'fantastyczny',
-        [FateLeader.SUPERB]: 'wybitny',
-        [FateLeader.GREAT]: 'świetny',
-        [FateLeader.GOOD]: 'dobry',
-        [FateLeader.FAIR]: 'niezły',
-        [FateLeader.AVERAGE]: 'przeciętny',
-        [FateLeader.MEDIOCRE]: 'słaby',
-        [FateLeader.POOR]: 'mierny',
-        [FateLeader.TERRIBLE]: 'fatalny',
-        [FateLeader.NOT_FOUND]: 'Poza skalą',
+        [FateLadder.LEGENDARY]: 'legendarny',
+        [FateLadder.EPIC]: 'heroiczny',
+        [FateLadder.FANTASTIC]: 'fantastyczny',
+        [FateLadder.SUPERB]: 'wybitny',
+        [FateLadder.GREAT]: 'świetny',
+        [FateLadder.GOOD]: 'dobry',
+        [FateLadder.FAIR]: 'niezły',
+        [FateLadder.AVERAGE]: 'przeciętny',
+        [FateLadder.MEDIOCRE]: 'słaby',
+        [FateLadder.POOR]: 'mierny',
+        [FateLadder.TERRIBLE]: 'fatalny',
+        [FateLadder.NOT_FOUND]: 'Poza skalą',
     },
 
     EXPLODING_ON: 'Wybuchające kostki',

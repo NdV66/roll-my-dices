@@ -1,24 +1,24 @@
 import { FATE, NO_DICE_FOUND_ERROR, ROLLS_RESULTS_FONTS } from '../../defaults';
 import {
     mapFateToDice,
-    mapResultToLeader,
+    mapResultToLadder,
     rollFateDices,
-    translateLeaderData,
+    translateLadderData,
     translateToFate,
 } from '../../services/fate.service';
-import { DiceTypes, FateLeader, TTranslateLeaderData } from '../../types';
+import { DiceTypes, FateLadder, TTranslateLadderData } from '../../types';
 import * as tools from '../../services/rolls.service';
 import { TEXTS_EN } from '../../langs/en';
 
-describe('mapResultToLeader', () => {
-    test('Should map result to the Fate leader correctly', () => {
-        const result = mapResultToLeader(7);
-        expect(result).toEqual(FateLeader.EPIC);
+describe('mapResultToLadder', () => {
+    test('Should map result to the Fate ladder correctly', () => {
+        const result = mapResultToLadder(7);
+        expect(result).toEqual(FateLadder.EPIC);
     });
 
-    test('Should return NOT_FOUND, if there is no result from Fate leader', () => {
-        const result = mapResultToLeader(66);
-        expect(result).toEqual(FateLeader.NOT_FOUND);
+    test('Should return NOT_FOUND, if there is no result from Fate ladder', () => {
+        const result = mapResultToLadder(66);
+        expect(result).toEqual(FateLadder.NOT_FOUND);
     });
 });
 
@@ -74,27 +74,27 @@ describe('mapFateToDice', () => {
     });
 });
 
-describe('translateLeaderData', () => {
-    test('Should prepare translated leader data', () => {
+describe('translateLadderData', () => {
+    test('Should prepare translated ladder data', () => {
         const translations = TEXTS_EN;
-        const fateLeader = new Map([
-            [8, FateLeader.LEGENDARY],
-            [7, FateLeader.EPIC],
+        const fateLadder = new Map([
+            [8, FateLadder.LEGENDARY],
+            [7, FateLadder.EPIC],
         ]);
-        const expectedResult: TTranslateLeaderData[] = [
+        const expectedResult: TTranslateLadderData[] = [
             {
                 value: 8,
                 name: translations.FATE_LEADER.LEGENDARY,
-                key: FateLeader.LEGENDARY,
+                key: FateLadder.LEGENDARY,
             },
             {
                 value: 7,
                 name: translations.FATE_LEADER.EPIC,
-                key: FateLeader.EPIC,
+                key: FateLadder.EPIC,
             },
         ];
 
-        const result = translateLeaderData(translations, fateLeader);
+        const result = translateLadderData(translations, fateLadder);
         expect(result).toEqual(expectedResult);
     });
 });
