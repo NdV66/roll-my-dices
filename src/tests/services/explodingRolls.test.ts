@@ -135,9 +135,9 @@ describe('rollExplodingDice', () => {
         });
     });
 
-    describe('- for 2 dice', () => {
+    describe('- for more than 1 dice', () => {
         const number = 2;
-        test('Should prepare results with explodes (exploding 3x)', () => {
+        test('Should prepare results with explodes (exploding 3x) (2 dice)', () => {
             const expectedResult = [[max, max, max - 1], [max - 2]];
             const mockRandomResults = expectedResult.flat();
             spyOnRollRandomBetweenWithIterations(mockRandomResults);
@@ -146,7 +146,7 @@ describe('rollExplodingDice', () => {
             expect(result).toEqual(expectedResult);
         });
 
-        test('Should prepare results with explodes (exploding 1x)', () => {
+        test('Should prepare results with explodes (exploding 1x) (2 dice)', () => {
             const expectedResult = [[max, max - 1], [max - 2]];
             const mockRandomResults = expectedResult.flat();
             spyOnRollRandomBetweenWithIterations(mockRandomResults);
@@ -155,7 +155,7 @@ describe('rollExplodingDice', () => {
             expect(result).toEqual(expectedResult);
         });
 
-        test('Should prepare results without explodes', () => {
+        test('Should prepare results without explodes (2 dice)', () => {
             const expectedResult = [[max - 1], [max - 2]];
             const mockRandomResults = expectedResult.flat();
             spyOnRollRandomBetweenWithIterations(mockRandomResults);
