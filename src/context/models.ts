@@ -1,4 +1,5 @@
 import { ModelsManager } from '../models';
+import { AppExplodingRollModel } from '../models/AppExplodingRollModel';
 import { AppFateRollModel } from '../models/AppFateRollModel';
 import { AppLangModel } from '../models/AppLangModel';
 import { AppRollModel } from '../models/AppRollModel';
@@ -9,6 +10,7 @@ import { MainContentTab, Models } from '../types';
 const rollModels = {
     [Models.APP_ROLL]: ModelsManager.getSingleton<AppRollModel>(Models.APP_ROLL),
     [Models.APP_FATE]: ModelsManager.getSingleton<AppFateRollModel>(Models.APP_FATE),
+    [Models.APP_EXPLODING]: ModelsManager.getSingleton<AppExplodingRollModel>(Models.APP_EXPLODING),
 };
 
 const allModels = {
