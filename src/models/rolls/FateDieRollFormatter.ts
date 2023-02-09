@@ -4,13 +4,11 @@ import { DEFAULTS } from '../../defaults';
 
 export class FateDieRollFormatter implements IDieRollFormatter<TRoll, TRollExtended> {
     public prepareExtendedRoll(roll: TFateRoll | null, mod: number | null) {
-        const modValue = mod || DEFAULTS.MOD;
-
         return roll
             ? {
                   ...roll,
-                  calculationResult: calcSummaryRolls(roll?.allRolls, modValue),
-                  mod: modValue,
+                  calculationResult: calcSummaryRolls(roll?.allRolls, mod),
+                  mod: mod || DEFAULTS.MOD,
               }
             : DEFAULTS.EMPTY_ROLL_RESULT;
     }

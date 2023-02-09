@@ -3,8 +3,7 @@ import { css } from '@emotion/react';
 
 import { Input } from 'antd';
 import { TTheme, TTranslations } from '../../../types';
-
-import Paragraph from 'antd/es/typography/Paragraph';
+import { WarningParagraph } from '../WarningParagraph';
 
 type Props = {
     theme: TTheme;
@@ -34,25 +33,14 @@ export const ModalBody: React.FC<Props> = ({ theme, translations, currentValue, 
                 />
             </div>
 
-            {!isCurrentValueOk && (
-                <Paragraph type="warning" css={themedStyles.warning}>
-                    {translations.MOD_ERROR}
-                </Paragraph>
-            )}
+            {!isCurrentValueOk && <WarningParagraph theme={theme}>{translations.MOD_ERROR}</WarningParagraph>}
 
-            <Paragraph type="warning" css={themedStyles.warning}>
-                {translations.MOD_TIP}
-            </Paragraph>
+            <WarningParagraph theme={theme}>{translations.MOD_TIP}</WarningParagraph>
         </>
     );
 };
 
 const styles = (theme: TTheme) => ({
-    warning: css`
-        font-size: ${0.8 * theme.fontSize}px;
-        font-style: italic;
-        text-align: center;
-    `,
     inputWrapper: css`
         display: flex;
         justify-content: center;

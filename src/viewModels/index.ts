@@ -6,3 +6,4 @@ export * from './useFooterViewModel';
 export * from './useModInputViewModel';
 export * from './useFateElementViewModel';
 export * from './useFateLeaderModalModelView';
+export * from './useExplodingRollsElementViewModel';

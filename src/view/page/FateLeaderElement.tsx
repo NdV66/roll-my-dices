@@ -4,17 +4,25 @@ import { css } from '@emotion/react';
 import { Modal, Table } from 'antd';
 import { TTheme } from '../../types';
 import { useFateLeaderModalViewModel } from '../../viewModels';
-import { ModalFooter, TextButton } from '../elements';
+import { ModalFooter, TextButton, WarningParagraph } from '../elements';
 
 export const HIGHLIGHT_CLASS = 'currentRoll';
 
 type Props = {
-    calculationResult?: number;
+    calculationResult: number | null;
 };
 
 export const FateLeaderElement: React.FC<Props> = ({ calculationResult }) => {
-    const { translations, onOpenModal, onCloseModal, showFateLeader, theme, translatedColumns, translatedLeaderData } =
-        useFateLeaderModalViewModel();
+    const {
+        translations,
+        onOpenModal,
+        onCloseModal,
+        showFateLeader,
+        theme,
+        translatedColumns,
+        translatedLeaderData,
+        isRollOutOfScope,
+    } = useFateLeaderModalViewModel(calculationResult);
     const themedStyle = styles(theme);
 
     return (
@@ -32,6 +40,12 @@ export const FateLeaderElement: React.FC<Props> = ({ calculationResult }) => {
                 }
             >
                 <div>
+                    {isRollOutOfScope && calculationResult !== null && (
+                        <WarningParagraph theme={theme} align="right">
+                            {translations.FATE_LEADER_TITLE_WARNING}
+                        </WarningParagraph>
+                    )}
+
                     <Table
                         css={themedStyle.table}
                         size="middle"

@@ -15,8 +15,12 @@ export const RollModCalculation: React.FC<Props> = ({ mod, calculationResult, th
 
     return (
         <div css={themedStyles.wrapper}>
-            <span css={themedStyles.sign}>{detectSign(mod)} </span>
-            {Math.abs(mod)}
+            {mod ? (
+                <>
+                    <span css={themedStyles.sign}>{detectSign(mod)} </span>
+                    {Math.abs(mod)}
+                </>
+            ) : null}
             <span css={themedStyles.sign}>=</span>
             <span css={themedStyles.result}>{calculationResult}</span>
         </div>
@@ -43,7 +47,7 @@ const styles = (theme: TTheme) => ({
     result: css`
         font-weight: 700;
         margin: 0 ${theme.baseSpace}px;
-        font-size: ${4 * theme.fontSize}px;
+        font-size: ${3.5 * theme.fontSize}px;
 
         ${screenMd(css`
             font-size: ${2.5 * theme.fontSize}px;

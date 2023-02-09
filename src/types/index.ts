@@ -9,3 +9,5 @@ export * from './fate';
 export * from './genericSingletonManager';
 export * from './IDieRollFormatter';
 export * from './IRollModel';
+export * from './roll.exploding';
+export * from './roll.fate';

@@ -22,8 +22,8 @@ export type TRollInfo = TRollExtended & {
     displayValue: string;
 };
 
-export type TFateRoll = TRoll & {
-    allRolls: number[];
+export type TRollButtonData = {
+    diceType: DiceTypes;
+    roll: () => void;
+    displayValue: string;
 };
-
-export type TFateRollExtended = TRollExtended & TFateRoll;

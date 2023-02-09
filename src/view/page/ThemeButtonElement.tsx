@@ -1,4 +1,4 @@
-import { ThemeButton } from '../elements';
+import { SwitchButton } from '../elements';
 import { useThemeButtonElementViewModel } from '../../viewModels';
 import { DEFAULTS } from '../../defaults';
 
@@ -7,7 +7,7 @@ export const ThemeButtonElement = () => {
     const isDefaultTheme = appTheme === DEFAULTS.APP_THEME;
 
     return (
-        <ThemeButton
+        <SwitchButton
             onChange={onChangeTheme}
             checked={isDefaultTheme}
             checkedChildren={translations.LIGHT}
