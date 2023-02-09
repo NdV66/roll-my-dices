@@ -1,4 +1,4 @@
-export * from './ThemeButton';
+export * from './SwitchButton';
 export * from './DiceButton';
 export * from './RollResult';
 export * from './ModalFooter';
