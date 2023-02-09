@@ -1,5 +1,19 @@
-import { detectExploding, explodeDie, summaryExplodingDie } from '../../services/explodingRolls.rolls.service';
+import {
+    detectExploding,
+    explodeDie,
+    rollExplodingDice,
+    summaryExplodingDie,
+} from '../../services/explodingRolls.rolls.service';
 import * as rollRandomBetweenTool from '../../services/rollRandomBetween.rolls.service';
+
+const spyOnRollRandomBetweenWithIterations = (expectedResult: number[]) => {
+    let call = 0;
+    jest.spyOn(rollRandomBetweenTool, 'rollRandomBetween').mockImplementation(() => {
+        const result = expectedResult[call];
+        call++;
+        return result;
+    });
+};
 
 describe('detectExploding', () => {
     test('Should detect explosion', () => {
@@ -70,13 +84,7 @@ describe('explodeDie', () => {
     const min = 1;
 
     const testExplodeDie = (expectedResult: number[]) => {
-        let call = 0;
-        jest.spyOn(rollRandomBetweenTool, 'rollRandomBetween').mockImplementation(() => {
-            const result = expectedResult[call];
-            call++;
-            return result;
-        });
-
+        spyOnRollRandomBetweenWithIterations(expectedResult);
         const results = explodeDie(min, max, []);
         expect(results).toEqual(expectedResult);
     };
@@ -94,6 +102,67 @@ describe('explodeDie', () => {
     test('Should prepare results without explodes', () => {
         const expectedResult = [max - 1];
         testExplodeDie(expectedResult);
+    });
+});
+
+describe('rollExplodingDice', () => {
+    const max = 6;
+    const min = 1;
+
+    describe('- for 1 die', () => {
+        const testRollExplodingDice = (mockRandomResults: number[]) => {
+            const number = 1;
+            const expectedResult = [mockRandomResults];
+            spyOnRollRandomBetweenWithIterations(mockRandomResults);
+
+            const result = rollExplodingDice(number, min, max);
+            expect(result).toEqual(expectedResult);
+        };
+
+        test('Should prepare results with explodes (exploding 3x)', () => {
+            const mockRandomResults = [max, max, max, max - 1];
+            testRollExplodingDice(mockRandomResults);
+        });
+
+        test('Should prepare results with explodes (exploding 1x)', () => {
+            const mockRandomResults = [max, max - 1];
+            testRollExplodingDice(mockRandomResults);
+        });
+
+        test('Should prepare results without explodes', () => {
+            const mockRandomResults = [max - 1];
+            testRollExplodingDice(mockRandomResults);
+        });
+    });
+
+    describe('- for 2 dice', () => {
+        const number = 2;
+        test('Should prepare results with explodes (exploding 3x)', () => {
+            const expectedResult = [[max, max, max - 1], [max - 2]];
+            const mockRandomResults = expectedResult.flat();
+            spyOnRollRandomBetweenWithIterations(mockRandomResults);
+
+            const result = rollExplodingDice(number, min, max);
+            expect(result).toEqual(expectedResult);
+        });
+
+        test('Should prepare results with explodes (exploding 1x)', () => {
+            const expectedResult = [[max, max - 1], [max - 2]];
+            const mockRandomResults = expectedResult.flat();
+            spyOnRollRandomBetweenWithIterations(mockRandomResults);
+
+            const result = rollExplodingDice(number, min, max);
+            expect(result).toEqual(expectedResult);
+        });
+
+        test('Should prepare results without explodes', () => {
+            const expectedResult = [[max - 1], [max - 2]];
+            const mockRandomResults = expectedResult.flat();
+            spyOnRollRandomBetweenWithIterations(mockRandomResults);
+
+            const result = rollExplodingDice(number, min, max);
+            expect(result).toEqual(expectedResult);
+        });
     });
 });
 

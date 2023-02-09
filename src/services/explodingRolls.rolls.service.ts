@@ -19,7 +19,7 @@ export const explodeDie = (min: number, max: number, results: number[]) => {
     return results;
 };
 
-export const rollExplodingDices = (number: number, min: number, max: number) => {
+export const rollExplodingDice = (number: number, min: number, max: number) => {
     const rolls: Array<Array<number>> = [];
 
     for (let i = 0; i < number; i++) {
