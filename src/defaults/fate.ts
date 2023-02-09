@@ -14,6 +14,9 @@ export const FATE = {
     MIN: 1,
     MAX: 6,
 
+    MAX_LEADER: 8,
+    MIN_LEADER: -2,
+
     SIGNS: {
         PLUS: '+',
         MINUS: '-',

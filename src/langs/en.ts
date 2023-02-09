@@ -26,9 +26,11 @@ export const TEXTS_EN: TTranslations = {
 
     CLASSIC_D20_TAB: 'Classic (d20)',
     FATE_TAB: 'Fate',
+    EXPLODING_TAB: 'Exploding dice',
 
     FATE_ROLL: 'Roll',
     FATE_LEADER_TITLE: 'Fate leader',
+    FATE_LEADER_TITLE_WARNING: 'Warning, the roll result is out of scope!',
     FATE_LEADER_HEADER_VALUE: 'Value',
     FATE_LEADER_HEADER_NAME: 'Name',
     FATE_LEADER: {
@@ -45,4 +47,7 @@ export const TEXTS_EN: TTranslations = {
         [FateLeader.TERRIBLE]: 'terrible',
         [FateLeader.NOT_FOUND]: 'not found',
     },
+
+    EXPLODING_ON: 'Explosion dice',
+    EXPLODING_OFF: 'Normal dice',
 };

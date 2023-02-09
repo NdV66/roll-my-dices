@@ -1,3 +1,4 @@
+import { DEFAULTS } from '../defaults';
 import { rollRandomBetween } from './rollRandomBetween.rolls.service';
 
 export const rollDices = (number: number, min: number, max: number) => {
@@ -7,4 +8,4 @@ export const rollDices = (number: number, min: number, max: number) => {
 
 export const summaryRolls = (rolls: number[]) => rolls.reduce((prev, current) => prev + current, 0);
 
-export const calcSummaryRolls = (rolls: number[], mod: number) => summaryRolls(rolls) + mod;
+export const calcSummaryRolls = (rolls: number[], mod: number | null) => summaryRolls(rolls) + (mod || DEFAULTS.MOD);

@@ -5,7 +5,7 @@ import { DEFAULTS, FATE } from '../defaults';
 import { translateLeaderData } from '../services';
 import { useStateWithObservableWithInit } from '../tools';
 
-export const useFateLeaderModalViewModel = () => {
+export const useFateLeaderModalViewModel = (calculationResult: number | null) => {
     const { translations, theme } = useAppContext();
     const showFateLeaderSource = useMemo(() => new BehaviorSubject<boolean>(DEFAULTS.SHOW_FATE_LEADER_ON_ENTER), []);
 
@@ -31,6 +31,9 @@ export const useFateLeaderModalViewModel = () => {
 
     const onCloseModal = () => showFateLeaderSource.next(false);
 
+    const isRollInScope =
+        calculationResult !== null && calculationResult >= FATE.MIN_LEADER && calculationResult <= FATE.MAX_LEADER;
+
     return {
         translations,
         onOpenModal,
@@ -39,5 +42,6 @@ export const useFateLeaderModalViewModel = () => {
         theme,
         translatedColumns,
         translatedLeaderData: translations?.FATE_LEADER && translateLeaderData(translations, FATE.LEADER),
+        isRollOutOfScope: !isRollInScope,
     };
 };

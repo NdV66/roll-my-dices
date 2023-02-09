@@ -5,7 +5,7 @@ import { AppTheme, Models } from '../types';
 
 export const usePageViewModel = () => {
     const appThemeModel = getModelByKey<AppThemeModel>(Models.APP_THEME);
-    const { theme, translations } = useAppContext();
+    const { theme, translations, isLoading } = useAppContext();
     const appTheme = useStateWithObservable(appThemeModel.appTheme);
 
     const preparedTheme = {
@@ -25,5 +25,6 @@ export const usePageViewModel = () => {
         translations,
         theme,
         appTheme,
+        isLoading,
     };
 };

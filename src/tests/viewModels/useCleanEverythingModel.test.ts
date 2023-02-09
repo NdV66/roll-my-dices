@@ -47,32 +47,38 @@ describe('useCleanEverythingModel', () => {
 
     describe('Disabled', () => {
         test('- false, if rollModSource is not default and roll is existed', () => {
-            modelMock.rollModSource = new Observable((observer) => observer.next(ROLL_EXTENDED_MOCK.mod));
-            modelMock.extendedRollSource = new Observable((observer) => observer.next(ROLL_EXTENDED_MOCK));
+            (modelMock as any).rollModSource = new Observable((observer) => observer.next(ROLL_EXTENDED_MOCK.mod));
+            (modelMock as any).extendedRollSource = new Observable((observer) => observer.next(ROLL_EXTENDED_MOCK));
 
             const { result } = renderHook(() => useCleanEverythingModel(MainContentTab.CLASSIC_D20));
             expect(result.current.disabled).toBe(false);
         });
 
         test('- false, if mod is not existed but there is roll', () => {
-            modelMock.rollModSource = new Observable((observer) => observer.next(DEFAULTS.MOD));
-            modelMock.extendedRollSource = new Observable((observer) => observer.next(ROLL_EXTENDED_NO_MOD_MOCK));
+            (modelMock as any).rollModSource = new Observable((observer) => observer.next(DEFAULTS.MOD));
+            (modelMock as any).extendedRollSource = new Observable((observer) =>
+                observer.next(ROLL_EXTENDED_NO_MOD_MOCK),
+            );
 
             const { result } = renderHook(() => useCleanEverythingModel(MainContentTab.CLASSIC_D20));
             expect(result.current.disabled).toBe(false);
         });
 
         test('- false, if roll is not existed but there is mod', () => {
-            modelMock.rollModSource = new Observable((observer) => observer.next(ROLL_EXTENDED_MOCK.mod));
-            modelMock.extendedRollSource = new Observable((observer) => observer.next(DEFAULTS.EMPTY_ROLL_RESULT));
+            (modelMock as any).rollModSource = new Observable((observer) => observer.next(ROLL_EXTENDED_MOCK.mod));
+            (modelMock as any).extendedRollSource = new Observable((observer) =>
+                observer.next(DEFAULTS.EMPTY_ROLL_RESULT),
+            );
 
             const { result } = renderHook(() => useCleanEverythingModel(MainContentTab.CLASSIC_D20));
             expect(result.current.disabled).toBe(false);
         });
 
         test('- true, if roll and mod are not existed', () => {
-            modelMock.rollModSource = new Observable((observer) => observer.next(DEFAULTS.MOD));
-            modelMock.extendedRollSource = new Observable((observer) => observer.next(DEFAULTS.EMPTY_ROLL_RESULT));
+            (modelMock as any).rollModSource = new Observable((observer) => observer.next(DEFAULTS.MOD));
+            (modelMock as any).extendedRollSource = new Observable((observer) =>
+                observer.next(DEFAULTS.EMPTY_ROLL_RESULT),
+            );
 
             const { result } = renderHook(() => useCleanEverythingModel(MainContentTab.CLASSIC_D20));
             expect(result.current.disabled).toBe(true);

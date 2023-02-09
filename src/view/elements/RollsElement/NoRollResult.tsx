@@ -2,7 +2,7 @@
 import { css } from '@emotion/react';
 
 import { QuestionOutlined } from '@ant-design/icons';
-import { TTheme } from '../../types';
+import { TTheme } from '../../../types';
 
 type Props = {
     theme: TTheme;

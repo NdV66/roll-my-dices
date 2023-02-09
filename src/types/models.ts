@@ -3,4 +3,5 @@ export const enum Models {
     APP_LANG = 'AppLangModel',
     APP_ROLL = 'AppRollModel',
     APP_FATE = 'AppFateRollModel',
+    APP_EXPLODING = 'AppExplodingRollModel',
 }

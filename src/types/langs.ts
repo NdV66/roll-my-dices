@@ -36,9 +36,11 @@ export type TTranslations = {
 
     CLASSIC_D20_TAB: string;
     FATE_TAB: string;
+    EXPLODING_TAB: string;
 
     FATE_ROLL: string;
     FATE_LEADER_TITLE: string;
+    FATE_LEADER_TITLE_WARNING: string;
     FATE_LEADER_HEADER_VALUE: string;
     FATE_LEADER_HEADER_NAME: string;
     FATE_LEADER: {
@@ -55,6 +57,9 @@ export type TTranslations = {
         [FateLeader.TERRIBLE]: string;
         [FateLeader.NOT_FOUND]: string;
     };
+
+    EXPLODING_ON: string;
+    EXPLODING_OFF: string;
 
     [key: string]: string | any;
 };

@@ -26,7 +26,9 @@ describe('useFateElementViewModel', () => {
     });
 
     test('Should return expected data', () => {
-        modelMock.extendedRollSource = new Observable((observer) => observer.next(FATE_ROLL_EXTENDED_WITH_MOD_MOCK));
+        (modelMock as any).extendedRollSource = new Observable((observer) =>
+            observer.next(FATE_ROLL_EXTENDED_WITH_MOD_MOCK),
+        );
 
         const { result } = renderHook(useFateElementViewModel);
         const expectedValue = {
@@ -47,7 +49,9 @@ describe('useFateElementViewModel', () => {
     });
 
     test('Should provide a fate result value', () => {
-        modelMock.extendedRollSource = new Observable((observer) => observer.next(FATE_ROLL_EXTENDED_WITH_MOD_MOCK));
+        (modelMock as any).extendedRollSource = new Observable((observer) =>
+            observer.next(FATE_ROLL_EXTENDED_WITH_MOD_MOCK),
+        );
         const { result } = renderHook(useFateElementViewModel);
 
         expect(result.current.roll).toEqual(FATE_ROLL_EXTENDED_WITH_MOD_MOCK);

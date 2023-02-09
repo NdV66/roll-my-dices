@@ -2,7 +2,6 @@ import { TColors, TTheme } from '../types';
 import { COMMONS } from './commons';
 
 const COLORS: TColors = {
-    // accent: '#5727A3',
     primary: '#9153F4',
     accent: '#D6C5F0',
     pageBackground: '#00091e',
