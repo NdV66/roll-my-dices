@@ -1,6 +1,6 @@
 import { DiceTypes, IDieRollFormatter, IRollModel, TRoll, TRollExtended } from '../types';
 import { BehaviorSubject, combineLatest, map } from 'rxjs';
-import { DEFAULTS, DICE_TYPES_MAX } from '../defaults';
+import { DEFAULTS } from '../defaults';
 
 export abstract class AbstractRollModel<R extends TRoll, E extends TRollExtended> implements IRollModel<E> {
     protected _rollSource = new BehaviorSubject<R | null>(DEFAULTS.EMPTY_ROLL_RESULT);
@@ -42,8 +42,4 @@ export abstract class AbstractRollModel<R extends TRoll, E extends TRollExtended
     public updateRollMod = (mod: number) => {
         this._rollModSource.next(mod);
     };
-
-    static getMaxByDiceType(diceType: DiceTypes) {
-        return DICE_TYPES_MAX.get(diceType)!;
-    }
 }

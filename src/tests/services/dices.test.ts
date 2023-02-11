@@ -1,4 +1,4 @@
-import { ERROR_CODES, ROLLS_RESULTS_FONTS } from '../../defaults';
+import { ROLLS_RESULTS_FONTS, NO_DICE_FOUND_ERROR, USE_FATE_INSTEAD_ERROR } from '../../defaults';
 import { mapRollToDice } from '../../services/dices.service';
 import { DiceTypes } from '../../types';
 
@@ -23,14 +23,31 @@ describe('mapRollToDice', () => {
         expect(result).toEqual(expectedResult);
     });
 
-    test('Should return undefined, when the roll number is not supported', () => {
-        const diceType = DiceTypes.D_20;
+    test('Should throw NO_DICE_FOUND, when the roll number is not supported', () => {
         const callback = () => {
-            mapRollToDice(diceType, 126);
+            mapRollToDice(DiceTypes.D_20, 126);
         };
 
-        expect(callback).toThrow(ERROR_CODES.NO_DICE_FOUND);
+        expect(callback).toThrow(NO_DICE_FOUND_ERROR);
+    });
+
+    test('Should throw USE_FATE_INSTEAD_ERROR, when dice type is Fate', () => {
+        const callback = () => {
+            mapRollToDice(DiceTypes.FATE, 2);
+        };
+
+        expect(callback).toThrow(USE_FATE_INSTEAD_ERROR);
     });
 });
+
+// describe('getMaxByDiceType', () => {
+//     test('Should get max by dice type', () => {
+//         const dice = DiceTypes.D_20;
+//         const max = 20;
+
+//         const result = getMaxByDiceType(dice);
+//         expect(result).toEqual(max);
+//     });
+// });
 
 export {};

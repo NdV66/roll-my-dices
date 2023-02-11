@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import * as diceTools from '../../services/dices.service';
-import { mapToRollButtonData } from '../../services';
+import { mapToMaxRollButtonData } from '../../services';
 import { DiceTypes, IRollModel, TRollExtended } from '../../types';
 
 const sign = 'x';
@@ -16,7 +16,7 @@ class RollModelMock implements IRollModel<TRollExtended> {
     updateRollMod = jest.fn();
 }
 
-describe('mapToRollButtonData', () => {
+describe('mapToMaxRollButtonData', () => {
     let rollModelMock: RollModelMock;
 
     beforeEach(() => {
@@ -30,7 +30,7 @@ describe('mapToRollButtonData', () => {
     });
 
     test('Should prepare rollsElementData', () => {
-        const result = mapToRollButtonData(dicesOrder, rollModelMock);
+        const result = mapToMaxRollButtonData(dicesOrder, rollModelMock);
 
         const expectedValue = [
             {
@@ -44,7 +44,7 @@ describe('mapToRollButtonData', () => {
     });
 
     test('Should call roll from model', () => {
-        const result = mapToRollButtonData(dicesOrder, rollModelMock);
+        const result = mapToMaxRollButtonData(dicesOrder, rollModelMock);
         result[0].roll();
 
         expect(rollModelMock.rollDice).toBeCalledWith(diceType);

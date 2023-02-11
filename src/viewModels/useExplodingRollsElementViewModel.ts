@@ -3,7 +3,7 @@ import { map } from 'rxjs';
 import { getModelByKey, useAppContext } from '../context';
 import { DEFAULTS } from '../defaults';
 import { AppExplodingRollModel } from '../models/AppExplodingRollModel';
-import { mapRollToDice, mapToRollButtonData } from '../services';
+import { mapRollToDice, mapToMaxRollButtonData } from '../services';
 import { useStateWithObservableWithInit } from '../tools';
 import { DiceTypes, Models, TExplodingRollExtended, TExplodingRollInfo } from '../types';
 
@@ -25,7 +25,7 @@ export const useExplodingRollsElementViewModel = (diceOrder: DiceTypes[]) => {
         DEFAULTS.EMPTY_ROLL_RESULT,
     );
 
-    const rollsElementData = mapToRollButtonData(diceOrder, _appRollExplodingModel);
+    const rollsElementData = mapToMaxRollButtonData(diceOrder, _appRollExplodingModel);
 
     return {
         rollsElementData,

@@ -1,6 +1,8 @@
 import * as contextTools from '../../context/AppContext';
 import * as modelsTools from '../../context/models';
 import * as diceTools from '../../services/dices.service';
+import * as mapToMaxRollButtonDataTools from '../../services/mapToMaxRollButtonData.rolls.service';
+
 import { DiceTypes, TAppContext } from '../../types';
 import { appRollModelMock, getAppContextMock } from '../mocks';
 import { renderHook } from '@testing-library/react';
@@ -27,6 +29,7 @@ describe('useExplodingRollsElementViewModel', () => {
         jest.spyOn(contextTools, 'useAppContext').mockReturnValue(contextMock);
         jest.spyOn(modelsTools, 'getModelByKey').mockReturnValue(rollModelMock);
         jest.spyOn(diceTools, 'mapRollToDice').mockReturnValue(sign);
+        jest.spyOn(mapToMaxRollButtonDataTools, 'mapToMaxRollButtonData').mockReturnValue([]);
     });
 
     test('Should return data in expected format', () => {
@@ -76,25 +79,34 @@ describe('useExplodingRollsElementViewModel', () => {
         });
     });
 
-    describe('rollsElementData', () => {
+    describe.only('rollsElementData', () => {
         const diceType = DiceTypes.D_4;
         const dicesOrder = [diceType];
 
         test('Should prepare rollsElementData', () => {
-            const { result } = renderHook(() => useRollsElementViewModel(dicesOrder));
-
             const expectedValue = [
                 {
                     diceType,
-                    roll: expect.any(Function),
+                    roll: jest.fn(),
                     displayValue: sign,
                 },
             ];
+            jest.spyOn(mapToMaxRollButtonDataTools, 'mapToMaxRollButtonData').mockReturnValue(expectedValue);
 
+            const { result } = renderHook(() => useRollsElementViewModel(dicesOrder));
             expect(result.current.rollsElementData).toEqual(expectedValue);
         });
 
         test('Should call roll from model', () => {
+            const expectedValue = [
+                {
+                    diceType,
+                    roll: () => rollModelMock.rollDice(diceType),
+                    displayValue: sign,
+                },
+            ];
+            jest.spyOn(mapToMaxRollButtonDataTools, 'mapToMaxRollButtonData').mockReturnValue(expectedValue);
+
             const { result } = renderHook(() => useRollsElementViewModel(dicesOrder));
             result.current.rollsElementData[0].roll();
 

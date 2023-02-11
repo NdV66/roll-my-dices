@@ -56,3 +56,5 @@ export const ROLLS_RESULTS_FONTS = {
         'Z',
     ],
 };
+
+export const SPECIAL_MAX_DICE_VALUE = new Map([[DiceTypes.D_10, ROLLS_RESULTS_FONTS.D_10[0]]]);

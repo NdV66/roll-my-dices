@@ -26,14 +26,6 @@ describe('AbstractRollModel', () => {
         });
     });
 
-    test('Should get max by dice type', () => {
-        const dice = DiceTypes.D_20;
-        const max = 20;
-
-        const result = AbstractRollModelMock.getMaxByDiceType(dice);
-        expect(result).toEqual(max);
-    });
-
     test('Should call prepareRollResult(), when rollDice() is called', () => {
         model.rollDice(DiceTypes.D_20);
         expect(model['_dieRollFormatter'].prepareRollResult).toHaveBeenCalled();

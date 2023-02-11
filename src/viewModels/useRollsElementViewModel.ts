@@ -3,7 +3,7 @@ import { map } from 'rxjs';
 import { getModelByKey, useAppContext } from '../context';
 import { DEFAULTS } from '../defaults';
 import { AppRollModel } from '../models/AppRollModel';
-import { mapRollToDice, mapToRollButtonData } from '../services';
+import { mapRollToDice, mapToMaxRollButtonData } from '../services';
 import { useStateWithObservableWithInit } from '../tools';
 import { DiceTypes, Models, TRollExtended, TRollInfo } from '../types';
 
@@ -15,7 +15,7 @@ const prepareDisplayValue = (roll: TRollExtended) => ({
 export const useRollsElementViewModel = (diceOrder: DiceTypes[]) => {
     const { translations, theme } = useAppContext();
     const _appRollModel = getModelByKey<AppRollModel>(Models.APP_ROLL);
-    const rollsElementData = mapToRollButtonData(diceOrder, _appRollModel);
+    const rollsElementData = mapToMaxRollButtonData(diceOrder, _appRollModel);
     const rollInfoSource = useMemo(
         () => _appRollModel.extendedRollSource.pipe(map((el) => el && prepareDisplayValue(el))),
         [],
