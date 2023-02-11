@@ -99,8 +99,6 @@ Deploy the app for production using gh-pages module.
 
 #FEATURES
 - roll "wild" (custom) dice
-- roll "explosion" dice
-- highlight in the fate ladder what this roll means
 - screen tests
 - unit tests for components
 
