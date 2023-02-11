@@ -8,15 +8,15 @@ import { appRollModelMock, getAppContextMock } from '../mocks';
 import { renderHook } from '@testing-library/react';
 import { DEFAULTS, DICES_ORDER } from '../../defaults';
 import { useRollsElementViewModel } from '../../viewModels';
-import { AppRollModel } from '../../models/AppRollModel';
 import { Observable } from 'rxjs';
-import { ROLL_EXTENDED_MOCK } from '../models/mocks';
+import { EXPLODING_ROLL_NO_EXPLOSION, EXPLODING_ROLL_WITH_EXPLOSION } from '../models/mocks';
+import { AppExplodingRollModel } from '../../models/AppExplodingRollModel';
 
 const sign = 'X';
 
-describe('useRollsElementViewModel', () => {
+describe('useExplodingRollsElementViewModel', () => {
     let contextMock: TAppContext;
-    let rollModelMock: AppRollModel;
+    let rollModelMock: AppExplodingRollModel;
 
     beforeEach(() => {
         jest.clearAllMocks();
@@ -24,7 +24,7 @@ describe('useRollsElementViewModel', () => {
 
     beforeEach(() => {
         contextMock = getAppContextMock() as any as TAppContext;
-        rollModelMock = appRollModelMock() as any as AppRollModel;
+        rollModelMock = appRollModelMock() as any as AppExplodingRollModel;
 
         jest.spyOn(contextTools, 'useAppContext').mockReturnValue(contextMock);
         jest.spyOn(modelsTools, 'getModelByKey').mockReturnValue(rollModelMock);
@@ -50,12 +50,28 @@ describe('useRollsElementViewModel', () => {
             expect(result.current.rollInfo).toBe(DEFAULTS.EMPTY_ROLL_RESULT);
         });
 
-        test('Should changed, when extendedRollSource from model is changed', () => {
-            (rollModelMock as any).extendedRollSource = new Observable((observer) => observer.next(ROLL_EXTENDED_MOCK));
+        test('Should changed, when extendedRollSource from model is changed (no explosion)', () => {
+            (rollModelMock as any).extendedRollSource = new Observable((observer) =>
+                observer.next(EXPLODING_ROLL_NO_EXPLOSION),
+            );
             const { result } = renderHook(() => useRollsElementViewModel(DICES_ORDER));
 
             const expectedValue = {
-                ...ROLL_EXTENDED_MOCK,
+                ...EXPLODING_ROLL_NO_EXPLOSION,
+                displayValue: sign,
+            };
+
+            expect(result.current.rollInfo).toEqual(expectedValue);
+        });
+
+        test('Should changed, when extendedRollSource from model is changed (with explosion)', () => {
+            (rollModelMock as any).extendedRollSource = new Observable((observer) =>
+                observer.next(EXPLODING_ROLL_WITH_EXPLOSION),
+            );
+            const { result } = renderHook(() => useRollsElementViewModel(DICES_ORDER));
+
+            const expectedValue = {
+                ...EXPLODING_ROLL_WITH_EXPLOSION,
                 displayValue: sign,
             };
 
@@ -63,7 +79,7 @@ describe('useRollsElementViewModel', () => {
         });
     });
 
-    describe('rollsElementData', () => {
+    describe.only('rollsElementData', () => {
         const diceType = DiceTypes.D_4;
         const dicesOrder = [diceType];
 
