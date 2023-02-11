@@ -26,7 +26,7 @@ describe('mapToMaxRollButtonData', () => {
     beforeEach(() => {
         rollModelMock = new RollModelMock();
 
-        jest.spyOn(diceTools, 'mapRollToDice').mockReturnValue(sign);
+        jest.spyOn(diceTools, 'mapMaxValueToDice').mockReturnValue(sign);
     });
 
     test('Should prepare rollsElementData', () => {
@@ -48,6 +48,16 @@ describe('mapToMaxRollButtonData', () => {
         result[0].roll();
 
         expect(rollModelMock.rollDice).toBeCalledWith(diceType);
+    });
+
+    test('Should provide any error', () => {
+        const error = new Error('Any error');
+        const callback = () => mapToMaxRollButtonData(dicesOrder, rollModelMock);
+        jest.spyOn(diceTools, 'mapMaxValueToDice').mockImplementation(() => {
+            throw error;
+        });
+
+        expect(callback).toThrow(error);
     });
 });
 
