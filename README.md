@@ -103,3 +103,5 @@ Deploy the app for production using gh-pages module.
 - highlight in the fate ladder what this roll means
 - screen tests
 - unit tests for components
+
+font: https://www.dafont.com/dpoly.font
