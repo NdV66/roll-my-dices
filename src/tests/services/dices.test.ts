@@ -6,7 +6,6 @@ import {
     SPECIAL_MAX_DICE_VALUE,
 } from '../../defaults';
 import { mapMaxValueToDice, mapRollToDice } from '../../services/dices.service';
-import * as diceTools from '../../services/dices.service';
 import { DiceTypes } from '../../types';
 
 describe('mapRollToDice', () => {
