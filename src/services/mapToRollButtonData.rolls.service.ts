@@ -1,5 +1,5 @@
 import { AbstractRollModel } from '../models/AbstractRollModel';
-import { mapRollToDice } from '../services';
+import { mapRollToDice } from '.';
 import { DiceTypes, IRollModel, TRollButtonData, TRollExtended } from '../types';
 
 export const mapToRollButtonData = <E extends TRollExtended>(

@@ -3,10 +3,9 @@ import { map } from 'rxjs';
 import { getModelByKey, useAppContext } from '../context';
 import { DEFAULTS } from '../defaults';
 import { AppExplodingRollModel } from '../models/AppExplodingRollModel';
-import { mapRollToDice } from '../services';
+import { mapRollToDice, mapToRollButtonData } from '../services';
 import { useStateWithObservableWithInit } from '../tools';
 import { DiceTypes, Models, TExplodingRollExtended, TExplodingRollInfo } from '../types';
-import { mapToRollButtonData } from './mapToRollButtonData';
 
 const prepareDisplayValue = (roll: TExplodingRollExtended) => ({
     ...roll,
