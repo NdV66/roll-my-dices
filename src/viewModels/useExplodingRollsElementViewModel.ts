@@ -12,7 +12,6 @@ const prepareDisplayValue = (roll: TExplodingRollExtended) => ({
     displayValues: roll.allRolls.flat().map((el) => mapRollToDice(roll.dice, el)),
 });
 
-//TODO tests
 export const useExplodingRollsElementViewModel = (diceOrder: DiceTypes[]) => {
     const { translations, theme } = useAppContext();
     const _appRollExplodingModel = getModelByKey<AppExplodingRollModel>(Models.APP_EXPLODING);
