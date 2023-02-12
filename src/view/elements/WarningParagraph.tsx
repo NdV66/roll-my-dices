@@ -15,7 +15,7 @@ export const WarningParagraph: React.FC<React.PropsWithChildren<Props>> = ({ the
     const themedStyles = styles(theme);
 
     return (
-        <Paragraph type="warning" css={themedStyles.text(align)}>
+        <Paragraph type="warning" css={themedStyles.text(align)} data-test-id="WarningParagraph_testId">
             {children}
         </Paragraph>
     );
