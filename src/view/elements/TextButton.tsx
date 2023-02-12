@@ -18,7 +18,12 @@ export const TextButton: React.FC<Props> = ({ onClick, theme, children, small, d
     const handleOnClick = disabled ? () => {} : onClick;
 
     return (
-        <div role="button" onClick={handleOnClick} css={[themedStyles.button, disabled && themedStyles.disabled]}>
+        <div
+            role="button"
+            onClick={handleOnClick}
+            css={[themedStyles.button, disabled && themedStyles.disabled]}
+            data-test-id="TextButton_testId"
+        >
             {children}
         </div>
     );
