@@ -4,4 +4,6 @@ type Props = Pick<SwitchProps, 'unCheckedChildren' | 'checked' | 'checkedChildre
     onChange: () => void;
 };
 
-export const SwitchButton: React.FC<Props> = ({ onChange, ...props }) => <Switch onChange={onChange} {...props} />;
+export const SwitchButton: React.FC<Props> = ({ onChange, ...props }) => (
+    <Switch onChange={onChange} {...props} data-test-id="SwitchButton_testId" />
+);

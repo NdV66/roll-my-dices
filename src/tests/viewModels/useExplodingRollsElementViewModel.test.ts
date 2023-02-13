@@ -79,7 +79,7 @@ describe('useExplodingRollsElementViewModel', () => {
         });
     });
 
-    describe.only('rollsElementData', () => {
+    describe('rollsElementData', () => {
         const diceType = DiceTypes.D_4;
         const dicesOrder = [diceType];
 
