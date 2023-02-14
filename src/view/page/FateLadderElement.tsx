@@ -35,9 +35,7 @@ export const FateLadderElement: React.FC<Props> = ({ calculationResult }) => {
                 onCancel={() => onCloseModal()}
                 open={showFateLadder}
                 title={translations.FATE_LEADER_TITLE}
-                footer={
-                    <ModalFooter onCancel={onCloseModal} translations={translations} theme={theme} showOk={false} />
-                }
+                footer={<ModalFooter onCancel={onCloseModal} translations={translations} theme={theme} />}
             >
                 <div>
                     {isRollOutOfScope && calculationResult !== null && (

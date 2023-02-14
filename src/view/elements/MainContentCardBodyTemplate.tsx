@@ -15,7 +15,7 @@ export const MainContentCardBodyTemplate: React.FC<PropsWithChildren<Props>> = (
     const themedStyles = styles(theme);
 
     return (
-        <>
+        <div data-test-id="MainContentCardBodyTemplate_testId">
             <ModInputElement activeMainTab={activeMainTab} />
 
             <div css={themedStyles.content}>{children}</div>
@@ -23,7 +23,7 @@ export const MainContentCardBodyTemplate: React.FC<PropsWithChildren<Props>> = (
             <div css={themedStyles.cleanEverythingButton}>
                 <CleanEverythingButton activeMainTab={activeMainTab} />
             </div>
-        </>
+        </div>
     );
 };
 

@@ -14,13 +14,9 @@ export const RollModCalculation: React.FC<Props> = ({ mod, calculationResult, th
     const themedStyles = styles(theme);
 
     return (
-        <div css={themedStyles.wrapper}>
-            {mod ? (
-                <>
-                    <span css={themedStyles.sign}>{detectSign(mod)} </span>
-                    {Math.abs(mod)}
-                </>
-            ) : null}
+        <div css={themedStyles.wrapper} data-test-id="RollModCalculation_testId">
+            <span css={themedStyles.sign}>{detectSign(mod)} </span>
+            <span>{Math.abs(mod)}</span>
             <span css={themedStyles.sign}>=</span>
             <span css={themedStyles.result}>{calculationResult}</span>
         </div>
