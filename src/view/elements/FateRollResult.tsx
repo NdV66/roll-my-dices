@@ -16,7 +16,7 @@ export const FateRollResult: React.FC<Props> = ({ theme, dice, mod, calculationR
     const themedStyles = styles(theme);
 
     return (
-        <Row justify="center" align="middle">
+        <Row justify="center" align="middle" data-test-id="FateRollResult_testId">
             <Col span={24}>
                 <div css={themedStyles.center}>
                     {allRolls.map((el, index) => (

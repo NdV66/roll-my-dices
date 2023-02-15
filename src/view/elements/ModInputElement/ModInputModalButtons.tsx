@@ -20,7 +20,7 @@ export const ModInputModalButtons: React.FC<Props> = ({ theme, onRemove, onOpen,
     const isRemoveDisabled = currentValue === DEFAULTS.MOD;
 
     return (
-        <div css={themedStyles.wrapper}>
+        <div css={themedStyles.wrapper} data-test-id="ModInputModalButtons_testId">
             <TextButton onClick={onOpen} theme={theme} small>
                 {translations.MOD_INFO} ({currentValue})
             </TextButton>

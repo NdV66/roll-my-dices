@@ -1,13 +1,8 @@
 import { render } from '@testing-library/react';
-import { configure } from '@testing-library/dom';
 
 import { ModalFooter } from '../../view/elements';
 import { DARK_THEME } from '../../styles';
 import { TEXTS_EN } from '../../langs/en';
-
-configure({
-    testIdAttribute: 'data-test-id',
-});
 
 const DEFAULT_PROPS = {
     translations: TEXTS_EN,

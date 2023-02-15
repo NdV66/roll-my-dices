@@ -1,13 +1,8 @@
 import { render } from '@testing-library/react';
-import { configure } from '@testing-library/dom';
 
 import { RollModCalculation } from '../../view/elements/RollModCalculation';
 import { DARK_THEME } from '../../styles';
 import { DEFAULTS } from '../../defaults';
-
-configure({
-    testIdAttribute: 'data-test-id',
-});
 
 const DEFAULT_PROPS = {
     calculationResult: 6,

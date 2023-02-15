@@ -1,12 +1,7 @@
 import { render } from '@testing-library/react';
-import { configure } from '@testing-library/dom';
 
 import { DARK_THEME } from '../../styles';
 import { WarningParagraph } from '../../view/elements';
-
-configure({
-    testIdAttribute: 'data-test-id',
-});
 
 const DEFAULT_PROPS = {
     theme: DARK_THEME,

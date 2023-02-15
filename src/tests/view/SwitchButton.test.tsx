@@ -1,12 +1,8 @@
 import { render } from '@testing-library/react';
-import { configure, fireEvent } from '@testing-library/dom';
+import { fireEvent } from '@testing-library/dom';
 
 import { SwitchButton } from '../../view/elements';
 import { act } from 'react-dom/test-utils';
-
-configure({
-    testIdAttribute: 'data-test-id',
-});
 
 const DEFAULT_PROPS = {
     onChange: jest.fn(),
