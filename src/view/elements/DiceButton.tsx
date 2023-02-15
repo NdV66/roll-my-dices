@@ -16,7 +16,7 @@ export const DiceButton: React.FC<Props> = ({ onClick, displayValue, theme, dice
     const themedStyles = styles(theme);
 
     return (
-        <div onClick={onClick} css={themedStyles.rollButton} role="button">
+        <div onClick={onClick} css={themedStyles.rollButton} role="button" data-test-id="DiceButton_testId">
             <span css={themedStyles.dice(diceType)}>{displayValue}</span>
         </div>
     );
