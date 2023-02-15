@@ -12,7 +12,7 @@ export const NoRollResult: React.FC<Props> = ({ theme }) => {
     const themedStyles = styles(theme);
 
     return (
-        <div css={themedStyles.wrapper}>
+        <div css={themedStyles.wrapper} data-test-id="NoRollResult_testId">
             <QuestionOutlined />
         </div>
     );
