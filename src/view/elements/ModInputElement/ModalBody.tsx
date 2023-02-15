@@ -23,7 +23,7 @@ export const ModalBody: React.FC<Props> = ({ theme, translations, currentValue, 
 
     return (
         <>
-            <div css={themedStyles.inputWrapper}>
+            <div css={themedStyles.inputWrapper} data-test-id="ModelBody_testId">
                 <Input
                     onChange={handleOnChange}
                     value={currentValue}
