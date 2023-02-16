@@ -18,8 +18,6 @@ export const DEFAULTS = {
     SHOW_FATE_LEADER_ON_ENTER: false,
     MAIN_CONTENT: MainContentTab.CLASSIC_D20,
 
-    EXPLODING_ROLL_MIN_DICE_NUMBER: 1,
-
     REPO_URL: 'https://github.com/NdV66/roll-my-dices',
 };
 

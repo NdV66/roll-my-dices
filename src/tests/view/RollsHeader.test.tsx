@@ -1,5 +1,4 @@
-import { fireEvent, render } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
+import { render } from '@testing-library/react';
 import { TEXTS_EN } from '../../langs/en';
 import { DARK_THEME } from '../../styles';
 import { DiceTypes } from '../../types';

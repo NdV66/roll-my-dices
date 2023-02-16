@@ -8,9 +8,15 @@ type Props = TExplodingRollInfo & {
     theme: TTheme;
 };
 
-export const ExplodingRollResult: React.FC<Props> = ({ theme, dice, mod, calculationResult, displayValues }) => {
+export const ExplodingRollResult: React.FC<Props> = ({
+    theme,
+    dice,
+    mod,
+    calculationResult,
+    displayValues,
+    isExploding,
+}) => {
     const themedStyles = resultStyles(theme);
-    const isMoreThanDefaultLength = displayValues.length > DEFAULTS.EXPLODING_ROLL_MIN_DICE_NUMBER;
 
     return (
         <div css={themedStyles.result} data-test-id="ExplodingRollResult_testId">
@@ -20,7 +26,7 @@ export const ExplodingRollResult: React.FC<Props> = ({ theme, dice, mod, calcula
                 </div>
             ))}
 
-            {(isMoreThanDefaultLength || mod !== DEFAULTS.MOD) && (
+            {(isExploding || mod !== DEFAULTS.MOD) && (
                 <RollModCalculation mod={mod} calculationResult={calculationResult} theme={theme} />
             )}
         </div>

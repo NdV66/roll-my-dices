@@ -14,7 +14,7 @@ export const CommonRollResult: React.FC<Props> = ({ theme, dice, mod, calculatio
     const themedStyles = resultStyles(theme);
 
     return (
-        <div css={themedStyles.result}>
+        <div css={themedStyles.result} data-test-id="CommonRollResult_testId">
             <div css={themedStyles.rawRollResult(dice)}>{displayValue}</div>
             {mod !== DEFAULTS.MOD && (
                 <RollModCalculation mod={mod} calculationResult={calculationResult} theme={theme} />
