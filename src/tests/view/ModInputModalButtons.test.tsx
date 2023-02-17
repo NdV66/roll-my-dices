@@ -1,5 +1,6 @@
 import { fireEvent, render } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
+import { TEST_IDS } from '../../defaults';
 import { TEXTS_EN } from '../../langs/en';
 import { DARK_THEME } from '../../styles';
 import { ModInputModalButtons } from '../../view/elements/ModInputElement';
@@ -12,14 +13,12 @@ const DEFAULT_PROPS = {
     translations: TEXTS_EN,
 };
 
-const TEST_ID = 'ModInputModalButtons_testId';
-
 describe('ModInputModalButtons', () => {
     test('Should render correctly', () => {
         const { getByTestId, getByText, container } = render(<ModInputModalButtons {...DEFAULT_PROPS} />);
         const text = `${DEFAULT_PROPS.translations.MOD_INFO} (${DEFAULT_PROPS.currentValue})`;
 
-        expect(getByTestId(TEST_ID)).toBeInTheDocument();
+        expect(getByTestId(TEST_IDS.MODAL_INPUT_MODAL_BUTTONS)).toBeInTheDocument();
         expect(getByText(text)).toBeInTheDocument();
         expect(container.querySelector('.anticon-delete')).toBeInTheDocument();
     });

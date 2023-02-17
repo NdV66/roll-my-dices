@@ -2,6 +2,7 @@
 import { css } from '@emotion/react';
 
 import { PropsWithChildren } from 'react';
+import { TEST_IDS } from '../../defaults';
 import { TTheme } from '../../types';
 
 type Props = PropsWithChildren<{
@@ -22,7 +23,7 @@ export const TextButton: React.FC<Props> = ({ onClick, theme, children, small, d
             role="button"
             onClick={handleOnClick}
             css={[themedStyles.button, disabled && themedStyles.disabled]}
-            data-test-id="TextButton_testId"
+            data-test-id={TEST_IDS.TEXT_BUTTON}
         >
             {children}
         </div>

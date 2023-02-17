@@ -4,19 +4,19 @@ import { fireEvent } from '@testing-library/dom';
 import { DARK_THEME } from '../../styles';
 import { TextButton } from '../../view/elements';
 import { act } from 'react-dom/test-utils';
+import { TEST_IDS } from '../../defaults';
 
 const DEFAULT_PROPS = {
     theme: DARK_THEME,
     onClick: jest.fn(),
 };
 
-const TEST_ID = 'TextButton_testId';
 const TEXT = 'lotr';
 
 describe('TextButton', () => {
     test('Should render correctly', () => {
         const { getByTestId } = render(<TextButton {...DEFAULT_PROPS}>{TEXT}</TextButton>);
-        const element = getByTestId(TEST_ID);
+        const element = getByTestId(TEST_IDS.TEXT_BUTTON);
 
         expect(element).toBeInTheDocument();
         expect(element).toHaveTextContent(TEXT);
@@ -24,7 +24,7 @@ describe('TextButton', () => {
 
     test('Should call onClick from props on click', () => {
         const { getByTestId } = render(<TextButton {...DEFAULT_PROPS}>{TEXT}</TextButton>);
-        const element = getByTestId(TEST_ID);
+        const element = getByTestId(TEST_IDS.TEXT_BUTTON);
 
         act(() => fireEvent.click(element));
         expect(DEFAULT_PROPS.onClick).toHaveBeenCalledTimes(1);
@@ -36,7 +36,7 @@ describe('TextButton', () => {
                 {TEXT}
             </TextButton>,
         );
-        const element = getByTestId(TEST_ID);
+        const element = getByTestId(TEST_IDS.TEXT_BUTTON);
 
         act(() => fireEvent.click(element));
         expect(DEFAULT_PROPS.onClick).not.toHaveBeenCalled();

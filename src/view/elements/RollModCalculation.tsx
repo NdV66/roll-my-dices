@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+import { TEST_IDS } from '../../defaults';
 
 import { screenMd } from '../../styles';
 import { TRollInfo, TTheme } from '../../types';
@@ -14,7 +15,7 @@ export const RollModCalculation: React.FC<Props> = ({ mod, calculationResult, th
     const themedStyles = styles(theme);
 
     return (
-        <div css={themedStyles.wrapper} data-test-id="RollModCalculation_testId">
+        <div css={themedStyles.wrapper} data-test-id={TEST_IDS.ROLL_MOD_CALCULATION}>
             <span css={themedStyles.sign}>{detectSign(mod)} </span>
             <span>{Math.abs(mod)}</span>
             <span css={themedStyles.sign}>=</span>

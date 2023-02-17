@@ -9,7 +9,7 @@ import { renderHook } from '@testing-library/react';
 import { DEFAULTS, DICES_ORDER } from '../../defaults';
 import { useRollsElementViewModel } from '../../viewModels';
 import { Observable } from 'rxjs';
-import { EXPLODING_ROLL_NO_EXPLOSION, EXPLODING_ROLL_WITH_EXPLOSION } from '../models/mocks';
+import { EXPLODING_ROLL_NO_EXPLOSION, EXPLODING_ROLL_WITH_EXPLOSION } from '../mocks';
 import { AppExplodingRollModel } from '../../models/AppExplodingRollModel';
 
 const sign = 'X';

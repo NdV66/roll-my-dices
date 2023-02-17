@@ -2,6 +2,7 @@
 import { css } from '@emotion/react';
 
 import { Menu } from 'antd';
+import { TEST_IDS } from '../../defaults';
 import { useChangeLangElementViewModel } from '../../viewModels/useChangeLangElementViewModel';
 
 export const ChangeAppLangElement = () => {
@@ -15,7 +16,7 @@ export const ChangeAppLangElement = () => {
             selectedKeys={[appLang]}
             onClick={onClickItem}
             css={themedStyles.menu}
-            data-test-id="ChangeAppLangElement_testId"
+            data-test-id={TEST_IDS.CHANGE_APP_LANG_ELEMENT}
         />
     );
 };

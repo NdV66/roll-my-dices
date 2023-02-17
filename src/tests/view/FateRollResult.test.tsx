@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import { DARK_THEME } from '../../styles';
 import { FateRollResult } from '../../view/elements/FateRollResult';
 import { DiceTypes } from '../../types';
-import { DEFAULTS, ROLLS_RESULTS_FONTS } from '../../defaults';
+import { DEFAULTS, ROLLS_RESULTS_FONTS, TEST_IDS } from '../../defaults';
 
 const DEFAULT_PROPS = {
     allRolls: [1, -1, 0, 1],
@@ -14,23 +14,20 @@ const DEFAULT_PROPS = {
     theme: DARK_THEME,
 };
 
-const TEST_ID = 'FateRollResult_testId';
-const MOD_TETS_ID = 'RollModCalculation_testId';
-
 describe('FateRollResult', () => {
     test('Should render correctly', () => {
         const { getByTestId } = render(<FateRollResult {...DEFAULT_PROPS} />);
-        expect(getByTestId(TEST_ID)).toBeInTheDocument();
+        expect(getByTestId(TEST_IDS.FATE_ROLL_RESULT)).toBeInTheDocument();
     });
 
     test('Should not render mod, if mod is default', () => {
         const { queryByTestId } = render(<FateRollResult {...DEFAULT_PROPS} mod={DEFAULTS.MOD} />);
-        expect(queryByTestId(MOD_TETS_ID)).not.toBeInTheDocument();
+        expect(queryByTestId(TEST_IDS.ROLL_MOD_CALCULATION)).not.toBeInTheDocument();
     });
 
     test('Should render mod, if mod is different than default', () => {
         const { getByTestId } = render(<FateRollResult {...DEFAULT_PROPS} />);
-        expect(getByTestId(MOD_TETS_ID)).toBeInTheDocument();
+        expect(getByTestId(TEST_IDS.ROLL_MOD_CALCULATION)).toBeInTheDocument();
     });
 
     test('Should render all rolls', () => {

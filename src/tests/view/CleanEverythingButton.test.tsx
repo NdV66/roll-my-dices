@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react';
+import { TEST_IDS } from '../../defaults';
 import { TEXTS_EN } from '../../langs/en';
 import { DARK_THEME } from '../../styles';
 import { MainContentTab } from '../../types';
@@ -15,7 +16,6 @@ const VIEW_MODEL_DATA = {
     onCleanAll: jest.fn(),
     disabled: false,
 };
-const TEST_ID = 'CleanEverythingButton_testId';
 
 const mockViewModelDefault = () => jest.spyOn(viewModel, 'useCleanEverythingModel').mockReturnValue(VIEW_MODEL_DATA);
 
@@ -23,7 +23,7 @@ describe('AppHeader', () => {
     test('Should render correctly', () => {
         mockViewModelDefault();
         const { getByTestId } = render(<CleanEverythingButton {...DEFAULT_PROPS} />);
-        expect(getByTestId(TEST_ID)).toBeInTheDocument();
+        expect(getByTestId(TEST_IDS.CLEAN_EVERYTHING_BUTTON)).toBeInTheDocument();
     });
 
     test('Should display correct text', () => {

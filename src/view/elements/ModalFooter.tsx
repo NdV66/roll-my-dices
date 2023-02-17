@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+import { TEST_IDS } from '../../defaults';
 
 import { TTheme, TTranslations } from '../../types';
 import { TextButton } from './TextButton';
@@ -17,7 +18,7 @@ export const ModalFooter: React.FC<Props> = ({ translations, onConfirm, onCancel
     const themedStyles = styles(theme);
 
     return (
-        <div css={themedStyles.wrapper} data-test-id="ModalFooter_testId">
+        <div css={themedStyles.wrapper} data-test-id={TEST_IDS.MODAL_FOOTER}>
             <TextButton onClick={onCancel} theme={theme} small>
                 {translations.CANCEL}
             </TextButton>

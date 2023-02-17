@@ -3,6 +3,7 @@ import { render } from '@testing-library/react';
 import { ModalFooter } from '../../view/elements';
 import { DARK_THEME } from '../../styles';
 import { TEXTS_EN } from '../../langs/en';
+import { TEST_IDS } from '../../defaults';
 
 const DEFAULT_PROPS = {
     translations: TEXTS_EN,
@@ -10,12 +11,10 @@ const DEFAULT_PROPS = {
     theme: DARK_THEME,
 };
 
-const TEST_ID = 'ModalFooter_testId';
-
 describe('ModalFooter', () => {
     test('Should render correctly', () => {
         const { getByTestId } = render(<ModalFooter {...DEFAULT_PROPS} />);
-        const element = getByTestId(TEST_ID);
+        const element = getByTestId(TEST_IDS.MODAL_FOOTER);
 
         expect(element).toBeInTheDocument();
     });

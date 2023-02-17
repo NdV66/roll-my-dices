@@ -1,5 +1,6 @@
 import { fireEvent, render } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
+import { TEST_IDS } from '../../defaults';
 import { TEXTS_EN } from '../../langs/en';
 import { DARK_THEME } from '../../styles';
 import { ModalBody } from '../../view/elements/ModInputElement';
@@ -12,13 +13,11 @@ const DEFAULT_PROPS = {
     onChange: jest.fn(),
 };
 
-const TEST_ID = 'ModelBody_testId';
-
 describe('ModalBody', () => {
     test('Should render correctly', () => {
         const { getByTestId, getByText, getByPlaceholderText, queryByText } = render(<ModalBody {...DEFAULT_PROPS} />);
 
-        expect(getByTestId(TEST_ID)).toBeInTheDocument();
+        expect(getByTestId(TEST_IDS.MODAL_BODY)).toBeInTheDocument();
         expect(queryByText(DEFAULT_PROPS.translations.MOD_ERROR)).not.toBeInTheDocument();
         expect(getByText(DEFAULT_PROPS.translations.MOD_TIP)).toBeInTheDocument();
         expect(getByPlaceholderText(DEFAULT_PROPS.translations.MOD_PLACEHOLDER)).toBeInTheDocument();

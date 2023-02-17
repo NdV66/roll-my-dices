@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 
 import { RollModCalculation } from '../../view/elements/RollModCalculation';
 import { DARK_THEME } from '../../styles';
-import { DEFAULTS } from '../../defaults';
+import { DEFAULTS, TEST_IDS } from '../../defaults';
 
 const DEFAULT_PROPS = {
     calculationResult: 6,
@@ -10,12 +10,10 @@ const DEFAULT_PROPS = {
     theme: DARK_THEME,
 };
 
-const TEST_ID = 'RollModCalculation_testId';
-
 describe('RollModCalculation', () => {
     test('Should render correctly', () => {
         const { getByTestId } = render(<RollModCalculation {...DEFAULT_PROPS} />);
-        const element = getByTestId(TEST_ID);
+        const element = getByTestId(TEST_IDS.ROLL_MOD_CALCULATION);
 
         expect(element).toBeInTheDocument();
     });

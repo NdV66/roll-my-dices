@@ -1,17 +1,15 @@
 import { render } from '@testing-library/react';
-
 import { MainContentCardBodyTemplate } from '../../view/elements';
 import { DARK_THEME } from '../../styles';
 import { MainContentTab } from '../../types';
 import { AppContext } from '../../context';
 import { TEXTS_EN } from '../../langs/en';
+import { TEST_IDS } from '../../defaults';
 
 const DEFAULT_PROPS = {
     activeMainTab: MainContentTab.CLASSIC_D20,
     theme: DARK_THEME,
 };
-
-const TEST_ID = 'MainContentCardBodyTemplate_testId';
 
 const renderComponent = (children: React.ReactNode = null, props: any = {}) =>
     render(
@@ -25,7 +23,7 @@ const renderComponent = (children: React.ReactNode = null, props: any = {}) =>
 describe('MainContentCardBodyTemplate', () => {
     test('Should render correctly', () => {
         const { getByTestId } = renderComponent();
-        expect(getByTestId(TEST_ID)).toBeInTheDocument();
+        expect(getByTestId(TEST_IDS.MAIN_CONTENT_CARD_BODY_TEMPLATE)).toBeInTheDocument();
     });
 
     test('Should render clean everything button', () => {
@@ -42,7 +40,7 @@ describe('MainContentCardBodyTemplate', () => {
 
     test('Should render buttons (open mod modal and clean mod)', () => {
         const { getByTestId } = renderComponent();
-        expect(getByTestId('ModInputModalButtons_testId')).toBeInTheDocument();
+        expect(getByTestId(TEST_IDS.MODAL_INPUT_MODAL_BUTTONS)).toBeInTheDocument();
     });
 });
 

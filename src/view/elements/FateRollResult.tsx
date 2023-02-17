@@ -2,7 +2,7 @@
 import { css } from '@emotion/react';
 import { Col, Row } from 'antd';
 
-import { DEFAULTS, FONT_FAMILY_BY_DICE_TYPE } from '../../defaults';
+import { DEFAULTS, FONT_FAMILY_BY_DICE_TYPE, TEST_IDS } from '../../defaults';
 import { mapFateToDice } from '../../services';
 import { screenMd } from '../../styles';
 import { DiceTypes, TFateRollExtended, TTheme } from '../../types';
@@ -16,7 +16,7 @@ export const FateRollResult: React.FC<Props> = ({ theme, dice, mod, calculationR
     const themedStyles = styles(theme);
 
     return (
-        <Row justify="center" align="middle" data-test-id="FateRollResult_testId">
+        <Row justify="center" align="middle" data-test-id={TEST_IDS.FATE_ROLL_RESULT}>
             <Col span={24}>
                 <div css={themedStyles.center}>
                     {allRolls.map((el, index) => (

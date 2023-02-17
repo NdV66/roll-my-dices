@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { DEFAULTS } from '../../defaults';
+import { DEFAULTS, TEST_IDS } from '../../defaults';
 import { DARK_THEME } from '../../styles';
 import { DiceTypes } from '../../types';
 import { ExplodingRollResult } from '../../view/elements/RollsElement';
@@ -26,13 +26,10 @@ const DEFAULT_PROPS_NO_EXPLOSION = {
     roll: 6,
 };
 
-const TEST_ID = 'ExplodingRollResult_testId';
-const MOD_TEST_ID = 'RollModCalculation_testId';
-
 describe('ExplodingRollResult', () => {
     test('Should render correctly', () => {
         const { getByTestId } = render(<ExplodingRollResult {...DEFAULT_PROPS} />);
-        expect(getByTestId(TEST_ID)).toBeInTheDocument();
+        expect(getByTestId(TEST_IDS.EXPLODING_ROLL_RESULT)).toBeInTheDocument();
     });
 
     test('Should render all available values', () => {
@@ -49,17 +46,17 @@ describe('ExplodingRollResult', () => {
 
     test('Should render calculation result if is exploding', () => {
         const { getByTestId } = render(<ExplodingRollResult {...DEFAULT_PROPS} />);
-        expect(getByTestId(MOD_TEST_ID)).toBeInTheDocument();
+        expect(getByTestId(TEST_IDS.ROLL_MOD_CALCULATION)).toBeInTheDocument();
     });
 
     test('Should render calculation result if is not exploding, but mod is not default', () => {
         const { getByTestId } = render(<ExplodingRollResult {...DEFAULT_PROPS_NO_EXPLOSION} />);
-        expect(getByTestId(MOD_TEST_ID)).toBeInTheDocument();
+        expect(getByTestId(TEST_IDS.ROLL_MOD_CALCULATION)).toBeInTheDocument();
     });
 
     test('Should not render calculation result if is not exploding and mod is default', () => {
         const { queryByTestId } = render(<ExplodingRollResult {...DEFAULT_PROPS_NO_EXPLOSION} mod={DEFAULTS.MOD} />);
-        expect(queryByTestId(MOD_TEST_ID)).not.toBeInTheDocument();
+        expect(queryByTestId(TEST_IDS.ROLL_MOD_CALCULATION)).not.toBeInTheDocument();
     });
 });
 

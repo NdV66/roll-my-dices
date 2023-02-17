@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { DEFAULTS } from '../../../defaults';
+import { DEFAULTS, TEST_IDS } from '../../../defaults';
 import { TExplodingRollInfo, TTheme } from '../../../types';
 import { RollModCalculation } from '../RollModCalculation';
 import { resultStyles } from './styles';
@@ -19,7 +19,7 @@ export const ExplodingRollResult: React.FC<Props> = ({
     const themedStyles = resultStyles(theme);
 
     return (
-        <div css={themedStyles.result} data-test-id="ExplodingRollResult_testId">
+        <div css={themedStyles.result} data-test-id={TEST_IDS.EXPLODING_ROLL_RESULT}>
             {displayValues.map((value, index) => (
                 <div key={`${value}_${index}`} css={themedStyles.rawRollResult(dice)}>
                     {value}

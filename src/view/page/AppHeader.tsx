@@ -2,6 +2,7 @@
 import { css } from '@emotion/react';
 
 import { Layout } from 'antd';
+import { TEST_IDS } from '../../defaults';
 import { TTheme, TTranslations } from '../../types';
 import { ChangeAppLangElement } from './ChangeAppLangElement';
 
@@ -16,7 +17,7 @@ export const AppHeader: React.FC<Props> = ({ theme, translations }) => {
     const themedStyles = styles(theme);
 
     return (
-        <Header css={themedStyles.header} data-test-id="AppHeader_testId">
+        <Header css={themedStyles.header} data-test-id={TEST_IDS.APP_HEADER}>
             <div css={themedStyles.logo}>{translations.APP_NAME}</div>
             <ChangeAppLangElement />
         </Header>
