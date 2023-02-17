@@ -19,7 +19,6 @@ const mapToItem = (lang: TTranslationsLang) => ({
 
 export const useChangeLangElementViewModel = () => {
     const appLangModel = getModelByKey<AppLangModel>(Models.APP_LANG);
-    const appContext = useAppContext();
 
     const itemsSource = useMemo(
         () =>
@@ -40,10 +39,8 @@ export const useChangeLangElementViewModel = () => {
     };
 
     return {
-        translations: appContext.translations,
         onClickItem,
         appLang,
         items,
-        theme: appContext.theme,
     };
 };

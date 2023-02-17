@@ -31,11 +31,9 @@ describe('useChangeLangElementViewModel', () => {
         const { result } = renderHook(useChangeLangElementViewModel);
 
         const expectedValue = {
-            translations: contextMock.translations,
             onClickItem: expect.any(Function),
             appLang: DEFAULTS.LANG,
             items: expect.any(Array),
-            theme: contextMock.theme,
         };
 
         expect(result.current).toEqual(expectedValue);

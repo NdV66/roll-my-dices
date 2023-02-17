@@ -9,6 +9,10 @@ configure({
     testIdAttribute: 'data-test-id',
 });
 
+beforeEach(() => {
+    jest.clearAllMocks();
+});
+
 window.matchMedia = (query) => ({
     matches: false,
     media: query,

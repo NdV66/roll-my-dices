@@ -14,7 +14,7 @@ export const CleanEverythingButton: React.FC<Props> = ({ activeMainTab }) => {
     const themedStyles = styles();
 
     return (
-        <div css={themedStyles.cleanWrapper}>
+        <div css={themedStyles.cleanWrapper} data-test-id="CleanEverythingButton_testId">
             <TextButton theme={theme} onClick={onCleanAll} small disabled={disabled}>
                 {translations.CLEAN}
             </TextButton>
