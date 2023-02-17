@@ -21,6 +21,17 @@ describe('ExplodingRollsElement', () => {
         expect(getByText(VIEW_MODEL_DATA.translations.INFO)).toBeInTheDocument();
         expect(getByTestId(TEST_IDS.EXPLODING_ROLL_RESULT)).toBeInTheDocument();
     });
+
+    test('Should render correctly (without roll info)', () => {
+        jest.spyOn(viewModel, 'useExplodingRollsElementViewModel').mockReturnValue({
+            ...VIEW_MODEL_DATA,
+            rollInfo: null,
+        });
+        const { queryByTestId, getByText } = render(<ExplodingRollsElement />);
+
+        expect(getByText(VIEW_MODEL_DATA.translations.INFO)).toBeInTheDocument();
+        expect(queryByTestId(TEST_IDS.EXPLODING_ROLL_RESULT)).not.toBeInTheDocument();
+    });
 });
 
 export {};

@@ -16,4 +16,7 @@ export const TEST_IDS = {
     MODAL_BODY: 'ModalBody_testId',
     MODAL_FOOTER: 'ModalFooter_testId',
     MODAL_INPUT_MODAL_BUTTONS: 'ModInputModalButtons_testId',
+
+    FATE_LADDER_MODAL: 'FateLadderModal_testId',
+    FATE_LADDER_MODAL_TABLE: 'FateLadderModalTable_testId',
 };

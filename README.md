@@ -29,6 +29,9 @@ Because I want to have a simple example with RxJS where I'm able to learn new to
 #### `/context`
 React Context and its wrapper.
 
+#### `/defaults`
+Files with all defaults names, configurations etc.
+
 #### `/langs`
 Files with translations.
 
