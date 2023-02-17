@@ -19,10 +19,6 @@ describe('useExplodingRollsElementViewModel', () => {
     let rollModelMock: AppExplodingRollModel;
 
     beforeEach(() => {
-        jest.clearAllMocks();
-    });
-
-    beforeEach(() => {
         contextMock = getAppContextMock() as any as TAppContext;
         rollModelMock = appRollModelMock() as any as AppExplodingRollModel;
 

@@ -15,10 +15,6 @@ const DEFAULT_PROPS = {
 const TEST_ID = 'ModelBody_testId';
 
 describe('ModalBody', () => {
-    beforeEach(() => {
-        jest.clearAllMocks();
-    });
-
     test('Should render correctly', () => {
         const { getByTestId, getByText, getByPlaceholderText, queryByText } = render(<ModalBody {...DEFAULT_PROPS} />);
 

@@ -15,10 +15,6 @@ describe('useCleanEverythingModel', () => {
     let contextMock: TAppContext;
 
     beforeEach(() => {
-        jest.clearAllMocks();
-    });
-
-    beforeEach(() => {
         contextMock = getAppContextMock() as any as TAppContext;
         modelMock = appRollModelMock() as any as AppRollModel;
 

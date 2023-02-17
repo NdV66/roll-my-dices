@@ -19,10 +19,6 @@ const DEFAULT_PROPS = {
 };
 
 describe('RollHeader', () => {
-    beforeEach(() => {
-        jest.clearAllMocks();
-    });
-
     test('Should render correctly', () => {
         const { getByText } = render(<RollsHeader {...DEFAULT_PROPS} />);
 

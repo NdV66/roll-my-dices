@@ -16,10 +16,6 @@ describe('useChangeLangElementViewModel', () => {
     let contextMock: TAppContext;
 
     beforeEach(() => {
-        jest.clearAllMocks();
-    });
-
-    beforeEach(() => {
         contextMock = getAppContextMock() as any as TAppContext;
         modelMock = appLangModelMock() as any as AppLangModel;
 

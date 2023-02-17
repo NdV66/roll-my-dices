@@ -12,12 +12,7 @@ describe('useFateLadderModalViewModel', () => {
     let contextMock: TAppContext;
 
     beforeEach(() => {
-        jest.clearAllMocks();
-    });
-
-    beforeEach(() => {
         contextMock = getAppContextMock() as any as TAppContext;
-
         jest.spyOn(contextTools, 'useAppContext').mockReturnValue(contextMock);
     });
 

@@ -15,10 +15,6 @@ describe('useThemeButtonElementViewModel', () => {
     let contextMock: TAppContext;
 
     beforeEach(() => {
-        jest.clearAllMocks();
-    });
-
-    beforeEach(() => {
         contextMock = getAppContextMock() as any as TAppContext;
         modelMock = appThemeModelMock() as any as AppThemeModel;
 

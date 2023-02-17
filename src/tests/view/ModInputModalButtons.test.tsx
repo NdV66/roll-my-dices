@@ -15,10 +15,6 @@ const DEFAULT_PROPS = {
 const TEST_ID = 'ModInputModalButtons_testId';
 
 describe('ModInputModalButtons', () => {
-    beforeEach(() => {
-        jest.clearAllMocks();
-    });
-
     test('Should render correctly', () => {
         const { getByTestId, getByText, container } = render(<ModInputModalButtons {...DEFAULT_PROPS} />);
         const text = `${DEFAULT_PROPS.translations.MOD_INFO} (${DEFAULT_PROPS.currentValue})`;

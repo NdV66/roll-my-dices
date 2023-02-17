@@ -15,10 +15,6 @@ const DEFAULT_PROPS = {
 const TEST_ID = 'DiceButton_testId';
 
 describe('DiceButton', () => {
-    beforeEach(() => {
-        jest.clearAllMocks();
-    });
-
     test('Should render correctly', () => {
         const { getByTestId } = render(<DiceButton {...DEFAULT_PROPS} />);
         expect(getByTestId(TEST_ID)).toBeInTheDocument();

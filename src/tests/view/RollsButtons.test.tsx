@@ -18,10 +18,6 @@ const DEFAULT_PROPS = {
 };
 
 describe('RollsButtons', () => {
-    beforeEach(() => {
-        jest.clearAllMocks();
-    });
-
     test('Should render correctly', () => {
         const { getByText } = render(<RollsButtons {...DEFAULT_PROPS} />);
         expect(getByText(displayValue)).toBeInTheDocument();

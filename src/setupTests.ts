@@ -11,6 +11,7 @@ configure({
 
 beforeEach(() => {
     jest.clearAllMocks();
+    jest.resetAllMocks();
 });
 
 window.matchMedia = (query) => ({
