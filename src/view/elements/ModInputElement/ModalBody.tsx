@@ -2,6 +2,7 @@
 import { css } from '@emotion/react';
 
 import { Input } from 'antd';
+import { TEST_IDS } from '../../../defaults';
 import { TTheme, TTranslations } from '../../../types';
 import { WarningParagraph } from '../WarningParagraph';
 
@@ -23,7 +24,7 @@ export const ModalBody: React.FC<Props> = ({ theme, translations, currentValue, 
 
     return (
         <>
-            <div css={themedStyles.inputWrapper}>
+            <div css={themedStyles.inputWrapper} data-test-id={TEST_IDS.MODAL_BODY}>
                 <Input
                     onChange={handleOnChange}
                     value={currentValue}

@@ -3,6 +3,7 @@ import { css } from '@emotion/react';
 
 import { QuestionOutlined } from '@ant-design/icons';
 import { TTheme } from '../../../types';
+import { TEST_IDS } from '../../../defaults';
 
 type Props = {
     theme: TTheme;
@@ -12,7 +13,7 @@ export const NoRollResult: React.FC<Props> = ({ theme }) => {
     const themedStyles = styles(theme);
 
     return (
-        <div css={themedStyles.wrapper}>
+        <div css={themedStyles.wrapper} data-test-id={TEST_IDS.NO_ROLL_RESULT}>
             <QuestionOutlined />
         </div>
     );

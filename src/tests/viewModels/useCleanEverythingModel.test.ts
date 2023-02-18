@@ -7,16 +7,12 @@ import { useCleanEverythingModel } from '../../viewModels/useCleanEverythingMode
 import { AppRollModel } from '../../models/AppRollModel';
 import { appRollModelMock } from '../mocks/appRollModelMock';
 import { Observable } from 'rxjs';
-import { ROLL_EXTENDED_MOCK, ROLL_EXTENDED_NO_MOD_MOCK } from '../models/mocks';
+import { ROLL_EXTENDED_MOCK, ROLL_EXTENDED_NO_MOD_MOCK } from '../mocks';
 import { DEFAULTS } from '../../defaults';
 
 describe('useCleanEverythingModel', () => {
     let modelMock: AppRollModel;
     let contextMock: TAppContext;
-
-    beforeEach(() => {
-        jest.clearAllMocks();
-    });
 
     beforeEach(() => {
         contextMock = getAppContextMock() as any as TAppContext;

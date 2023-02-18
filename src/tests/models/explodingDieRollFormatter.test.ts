@@ -6,7 +6,7 @@ import {
     EXPLODING_ROLL_WITH_EXPLOSION_WITH_MOD_EXTENDED,
     EXPLODING_ROLL_WITH_EXPLOSION_NO_MOD_EXTENDED,
     EXPLODING_ROLL_NO_EXPLOSION_WITH_MOD_EXTENDED,
-} from '../models/mocks';
+} from '../mocks';
 import * as rollsService from '../../services/explodingRolls.rolls.service';
 
 describe('ExplodingDieRollFormatter', () => {
