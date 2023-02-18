@@ -13,6 +13,7 @@ export const TEST_IDS = {
     TEXT_BUTTON: 'TextButton_testId',
     WARNING_PARAGRAPH: 'WarningParagraph_testId',
     FOOTER_ELEMENT: 'FooterElement_testId',
+    MAIN_CONTENT: 'MainContent_testId',
 
     MODAL_BODY: 'ModalBody_testId',
     MODAL_FOOTER: 'ModalFooter_testId',

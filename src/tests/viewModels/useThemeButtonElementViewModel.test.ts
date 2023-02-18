@@ -5,10 +5,8 @@ import { appThemeModelMock, getAppContextMock } from '../mocks';
 import { renderHook } from '@testing-library/react';
 import { useThemeButtonElementViewModel } from '../../viewModels';
 import { Observable } from 'rxjs';
-
 import { AppThemeModel } from '../../models/AppThemeModel';
 import { DEFAULTS } from '../../defaults';
-import { DARK_THEME } from '../../styles';
 
 describe('useThemeButtonElementViewModel', () => {
     let modelMock: AppThemeModel;
