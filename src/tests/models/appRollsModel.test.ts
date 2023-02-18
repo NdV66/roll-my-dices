@@ -3,7 +3,7 @@ import * as rollsService from '../../services/rolls.service';
 import { TestScheduler } from 'rxjs/testing';
 import { DEFAULTS } from '../../defaults';
 import { AppRollModel } from '../../models/AppRollModel';
-import { ROLL_MOCK, ROLL_EXTENDED_NO_MOD_MOCK, ROLL_EXTENDED_MOCK } from './mocks';
+import { ROLL_MOCK, ROLL_EXTENDED_NO_MOD_MOCK, ROLL_EXTENDED_MOCK } from '../mocks';
 
 describe('AppRollModel', () => {
     let testScheduler: TestScheduler;

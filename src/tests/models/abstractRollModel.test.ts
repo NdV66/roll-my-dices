@@ -2,7 +2,7 @@ import { DiceTypes, IDieRollFormatter, TRoll, TRollExtended } from '../../types'
 import { TestScheduler } from 'rxjs/testing';
 import { DEFAULTS } from '../../defaults';
 import { AbstractRollModel } from '../../models/AbstractRollModel';
-import { ROLL_EXTENDED_MOCK, ROLL_EXTENDED_NO_MOD_MOCK, ROLL_MOCK } from './mocks';
+import { ROLL_EXTENDED_MOCK, ROLL_EXTENDED_NO_MOD_MOCK, ROLL_MOCK } from '../mocks';
 
 class DieRollFormatter implements IDieRollFormatter<TRoll, TRollExtended> {
     prepareExtendedRoll = jest.fn();

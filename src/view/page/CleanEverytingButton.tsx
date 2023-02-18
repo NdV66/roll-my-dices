@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+import { TEST_IDS } from '../../defaults';
 import { MainContentTab } from '../../types';
 
 import { useCleanEverythingModel } from '../../viewModels/useCleanEverythingModel';
@@ -14,7 +15,7 @@ export const CleanEverythingButton: React.FC<Props> = ({ activeMainTab }) => {
     const themedStyles = styles();
 
     return (
-        <div css={themedStyles.cleanWrapper}>
+        <div css={themedStyles.cleanWrapper} data-test-id={TEST_IDS.CLEAN_EVERYTHING_BUTTON}>
             <TextButton theme={theme} onClick={onCleanAll} small disabled={disabled}>
                 {translations.CLEAN}
             </TextButton>

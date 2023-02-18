@@ -10,17 +10,13 @@ import { DEFAULTS, DICES_ORDER } from '../../defaults';
 import { useRollsElementViewModel } from '../../viewModels';
 import { AppRollModel } from '../../models/AppRollModel';
 import { Observable } from 'rxjs';
-import { ROLL_EXTENDED_MOCK } from '../models/mocks';
+import { ROLL_EXTENDED_MOCK } from '../mocks';
 
 const sign = 'X';
 
 describe('useRollsElementViewModel', () => {
     let contextMock: TAppContext;
     let rollModelMock: AppRollModel;
-
-    beforeEach(() => {
-        jest.clearAllMocks();
-    });
 
     beforeEach(() => {
         contextMock = getAppContextMock() as any as TAppContext;
