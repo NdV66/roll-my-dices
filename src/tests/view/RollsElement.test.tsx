@@ -13,7 +13,7 @@ const VIEW_MODEL_DATA = {
     translations: TEXTS_EN,
 };
 
-describe('Page', () => {
+describe('RollsElement', () => {
     test('Should render correctly (with roll info)', () => {
         jest.spyOn(viewModel, 'useRollsElementViewModel').mockReturnValue(VIEW_MODEL_DATA);
         const { getByText, getByTestId, queryByTestId } = render(<RollsElement />);
