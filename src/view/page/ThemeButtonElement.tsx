@@ -10,8 +10,8 @@ export const ThemeButtonElement = () => {
         <SwitchButton
             onChange={onChangeTheme}
             checked={isDefaultTheme}
-            checkedChildren={translations.LIGHT}
-            unCheckedChildren={translations.DARK}
+            checkedChildren={translations.DARK}
+            unCheckedChildren={translations.LIGHT}
         />
     );
 };
