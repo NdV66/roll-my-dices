@@ -2,7 +2,7 @@
 import { css } from '@emotion/react';
 
 import { Layout } from 'antd';
-import { DEFAULTS } from '../../defaults';
+import { DEFAULTS, TEST_IDS } from '../../defaults';
 import { TTheme } from '../../types';
 import { useFooterViewModel } from '../../viewModels';
 import { ThemeButtonElement } from './ThemeButtonElement';
@@ -14,7 +14,7 @@ export const FooterElement = () => {
     const themedStyles = styles(theme);
 
     return (
-        <Footer css={themedStyles.footer}>
+        <Footer css={themedStyles.footer} data-test-id={TEST_IDS.FOOTER_ELEMENT}>
             <span>
                 v{version}, {translations.AUTHOR} {new Date().getFullYear()}
             </span>

@@ -12,6 +12,7 @@ export const TEST_IDS = {
     SWITCH_BUTTON: 'SwitchButton_testId',
     TEXT_BUTTON: 'TextButton_testId',
     WARNING_PARAGRAPH: 'WarningParagraph_testId',
+    FOOTER_ELEMENT: 'FooterElement_testId',
 
     MODAL_BODY: 'ModalBody_testId',
     MODAL_FOOTER: 'ModalFooter_testId',

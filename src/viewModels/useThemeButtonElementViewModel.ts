@@ -5,13 +5,12 @@ import { Models } from '../types';
 
 export const useThemeButtonElementViewModel = () => {
     const appThemeModel = getModelByKey<AppThemeModel>(Models.APP_THEME);
-    const appContext = useAppContext();
+    const { translations } = useAppContext();
     const appTheme = useStateWithObservable(appThemeModel.appTheme);
 
     return {
         onChangeTheme: appThemeModel.toggleAppTheme,
-        theme: appContext.theme,
         appTheme,
-        translations: appContext.translations,
+        translations,
     };
 };

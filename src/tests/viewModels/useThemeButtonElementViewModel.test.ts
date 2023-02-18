@@ -29,7 +29,6 @@ describe('useThemeButtonElementViewModel', () => {
 
         const { result } = renderHook(useThemeButtonElementViewModel);
         const expectedValue = {
-            theme: contextMock.theme,
             translations: contextMock.translations,
             onChangeTheme: expect.any(Function),
             appTheme: appTheme,
@@ -52,14 +51,6 @@ describe('useThemeButtonElementViewModel', () => {
         const { result } = renderHook(useThemeButtonElementViewModel);
 
         expect(result.current.appTheme).toEqual(appTheme);
-    });
-
-    test('Should provide theme', () => {
-        const theme = DARK_THEME;
-        contextMock.theme = theme;
-        const { result } = renderHook(useThemeButtonElementViewModel);
-
-        expect(result.current.theme).toEqual(theme);
     });
 });
 
