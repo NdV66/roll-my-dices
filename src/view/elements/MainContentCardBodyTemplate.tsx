@@ -2,6 +2,7 @@
 import { css } from '@emotion/react';
 
 import { PropsWithChildren } from 'react';
+import { TEST_IDS } from '../../defaults';
 import { MainContentTab, TTheme } from '../../types';
 import { CleanEverythingButton } from '../page/CleanEverytingButton';
 import { ModInputElement } from '../page/ModInputElement';
@@ -15,7 +16,7 @@ export const MainContentCardBodyTemplate: React.FC<PropsWithChildren<Props>> = (
     const themedStyles = styles(theme);
 
     return (
-        <>
+        <div data-test-id={TEST_IDS.MAIN_CONTENT_CARD_BODY_TEMPLATE}>
             <ModInputElement activeMainTab={activeMainTab} />
 
             <div css={themedStyles.content}>{children}</div>
@@ -23,7 +24,7 @@ export const MainContentCardBodyTemplate: React.FC<PropsWithChildren<Props>> = (
             <div css={themedStyles.cleanEverythingButton}>
                 <CleanEverythingButton activeMainTab={activeMainTab} />
             </div>
-        </>
+        </div>
     );
 };
 

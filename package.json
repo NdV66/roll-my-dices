@@ -1,6 +1,6 @@
 {
   "name": "roll-my-dices",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "private": true,
   "license": "see license.txt",
   "author": "Marta Zażlak (NdV66)",
@@ -29,7 +29,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!antd)/\"",
     "eject": "react-scripts eject",
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build"

@@ -5,7 +5,7 @@ import { DeleteOutlined } from '@ant-design/icons';
 
 import { TTheme, TTranslations } from '../../../types';
 import { TextButton } from '..';
-import { DEFAULTS } from '../../../defaults';
+import { DEFAULTS, TEST_IDS } from '../../../defaults';
 
 type Props = {
     theme: TTheme;
@@ -20,7 +20,7 @@ export const ModInputModalButtons: React.FC<Props> = ({ theme, onRemove, onOpen,
     const isRemoveDisabled = currentValue === DEFAULTS.MOD;
 
     return (
-        <div css={themedStyles.wrapper}>
+        <div css={themedStyles.wrapper} data-test-id={TEST_IDS.MODAL_INPUT_MODAL_BUTTONS}>
             <TextButton onClick={onOpen} theme={theme} small>
                 {translations.MOD_INFO} ({currentValue})
             </TextButton>

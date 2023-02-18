@@ -5,18 +5,12 @@ import { appThemeModelMock, getAppContextMock } from '../mocks';
 import { renderHook } from '@testing-library/react';
 import { useThemeButtonElementViewModel } from '../../viewModels';
 import { Observable } from 'rxjs';
-
 import { AppThemeModel } from '../../models/AppThemeModel';
 import { DEFAULTS } from '../../defaults';
-import { DARK_THEME } from '../../styles';
 
 describe('useThemeButtonElementViewModel', () => {
     let modelMock: AppThemeModel;
     let contextMock: TAppContext;
-
-    beforeEach(() => {
-        jest.clearAllMocks();
-    });
 
     beforeEach(() => {
         contextMock = getAppContextMock() as any as TAppContext;
@@ -33,7 +27,6 @@ describe('useThemeButtonElementViewModel', () => {
 
         const { result } = renderHook(useThemeButtonElementViewModel);
         const expectedValue = {
-            theme: contextMock.theme,
             translations: contextMock.translations,
             onChangeTheme: expect.any(Function),
             appTheme: appTheme,
@@ -56,14 +49,6 @@ describe('useThemeButtonElementViewModel', () => {
         const { result } = renderHook(useThemeButtonElementViewModel);
 
         expect(result.current.appTheme).toEqual(appTheme);
-    });
-
-    test('Should provide theme', () => {
-        const theme = DARK_THEME;
-        contextMock.theme = theme;
-        const { result } = renderHook(useThemeButtonElementViewModel);
-
-        expect(result.current.theme).toEqual(theme);
     });
 });
 

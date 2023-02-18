@@ -22,3 +22,9 @@ export type TTranslateLadderData = {
     name: string;
     key: string;
 };
+
+export type TTranslateLadderColumn = {
+    title: string;
+    dataIndex: string;
+    key: string;
+};

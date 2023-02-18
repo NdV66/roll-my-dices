@@ -6,18 +6,13 @@ import { useFateLadderModalViewModel } from '../../viewModels';
 import { act } from 'react-dom/test-utils';
 import { TEXTS_EN } from '../../langs/en';
 import { DEFAULTS, FATE } from '../../defaults';
-import { FATE_ROLL_EXTENDED_WITH_MOD_MOCK } from '../models/mocks';
+import { FATE_ROLL_EXTENDED_WITH_MOD_MOCK } from '../mocks';
 
 describe('useFateLadderModalViewModel', () => {
     let contextMock: TAppContext;
 
     beforeEach(() => {
-        jest.clearAllMocks();
-    });
-
-    beforeEach(() => {
         contextMock = getAppContextMock() as any as TAppContext;
-
         jest.spyOn(contextTools, 'useAppContext').mockReturnValue(contextMock);
     });
 

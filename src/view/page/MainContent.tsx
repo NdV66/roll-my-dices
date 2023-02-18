@@ -2,36 +2,14 @@
 import { css } from '@emotion/react';
 
 import Card from 'antd/es/card/Card';
-import { TAB_LISTS } from '../../defaults';
+import { TAB_LISTS, TEST_IDS } from '../../defaults';
 import { MainContentTab, TTheme } from '../../types';
 import { useMainContentViewModel } from '../../viewModels/useMainContentViewModel';
-import { MainContentCardBodyTemplate } from '../elements';
-import { ExplodingRollsElement } from './ExplodingRollsElement';
-import { FateElement } from './FateElement';
-import { RollsElement } from './RollsElement';
-
-const getContentList = (theme: TTheme, activeMainTab: MainContentTab): Record<string, React.ReactNode> => ({
-    [MainContentTab.CLASSIC_D20]: (
-        <MainContentCardBodyTemplate theme={theme} activeMainTab={activeMainTab}>
-            <RollsElement />
-        </MainContentCardBodyTemplate>
-    ),
-    [MainContentTab.EXPLODING]: (
-        <MainContentCardBodyTemplate theme={theme} activeMainTab={activeMainTab}>
-            <ExplodingRollsElement />
-        </MainContentCardBodyTemplate>
-    ),
-    [MainContentTab.FATE]: (
-        <MainContentCardBodyTemplate theme={theme} activeMainTab={activeMainTab}>
-            <FateElement />
-        </MainContentCardBodyTemplate>
-    ),
-});
+import { getContentList } from './getContentList';
 
 export const MainContent: React.FC = () => {
     const { theme, activeTabKey, setActiveTabKey, translatedTabList } = useMainContentViewModel(TAB_LISTS);
     const themedStyles = styles(theme);
-
     const contentList = getContentList(theme, activeTabKey);
 
     return (
@@ -40,6 +18,7 @@ export const MainContent: React.FC = () => {
             tabList={translatedTabList as any}
             onTabChange={(key) => setActiveTabKey(key as MainContentTab)}
             activeTabKey={activeTabKey}
+            data-test-id={TEST_IDS.MAIN_CONTENT}
         >
             {contentList[activeTabKey]}
         </Card>

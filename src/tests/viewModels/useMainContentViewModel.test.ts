@@ -15,10 +15,6 @@ describe('useMainContentViewModel', () => {
     let contextMock: TAppContext;
 
     beforeEach(() => {
-        jest.clearAllMocks();
-    });
-
-    beforeEach(() => {
         contextMock = getAppContextMock() as any as TAppContext;
         rollModelMock = appRollModelMock() as any as AppRollModel;
         fateModelMock = appFateRollModelMock() as any as AppFateRollModel;

@@ -2,6 +2,7 @@
 import { css } from '@emotion/react';
 
 import Paragraph from 'antd/es/typography/Paragraph';
+import { TEST_IDS } from '../../defaults';
 import { TTheme } from '../../types';
 
 type TAlign = 'center' | 'left' | 'right';
@@ -15,7 +16,7 @@ export const WarningParagraph: React.FC<React.PropsWithChildren<Props>> = ({ the
     const themedStyles = styles(theme);
 
     return (
-        <Paragraph type="warning" css={themedStyles.text(align)}>
+        <Paragraph type="warning" css={themedStyles.text(align)} data-test-id={TEST_IDS.WARNING_PARAGRAPH}>
             {children}
         </Paragraph>
     );

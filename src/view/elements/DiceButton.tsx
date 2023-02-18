@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 
-import { FONT_FAMILY_BY_DICE_TYPE } from '../../defaults';
+import { FONT_FAMILY_BY_DICE_TYPE, TEST_IDS } from '../../defaults';
 import { screenMd } from '../../styles';
 import { DiceTypes, TTheme } from '../../types';
 
@@ -16,7 +16,7 @@ export const DiceButton: React.FC<Props> = ({ onClick, displayValue, theme, dice
     const themedStyles = styles(theme);
 
     return (
-        <div onClick={onClick} css={themedStyles.rollButton} role="button">
+        <div onClick={onClick} css={themedStyles.rollButton} role="button" data-test-id={TEST_IDS.DICE_BUTTON}>
             <span css={themedStyles.dice(diceType)}>{displayValue}</span>
         </div>
     );

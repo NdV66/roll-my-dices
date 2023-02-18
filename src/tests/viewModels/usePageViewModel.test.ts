@@ -13,10 +13,6 @@ describe('usePageViewModel', () => {
     let contextMock: TAppContext;
 
     beforeEach(() => {
-        jest.clearAllMocks();
-    });
-
-    beforeEach(() => {
         contextMock = getAppContextMock() as any as TAppContext;
         modelMock = appFateRollModelMock() as any as AppThemeModel;
 
